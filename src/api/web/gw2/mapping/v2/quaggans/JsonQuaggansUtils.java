@@ -14,7 +14,7 @@ import javax.json.JsonObject;
  * A factory that uses JSON-P to produce a quaggan object.
  * @author Fabrice Bouyé
  */
-enum JsonQuaggansUtils {
+public enum JsonQuaggansUtils {
 
     /**
      * The unique instance of this class.
@@ -22,7 +22,7 @@ enum JsonQuaggansUtils {
     INSTANCE;
 
     /**
-     * Gets a factory that allows to create quaggan isntances.
+     * Gets a factory that allows to create quaggan instances.
      * @return A {@code QuagganFactory} instance, never {@code null}.
      */
     public static QuagganFactory getFactory() {
@@ -30,7 +30,7 @@ enum JsonQuaggansUtils {
     }
 
     /**
-     * Read from the provided JSON object and return a Quaggan object.
+     * Read from the provided JSON object and return a quaggan object.
      * @param jsonObject The source JSON object.
      * @return A {@code Quaggan} instance, never {@code null}.
      */
