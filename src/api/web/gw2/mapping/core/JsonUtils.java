@@ -27,7 +27,7 @@ import javax.json.JsonValue;
 
 /**
  * JSR 353 JSON-P utility class.
-* <br>This class provides code utilityu methods that are used 
+* <br>This class provides core utility methods that are used throughout this factory implementation.
  * @author Fabrice Bouyé
  */
 public enum JsonUtils {
