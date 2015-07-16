@@ -293,18 +293,19 @@ public class JsonUtilsTest {
     public void testNullOrMissingInt() throws Exception {
         System.out.println("nullOrMissingInt"); // NOI18N.
         final int[] expResults = {-1, 1};
-        IntStream.range(0, filesForNullTests.length).forEach(index -> {;
-            final String path = filesForNullTests[index];
-            final URL url = getClass().getResource(path);
-            try {
-                final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
-                final int result = JsonUtils.nullOrMissingInt(jsonObject, "id", -1); // NOI18N.
-                final int expResult = expResults[index];
-                assertEquals(expResult, result);
-            } catch (NullPointerException | IOException ex) {
-                fail(ex.getMessage());
-            }
-        });
+        IntStream.range(0, filesForNullTests.length)
+                .forEach(index -> {;
+                    final String path = filesForNullTests[index];
+                    final URL url = getClass().getResource(path);
+                    try {
+                        final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
+                        final int result = JsonUtils.nullOrMissingInt(jsonObject, "id", -1); // NOI18N.
+                        final int expResult = expResults[index];
+                        assertEquals(expResult, result);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
     }
 
     /**
@@ -314,18 +315,19 @@ public class JsonUtilsTest {
     public void testNullOrMissingString() throws Exception {
         System.out.println("nullOrMissingString"); // NOI18N.
         final String[] expResults = {null, "NAME"};
-        IntStream.range(0, filesForNullTests.length).forEach(index -> {;
-            final String path = filesForNullTests[index];
-            final URL url = getClass().getResource(path);
-            try {
-                final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
-                final String result = JsonUtils.nullOrMissingString(jsonObject, "name"); // NOI18N.
-                final String expResult = expResults[index];
-                assertEquals(expResult, result);
-            } catch (NullPointerException | IOException ex) {
-                fail(ex.getMessage());
-            }
-        });
+        IntStream.range(0, filesForNullTests.length)
+                .forEach(index -> {;
+                    final String path = filesForNullTests[index];
+                    final URL url = getClass().getResource(path);
+                    try {
+                        final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
+                        final String result = JsonUtils.nullOrMissingString(jsonObject, "name"); // NOI18N.
+                        final String expResult = expResults[index];
+                        assertEquals(expResult, result);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
     }
 
     /**
@@ -339,18 +341,19 @@ public class JsonUtilsTest {
                 .build()
                 .getJsonString("1"); // NOI18N.
         final JsonString[] expResults = {null, valid};
-        IntStream.range(0, filesForNullTests.length).forEach(index -> {;
-            final String path = filesForNullTests[index];
-            final URL url = getClass().getResource(path);
-            try {
-                final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
-                final JsonString result = JsonUtils.nullOrMissingJsonString(jsonObject, "description"); // NOI18N.
-                final JsonString expResult = expResults[index];
-                assertEquals(expResult, result);
-            } catch (NullPointerException | IOException ex) {
-                fail(ex.getMessage());
-            }
-        });
+        IntStream.range(0, filesForNullTests.length)
+                .forEach(index -> {;
+                    final String path = filesForNullTests[index];
+                    final URL url = getClass().getResource(path);
+                    try {
+                        final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
+                        final JsonString result = JsonUtils.nullOrMissingJsonString(jsonObject, "description"); // NOI18N.
+                        final JsonString expResult = expResults[index];
+                        assertEquals(expResult, result);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
     }
 
     /**
@@ -364,18 +367,19 @@ public class JsonUtilsTest {
                 .build()
                 .getJsonNumber("1"); // NOI18N.
         final JsonNumber[] expResults = {null, valid};
-        IntStream.range(0, filesForNullTests.length).forEach(index -> {;
-            final String path = filesForNullTests[index];
-            final URL url = getClass().getResource(path);
-            try {
-                final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
-                final JsonNumber result = JsonUtils.nullOrMissingJsonNumber(jsonObject, "size"); // NOI18N.
-                final JsonNumber expResult = expResults[index];
-                assertEquals(expResult, result);
-            } catch (NullPointerException | IOException ex) {
-                fail(ex.getMessage());
-            }
-        });
+        IntStream.range(0, filesForNullTests.length)
+                .forEach(index -> {;
+                    final String path = filesForNullTests[index];
+                    final URL url = getClass().getResource(path);
+                    try {
+                        final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
+                        final JsonNumber result = JsonUtils.nullOrMissingJsonNumber(jsonObject, "size"); // NOI18N.
+                        final JsonNumber expResult = expResults[index];
+                        assertEquals(expResult, result);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
     }
 
     /**
@@ -388,18 +392,19 @@ public class JsonUtilsTest {
                 .add("id", 10) // NOI18N.
                 .build();
         final JsonObject[] expResults = {null, valid};
-        IntStream.range(0, filesForNullTests.length).forEach(index -> {;
-            final String path = filesForNullTests[index];
-            final URL url = getClass().getResource(path);
-            try {
-                final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
-                final JsonObject result = JsonUtils.nullOrMissingJsonObject(jsonObject, "value"); // NOI18N.
-                final JsonObject expResult = expResults[index];
-                assertEquals(expResult, result);
-            } catch (NullPointerException | IOException ex) {
-                fail(ex.getMessage());
-            }
-        });
+        IntStream.range(0, filesForNullTests.length)
+                .forEach(index -> {;
+                    final String path = filesForNullTests[index];
+                    final URL url = getClass().getResource(path);
+                    try {
+                        final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
+                        final JsonObject result = JsonUtils.nullOrMissingJsonObject(jsonObject, "value"); // NOI18N.
+                        final JsonObject expResult = expResults[index];
+                        assertEquals(expResult, result);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
     }
 
     /**
@@ -416,17 +421,18 @@ public class JsonUtilsTest {
                 .add(4)
                 .build();
         final JsonArray[] expResults = {null, valid};
-        IntStream.range(0, filesForNullTests.length).forEach(index -> {;
-            final String path = filesForNullTests[index];
-            final URL url = getClass().getResource(path);
-            try {
-                final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
-                final JsonArray result = JsonUtils.nullOrMissingJsonArray(jsonObject, "amounts"); // NOI18N.
-                final JsonArray expResult = expResults[index];
-                assertEquals(expResult, result);
-            } catch (NullPointerException | IOException ex) {
-                fail(ex.getMessage());
-            }
-        });
+        IntStream.range(0, filesForNullTests.length)
+                .forEach(index -> {;
+                    final String path = filesForNullTests[index];
+                    final URL url = getClass().getResource(path);
+                    try {
+                        final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
+                        final JsonArray result = JsonUtils.nullOrMissingJsonArray(jsonObject, "amounts"); // NOI18N.
+                        final JsonArray expResult = expResults[index];
+                        assertEquals(expResult, result);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
     }
 }
