@@ -220,92 +220,92 @@ public enum JsonUtils {
     }
 
     /**
-     * Gets a Java integer from a key that may be missing or {@code NULL}.
+     * Gets a Java integer from a key that may be missing or {@code null}.
      * @param source The source JSON object.
      * @param key The key.
      * @param defaultValue The default value.
-     * @return An {@code int} instance, may be {@code defaultValue} if {@code key} is {@code NULL} or absent from {@code source}.
+     * @return An {@code int} instance, may be {@code defaultValue} if {@code key} is {@code null} or absent from {@code source}.
      * @throws NullPointerException If either {@code source} or {@code key} is {@code null}.
      */
-    public int nullOrMissingInt(final JsonObject source, final String key, final int defaultValue) throws NullPointerException {
+    public static int nullOrMissingInt(final JsonObject source, final String key, final int defaultValue) throws NullPointerException {
         Objects.requireNonNull(source);
         Objects.requireNonNull(key);
         return nullOrMissingValue(source, source::getInt, key, defaultValue);
     }
 
     /**
-     * Gets a Java {@code String} from a key that may be missing or {@code NULL}.
+     * Gets a Java {@code String} from a key that may be missing or {@code null}.
      * @param source The source JSON object.
      * @param key The key.
-     * @return A {@code String} instance, may be {@code null} if {@code key} is {@code NULL} or absent from {@code source}.
+     * @return A {@code String} instance, may be {@code null} if {@code key} is {@code null} or absent from {@code source}.
      * @throws NullPointerException If either {@code source} or {@code key} is {@code null}.
      */
-    public String nullOrMissingString(final JsonObject source, final String key) throws NullPointerException {
+    public static String nullOrMissingString(final JsonObject source, final String key) throws NullPointerException {
         Objects.requireNonNull(source);
         Objects.requireNonNull(key);
         return nullOrMissingValue(source, source::getString, key, null);
     }
 
     /**
-     * Gets a JSON string from a key that may be missing or {@code NULL}.
+     * Gets a JSON string from a key that may be missing or {@code null}.
      * @param source The source JSON object.
      * @param key The key.
-     * @return A {@code JsonString} instance, may be {@code null} if {@code key} is {@code NULL} or absent from {@code source}.
+     * @return A {@code JsonString} instance, may be {@code null} if {@code key} is {@code null} or absent from {@code source}.
      * @throws NullPointerException If either {@code source} or {@code key} is {@code null}.
      */
-    public JsonString nullOrMissingJsonString(final JsonObject source, final String key) throws NullPointerException {
+    public static JsonString nullOrMissingJsonString(final JsonObject source, final String key) throws NullPointerException {
         Objects.requireNonNull(source);
         Objects.requireNonNull(key);
         return nullOrMissingValue(source, source::getJsonString, key, null);
     }
 
     /**
-     * Gets a JSON object from a key that may be missing or {@code NULL}.
+     * Gets a JSON object from a key that may be missing or {@code null}.
      * @param source The source JSON object.
      * @param key The key.
-     * @return A {@code JsonObject} instance, may be {@code null} if {@code key} is {@code NULL} or absent from {@code source}.
+     * @return A {@code JsonObject} instance, may be {@code null} if {@code key} is {@code null} or absent from {@code source}.
      * @throws NullPointerException If either {@code source} or {@code key} is {@code null}.
      */
-    public JsonObject nullOrMissingJsonObject(final JsonObject source, final String key) throws NullPointerException {
+    public static JsonObject nullOrMissingJsonObject(final JsonObject source, final String key) throws NullPointerException {
         Objects.requireNonNull(source);
         Objects.requireNonNull(key);
         return nullOrMissingValue(source, source::getJsonObject, key, null);
     }
 
     /**
-     * Gets a JSON array from a key that may be missing or {@code NULL}.
+     * Gets a JSON array from a key that may be missing or {@code null}.
      * @param source The source JSON object.
      * @param key The key.
-     * @return A {@code JsonArray} instance, may be {@code null} if {@code key} is {@code NULL} or absent from {@code source}.
+     * @return A {@code JsonArray} instance, may be {@code null} if {@code key} is {@code null} or absent from {@code source}.
      * @throws NullPointerException If either {@code source} or {@code key} is {@code null}.
      */
-    public JsonArray nullOrMissingJsonArray(final JsonObject source, final String key) throws NullPointerException {
+    public static JsonArray nullOrMissingJsonArray(final JsonObject source, final String key) throws NullPointerException {
         Objects.requireNonNull(source);
         Objects.requireNonNull(key);
         return nullOrMissingValue(source, source::getJsonArray, key, null);
     }
 
     /**
-     * Gets a JSON number from a key that may be missing or {@code NULL}.
+     * Gets a JSON number from a key that may be missing or {@code null}.
      * @param source The source JSON object.
      * @param key The key.
-     * @return A {@code JsonNumber} instance, may be {@code null} if {@code key} is {@code NULL} or absent from {@code source}.
+     * @return A {@code JsonNumber} instance, may be {@code null} if {@code key} is {@code null} or absent from {@code source}.
      * @throws NullPointerException If either {@code source} or {@code key} is {@code null}.
      */
-    public JsonNumber nullOrMissingJsonNumber(final JsonObject source, final String key) throws NullPointerException {
+    public static JsonNumber nullOrMissingJsonNumber(final JsonObject source, final String key) throws NullPointerException {
         Objects.requireNonNull(source);
         Objects.requireNonNull(key);
         return nullOrMissingValue(source, source::getJsonNumber, key, null);
     }
 
     /**
-     * Gets a value from a key that may be missing or {@code NULL}.
+     * Gets a value from a key that may be missing or {@code null}.
      * @param <T> The type to use.
      * @param source The source JSON object.
      * @param supplier The supplier function.
      * @param key The key.
      * @param defaultValue The default value.
-     * @return A {@code T} instance, may be {@code defaultValue} if {@code key} is {@code NULL} or absent from {@code source}.
+     * @return A {@code T} instance, may be {@code defaultValue} if {@code key} is {@code null} or absent from {@code source}.
      * @throws NullPointerException If either {@code source}, {@code supplier} or {@code key} is {@code null}.
      */
     private static <T> T nullOrMissingValue(final JsonObject source, final Function<String, T> supplier, final String key, final T defaultValue) throws NullPointerException {

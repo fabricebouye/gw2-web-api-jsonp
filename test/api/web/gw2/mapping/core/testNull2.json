@@ -1,0 +1,11 @@
+{
+    "id": 1,
+    "name": "NAME",
+    "description": "DESCRIPTION",
+    "size": 7,
+    "value": {
+        "id": 10
+    },
+    "amounts": [0, 1, 2, 3, 4]
+}
+

@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.core;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.function.Function;
 import java.util.stream.IntStream;
 import javax.json.Json;
 import javax.json.JsonArray;
+import javax.json.JsonNumber;
 import javax.json.JsonObject;
 import javax.json.JsonString;
 import org.junit.After;
@@ -48,6 +50,58 @@ public class JsonUtilsTest {
 
     @After
     public void tearDown() {
+    }
+
+    /**
+     * Test of idsToParameter method, of class JsonUtils.
+     */
+    @Test
+    public void testIdsToParameter_1() {
+        System.out.println("idsToParameter_1"); // NOI18N.
+        final int[][] values = {
+            {},
+            {1},
+            {1, 2, 3, 4}
+        };
+        final String[] expResults = {
+            "all", // NOI18N.
+            "1", // NOI18N.
+            "1,2,3,4" // NOI18N.
+        };
+        assertEquals(values.length, expResults.length);
+        IntStream.range(0, values.length)
+                .forEach(index -> {
+                    final int[] value = values[index];
+                    final String expResult = expResults[index];
+                    final String result = JsonUtils.idsToParameter(value);
+                    assertEquals(expResult, result);
+                });
+    }
+
+    /**
+     * Test of idsToParameter method, of class JsonUtils.
+     */
+    @Test
+    public void testIdsToParameter_2() {
+        System.out.println("idsToParameter_2"); // NOI18N.
+        final String[][] values = {
+            {}, // NOI18N.
+            {"1"}, // NOI18N.
+            {"1", "2", "3", "4"} // NOI18N.
+        };
+        final String[] expResults = {
+            "all", // NOI18N.
+            "1", // NOI18N.
+            "1,2,3,4" // NOI18N.
+        };
+        assertEquals(values.length, expResults.length);
+        IntStream.range(0, values.length)
+                .forEach(index -> {
+                    final String[] value = values[index];
+                    final String expResult = expResults[index];
+                    final String result = JsonUtils.idsToParameter(value);
+                    assertEquals(expResult, result);
+                });
     }
 
     /**
@@ -117,8 +171,8 @@ public class JsonUtilsTest {
     }
 
     /**
-    * Factory method for class Foo.
-    */
+     * Factory method for class Foo.
+     */
     private static final Function<JsonObject, Foo> JSON_FOO_FACTORY = jsonObject -> {
         final Foo result = new Foo();
         result.id = jsonObject.getInt("id"); // NOI18N.
@@ -142,11 +196,11 @@ public class JsonUtilsTest {
     }
 
     /**
-     * Test of listFromJsonObjectArray method, of class JsonUtils.
+     * Test of listFromJsonArray method, of class JsonUtils.
      */
     @Test
-    public void testListFromJsonObjectArray() throws Exception {
-        System.out.println("listFromJsonObjectArray"); // NOI18N.
+    public void testListFromJsonArray_1() throws Exception {
+        System.out.println("listFromJsonArray_1"); // NOI18N.
         final URL url = getClass().getResource("jsonobject2.json"); // NOI18N.
         final String basecode = url.toExternalForm();
         final List<Foo> expValues = Arrays.asList(new Foo(), new Foo());
@@ -154,7 +208,7 @@ public class JsonUtilsTest {
         expValues.get(0).name = "FabriceB"; // NOI18N.
         expValues.get(1).id = 2;
         expValues.get(1).name = "Toto"; // NOI18N.
-        final List<Foo> resultValues = JsonUtils.listFromJsonObjectArray(basecode, JSON_FOO_FACTORY);
+        final List<Foo> resultValues = JsonUtils.listFromJsonArray(basecode, JsonObject.class, JSON_FOO_FACTORY);
         assertEquals(expValues.size(), resultValues.size());
         IntStream.range(0, expValues.size())
                 .forEach(index -> {
@@ -165,15 +219,15 @@ public class JsonUtilsTest {
     }
 
     /**
-     * Test of listFromJsonStringArray method, of class JsonUtils.
+     * Test of listFromJsonArray method, of class JsonUtils.
      */
     @Test
-    public void testListFromJsonStringArray() throws Exception {
-        System.out.println("listFromJsonStringArray"); // NOI18N.
+    public void testListFromJsonArray_2() throws Exception {
+        System.out.println("listFromJsonArray_2"); // NOI18N.
         final URL url = getClass().getResource("jsonarray2.json"); // NOI18N.
         final String basecode = url.toExternalForm();
         final List<String> expValues = Arrays.asList("0", "1", "2", "3", "4", "5", "6"); // NOI18N.
-        final List<String> values = JsonUtils.listFromJsonStringArray(basecode, JsonString::getString);
+        final List<String> values = JsonUtils.listFromJsonArray(basecode, JsonString.class, JsonString::getString);
         assertEquals(expValues.size(), values.size());
         IntStream.range(0, expValues.size())
                 .forEach(index -> {
@@ -184,11 +238,11 @@ public class JsonUtilsTest {
     }
 
     /**
-     * Test of setFromJsonOpjectArray method, of class JsonUtils.
+     * Test of setFromJsonArray method, of class JsonUtils.
      */
     @Test
-    public void testSetFromJsonOpjectArray() throws Exception {
-        System.out.println("setFromJsonOpjectArray"); // NOI18N.
+    public void testSetFromJsonArray_1() throws Exception {
+        System.out.println("setFromJsonArray_1"); // NOI18N.
         final URL url = getClass().getResource("jsonobject2.json"); // NOI18N.
         final String basecode = url.toExternalForm();
         final List<Foo> expValues = Arrays.asList(new Foo(), new Foo());
@@ -196,7 +250,7 @@ public class JsonUtilsTest {
         expValues.get(0).name = "FabriceB"; // NOI18N
         expValues.get(1).id = 2;
         expValues.get(1).name = "Toto"; // NOI18N
-        final Set<Foo> resultValues = JsonUtils.setFromJsonOpjectArray(basecode, JSON_FOO_FACTORY);
+        final Set<Foo> resultValues = JsonUtils.setFromJsonArray(basecode, JsonObject.class, JSON_FOO_FACTORY);
         assertEquals(expValues.size(), resultValues.size());
         IntStream.range(0, expValues.size())
                 .forEach(index -> {
@@ -208,15 +262,15 @@ public class JsonUtilsTest {
     }
 
     /**
-     * Test of setFromJsonStringArray method, of class JsonUtils.
+     * Test of setFromJsonArray method, of class JsonUtils.
      */
     @Test
-    public void testSetFromJsonStringArray() throws Exception {
-        System.out.println("setFromJsonStringArray"); // NOI18N.
+    public void testSetFromJsonArray_2() throws Exception {
+        System.out.println("setFromJsonArray_2"); // NOI18N.
         final URL url = getClass().getResource("jsonarray2.json"); // NOI18N.
         final String basecode = url.toExternalForm();
         final List<String> expValues = Arrays.asList("0", "1", "2", "3", "4", "5", "6"); // NOI18N.
-        final Set<String> resultValues = JsonUtils.setFromJsonStringArray(basecode, JsonString::getString);
+        final Set<String> resultValues = JsonUtils.setFromJsonArray(basecode, JsonString.class, JsonString::getString);
         assertEquals(expValues.size(), resultValues.size());
         IntStream.range(0, expValues.size())
                 .forEach(index -> {
@@ -225,5 +279,154 @@ public class JsonUtilsTest {
                     final boolean result = resultValues.contains(value);
                     assertEquals(expResult, result);
                 });
+    }
+
+    private final String[] filesForNullTests = {
+        "testNull1.json", // NOI18N.
+        "testNull2.json" // NOI18N.
+    };
+
+    /**
+     * Test of nullOrMissingInt method, of class JsonUtils.
+     */
+    @Test
+    public void testNullOrMissingInt() throws Exception {
+        System.out.println("nullOrMissingInt"); // NOI18N.
+        final int[] expResults = {-1, 1};
+        IntStream.range(0, filesForNullTests.length).forEach(index -> {;
+            final String path = filesForNullTests[index];
+            final URL url = getClass().getResource(path);
+            try {
+                final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
+                final int result = JsonUtils.nullOrMissingInt(jsonObject, "id", -1); // NOI18N.
+                final int expResult = expResults[index];
+                assertEquals(expResult, result);
+            } catch (NullPointerException | IOException ex) {
+                fail(ex.getMessage());
+            }
+        });
+    }
+
+    /**
+     * Test of nullOrMissingString method, of class JsonUtils.
+     */
+    @Test
+    public void testNullOrMissingString() throws Exception {
+        System.out.println("nullOrMissingString"); // NOI18N.
+        final String[] expResults = {null, "NAME"};
+        IntStream.range(0, filesForNullTests.length).forEach(index -> {;
+            final String path = filesForNullTests[index];
+            final URL url = getClass().getResource(path);
+            try {
+                final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
+                final String result = JsonUtils.nullOrMissingString(jsonObject, "name"); // NOI18N.
+                final String expResult = expResults[index];
+                assertEquals(expResult, result);
+            } catch (NullPointerException | IOException ex) {
+                fail(ex.getMessage());
+            }
+        });
+    }
+
+    /**
+     * Test of nullOrMissingJsonString method, of class JsonUtils.
+     */
+    @Test
+    public void testNullOrMissingJsonString() throws Exception {
+        System.out.println("nullOrMissingJsonString"); // NOI18N.
+        final JsonString valid = Json.createObjectBuilder()
+                .add("1", "DESCRIPTION") // NOI18N.
+                .build()
+                .getJsonString("1"); // NOI18N.
+        final JsonString[] expResults = {null, valid};
+        IntStream.range(0, filesForNullTests.length).forEach(index -> {;
+            final String path = filesForNullTests[index];
+            final URL url = getClass().getResource(path);
+            try {
+                final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
+                final JsonString result = JsonUtils.nullOrMissingJsonString(jsonObject, "description"); // NOI18N.
+                final JsonString expResult = expResults[index];
+                assertEquals(expResult, result);
+            } catch (NullPointerException | IOException ex) {
+                fail(ex.getMessage());
+            }
+        });
+    }
+
+    /**
+     * Test of nullOrMissingJsonNumber method, of class JsonUtils.
+     */
+    @Test
+    public void testNullOrMissingJsonNumber() throws Exception {
+        System.out.println("nullOrMissingJsonNumber"); // NOI18N.
+        final JsonNumber valid = Json.createObjectBuilder()
+                .add("1", 7) // NOI18N.
+                .build()
+                .getJsonNumber("1"); // NOI18N.
+        final JsonNumber[] expResults = {null, valid};
+        IntStream.range(0, filesForNullTests.length).forEach(index -> {;
+            final String path = filesForNullTests[index];
+            final URL url = getClass().getResource(path);
+            try {
+                final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
+                final JsonNumber result = JsonUtils.nullOrMissingJsonNumber(jsonObject, "size"); // NOI18N.
+                final JsonNumber expResult = expResults[index];
+                assertEquals(expResult, result);
+            } catch (NullPointerException | IOException ex) {
+                fail(ex.getMessage());
+            }
+        });
+    }
+
+    /**
+     * Test of nullOrMissingJsonObject method, of class JsonUtils.
+     */
+    @Test
+    public void testNullOrMissingJsonObject() throws Exception {
+        System.out.println("nullOrMissingJsonObject"); // NOI18N.
+        final JsonObject valid = Json.createObjectBuilder()
+                .add("id", 10) // NOI18N.
+                .build();
+        final JsonObject[] expResults = {null, valid};
+        IntStream.range(0, filesForNullTests.length).forEach(index -> {;
+            final String path = filesForNullTests[index];
+            final URL url = getClass().getResource(path);
+            try {
+                final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
+                final JsonObject result = JsonUtils.nullOrMissingJsonObject(jsonObject, "value"); // NOI18N.
+                final JsonObject expResult = expResults[index];
+                assertEquals(expResult, result);
+            } catch (NullPointerException | IOException ex) {
+                fail(ex.getMessage());
+            }
+        });
+    }
+
+    /**
+     * Test of nullOrMissingJsonArray method, of class JsonUtils.
+     */
+    @Test
+    public void testNullOrMissingJsonArray() throws Exception {
+        System.out.println("nullOrMissingJsonArray"); // NOI18N.
+        final JsonArray valid = Json.createArrayBuilder()
+                .add(0)
+                .add(1)
+                .add(2)
+                .add(3)
+                .add(4)
+                .build();
+        final JsonArray[] expResults = {null, valid};
+        IntStream.range(0, filesForNullTests.length).forEach(index -> {;
+            final String path = filesForNullTests[index];
+            final URL url = getClass().getResource(path);
+            try {
+                final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
+                final JsonArray result = JsonUtils.nullOrMissingJsonArray(jsonObject, "amounts"); // NOI18N.
+                final JsonArray expResult = expResults[index];
+                assertEquals(expResult, result);
+            } catch (NullPointerException | IOException ex) {
+                fail(ex.getMessage());
+            }
+        });
     }
 }
