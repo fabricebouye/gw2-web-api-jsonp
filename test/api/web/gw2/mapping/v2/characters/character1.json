@@ -1,0 +1,11 @@
+{
+  "name": "MyCharacter",
+  "race": "Human",
+  "gender": "Male",
+  "profession": "Warrior",
+  "level": 80,
+  "guild": "3689E89F-7CB5-F611-9621-AC162CAE8ACA",
+  "created": "2012-08-27",
+  "age": 100,
+  "deaths": 3
+}

@@ -25,7 +25,7 @@ public enum JsonQuaggansUtils {
      * Gets a factory that allows to create quaggan instances.
      * @return A {@code QuagganFactory} instance, never {@code null}.
      */
-    public static QuagganFactory getFactory() {
+    public static QuagganFactory getQuagganFactory() {
         return basecode -> JsonUtils.fromJsonObject(basecode, INSTANCE::jsonObjectToQuaggan);
     }
 
@@ -34,7 +34,7 @@ public enum JsonQuaggansUtils {
      * @param jsonObject The source JSON object.
      * @return A {@code Quaggan} instance, never {@code null}.
      */
-    Quaggan jsonObjectToQuaggan(final JsonObject jsonObject) {
+    public Quaggan jsonObjectToQuaggan(final JsonObject jsonObject) {
         final DefaultQuaggan result = new DefaultQuaggan();
         result.id = jsonObject.getString("id"); // NOI18N.
         result.url = jsonObject.getString("url"); // NOI18N.

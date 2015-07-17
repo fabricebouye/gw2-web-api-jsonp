@@ -11,6 +11,7 @@ import api.web.gw2.mapping.core.JsonUtils;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.IntStream;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -46,18 +47,26 @@ public class JsonQuaggansUtilsTest {
     public void tearDown() {
     }
 
+    private void testQuaggan(final JsonObject jsonObject, final Quaggan result) {
+        assertNotNull(jsonObject);
+        assertNotNull(result);
+        assertEquals(jsonObject.getString("id"), result.getId()); // NOI18N.
+        assertEquals(jsonObject.getString("url"), result.getUrl()); // NOI18N.
+    }
+
     /**
-     * Test of jsonObjectToQuaggan method, of class JsonQuaggansUtilsTest.
+     * Test of getQuagganFactory method, of class JsonQuaggansUtilsTest.
      */
     @Test
-    public void testGetFactory() throws IOException {
-        System.out.println("getFactory"); // NOI18N.
+    public void testGetQuagganFactory() throws IOException {
+        System.out.println("getQuagganFactory"); // NOI18N.
+        final QuagganFactory factory = JsonQuaggansUtils.getQuagganFactory();
+        assertNotNull(factory);
         final URL url = getClass().getResource("quaggan1.json"); // NOI18N.
         final String basecode = url.toExternalForm();
         final JsonObject jsonObject = JsonUtils.asJsonObject(basecode);
-        final Quaggan result = JsonQuaggansUtils.getFactory().create(basecode);
-        assertEquals(jsonObject.getString("id"), result.getId()); // NOI18N.
-        assertEquals(jsonObject.getString("url"), result.getUrl()); // NOI18N.
+        final Quaggan result = factory.create(basecode);
+        testQuaggan(jsonObject, result);
     }
 
     /**
@@ -70,8 +79,7 @@ public class JsonQuaggansUtilsTest {
         final String basecode = url.toExternalForm();
         final JsonObject jsonObject = JsonUtils.asJsonObject(basecode);
         final Quaggan result = JsonQuaggansUtils.INSTANCE.jsonObjectToQuaggan(jsonObject);
-        assertEquals(jsonObject.getString("id"), result.getId()); // NOI18N.
-        assertEquals(jsonObject.getString("url"), result.getUrl()); // NOI18N.
+        testQuaggan(jsonObject, result);
     }
 
     /**
@@ -83,14 +91,13 @@ public class JsonQuaggansUtilsTest {
         final URL url = getClass().getResource("quaggan2.json"); // NOI18N.
         final String basecode = url.toExternalForm();
         final JsonArray jsonArray = JsonUtils.asJsonArray(basecode);
-        final List<Quaggan> results = JsonUtils.listFromJsonObjectArray(url.toExternalForm(), JsonQuaggansUtils.INSTANCE::jsonObjectToQuaggan);
+        final List<Quaggan> results = JsonUtils.listFromJsonArray(url.toExternalForm(), JsonObject.class, JsonQuaggansUtils.INSTANCE::jsonObjectToQuaggan);
         assertEquals(jsonArray.size(), results.size());
         IntStream.range(0, jsonArray.size())
                 .forEach(index -> {
                     final JsonObject jsonObject = jsonArray.getJsonObject(index);
                     final Quaggan result = results.get(index);
-                    assertEquals(jsonObject.getString("id"), result.getId()); // NOI18N.
-                    assertEquals(jsonObject.getString("url"), result.getUrl()); // NOI18N.
+                    testQuaggan(jsonObject, result);
                 });
     }
 }

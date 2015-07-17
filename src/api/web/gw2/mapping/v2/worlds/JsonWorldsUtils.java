@@ -34,7 +34,7 @@ public enum JsonWorldsUtils {
      * @param jsonObject The source JSON object.
      * @return A {@code World} instance, never {@code null}.
      */
-    World jsonObjectToWorld(final JsonObject jsonObject) {
+    public World jsonObjectToWorld(final JsonObject jsonObject) {
         final DefaultWorld result = new DefaultWorld();
         result.id = jsonObject.getInt("id"); // NOI18N.
         result.name = jsonObject.getString("name"); // NOI18N.
