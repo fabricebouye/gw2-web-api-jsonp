@@ -8,6 +8,11 @@
 package api.web.gw2.mapping.v2.files;
 
 import api.web.gw2.mapping.core.JsonUtils;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.json.JsonObject;
 
 /**
@@ -35,9 +40,15 @@ public enum JsonFilesUtils {
      * @return A {@code File} instance, never {@code null}.
      */
     public File jsonObjectToFile(final JsonObject jsonObject) {
-        final DefaultFile result = new DefaultFile();
-        result.id = jsonObject.getString("id"); // NOI18N.
-        result.icon = jsonObject.getString("icon"); // NOI18N.
-        return result;
+        try {
+            final DefaultFile result = new DefaultFile();
+            result.id = jsonObject.getString("id"); // NOI18N.
+            final String iconValue = jsonObject.getString("icon"); // NOI18N.
+            result.icon = Optional.of(new URL(iconValue));
+            return result;
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(JsonFilesUtils.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 }
