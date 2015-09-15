@@ -8,11 +8,14 @@
 package api.web.gw2.mapping.v2.quaggans;
 
 import api.web.gw2.mapping.core.JsonUtils;
+import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.URLValue;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.IntStream;
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -55,7 +58,7 @@ public class JsonQuaggansUtilsTest {
         assertNotNull(jsonObject);
         assertNotNull(result);
         assertEquals(jsonObject.getString("id"), result.getId()); // NOI18N.
-        assertEquals(jsonObject.getString("url"), result.getUrl()); // NOI18N.
+        assertEquals(jsonObject.getString("url"), result.getUrl().get().toExternalForm()); // NOI18N.
     }
 
     /**
@@ -131,9 +134,18 @@ public class JsonQuaggansUtilsTest {
                             System.out.println("VALUE_STRING");
                             final String string = parser.getString();
                             final Field field = aClass.getDeclaredField(lastId);
+                            boolean isOptional = field.getAnnotation(OptionalValue.class) != null;
+                            boolean isURL = field.getAnnotation(URLValue.class) != null;
                             boolean wasAcessible = field.isAccessible();
                             field.setAccessible(true);
-                            field.set(instance, string);
+                            Object value = string;
+                            if (isURL) {
+                                value = new URL(string);
+                            }
+                            if (isOptional) {
+                                value = Optional.of(value);
+                            }
+                            field.set(instance, value);
                             field.setAccessible(wasAcessible);
                             break;
                         case VALUE_NUMBER:
