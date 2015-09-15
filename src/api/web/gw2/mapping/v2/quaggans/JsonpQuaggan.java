@@ -7,6 +7,11 @@
  */
 package api.web.gw2.mapping.v2.quaggans;
 
+import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.URLValue;
+import java.net.URL;
+import java.util.Optional;
+
 /**
  * Default implementation of a guaggan.
  * @author Fabrice Bouyé
@@ -14,7 +19,9 @@ package api.web.gw2.mapping.v2.quaggans;
 public final class JsonpQuaggan implements Quaggan {
 
     String id = "";
-    String url = "";
+    @OptionalValue
+    @URLValue
+    Optional<URL> url = Optional.empty();
 
     /**
      * Creates a new empty instance.
@@ -28,7 +35,7 @@ public final class JsonpQuaggan implements Quaggan {
     }
 
     @Override
-    public String getUrl() {
+    public Optional<URL> getUrl() {
         return url;
     }
 }

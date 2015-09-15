@@ -8,6 +8,11 @@
 package api.web.gw2.mapping.v2.quaggans;
 
 import api.web.gw2.mapping.core.JsonUtils;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.json.JsonObject;
 
 /**
@@ -37,7 +42,13 @@ public enum JsonQuaggansUtils {
     public Quaggan jsonObjectToQuaggan(final JsonObject jsonObject) {
         final DefaultQuaggan result = new DefaultQuaggan();
         result.id = jsonObject.getString("id"); // NOI18N.
-        result.url = jsonObject.getString("url"); // NOI18N.
+        final String jsonURL = jsonObject.getString("url"); // NOI18N.
+        try {
+            final URL url = new URL(jsonURL);
+            result.url = Optional.of(url);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(JsonQuaggansUtils.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return result;
     }
 }

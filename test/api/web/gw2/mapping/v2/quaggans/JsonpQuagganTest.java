@@ -7,6 +7,9 @@
  */
 package api.web.gw2.mapping.v2.quaggans;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Optional;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -34,10 +37,10 @@ public class JsonpQuagganTest {
     private JsonpQuaggan instance;
     
     @Before
-    public void setUp() {
+    public void setUp() throws MalformedURLException {
         instance = new JsonpQuaggan();
         instance.id = "testId"; // NOI18N.
-        instance.url = "testUrl"; // NOI18N.
+        instance.url = Optional.of(new URL("http://testUrl")); // NOI18N.
     }
     
     @After
@@ -61,11 +64,11 @@ public class JsonpQuagganTest {
      * Test of getUrl method, of class JsonpQuaggan.
      */
     @Test
-    public void testGetUrl() {
+    public void testGetUrl() throws MalformedURLException {
         System.out.println("getUrl"); // NOI18N.
         final JsonpQuaggan instance = this.instance;
-        final String expResult = "testUrl"; // NOI18N.
-        final String result = instance.getUrl();
+        final Optional<URL> expResult = Optional.of(new URL("http://testUrl")); // NOI18N.
+        final Optional<URL> result = instance.getUrl();
         assertEquals(expResult, result);
     }
     
