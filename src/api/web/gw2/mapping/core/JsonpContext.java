@@ -13,12 +13,15 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.net.URL;
 import java.net.URLConnection;
+import java.time.Duration;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.ServiceLoader;
 import java.util.Set;
 import javax.json.Json;
@@ -143,25 +146,7 @@ public enum JsonpContext {
                             }
                             break;
                             case VALUE_NULL: {
-                                value = null;
-                                final Type fieldType = field.getType();
-                                if (fieldType == String.class) {
-                                    value = "";
-                                } else if (fieldType == Integer.TYPE) {
-                                    value = 0;
-                                } else if (fieldType == Long.TYPE) {
-                                    value = 0L;
-                                } else if (fieldType == Float.TYPE) {
-                                    value = 0F;
-                                } else if (fieldType == Double.TYPE) {
-                                    value = 0D;
-                                } else if (fieldType == Boolean.TYPE) {
-                                    value = Boolean.FALSE;
-                                } else if (fieldType == Set.class) {
-                                    value = Collections.EMPTY_SET;
-                                } else if (fieldType == List.class) {
-                                    value = Collections.EMPTY_LIST;
-                                }
+                                value = defaultValueForField(field);
                             }
                             break;
                             case START_OBJECT: {
@@ -265,5 +250,68 @@ public enum JsonpContext {
     private String keyToFieldName(final String key) {
         // @todo need to escape id into field name.
         return key;
+    }
+
+    /**
+     * Gets the default value for given field.
+     * <br/>This method is usually called when encountering a {@code null} value.
+     * @param field The field on which the value will be set.
+     * @return An {@code Object} instance, may be {@code null}. 
+     * <br/>The value to return will be determined from the annotations and the class of the target field.
+     * @throws NullPointerException If {@code field} is {@code null}.
+     */
+    private Object defaultValueForField(final Field field) throws NullPointerException {
+        Objects.requireNonNull(field);
+        final Type fieldType = field.getType();
+        boolean isOptional = field.getAnnotation(OptionalValue.class) != null;
+        boolean isId = field.getAnnotation(IdValue.class) != null;
+        boolean isLevel = field.getAnnotation(LevelValue.class) != null;
+        boolean isCurrency = field.getAnnotation(CoinValue.class) != null;
+//        boolean isDistance = field.getAnnotation(DistanceValue.class) != null;
+        boolean isQuantity = field.getAnnotation(QuantityValue.class) != null;
+//        boolean isDate = field.getAnnotation(DateValue.class) != null;
+        boolean isDuration = field.getAnnotation(DurationValue.class) != null;
+        boolean isURL = field.getAnnotation(URLValue.class) != null;
+        boolean isPercent = field.getAnnotation(PercentValue.class) != null;
+        boolean isList = field.getAnnotation(ListValue.class) != null;
+        boolean isSet = field.getAnnotation(SetValue.class) != null;
+        //
+        Object result = null;
+        // Use the annotation of the field.
+        if (isOptional) {
+            result = Optional.empty();
+        } else if (isLevel) {
+            result = 0;
+//            result = LevelAmount.MIN;
+        } else if (isCurrency) {
+            result = CoinAmount.ZERO;
+//        } else if (isDistance) {
+//            result = QuantityAmount.ZERO;
+        } else if (isQuantity) {
+            result = 0;
+//            result = DistanceAmount.ZERO;
+//        } else if (isDate) {
+//            result = LocalDateTime.MIN;
+        } else if (isDuration) {
+            result = Duration.ZERO;
+        } // Now use the class of the field.
+        else if (fieldType == String.class) {
+            result = ""; // NOI8N.
+        } else if (fieldType == Integer.TYPE) {
+            result = 0;
+        } else if (fieldType == Long.TYPE) {
+            result = 0L;
+        } else if (fieldType == Float.TYPE) {
+            result = 0F;
+        } else if (fieldType == Double.TYPE) {
+            result = 0D;
+        } else if (fieldType == Boolean.TYPE) {
+            result = Boolean.FALSE;
+        } else if (fieldType == Set.class) {
+            result = Collections.EMPTY_SET;
+        } else if (fieldType == List.class) {
+            result = Collections.EMPTY_LIST;
+        }
+        return result;
     }
 }
