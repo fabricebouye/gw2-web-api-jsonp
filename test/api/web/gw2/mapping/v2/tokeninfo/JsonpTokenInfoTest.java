@@ -1,7 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* 
+ * Copyright (C) 2015 Fabrice Bouyé
+ * All rights reserved.
+ *
+ * This software may be modified and distributed under the terms
+ * of the BSD license.  See the LICENSE file for details.
  */
 package api.web.gw2.mapping.v2.tokeninfo;
 
@@ -18,8 +20,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author FabriceB
+ * Unit test.
+ * @author Fabrice Bouyé
  */
 public class JsonpTokenInfoTest {
 
