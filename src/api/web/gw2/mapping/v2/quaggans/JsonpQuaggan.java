@@ -18,10 +18,10 @@ import java.util.Optional;
  */
 public final class JsonpQuaggan implements Quaggan {
 
-    String id = "";
+    private String id = "";
     @OptionalValue
     @URLValue
-    Optional<URL> url = Optional.empty();
+    private Optional<URL> url = Optional.empty();
 
     /**
      * Creates a new empty instance.
