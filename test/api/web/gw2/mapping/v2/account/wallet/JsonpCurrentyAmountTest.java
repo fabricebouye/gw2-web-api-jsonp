@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.v2.account.wallet;
 
+import java.lang.reflect.Field;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -34,10 +35,14 @@ public class JsonpCurrentyAmountTest {
     private JsonpCurrentyAmount instance;
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         instance = new JsonpCurrentyAmount();
-        instance.id = 58;
-        instance.value = 450;
+        final Field idField = instance.getClass().getDeclaredField("id"); // NOI18N.
+        idField.setAccessible(true);
+        idField.setInt(instance, 58);
+        final Field valueField = instance.getClass().getDeclaredField("value"); // NOI18N.
+        valueField.setAccessible(true);
+        valueField.setInt(instance, 450);
     }
 
     @After
@@ -49,10 +54,11 @@ public class JsonpCurrentyAmountTest {
      * Test of getId method, of class JsonpCurrentyAmount.
      */
     @Test
-    public void testGetId() {
+    public void testGetId() throws Exception {
         System.out.println("getId"); // NOI18N.
-        final JsonpCurrentyAmount instance = this.instance;
-        final int expResult = 58;
+        final Field idField = instance.getClass().getDeclaredField("id"); // NOI18N.
+        idField.setAccessible(true);
+        final int expResult = idField.getInt(instance);
         final int result = instance.getId();
         assertEquals(expResult, result);
     }
@@ -61,10 +67,11 @@ public class JsonpCurrentyAmountTest {
      * Test of getValue method, of class JsonpCurrentyAmount.
      */
     @Test
-    public void testGetValue() {
+    public void testGetValue() throws Exception {
         System.out.println("getValue"); // NOI18N.
-        final JsonpCurrentyAmount instance = this.instance;
-        final int expResult = 450;
+        final Field valueField = instance.getClass().getDeclaredField("value"); // NOI18N.
+        valueField.setAccessible(true);
+        final int expResult = valueField.getInt(instance);
         final int result = instance.getValue();
         assertEquals(expResult, result);
     }
