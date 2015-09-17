@@ -8,7 +8,6 @@
 package api.web.gw2.mapping.v2.quaggans;
 
 import java.lang.reflect.Field;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Optional;
 import org.junit.After;
