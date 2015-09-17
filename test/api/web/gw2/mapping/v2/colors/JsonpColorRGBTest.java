@@ -39,7 +39,7 @@ public class JsonpColorRGBTest {
         instance = new JsonpColorRGB();
         final Field rgbField = instance.getClass().getDeclaredField("rgb"); // NI18N.
         rgbField.setAccessible(true);
-        short[] rgb = (short[]) rgbField.get(instance);
+        final short[] rgb = (short[]) rgbField.get(instance);
         rgb[0] = 88;
         rgb[1] = 97;
         rgb[2] = 200;
@@ -58,9 +58,9 @@ public class JsonpColorRGBTest {
         System.out.println("getRed");
         final Field rgbField = instance.getClass().getDeclaredField("rgb"); // NI18N.
         rgbField.setAccessible(true);
-        short[] rgb = (short[]) rgbField.get(instance);
-        int expResult = rgb[0];
-        int result = instance.getRed();
+        final short[] rgb = (short[]) rgbField.get(instance);
+        final int expResult = rgb[0];
+        final int result = instance.getRed();
         assertEquals(expResult, result);
     }
 
@@ -72,9 +72,9 @@ public class JsonpColorRGBTest {
         System.out.println("getGreen");
         final Field rgbField = instance.getClass().getDeclaredField("rgb"); // NI18N.
         rgbField.setAccessible(true);
-        short[] rgb = (short[]) rgbField.get(instance);
-        int expResult = rgb[1];
-        int result = instance.getGreen();
+        final short[] rgb = (short[]) rgbField.get(instance);
+        final int expResult = rgb[1];
+        final int result = instance.getGreen();
         assertEquals(expResult, result);
     }
 
@@ -86,9 +86,9 @@ public class JsonpColorRGBTest {
         System.out.println("getBlue");
         final Field rgbField = instance.getClass().getDeclaredField("rgb"); // NI18N.
         rgbField.setAccessible(true);
-        short[] rgb = (short[]) rgbField.get(instance);
-        int expResult = rgb[2];
-        int result = instance.getBlue();
+        final short[] rgb = (short[]) rgbField.get(instance);
+        final int expResult = rgb[2];
+        final int result = instance.getBlue();
         assertEquals(expResult, result);
     }
 
