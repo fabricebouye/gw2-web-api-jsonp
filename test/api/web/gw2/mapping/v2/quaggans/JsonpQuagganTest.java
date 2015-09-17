@@ -62,6 +62,7 @@ public class JsonpQuagganTest {
         idField.setAccessible(true);
         final String expResult = (String) idField.get(instance);
         final String result = instance.getId();
+        assertNotNull(result);
         assertEquals(expResult, result);
     }
 
@@ -75,6 +76,7 @@ public class JsonpQuagganTest {
         urlField.setAccessible(true);
         final Optional<URL> expResult = (Optional<URL>) urlField.get(instance);
         final Optional<URL> result = instance.getUrl();
+        assertNotNull(result);
         assertEquals(expResult, result);
     }
 
