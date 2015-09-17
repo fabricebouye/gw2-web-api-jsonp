@@ -8,6 +8,7 @@
 package api.web.gw2.mapping.v1.guilddetails;
 
 import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.SetValue;
 import java.util.Collections;
 import java.util.Set;
 
@@ -18,20 +19,22 @@ import java.util.Set;
 public final class JsonpGuildDetailsEmblem implements GuildDetailsEmblem {
 
     @IdValue
-    int backgroundId = -1;
+    private int backgroundId = -1;
     @IdValue
-    int foregroundId = -1;
-    Set<GuildDetailsEmblemFlag> flags = Collections.EMPTY_SET;
-    int backgroundColorId = -1;
+    private int foregroundId = -1;
+    @SetValue
+    private Set<GuildDetailsEmblemFlag> flags = Collections.EMPTY_SET;
     @IdValue
-    int foregroundPrimaryColorId = -1;
+    private int backgroundColorId = -1;
     @IdValue
-    int foregroundSecondaryColorId = -1;
+    private int foregroundPrimaryColorId = -1;
+    @IdValue
+    private int foregroundSecondaryColorId = -1;
 
     /**
      * Creates a new empty instance.
      */
-    JsonpGuildDetailsEmblem() {
+    public JsonpGuildDetailsEmblem() {
     }
 
     @Override

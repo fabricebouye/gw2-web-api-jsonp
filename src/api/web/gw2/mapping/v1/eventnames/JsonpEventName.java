@@ -15,13 +15,13 @@ import api.web.gw2.mapping.core.IdValue;
  */
 public final class JsonpEventName implements EventName {
     @IdValue
-    String id = "";
-    String name = "";
+    private String id = "";
+    private String name = "";
 
     /**
      * Creates a new empty instance.
      */
-    JsonpEventName() {
+    public JsonpEventName() {
     }
 
     @Override

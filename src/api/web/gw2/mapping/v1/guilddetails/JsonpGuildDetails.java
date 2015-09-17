@@ -16,15 +16,15 @@ import api.web.gw2.mapping.core.IdValue;
 public final class JsonpGuildDetails implements GuildDetails {
 
     @IdValue
-    String guildId = "";
-    String guildName = "";
-    String tag = "";
-    GuildDetailsEmblem emblem = null;
+    private String guildId = "";
+    private String guildName = "";
+    private String tag = "";
+    private GuildDetailsEmblem emblem = null;
 
     /**
      * Creates a new empty instance.
      */
-    JsonpGuildDetails() {
+    public JsonpGuildDetails() {
     }
 
     @Override
