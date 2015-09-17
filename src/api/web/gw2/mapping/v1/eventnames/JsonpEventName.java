@@ -10,7 +10,7 @@ package api.web.gw2.mapping.v1.eventnames;
 import api.web.gw2.mapping.core.IdValue;
 
 /**
- * Default implementation of the name of an event.
+ * Default JSON-P implementation of the name of an event.
  * @author Fabrice Bouyé
  */
 public final class JsonpEventName implements EventName {

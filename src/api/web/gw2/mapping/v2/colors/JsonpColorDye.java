@@ -7,12 +7,14 @@
  */
 package api.web.gw2.mapping.v2.colors;
 
+import api.web.gw2.mapping.core.IdValue;
+
 /**
- * Default implementation of a dye.
+ * Default JSON-P implementation of a dye.
  * @author Fabrice Bouyé
  */
 public final class JsonpColorDye implements ColorDye {
-
+    @IdValue
     private int id = -1;
     private String name = "";
     private ColorRGB baseRGB = ColorRGB.EMPTY;

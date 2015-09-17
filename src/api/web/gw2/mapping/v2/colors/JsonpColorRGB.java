@@ -6,7 +6,7 @@
 package api.web.gw2.mapping.v2.colors;
 
 /**
- * Default implementation of an RGB color storage.
+ * Default JSON-P implementation of an RGB color storage.
  * @author Fabrice Bouyé
  */
 public final class JsonpColorRGB implements ColorRGB {

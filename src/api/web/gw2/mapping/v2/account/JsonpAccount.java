@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.Set;
 
 /**
- * Default implementation of an account.
+ * Default JSON-P implementation of an account.
  * @author Fabrice Bouyé
  */
 public final class JsonpAccount implements Account {

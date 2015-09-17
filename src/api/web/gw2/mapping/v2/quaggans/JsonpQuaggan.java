@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.Optional;
 
 /**
- * Default implementation of a guaggan.
+ * Default JSON-P implementation of a guaggan.
  * @author Fabrice Bouyé
  */
 public final class JsonpQuaggan implements Quaggan {

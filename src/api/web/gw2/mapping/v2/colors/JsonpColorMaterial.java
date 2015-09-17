@@ -8,7 +8,7 @@
 package api.web.gw2.mapping.v2.colors;
 
 /**
- * Default implementation of a color material.
+ * Default JSON-P implementation of a color material.
  * @author Fabrice Bouyé
  */
 public final class JsonpColorMaterial implements ColorMaterial {
