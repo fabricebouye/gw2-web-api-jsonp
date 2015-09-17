@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.v2.account;
 
+import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.SetValue;
 import java.util.Collections;
 import java.util.Set;
@@ -17,11 +18,14 @@ import java.util.Set;
  */
 public final class JsonpAccount implements Account {
 
-    String id = "";
-    String name = "";
-    int world = -1;
+    @IdValue
+    private String id = "";
+    private String name = "";
+    @IdValue
+    private int world = -1;
     @SetValue
-    Set<String> guilds = Collections.EMPTY_SET;
+    @IdValue
+    private Set<String> guilds = Collections.EMPTY_SET;
 
     /**
      * Creates an empty instance.

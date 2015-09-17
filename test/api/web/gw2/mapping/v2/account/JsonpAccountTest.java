@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.v2.account;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -38,12 +39,20 @@ public class JsonpAccountTest {
     private JsonpAccount instance;
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         instance = new JsonpAccount();
-        instance.id = "testId"; // NOI18N.
-        instance.name = "Test.1234"; // NOI18N.
-        instance.world = 10;
-        instance.guilds = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("test-guild"))); // NOI18N.
+        final Field idField = instance.getClass().getDeclaredField("id"); // NOI18N.
+        idField.setAccessible(true);
+        idField.set(instance, "testId"); // NOI18N.
+        final Field nameField = instance.getClass().getDeclaredField("name"); // NOI18N.
+        nameField.setAccessible(true);
+        nameField.set(instance, "Test.1234"); // NOI18N.
+        final Field worldField = instance.getClass().getDeclaredField("world"); // NOI18N.
+        worldField.setAccessible(true);
+        worldField.setInt(instance, 10);
+        final Field guildsField = instance.getClass().getDeclaredField("guilds"); // NOI18N.
+        guildsField.setAccessible(true);
+        guildsField.set(instance, Collections.unmodifiableSet(new HashSet<>(Arrays.asList("test-guild")))); // NOI18N.
     }
 
     @After
@@ -55,11 +64,13 @@ public class JsonpAccountTest {
      * Test of getId method, of class JsonpAccount.
      */
     @Test
-    public void testGetId() {
+    public void testGetId() throws Exception {
         System.out.println("getId"); // NOI18N.
-        final JsonpAccount instance = this.instance;
-        final String expResult = "testId"; // NOI18N.
+        final Field idField = instance.getClass().getDeclaredField("id"); // NOI18N.
+        idField.setAccessible(true);
+        final String expResult = (String) idField.get(instance);
         final String result = instance.getId();
+        assertNotNull(result);
         assertEquals(expResult, result);
     }
 
@@ -67,11 +78,13 @@ public class JsonpAccountTest {
      * Test of getName method, of class JsonpAccount.
      */
     @Test
-    public void testGetName() {
+    public void testGetName() throws Exception {
         System.out.println("getName"); // NOI18N.
-        final JsonpAccount instance = this.instance;
-        final String expResult = "Test.1234";// NOI18N.
+        final Field nameFdield = instance.getClass().getDeclaredField("name"); // NOI18N.
+        nameFdield.setAccessible(true);
+        final String expResult = (String) nameFdield.get(instance);
         final String result = instance.getName();
+        assertNotNull(result);
         assertEquals(expResult, result);
     }
 
@@ -79,10 +92,11 @@ public class JsonpAccountTest {
      * Test of getWorld method, of class JsonpAccount.
      */
     @Test
-    public void testGetWorld() {
+    public void testGetWorld() throws Exception {
         System.out.println("getWorld"); // NOI18N.
-        final JsonpAccount instance = this.instance;
-        final int expResult = 10;
+        final Field worldField = instance.getClass().getDeclaredField("world"); // NOI18N.
+        worldField.setAccessible(true);
+        final int expResult = worldField.getInt(instance);
         final int result = instance.getWorld();
         assertEquals(expResult, result);
     }
@@ -91,11 +105,13 @@ public class JsonpAccountTest {
      * Test of getGuilds method, of class JsonpAccount.
      */
     @Test
-    public void testGetGuilds() {
+    public void testGetGuilds() throws Exception {
         System.out.println("getGuilds"); // NOI18N.
-        final JsonpAccount instance = this.instance;
-        final Set<String> expResult = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("test-guild"))); // NOI18N.
+        final Field guildsField = instance.getClass().getDeclaredField("guilds"); // NOI18N.
+        guildsField.setAccessible(true);
+        final Set<String> expResult = (Set<String>) guildsField.get(instance);
         final Set<String> result = instance.getGuilds();
+        assertNotNull(result);
         assertEquals(expResult, result);
     }
 }
