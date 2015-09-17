@@ -114,6 +114,7 @@ public class JsonpColorMaterialTest {
         rgbField.setAccessible(true);
         final ColorRGB expResult = (ColorRGB) rgbField.get(instance);
         final ColorRGB result = instance.getRGB();
+        assertNotNull(result);
         assertEquals(expResult, result);
     }
 
