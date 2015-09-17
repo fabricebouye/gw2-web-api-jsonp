@@ -7,14 +7,19 @@
  */
 package api.web.gw2.mapping.v2.account.wallet;
 
+import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.QuantityValue;
+
 /**
- * Default implementation of an currency amount.
+ * Default JSON-P implementation of an currency amount.
  * @author Fabrice Bouyé
  */
 public final class JsonpCurrentyAmount implements CurrencyAmount {
 
-    int id = 0;
-     int value = 0;
+    @IdValue
+    private int id = 0;
+    @QuantityValue
+    private int value = 0;
 
     /**
      * Creates a new empty instance.
