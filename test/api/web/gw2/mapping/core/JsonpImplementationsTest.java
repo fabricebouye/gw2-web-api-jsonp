@@ -27,6 +27,8 @@ import api.web.gw2.mapping.v2.quaggans.JsonpQuaggan;
 import api.web.gw2.mapping.v2.quaggans.Quaggan;
 import api.web.gw2.mapping.v2.tokeninfo.JsonpTokenInfo;
 import api.web.gw2.mapping.v2.tokeninfo.TokenInfo;
+import api.web.gw2.mapping.v2.worlds.JsonpWorld;
+import api.web.gw2.mapping.v2.worlds.World;
 import java.util.Iterator;
 import java.util.ServiceLoader;
 import java.util.stream.IntStream;
@@ -64,7 +66,8 @@ public class JsonpImplementationsTest {
         ColorMaterial.class,
         ColorRGB.class,
         Quaggan.class,
-        TokenInfo.class
+        TokenInfo.class,
+        World.class
     };
 
     private final Class[] implementations = {
@@ -77,7 +80,8 @@ public class JsonpImplementationsTest {
         JsonpColorMaterial.class,
         JsonpColorRGB.class,
         JsonpQuaggan.class,
-        JsonpTokenInfo.class
+        JsonpTokenInfo.class,
+        JsonpWorld.class
     };
 
     @Before
