@@ -109,7 +109,7 @@ public enum JsonUtils {
      * Converts a JSON object into Java object.
      * @param <V> The output type.
      * @param basecode The source URL.
-     * @param converter Converts a value of type {@code JsonObject} -> a value of type {@code V}.
+     * @param converter Converts a value of type {@code JsonObject} &rarr; a value of type {@code V}.
      * @return A {@code V} instance, never {@code null}.
      * @throws NullPointerException If either (@code basecode} or (@code converter} is {@code null}.
      * @throws IOException In case of IO error.
@@ -127,7 +127,7 @@ public enum JsonUtils {
      * @param <V> The output type.
      * @param basecode The source URL.
      * @param sourceClass The type of the values within the JSON array.    
-     * @param converter Converts a value of type {@code JsonObject} -> a value of type {@code V}.
+     * @param converter Converts a value of type {@code JsonObject} &rarr; a value of type {@code V}.
      * @return A non-modifiable {@code List<V>} instance, never {@code null}.
      * @throws NullPointerException If either {@code basecode}, {@code sourceClass} or {@code converter} is {@code null}.
      * @throws IOException In case of IO error.
@@ -147,7 +147,7 @@ public enum JsonUtils {
      * @param <V> The output type.
      * @param jsonArray The source array, may be {@code null}.
      * @param sourceClass The type of the values within the JSON array.    
-     * @param converter Converts a value of type {@code JsonString} -> a value of type {@code V}.
+     * @param converter Converts a value of type {@code JsonString} &rarr; a value of type {@code V}.
      * @return A non-modifiable {@code List<V>} instance, never {@code null}.
      * @throws NullPointerException If either {@code sourceClass} or {@code converter} is {@code null}.
      */
@@ -164,7 +164,7 @@ public enum JsonUtils {
      * @param <V> The output type.
      * @param basecode The source URL.
      * @param sourceClass The type of the values within the JSON array.    
-     * @param converter Converts a value of type {@code JsonObject} -> a value of type {@code V}.
+     * @param converter Converts a value of type {@code JsonObject} &rarr; a value of type {@code V}.
      * @return A non-modifiable {@code Set<V>} instance, never {@code null}.
      * @throws NullPointerException If either {@code basecode}, {@code sourceClass} or {@code converter} is {@code null}.
      * @throws IOException In case of IO error.
@@ -184,7 +184,7 @@ public enum JsonUtils {
      * @param <V> The output type.
      * @param jsonArray The source array, may be {@code null}.
      * @param sourceClass The type of the values within the JSON array.    
-     * @param converter Converts a value of type {@code JsonString} -> a value of type {@code V}.
+     * @param converter Converts a value of type {@code JsonString} &rarr; a value of type {@code V}.
      * @return A non-modifiable {@code Set<V>} instance, never {@code null}.
      * @throws NullPointerException If either {@code sourceClass} or {@code converter} is {@code null}.
      */
