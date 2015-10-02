@@ -9,17 +9,15 @@ package api.web.gw2.mapping.core;
 
 import api.web.gw2.mapping.v2.account.Account;
 import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
-import api.web.gw2.mapping.v2.colors.ColorDye;
 import api.web.gw2.mapping.v2.quaggans.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Iterator;
+import java.util.Optional;
 import java.util.stream.IntStream;
-import jdk.nashorn.internal.AssertsEnabled;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
@@ -55,12 +53,14 @@ public class JsonpContextTest {
     @Test
     public void testLoadObject_Quaggan() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject"); // NOI18N.
+        final String expId = "box"; // NOI18N.
+        final Optional<URL> expURL = Optional.of(new URL("https://static.staticwars.com/quaggans/box.jpg")); // NOI18N.
         final URL url = getClass().getResource("/api/web/gw2/mapping/v2/quaggans/quaggan1.json"); // NOI18N.
         final JsonpContext instance = JsonpContext.INSTANCE;
         final Quaggan value = instance.loadObject(Quaggan.class, url);
         assertNotNull(value);
-        assertEquals(value.getId(), "box"); // NOI18N.
-        assertEquals(value.getUrl(), "https://static.staticwars.com/quaggans/box.jpg"); // NOI18N.
+        assertEquals(expId, value.getId());
+        assertEquals(expURL, value.getUrl());
     }
 
     @Test
@@ -70,10 +70,10 @@ public class JsonpContextTest {
         final JsonpContext instance = JsonpContext.INSTANCE;
         final Account value = instance.loadObject(Account.class, url);
         assertNotNull(value);
-        assertEquals(value.getId(), "b8169418-1c11-405f-91bb-e2b29d602b8a"); // NOI18N.
-        assertEquals(value.getName(), "ExampleAccount.1234"); // NOI18N.
-        assertEquals(value.getWorld(), 1007);
-        assertEquals(value.getGuilds(), Collections.unmodifiableSet(new HashSet(Arrays.asList("75FD83CF-0C45-4834-BC4C-097F93A487AF")))); // NOI18N.
+        assertEquals("b8169418-1c11-405f-91bb-e2b29d602b8a", value.getId()); // NOI18N.
+        assertEquals("ExampleAccount.1234", value.getName()); // NOI18N.
+        assertEquals(1007, value.getWorld());
+        assertEquals(Collections.unmodifiableSet(new HashSet(Arrays.asList("75FD83CF-0C45-4834-BC4C-097F93A487AF"))), value.getGuilds()); // NOI18N.
     }
 
     @Test
@@ -83,12 +83,35 @@ public class JsonpContextTest {
         final JsonpContext instance = JsonpContext.INSTANCE;
         final CurrencyAmount value = instance.loadObject(CurrencyAmount.class, url);
         assertNotNull(value);
-        assertEquals(value.getId(), 1);
-        assertEquals(value.getValue(), 100001);
+        assertEquals(1, value.getId());
+        assertEquals(100001, value.getValue());
     }
 
     @Test
-    public void testLoadPage() throws IOException {
+    public void testLoadPage_Local() throws IOException {
+        System.out.println("loadPage"); // NOI18N.
+        final int expPageTotal = 1;
+        final int expPageSize = 10;
+        final int expResultCount = expPageSize;
+        final int expResultTotal = expPageSize;
+        final URL url = getClass().getResource("test_page1.json"); // NOI18N.
+        final JsonpContext instance = JsonpContext.INSTANCE;
+        final PageResult<Integer> value = instance.loadPage(Integer.class, url);
+        assertNotNull(value);
+        assertEquals(expPageTotal, value.getPageTotal());
+        assertEquals(expPageSize, value.getPageSize());
+        assertEquals(expResultCount, value.getResultCount());
+        assertEquals(expResultTotal, value.getResultTotal());
+        final Iterator<Integer> iterator = value.iterator();
+        IntStream.range(0, expPageSize).forEach(index -> {
+            final int expResult = index;
+            final int result = iterator.next();
+            assertEquals(expResult, result);
+        });
+    }
+
+    @Test
+    public void testLoadPage_Remote() throws IOException {
         System.out.println("loadPage"); // NOI18N.
         final int pageIndex = 1;
         final int pageSize = 10;
@@ -106,6 +129,7 @@ public class JsonpContextTest {
                         final String url = urls[index];
                         final Class aClass = classes[index];
                         final String path = String.format("%s?page=%d&page_size=%d", url, pageIndex, pageSize);
+                        System.out.println(path);
                         final PageResult page = instance.loadPage(aClass, new URL(path));
                         assertNotNull(page);
                     } catch (IOException ex) {

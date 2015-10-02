@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.time.Duration;
@@ -35,21 +36,62 @@ public enum JsonpContext {
 
     INSTANCE;
 
+    /**
+     * Loads a page from given URL
+     * @param <T> The type to use.
+     * @param targetClass The target class.
+     * @param url The url to query.
+     * @return A {@code T} instance, may be {@code null}.
+     * @throws IOException In case of IO errors.
+     */
     public <T> T loadObject(final Class<T> targetClass, final URL url) throws IOException {
         try (final InputStream input = url.openStream()) {
             return JsonpContext.this.loadObject(targetClass, input);
         }
     }
 
+    /**
+     * Loads a page from given paginated URL
+     * @param <T> The type to use.
+     * @param targetClass The target class.
+     * @param url The url to query.
+     * @return A {@code PageResult<T>} instance, never {@code null}.
+     * @throws IOException In case of IO errors.
+     */
     public <T> PageResult<T> loadPage(final Class<T> targetClass, final URL url) throws IOException {
         final URLConnection connection = url.openConnection();
         connection.connect();
-        final int pageSize = Integer.parseInt(connection.getHeaderField("X-Page-Size")); // NOI18N.
-        final int pageTotal = Integer.parseInt(connection.getHeaderField("X-Page-Total")); // NOI18N.
-        final int resultCount = Integer.parseInt(connection.getHeaderField("X-Result-Count")); // NOI18N.
-        final int resultTotal = Integer.parseInt(connection.getHeaderField("X-Result-Total")); // NOI18N.
+        // Exception handling here allows to load local JSON files as remote URLs.
+        int pageSize = -1;
+        try {
+            pageSize = Integer.parseInt(connection.getHeaderField("X-Page-Size")); // NOI18N.
+        } catch (NumberFormatException nfe) {
+            // @todo Log.
+        }
+        int pageTotal = 1;
+        try {
+            pageTotal = Integer.parseInt(connection.getHeaderField("X-Page-Total")); // NOI18N.
+        } catch (NumberFormatException nfe) {
+            // @todo Log.
+        }
+        int resultCount = 0;
+        try {
+            resultCount = Integer.parseInt(connection.getHeaderField("X-Result-Count")); // NOI18N.
+        } catch (NumberFormatException nfe) {
+            // @todo Log.
+        }
+        int resultTotal = -1;
+        try {
+            resultTotal = Integer.parseInt(connection.getHeaderField("X-Result-Total")); // NOI18N.
+        } catch (NumberFormatException nfe) {
+            // @todo Log.
+        }
+        // Finally try to load page content.
         try (final InputStream input = connection.getInputStream()) {
             final Collection<T> collection = loadObjectArray(targetClass, input);
+            // If local JSON file, need to hack those values.
+            pageSize = (pageSize == -1) ? collection.size() : pageSize;
+            resultTotal = (resultTotal == -1) ? collection.size() : resultTotal;
             final PageResult<T> result = new PageResult<>(collection, pageSize, pageTotal, resultTotal);
             return result;
         }
@@ -95,6 +137,14 @@ public enum JsonpContext {
         return null;
     }
 
+    /**
+     * Marshall an object of the desired type from the parser's current location.
+     * @param <T> The type to use.
+     * @param parser The parser instance.
+     * @param targetClass The target class.
+     * @return A {@code T} instance, may be {@code null}.
+     * @throws IOException In case of IO errors.
+     */
     private <T> T marshallObject(final JsonParser parser, final Class<T> targetClass) throws IOException {
         // Initialize concrete empty instance.
         final T result = createConcreteEmptyInstance(targetClass);
@@ -170,6 +220,7 @@ public enum JsonpContext {
                             }
                             break;
                         }
+                        value = valueForField(field, value);
                         final boolean wasAcessible = field.isAccessible();
                         field.setAccessible(true);
                         field.set(result, value);
@@ -252,11 +303,35 @@ public enum JsonpContext {
         return key;
     }
 
+    private Object valueForField(final Field field, final Object value) throws NullPointerException, MalformedURLException {
+        Objects.requireNonNull(field);
+        boolean isOptional = field.getAnnotation(OptionalValue.class) != null;
+        boolean isId = field.getAnnotation(IdValue.class) != null;
+        boolean isLevel = field.getAnnotation(LevelValue.class) != null;
+        boolean isCurrency = field.getAnnotation(CoinValue.class) != null;
+//        boolean isDistance = field.getAnnotation(DistanceValue.class) != null;
+        boolean isQuantity = field.getAnnotation(QuantityValue.class) != null;
+//        boolean isDate = field.getAnnotation(DateValue.class) != null;
+        boolean isDuration = field.getAnnotation(DurationValue.class) != null;
+        boolean isURL = field.getAnnotation(URLValue.class) != null;
+        boolean isPercent = field.getAnnotation(PercentValue.class) != null;
+        boolean isList = field.getAnnotation(ListValue.class) != null;
+        boolean isSet = field.getAnnotation(SetValue.class) != null;
+        Object result = value;
+        if (isURL) {
+            result = new URL((String) value);
+        }
+        if (isOptional) {
+            result = Optional.ofNullable(result);
+        }
+        return result;
+    }
+
     /**
      * Gets the default value for given field.
      * <br/>This method is usually called when encountering a {@code null} value.
      * @param field The field on which the value will be set.
-     * @return An {@code Object} instance, may be {@code null}. 
+     * @return An {@code Object} instance, may be {@code null}.
      * <br/>The value to return will be determined from the annotations and the class of the target field.
      * @throws NullPointerException If {@code field} is {@code null}.
      */
