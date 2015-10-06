@@ -160,11 +160,9 @@ public enum JsonpContext {
                 final JsonParser.Event event = parser.next();
                 switch (event) {
                     case KEY_NAME: {
-                        System.out.println("KEY_NAME");
                         String key = parser.getString();
                         final String fieldName = keyToFieldName(key);
                         field = concreteClass.getDeclaredField(fieldName);
-                        System.out.println(field.getName() + " - " + field.getType() + " - " + field.getGenericType());
                     }
                     break;
                     case VALUE_STRING:
