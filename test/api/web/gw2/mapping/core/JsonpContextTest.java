@@ -11,12 +11,17 @@ import api.web.gw2.mapping.v2.account.Account;
 import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
 import api.web.gw2.mapping.v2.quaggans.*;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Optional;
+import java.util.Properties;
 import java.util.stream.IntStream;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -52,7 +57,7 @@ public class JsonpContextTest {
 
     @Test
     public void testLoadObject_Quaggan() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject"); // NOI18N.
+        System.out.println("loadObject(Quaggan)"); // NOI18N.
         final String expId = "box"; // NOI18N.
         final Optional<URL> expURL = Optional.of(new URL("https://static.staticwars.com/quaggans/box.jpg")); // NOI18N.
         final URL url = getClass().getResource("/api/web/gw2/mapping/v2/quaggans/quaggan1.json"); // NOI18N.
@@ -64,8 +69,8 @@ public class JsonpContextTest {
     }
 
     @Test
-    public void testLoadObject_Account() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject"); // NOI18N.
+    public void testLoadObject_Account_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Account local)"); // NOI18N.
         final URL url = getClass().getResource("/api/web/gw2/mapping/v2/account/account1.json"); // NOI18N.
         final JsonpContext instance = JsonpContext.INSTANCE;
         final Account value = instance.loadObject(Account.class, url);
@@ -77,8 +82,23 @@ public class JsonpContextTest {
     }
 
     @Test
+    public void testLoadObject_Account_Remote() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Account remote)"); // NOI18N.
+        final Path configFile = Paths.get("settings.properties"); // NOI18N.
+        assertTrue(Files.exists(configFile));
+        assertTrue(Files.isRegularFile(configFile));
+        assertTrue(Files.isReadable(configFile));
+        final Properties settings = new Properties();
+        try (final InputStream input = Files.newInputStream(configFile)) {
+            settings.load(input);
+        }
+        final String appKey = settings.getProperty("app.key"); // NOI18N.
+        assertNotNull(appKey);
+    }
+
+    @Test
     public void testLoadObject_CurrencyAmount() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject"); // NOI18N.
+        System.out.println("loadObject(CurrencyAmount)"); // NOI18N.
         final URL url = getClass().getResource("/api/web/gw2/mapping/v2/account/wallet/currency_amount1.json"); // NOI18N.
         final JsonpContext instance = JsonpContext.INSTANCE;
         final CurrencyAmount value = instance.loadObject(CurrencyAmount.class, url);
@@ -89,7 +109,7 @@ public class JsonpContextTest {
 
     @Test
     public void testLoadPage_Local() throws IOException {
-        System.out.println("loadPage"); // NOI18N.
+        System.out.println("loadPage(int)"); // NOI18N.
         final int expPageTotal = 1;
         final int expPageSize = 10;
         final int expResultCount = expPageSize;
@@ -112,7 +132,7 @@ public class JsonpContextTest {
 
     @Test
     public void testLoadPage_Remote() throws IOException {
-        System.out.println("loadPage"); // NOI18N.
+        System.out.println("loadPage(Quaggan)"); // NOI18N.
         final int pageIndex = 1;
         final int pageSize = 10;
         final String[] urls = {
