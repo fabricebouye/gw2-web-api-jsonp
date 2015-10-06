@@ -14,7 +14,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * The JSON value defines an id.
+ * The JSON value defines a {@code Set}.
  * @author Fabrice Bouyé
  */
 @Documented
