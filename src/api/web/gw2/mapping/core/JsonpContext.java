@@ -15,6 +15,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -25,6 +27,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ServiceLoader;
 import java.util.Set;
+import java.util.logging.Logger;
 import javax.json.Json;
 import javax.json.stream.JsonParser;
 
@@ -162,7 +165,12 @@ public enum JsonpContext {
                     case KEY_NAME: {
                         String key = parser.getString();
                         final String fieldName = keyToFieldName(key);
-                        field = concreteClass.getDeclaredField(fieldName);
+                        try {
+                            field = concreteClass.getDeclaredField(fieldName);
+                        } catch (NoSuchFieldException nsfe) {
+                            final String message = String.format("No matching field \"%s\" found for JSON key \"%s\" in class %s.", fieldName, key, targetClass.getName());
+                            Logger.getLogger(getClass().getName()).warning(message);
+                        }
                     }
                     break;
                     case VALUE_STRING:
@@ -231,7 +239,7 @@ public enum JsonpContext {
                     }
                 }
             }
-        } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException | ClassNotFoundException ex) {
+        } catch (SecurityException | IllegalArgumentException | IllegalAccessException | ClassNotFoundException ex) {
             final IOException exception = new IOException(ex);
             throw exception;
         }
@@ -309,7 +317,7 @@ public enum JsonpContext {
         boolean isCurrency = field.getAnnotation(CoinValue.class) != null;
 //        boolean isDistance = field.getAnnotation(DistanceValue.class) != null;
         boolean isQuantity = field.getAnnotation(QuantityValue.class) != null;
-//        boolean isDate = field.getAnnotation(DateValue.class) != null;
+        boolean isDate = field.getAnnotation(DateValue.class) != null;
         boolean isDuration = field.getAnnotation(DurationValue.class) != null;
         boolean isURL = field.getAnnotation(URLValue.class) != null;
         boolean isPercent = field.getAnnotation(PercentValue.class) != null;
@@ -318,6 +326,8 @@ public enum JsonpContext {
         Object result = value;
         if (isURL) {
             result = new URL((String) value);
+        } else if (isDate) {
+            result = ZonedDateTime.parse((String) value);
         }
         if (isOptional) {
             result = Optional.ofNullable(result);
@@ -342,7 +352,7 @@ public enum JsonpContext {
         boolean isCurrency = field.getAnnotation(CoinValue.class) != null;
 //        boolean isDistance = field.getAnnotation(DistanceValue.class) != null;
         boolean isQuantity = field.getAnnotation(QuantityValue.class) != null;
-//        boolean isDate = field.getAnnotation(DateValue.class) != null;
+        boolean isDate = field.getAnnotation(DateValue.class) != null;
         boolean isDuration = field.getAnnotation(DurationValue.class) != null;
         boolean isURL = field.getAnnotation(URLValue.class) != null;
         boolean isPercent = field.getAnnotation(PercentValue.class) != null;
@@ -363,8 +373,8 @@ public enum JsonpContext {
         } else if (isQuantity) {
             result = 0;
 //            result = DistanceAmount.ZERO;
-//        } else if (isDate) {
-//            result = LocalDateTime.MIN;
+        } else if (isDate) {
+            result = ZonedDateTime.parse("1970-01-01T00:00:00Z"); // NOI18N.
         } else if (isDuration) {
             result = Duration.ZERO;
         } // Now use the class of the field.
