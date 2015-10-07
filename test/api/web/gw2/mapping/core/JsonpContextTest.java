@@ -81,9 +81,7 @@ public class JsonpContextTest {
         assertEquals(Collections.unmodifiableSet(new HashSet(Arrays.asList("75FD83CF-0C45-4834-BC4C-097F93A487AF"))), value.getGuilds()); // NOI18N.
     }
 
-    @Test
-    public void testLoadObject_Account_Remote() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Account remote)"); // NOI18N.
+    private String loadApplicationKey() throws IOException {
         final Path configFile = Paths.get("settings.properties"); // NOI18N.
         assertTrue(Files.exists(configFile));
         assertTrue(Files.isRegularFile(configFile));
@@ -94,6 +92,22 @@ public class JsonpContextTest {
         }
         final String appKey = settings.getProperty("app.key"); // NOI18N.
         assertNotNull(appKey);
+        return appKey;
+    }
+
+    @Test
+    public void testLoadObject_Account_Remote() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Account remote)"); // NOI18N.
+        final String appKey = loadApplicationKey();
+        final String path = String.format("https://api.guildwars2.com/v2/account?access_token=%s", appKey);
+        final URL url = new URL(path);
+        final Account result = JsonpContext.INSTANCE.loadObject(Account.class, url);
+        assertNotNull(result);
+        System.out.println(result.getId());
+        System.out.println(result.getName());
+        System.out.println(result.getWorld());
+        result.getGuilds().forEach(System.out::println);
+        System.out.println(result.getCreated());
     }
 
     @Test
