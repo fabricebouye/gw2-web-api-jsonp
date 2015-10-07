@@ -7,8 +7,10 @@
  */
 package api.web.gw2.mapping.v2.account;
 
+import api.web.gw2.mapping.core.DateValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.SetValue;
+import java.time.ZonedDateTime;
 import java.util.Collections;
 import java.util.Set;
 
@@ -26,6 +28,8 @@ public final class JsonpAccount implements Account {
     @SetValue
     @IdValue
     private Set<String> guilds = Collections.EMPTY_SET;
+    @DateValue
+    private ZonedDateTime created = ZonedDateTime.parse("1970-01-01T00:00:00Z"); // NOI18N.
 
     /**
      * Creates an empty instance.
@@ -51,5 +55,10 @@ public final class JsonpAccount implements Account {
     @Override
     public Set<String> getGuilds() {
         return guilds;
+    }
+
+    @Override
+    public ZonedDateTime getCreated() {
+        return created;
     }
 }
