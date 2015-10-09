@@ -17,6 +17,7 @@ import java.net.URLConnection;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -28,6 +29,7 @@ import java.util.Optional;
 import java.util.ServiceLoader;
 import java.util.Set;
 import java.util.logging.Logger;
+import java.util.stream.IntStream;
 import javax.json.Json;
 import javax.json.stream.JsonParser;
 
@@ -304,9 +306,24 @@ public enum JsonpContext {
         return result;
     }
 
+    /**
+     * Converts a JSON key into a Java field name.
+     * @param key The JSON key.
+     * @return A {@code String}, never {@code null}.
+     */
     private String keyToFieldName(final String key) {
-        // @todo need to escape id into field name.
-        return key;
+        Objects.requireNonNull(key);
+        final String[] tokens = key.split("_"); // NOI18N.
+        final StringBuilder buffer = new StringBuilder(key.length());
+        buffer.append(tokens[0]);
+        Arrays.stream(tokens, 1, tokens.length)
+                .forEach(token -> {
+                    String head = token.substring(0, 1).toUpperCase();
+                    String tail = token.substring(1, token.length());
+                    buffer.append(head);
+                    buffer.append(tail);
+                });
+        return buffer.toString();
     }
 
     private Object valueForField(final Field field, final Object value) throws NullPointerException, MalformedURLException {

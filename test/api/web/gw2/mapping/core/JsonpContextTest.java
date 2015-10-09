@@ -12,6 +12,8 @@ import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
 import api.web.gw2.mapping.v2.quaggans.*;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,6 +24,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Optional;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.IntStream;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -56,8 +60,46 @@ public class JsonpContextTest {
     }
 
     @Test
-    public void testLoadObject_Quaggan() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Quaggan)"); // NOI18N.
+    public void testKeyToFieldName() throws NoSuchMethodException {
+        final String[] values = {
+            "demo",
+            "demo_d",
+            "demo_d_d",
+            "demo_d_demo",
+            "demo_demo",
+            "demo_demo_d",
+            "demo_demo_demo"
+        };
+        final String[] expResults = {
+            "demo",
+            "demoD",
+            "demoDD",
+            "demoDDemo",
+            "demoDemo",
+            "demoDemoD",
+            "demoDemoDemo"
+        };
+        assertEquals(values.length, expResults.length);
+        System.out.println("testKeyToFieldName"); // NOI18N.
+        final Class aClass = JsonpContext.INSTANCE.getClass();
+        final Method method = aClass.getDeclaredMethod("keyToFieldName", String.class);
+        method.setAccessible(true);
+        IntStream.range(0, values.length)
+                .forEach(index -> {
+                    try {
+                        final String value = values[index];
+                        final String expResult = expResults[index];
+                        final String result = (String) method.invoke(JsonpContext.INSTANCE, value);
+                        assertEquals(expResult, result);
+                    } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_Quaggan_Remote() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Quaggan remote)"); // NOI18N.
         final String expId = "box"; // NOI18N.
         final Optional<URL> expURL = Optional.of(new URL("https://static.staticwars.com/quaggans/box.jpg")); // NOI18N.
         final URL url = getClass().getResource("/api/web/gw2/mapping/v2/quaggans/quaggan1.json"); // NOI18N.
@@ -103,11 +145,11 @@ public class JsonpContextTest {
         final URL url = new URL(path);
         final Account result = JsonpContext.INSTANCE.loadObject(Account.class, url);
         assertNotNull(result);
-        System.out.println(result.getId());
-        System.out.println(result.getName());
-        System.out.println(result.getWorld());
-        result.getGuilds().forEach(System.out::println);
-        System.out.println(result.getCreated());
+//        System.out.println(result.getId());
+//        System.out.println(result.getName());
+//        System.out.println(result.getWorld());
+//        result.getGuilds().forEach(System.out::println);
+//        System.out.println(result.getCreated());
     }
 
     @Test
@@ -122,8 +164,8 @@ public class JsonpContextTest {
     }
 
     @Test
-    public void testLoadPage_Local() throws IOException {
-        System.out.println("loadPage(int)"); // NOI18N.
+    public void testLoadPage_Integer_Local() throws IOException {
+        System.out.println("loadPage(integer local)"); // NOI18N.
         final int expPageTotal = 1;
         final int expPageSize = 10;
         final int expResultCount = expPageSize;
@@ -145,8 +187,8 @@ public class JsonpContextTest {
     }
 
     @Test
-    public void testLoadPage_Remote() throws IOException {
-        System.out.println("loadPage(Quaggan)"); // NOI18N.
+    public void testLoadPage_Quaggan_Remote() throws IOException {
+        System.out.println("loadPage(Quaggan remote)"); // NOI18N.
         final int pageIndex = 1;
         final int pageSize = 10;
         final String[] urls = {
@@ -170,5 +212,17 @@ public class JsonpContextTest {
                         fail(ex.getMessage());
                     }
                 });
+    }
+
+    @Test
+    public void testLoadPage_Character_Remote() throws IOException {
+        System.out.println("loadPage(Character remote)"); // NOI18N.
+        final String appKey = loadApplicationKey();
+        final String path = String.format("https://api.guildwars2.com/v2/characters?access_token=%s", appKey);
+        final URL url = new URL(path);
+        final PageResult<String> result = JsonpContext.INSTANCE.loadPage(String.class, url);
+        assertNotNull(result);
+        result.stream().forEach(characterName -> {
+        });
     }
 }
