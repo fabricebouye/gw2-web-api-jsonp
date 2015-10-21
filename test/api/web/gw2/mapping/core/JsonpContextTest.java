@@ -60,7 +60,8 @@ public class JsonpContextTest {
     }
 
     @Test
-    public void testKeyToFieldName() throws NoSuchMethodException {
+    public void testJsonKeyToJavaFieldName() throws NoSuchMethodException {
+        System.out.println("jsonKeyToJavaFieldName"); // NOI18N.
         final String[] values = {
             "demo",
             "demo_d",
@@ -80,9 +81,8 @@ public class JsonpContextTest {
             "demoDemoDemo"
         };
         assertEquals(values.length, expResults.length);
-        System.out.println("testKeyToFieldName"); // NOI18N.
         final Class aClass = JsonpContext.INSTANCE.getClass();
-        final Method method = aClass.getDeclaredMethod("keyToFieldName", String.class);
+        final Method method = aClass.getDeclaredMethod("jsonKeyToJavaFieldName", String.class); // NOI18N.
         method.setAccessible(true);
         IntStream.range(0, values.length)
                 .forEach(index -> {

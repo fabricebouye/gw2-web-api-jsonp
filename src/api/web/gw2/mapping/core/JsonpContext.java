@@ -15,7 +15,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.time.Duration;
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.Collection;
@@ -24,12 +23,12 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ServiceLoader;
 import java.util.Set;
 import java.util.logging.Logger;
-import java.util.stream.IntStream;
 import javax.json.Json;
 import javax.json.stream.JsonParser;
 
@@ -166,7 +165,7 @@ public enum JsonpContext {
                 switch (event) {
                     case KEY_NAME: {
                         String key = parser.getString();
-                        final String fieldName = keyToFieldName(key);
+                        final String fieldName = jsonKeyToJavaFieldName(key);
                         try {
                             field = concreteClass.getDeclaredField(fieldName);
                         } catch (NoSuchFieldException nsfe) {
@@ -185,26 +184,26 @@ public enum JsonpContext {
                         if (field == null) {
                             continue;
                         }
-                        Object value = null;
+                        Object valueFromJSON = null;
                         switch (event) {
                             case VALUE_STRING: {
-                                value = parser.getString();
+                                valueFromJSON = parser.getString();
                             }
                             break;
                             case VALUE_NUMBER: {
-                                value = (parser.isIntegralNumber()) ? (Number) parser.getInt() : (Number) parser.getBigDecimal().doubleValue();
+                                valueFromJSON = jsonNumberToJavaNumber(parser);
                             }
                             break;
                             case VALUE_TRUE: {
-                                value = Boolean.TRUE;
+                                valueFromJSON = Boolean.TRUE;
                             }
                             break;
                             case VALUE_FALSE: {
-                                value = Boolean.FALSE;
+                                valueFromJSON = Boolean.FALSE;
                             }
                             break;
                             case VALUE_NULL: {
-                                value = defaultValueForField(field);
+                                valueFromJSON = defaultValueForField(field);
                             }
                             break;
                             case START_OBJECT: {
@@ -212,23 +211,16 @@ public enum JsonpContext {
                                 // @todo Check this.
                                 final Type fieldType = field.getType();
                                 Class aClass = Class.forName(fieldType.getTypeName());
-                                value = marshallObject(parser, aClass);
+                                valueFromJSON = marshallObject(parser, aClass);
                             }
                             break;
                             case START_ARRAY: {
                                 // @todo Find interface class.
-                                final List list = marshallArray(parser, null);
-                                final boolean isList = field.isAnnotationPresent(ListValue.class);
-                                final boolean isSet = field.isAnnotationPresent(SetValue.class);
-                                if (isList) {
-                                    value = Collections.unmodifiableList(list);
-                                } else if (isSet) {
-                                    value = Collections.unmodifiableSet(new HashSet(list));
-                                }
+                                valueFromJSON = marshallArray(parser, null);
                             }
                             break;
                         }
-                        value = valueForField(field, value);
+                        final Object value = valueForField(field, valueFromJSON);
                         final boolean wasAcessible = field.isAccessible();
                         field.setAccessible(true);
                         field.set(result, value);
@@ -249,49 +241,56 @@ public enum JsonpContext {
     }
 
     private <T> List<T> marshallArray(final JsonParser parser, final Class<T> targetClass) throws IOException {
+        // @todo We need to take care of those map values in most recent endpoints.
         final List result = new LinkedList();
         while (parser.hasNext()) {
             final JsonParser.Event event = parser.next();
-            Object value = null;
+            Object valueFromJSON = null;
             switch (event) {
                 case START_ARRAY: {
                     // @todo Find interface class.
-                    value = marshallArray(parser, null);
+                    valueFromJSON = marshallArray(parser, null);
                 }
                 break;
                 case VALUE_STRING: {
-                    value = parser.getString();
+                    valueFromJSON = parser.getString();
                 }
                 break;
                 case VALUE_NUMBER: {
-                    value = (parser.isIntegralNumber()) ? (Number) parser.getInt() : (Number) parser.getBigDecimal().doubleValue();
+                    valueFromJSON = jsonNumberToJavaNumber(parser);
                 }
                 break;
                 case VALUE_TRUE: {
-                    value = Boolean.TRUE;
+                    valueFromJSON = Boolean.TRUE;
                 }
                 break;
                 case VALUE_FALSE: {
-                    value = Boolean.FALSE;
+                    valueFromJSON = Boolean.FALSE;
                 }
                 break;
                 case VALUE_NULL: {
-                    value = null;
+                    valueFromJSON = null;
                 }
                 break;
                 case START_OBJECT: {
-                    value = marshallObject(parser, targetClass);
+                    valueFromJSON = marshallObject(parser, targetClass);
                 }
                 break;
                 case END_ARRAY: {
                     return result;
                 }
             }
-            result.add(value);
+            result.add(valueFromJSON);
         }
         return null;
     }
 
+    /**
+     * Creates a concrete instance of the desired interface using the {@code ServiceManager}.
+     * @param <T> The target type.
+     * @param targetClass The target class.
+     * @return A {@code T} instance, may be {@code null}.
+     */
     private <T> T createConcreteEmptyInstance(final Class<T> targetClass) {
         // Get service loader for target class.
         final ServiceLoader serviceLoader = ServiceLoader.load(targetClass);
@@ -307,11 +306,21 @@ public enum JsonpContext {
     }
 
     /**
+     * Converts the number value within the JSON parser to either {@code Integer} or {@code Double}
+     * @param parser The JSON parser.
+     * @return A {@code Number}, never {@code null}.
+     */
+    private Number jsonNumberToJavaNumber(final JsonParser parser) {
+        return (parser.isIntegralNumber()) ? parser.getInt() : parser.getBigDecimal().doubleValue();
+    }
+
+    /**
      * Converts a JSON key into a Java field name.
      * @param key The JSON key.
      * @return A {@code String}, never {@code null}.
+     * @throws NullPointerException If {@code key} is {@code null}.
      */
-    private String keyToFieldName(final String key) {
+    private String jsonKeyToJavaFieldName(final String key) throws NullPointerException {
         Objects.requireNonNull(key);
         final String[] tokens = key.split("_"); // NOI18N.
         final StringBuilder buffer = new StringBuilder(key.length());
@@ -326,6 +335,16 @@ public enum JsonpContext {
         return buffer.toString();
     }
 
+    /**
+     * Convert a value obtained from JSON to value that can suit the target field.
+     * <br/>This method is called before setting a value into a field.
+     * @param field The target field.
+     * @param value The value obtained from JSON.
+     * @return An {@code Object}, may be [@code null}.
+     * <br/>The value to return will be determined from the annotations and the class of the target field.
+     * @throws NullPointerException If {@code field} is {@code null}.
+     * @throws MalformedURLException If URL cannot be parsed from input object.
+     */
     private Object valueForField(final Field field, final Object value) throws NullPointerException, MalformedURLException {
         Objects.requireNonNull(field);
         boolean isOptional = field.getAnnotation(OptionalValue.class) != null;
@@ -340,11 +359,18 @@ public enum JsonpContext {
         boolean isPercent = field.getAnnotation(PercentValue.class) != null;
         boolean isList = field.getAnnotation(ListValue.class) != null;
         boolean isSet = field.getAnnotation(SetValue.class) != null;
+        boolean isMap = field.getAnnotation(MapValue.class) != null;
         Object result = value;
         if (isURL) {
             result = new URL((String) value);
         } else if (isDate) {
             result = ZonedDateTime.parse((String) value);
+        } else if (isList) {
+            result = Collections.unmodifiableList((List) value);
+        } else if (isSet) {
+            result = Collections.unmodifiableSet(new HashSet((List) value));
+        } else if (isMap) {
+            result = Collections.unmodifiableMap((Map) value);
         }
         if (isOptional) {
             result = Optional.ofNullable(result);
@@ -375,6 +401,7 @@ public enum JsonpContext {
         boolean isPercent = field.getAnnotation(PercentValue.class) != null;
         boolean isList = field.getAnnotation(ListValue.class) != null;
         boolean isSet = field.getAnnotation(SetValue.class) != null;
+        boolean isMap = field.getAnnotation(MapValue.class) != null;
         //
         Object result = null;
         // Use the annotation of the field.
