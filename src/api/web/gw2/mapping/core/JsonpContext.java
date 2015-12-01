@@ -28,6 +28,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ServiceLoader;
 import java.util.Set;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.json.Json;
 import javax.json.stream.JsonParser;
@@ -311,7 +312,17 @@ public enum JsonpContext {
      * @return A {@code Number}, never {@code null}.
      */
     private Number jsonNumberToJavaNumber(final JsonParser parser) {
-        return (parser.isIntegralNumber()) ? parser.getInt() : parser.getBigDecimal().doubleValue();
+        Logger.getGlobal().log(Level.FINEST, "{0} {1}", new Object[]{parser.isIntegralNumber(), parser.getString()}); // NOI18N.
+//        return (parser.isIntegralNumber()) ? parser.getInt() : parser.getBigDecimal().doubleValue();
+//        return (parser.isIntegralNumber()) ? (Integer)parser.getInt() : parser.getBigDecimal().doubleValue();
+// As of JDK 8_66, binary promotion returns a Double instead of an Integer if the test is true.
+        Number result = null;
+        if (parser.isIntegralNumber()) {
+            result = parser.getInt();
+        } else {
+            result = parser.getBigDecimal().doubleValue();
+        }
+        return result;
     }
 
     /**
