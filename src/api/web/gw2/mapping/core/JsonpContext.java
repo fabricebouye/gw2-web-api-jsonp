@@ -10,12 +10,15 @@ package api.web.gw2.mapping.core;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.time.Duration;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -240,7 +243,8 @@ public enum JsonpContext {
                     }
                 }
             }
-        } catch (SecurityException | IllegalArgumentException | IllegalAccessException | ClassNotFoundException ex) {
+        } catch (SecurityException | IllegalArgumentException | IllegalAccessException | ClassNotFoundException | NullPointerException | MalformedURLException | NoSuchMethodException | InvocationTargetException ex) {
+            Logger.getLogger(JsonpContext.class.getName()).log(Level.SEVERE, null, ex);
             final IOException exception = new IOException(ex);
             throw exception;
         }
@@ -362,8 +366,9 @@ public enum JsonpContext {
      * @throws NullPointerException If {@code field} is {@code null}.
      * @throws MalformedURLException If URL cannot be parsed from input object.
      */
-    private Object valueForField(final Field field, final Object value) throws NullPointerException, MalformedURLException {
+    private Object valueForField(final Field field, final Object value) throws NullPointerException, MalformedURLException, IllegalAccessException, IllegalArgumentException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException {
         Objects.requireNonNull(field);
+        // @todo Not all types used yet.
         boolean isOptional = field.getAnnotation(OptionalValue.class) != null;
         boolean isId = field.getAnnotation(IdValue.class) != null;
         boolean isLevel = field.getAnnotation(LevelValue.class) != null;
@@ -377,7 +382,9 @@ public enum JsonpContext {
         boolean isList = field.getAnnotation(ListValue.class) != null;
         boolean isSet = field.getAnnotation(SetValue.class) != null;
         boolean isMap = field.getAnnotation(MapValue.class) != null;
+        boolean isEnum = field.getAnnotation(EnumValue.class) != null;
         Object result = value;
+        // Base types.
         if (isURL) {
             result = new URL((String) value);
         } else if (isDate) {
@@ -389,9 +396,60 @@ public enum JsonpContext {
         } else if (isMap) {
             result = Collections.unmodifiableMap((Map) value);
         }
+        // As we rely heavily on enums, we need to convert base types obtained from JSON into valid enum values.
+        if (isEnum) {
+            // Do a second pass on the collection to marshall its content into enum values.
+            if (isSet || isList) {
+                final Collection<?> source = (Collection) result;
+                final List destination = new ArrayList(source.size());
+                // Cannot use stream because of exceptions raised in marshallEnumValue().
+                for (final Object v : source) {
+                    final Object target = marshallEnumValue(field, v);
+                    destination.add(target);
+                }
+                result = (isList) ? Collections.unmodifiableList(destination) : Collections.unmodifiableSet(new HashSet(destination));
+            } 
+            // @todo What about maps?
+            // Single value.
+            else {
+                result = marshallEnumValue(field, value);
+            }
+        }
+        // Wrap the result into an Optional instance.
         if (isOptional) {
             result = Optional.ofNullable(result);
         }
+        Logger.getGlobal().log(Level.INFO, "{0} declaring class: {1}", new Object[]{field.getName(), field.getDeclaringClass()});
+        Logger.getGlobal().log(Level.INFO, "{0} type: {1}", new Object[]{field.getName(), field.getType()});
+        Logger.getGlobal().log(Level.INFO, "{0} annotated type: {1}", new Object[]{field.getName(), field.getAnnotatedType()});
+        Logger.getGlobal().log(Level.INFO, "{0} value returned as: {1} ({2})", new Object[]{field.getName(), result, result.getClass()});
+        return result;
+    }
+
+    /**
+     * Marshall a single value obtained from the JSON to a value from an enum class.
+     * @param field The target field.
+     * @param value The value marshaled from the JSON.
+     * @return An instance of an enum class, never {@code null}.
+     * @throws ClassNotFoundException The target factory class cannot be resolved.
+     * @throws NoSuchMethodException The target factory method cannot be resolved.
+     * @throws IllegalAccessException The factory method cannot be accessed.
+     * @throws IllegalArgumentException The argument provided to the factory method is invalid.
+     * @throws InvocationTargetException If the factory method threw an exception.
+     */
+    private Object marshallEnumValue(final Field field, final Object value) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        final EnumValue annotation = (EnumValue) field.getAnnotation(EnumValue.class);
+        final String factory = annotation.factory();
+        Class factoryClass = field.getType();
+        String factoryMethodName = "valueOf"; // NOI18N.
+        if (factory != null && !factory.trim().isEmpty()) {
+            final int index = factory.indexOf(EnumValue.METHOD_SEPARATOR);
+            final String factoryClassName = factory.substring(0, index);
+            factoryClass = Class.forName(factoryClassName);
+            factoryMethodName = factory.substring(index + EnumValue.METHOD_SEPARATOR.length(), factory.length());
+        }
+        final Method factoryMethod = factoryClass.getMethod(factoryMethodName, value.getClass());
+        final Object result = factoryMethod.invoke(null, value);
         return result;
     }
 

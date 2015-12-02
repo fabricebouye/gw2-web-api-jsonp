@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.v2.achievements;
 
+import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.OptionalValue;
@@ -34,8 +35,10 @@ public final class JsonpAchievement implements Achievement {
     private String description = "";
     @LocalizedResource
     private String requirement = "";
+    @EnumValue(factory = "api.web.gw2.mapping.v2.achievements.AchievementsUtils::findAchievementType")
     private AchievementType type = AchievementType.UNKNOWN;
     @SetValue
+    @EnumValue(factory = "api.web.gw2.mapping.v2.achievements.AchievementsUtils::findAchievementFlag")
     private Set<AchievementFlag> flags = Collections.EMPTY_SET;
 
     /**
