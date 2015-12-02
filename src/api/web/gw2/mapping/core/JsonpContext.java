@@ -47,9 +47,12 @@ public enum JsonpContext {
      * @param targetClass The target class.
      * @param url The url to query.
      * @return A {@code T} instance, may be {@code null}.
+     * @throws NullPointerException If either {@code targetClass} or {@code url} is {@code null}.
      * @throws IOException In case of IO errors.
      */
-    public <T> T loadObject(final Class<T> targetClass, final URL url) throws IOException {
+    public <T> T loadObject(final Class<T> targetClass, final URL url) throws NullPointerException, IOException {
+        Objects.requireNonNull(targetClass);
+        Objects.requireNonNull(url);
         try (final InputStream input = url.openStream()) {
             return JsonpContext.this.loadObject(targetClass, input);
         }
@@ -61,9 +64,12 @@ public enum JsonpContext {
      * @param targetClass The target class.
      * @param url The url to query.
      * @return A {@code PageResult<T>} instance, never {@code null}.
+     * @throws NullPointerException If either {@code targetClass} or {@code url} is {@code null}.
      * @throws IOException In case of IO errors.
      */
-    public <T> PageResult<T> loadPage(final Class<T> targetClass, final URL url) throws IOException {
+    public <T> PageResult<T> loadPage(final Class<T> targetClass, final URL url) throws NullPointerException, IOException {
+        Objects.requireNonNull(targetClass);
+        Objects.requireNonNull(url);
         final URLConnection connection = url.openConnection();
         connection.connect();
         // Exception handling here allows to load local JSON files as remote URLs.
