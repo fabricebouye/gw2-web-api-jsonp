@@ -9,18 +9,15 @@ package api.web.gw2.mapping.core;
 
 import api.web.gw2.mapping.v2.account.Account;
 import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
+import api.web.gw2.mapping.v2.achievements.Achievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievementLevelRange;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.IntStream;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -78,6 +75,16 @@ public class JsonpContext_LocalTest {
         assertEquals(100001, value.getValue());
     }
 
+    @Test
+    public void testLoadObject_Achievement_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Achievement local)"); // NOI18N.
+        final URL url = getClass().getResource("/api/web/gw2/mapping/v2/achievements/achievement1.json"); // NOI18N.
+        final JsonpContext instance = JsonpContext.INSTANCE;
+        final Achievement value = instance.loadObject(Achievement.class, url);
+        assertNotNull(value);
+        assertEquals(1840, value.getId());
+    }
+    
     @Test
     public void testLoadObject_DailyAchievement_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(DailyAchievement local)"); // NOI18N.

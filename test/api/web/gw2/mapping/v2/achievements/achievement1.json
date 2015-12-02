@@ -1,0 +1,11 @@
+{
+    "id": 1840,
+    "name": "Daily Completionist",
+    "description": "",
+    "requirement": "Complete any PvE, WvW, or PvP Daily Achievements.",
+    "type": "Default",
+    "flags": [
+        "Pvp",
+        "CategoryDisplay"
+    ]
+}
