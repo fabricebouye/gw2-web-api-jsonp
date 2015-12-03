@@ -18,6 +18,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.IntStream;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -84,7 +86,7 @@ public class JsonpContext_LocalTest {
         assertNotNull(value);
         assertEquals(1840, value.getId());
     }
-    
+
     @Test
     public void testLoadObject_DailyAchievement_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(DailyAchievement local)"); // NOI18N.
@@ -128,6 +130,68 @@ public class JsonpContext_LocalTest {
                 assertEquals(expId, value.getId());
                 final DailyAchievementLevelRange expLevel = expLevels[index];
                 assertEquals(expLevel, value.getLevel());
+            } catch (IOException ex) {
+                fail(ex.getMessage());
+            }
+        });
+    }
+
+    @Test
+    public void testLoadObject_AccountAchievement_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(AccountAchievement local)"); // NOI18N.
+        final String baseCode = "/api/web/gw2/mapping/v2/account/achievements/";// NOI18N.
+        final String[] files = {
+            "achievement1.json", // NOI18N.
+            "achievement2.json", // NOI18N.
+            "achievement3.json" // NOI18N.
+        };
+        final int[] expIds = {
+            1,
+            202,
+            1653
+        };
+        final Optional[] expCurrents = {
+            Optional.of(1),
+            Optional.empty(),
+            Optional.of(4)
+        };
+        final Optional[] expMaxs = {
+            Optional.of(1000),
+            Optional.empty(),
+            Optional.of(30)
+        };
+        final boolean[] expDones = {
+            false,
+            true,
+            false
+        };
+        final Optional[] expBits = {
+            Optional.empty(),
+            Optional.empty(),
+            Optional.of(Collections.unmodifiableSet(new HashSet(Arrays.asList(2, 3, 4, 5)))),
+        };
+        assertEquals(files.length, expIds.length);
+        assertEquals(files.length, expCurrents.length);
+        assertEquals(files.length, expMaxs.length);
+        assertEquals(files.length, expDones.length);
+        assertEquals(files.length, expBits.length);
+        IntStream.range(0, files.length).forEach(index -> {
+            try {
+                final String file = files[index];
+                final URL url = getClass().getResource(baseCode + file);
+                final JsonpContext instance = JsonpContext.INSTANCE;
+                final api.web.gw2.mapping.v2.account.achievements.Achievement value = instance.loadObject(api.web.gw2.mapping.v2.account.achievements.Achievement.class, url);
+                assertNotNull(value);
+                final int expId = expIds[index];
+                assertEquals(expId, value.getId());
+                final Optional<Integer> expCurrent = expCurrents[index];
+                assertEquals(expCurrent, value.getCurrent());
+                final Optional<Integer> expMax = expMaxs[index];
+                assertEquals(expMax, value.getMax());
+                final boolean expDone = expDones[index];
+                assertEquals(expDone, value.isDone());
+                final Optional<Set<Integer>> expBit = expBits[index];
+                assertEquals(expBit, value.getBits());
             } catch (IOException ex) {
                 fail(ex.getMessage());
             }
