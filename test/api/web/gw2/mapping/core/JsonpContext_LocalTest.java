@@ -12,6 +12,7 @@ import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
 import api.web.gw2.mapping.v2.achievements.Achievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievementLevelRange;
+import api.web.gw2.mapping.v2.minis.Mini;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -76,6 +77,22 @@ public class JsonpContext_LocalTest {
         assertEquals(1, value.getId());
         assertEquals(100001, value.getValue());
     }
+    
+    @Test
+    public void testLoadObject_Mini_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Mini local)"); // NOI18N.
+        final URL url = getClass().getResource("/api/web/gw2/mapping/v2/minis/mini1.json"); // NOI18N.
+        final JsonpContext instance = JsonpContext.INSTANCE;
+        final Mini value = instance.loadObject(Mini.class, url);
+        assertNotNull(value);
+        assertEquals(1, value.getId());
+        assertEquals("Mini-Rytlock", value.getName());
+        assertEquals(Optional.empty(), value.getUnlock());
+        assertEquals(Optional.of(new URL("https://render.guildwars2.com/file/795ED1B945A29EC3E3066797DF57FFB25ABAA631/340551.png")), value.getIcon());
+        assertEquals(1, value.getOrder());
+        assertEquals(21047, value.getItemId());
+    }
+    
 
     @Test
     public void testLoadObject_Achievement_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
