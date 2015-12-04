@@ -10,7 +10,7 @@ package api.web.gw2.mapping.v2.build;
 import api.web.gw2.mapping.core.IdValue;
 
 /**
- * JSONP implementation of a build.
+ * Default JSON-P implementation of a build.
  * @author Fabrice Bouyé
  */
 public final class JsonpBuild implements Build {

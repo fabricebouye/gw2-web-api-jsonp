@@ -10,7 +10,7 @@ package api.web.gw2.mapping.v2.achievements.daily;
 import api.web.gw2.mapping.core.IdValue;
 
 /**
- * JSONP implementation of a daily achievements.
+ * Default JSON-P implementation of a daily achievements.
  * @author Fabrice Bouyé
  */
 public final class JsonpDailyAchievement implements DailyAchievement {

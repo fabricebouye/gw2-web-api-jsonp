@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.Optional;
 
 /**
- * The JSONP implementation of a miniature.
+ * Default JSON-P implementation of a miniature.
  * @author Fabrice Bouyé
  */
 public final class JsonpMini implements Mini {

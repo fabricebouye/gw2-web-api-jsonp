@@ -15,7 +15,7 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * JSONP implementation of an account achievements.
+ * Default JSON-P implementation of an account achievements.
  * @author Fabrice Bouyé
  */
 public final class JsonpAchievement implements Achievement {

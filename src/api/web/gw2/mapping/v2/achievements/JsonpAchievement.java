@@ -19,7 +19,7 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * JSONP implementation of an achievements.
+ * Default JSON-P implementation of an achievements.
  * @author Fabrice Bouyé
  */
 public final class JsonpAchievement implements Achievement {
