@@ -8,6 +8,7 @@
 package api.web.gw2.mapping.core;
 
 import api.web.gw2.mapping.v2.account.Account;
+import api.web.gw2.mapping.v2.account.bank.BankSlot;
 import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
 import api.web.gw2.mapping.v2.achievements.Achievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievement;
@@ -234,6 +235,35 @@ public class JsonpContext_LocalTest {
             final int expResult = index;
             final int result = iterator.next();
             assertEquals(expResult, result);
+        });
+    }
+
+    @Test
+    public void testLoadPage_BankSlot_Local() throws IOException {
+        System.out.println("loadPage(BankSlot local)"); // NOI18N.
+        final boolean[] expIsNulls = {
+            false, 
+            true, 
+            true, 
+            false, 
+            true, 
+            false
+        };
+        final String baseCode = "/api/web/gw2/mapping/v2/account/bank/"; // NOI18N.
+        String file = "bankresponse.json"; // NOI18N.
+        final URL url = getClass().getResource(baseCode + file); // NOI18N.
+        final JsonpContext instance = JsonpContext.INSTANCE;
+        final PageResult<BankSlot> value = instance.loadPage(BankSlot.class, url);
+        value.stream().forEach(System.out::println);
+        assertNotNull(value);
+        final int expPageSize = expIsNulls.length;
+        assertEquals(expPageSize, value.getResultCount());
+        final Iterator<BankSlot> iterator = value.iterator();
+        IntStream.range(0, expPageSize).forEach(index -> {
+            final BankSlot result = iterator.next();
+            final boolean expIsNull = expIsNulls[index];
+            final boolean isNull = result == null;
+            assertEquals(expIsNull, isNull);
         });
     }
 }
