@@ -23,7 +23,7 @@ import static org.junit.Assert.*;
  * Unit test.
  * @author Fabrice Bouyé
  */
-public class JsonpAccountTest {
+public final class JsonpAccountTest {
 
     public JsonpAccountTest() {
     }
