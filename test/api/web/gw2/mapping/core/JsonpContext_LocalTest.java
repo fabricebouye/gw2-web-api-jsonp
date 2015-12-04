@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
 import java.util.stream.IntStream;
 import org.junit.After;
@@ -77,7 +78,7 @@ public class JsonpContext_LocalTest {
         assertEquals(1, value.getId());
         assertEquals(100001, value.getValue());
     }
-    
+
     @Test
     public void testLoadObject_Mini_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Mini local)"); // NOI18N.
@@ -92,7 +93,6 @@ public class JsonpContext_LocalTest {
         assertEquals(1, value.getOrder());
         assertEquals(21047, value.getItemId());
     }
-    
 
     @Test
     public void testLoadObject_Achievement_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
@@ -167,15 +167,15 @@ public class JsonpContext_LocalTest {
             202,
             1653
         };
-        final Optional[] expCurrents = {
-            Optional.of(1),
-            Optional.empty(),
-            Optional.of(4)
+        final OptionalInt[] expCurrents = {
+            OptionalInt.of(1),
+            OptionalInt.empty(),
+            OptionalInt.of(4)
         };
-        final Optional[] expMaxs = {
-            Optional.of(1000),
-            Optional.empty(),
-            Optional.of(30)
+        final OptionalInt[] expMaxs = {
+            OptionalInt.of(1000),
+            OptionalInt.empty(),
+            OptionalInt.of(30)
         };
         final boolean[] expDones = {
             false,
@@ -185,8 +185,7 @@ public class JsonpContext_LocalTest {
         final Optional[] expBits = {
             Optional.empty(),
             Optional.empty(),
-            Optional.of(Collections.unmodifiableSet(new HashSet(Arrays.asList(2, 3, 4, 5)))),
-        };
+            Optional.of(Collections.unmodifiableSet(new HashSet(Arrays.asList(2, 3, 4, 5)))),};
         assertEquals(files.length, expIds.length);
         assertEquals(files.length, expCurrents.length);
         assertEquals(files.length, expMaxs.length);
@@ -201,9 +200,9 @@ public class JsonpContext_LocalTest {
                 assertNotNull(value);
                 final int expId = expIds[index];
                 assertEquals(expId, value.getId());
-                final Optional<Integer> expCurrent = expCurrents[index];
+                final OptionalInt expCurrent = expCurrents[index];
                 assertEquals(expCurrent, value.getCurrent());
-                final Optional<Integer> expMax = expMaxs[index];
+                final OptionalInt expMax = expMaxs[index];
                 assertEquals(expMax, value.getMax());
                 final boolean expDone = expDones[index];
                 assertEquals(expDone, value.isDone());

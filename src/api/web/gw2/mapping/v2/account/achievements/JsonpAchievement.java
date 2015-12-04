@@ -12,6 +12,7 @@ import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
 import api.web.gw2.mapping.core.SetValue;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
 
 /**
@@ -24,10 +25,10 @@ public final class JsonpAchievement implements Achievement {
     private int id = -1;
     @QuantityValue
     @OptionalValue
-    private Optional<Integer> current = Optional.empty();
+    private OptionalInt current = OptionalInt.empty();
     @QuantityValue
     @OptionalValue
-    private Optional<Integer> max = Optional.empty();
+    private OptionalInt max = OptionalInt.empty();
     private boolean done = false;
     @OptionalValue
     @SetValue
@@ -45,12 +46,12 @@ public final class JsonpAchievement implements Achievement {
     }
 
     @Override
-    public Optional<Integer> getCurrent() {
+    public OptionalInt getCurrent() {
         return current;
     }
 
     @Override
-    public Optional<Integer> getMax() {
+    public OptionalInt getMax() {
         return max;
     }
 

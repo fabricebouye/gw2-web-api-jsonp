@@ -29,6 +29,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
 import java.util.ServiceLoader;
 import java.util.Set;
 import java.util.logging.Level;
@@ -408,8 +410,7 @@ public enum JsonpContext {
                     destination.add(target);
                 }
                 result = (isList) ? Collections.unmodifiableList(destination) : Collections.unmodifiableSet(new HashSet(destination));
-            } 
-            // @todo What about maps?
+            } // @todo What about maps?
             // Single value.
             else {
                 result = marshallEnumValue(field, value);
@@ -417,7 +418,13 @@ public enum JsonpContext {
         }
         // Wrap the result into an Optional instance.
         if (isOptional) {
-            result = Optional.ofNullable(result);
+            if (isId || isQuantity || isLevel || isCurrency) {
+                result = OptionalInt.of((Integer) result);
+            } else if (isPercent) {
+                result = OptionalDouble.of((Double) result);
+            } else {
+                result = Optional.ofNullable(result);
+            }
         }
         Logger.getGlobal().log(Level.INFO, "{0} declaring class: {1}", new Object[]{field.getName(), field.getDeclaringClass()});
         Logger.getGlobal().log(Level.INFO, "{0} type: {1}", new Object[]{field.getName(), field.getType()});
