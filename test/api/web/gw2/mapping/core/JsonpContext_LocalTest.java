@@ -242,11 +242,11 @@ public class JsonpContext_LocalTest {
     public void testLoadPage_BankSlot_Local() throws IOException {
         System.out.println("loadPage(BankSlot local)"); // NOI18N.
         final boolean[] expIsNulls = {
-            false, 
-            true, 
-            true, 
-            false, 
-            true, 
+            false,
+            true,
+            true,
+            false,
+            true,
             false
         };
         final String baseCode = "/api/web/gw2/mapping/v2/account/bank/"; // NOI18N.
