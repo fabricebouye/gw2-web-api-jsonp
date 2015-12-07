@@ -16,10 +16,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author FabriceB
+ * Unit test.
+ * @author Fabrice Bouyé
  */
-public class JsonpMaterialTest {
+public final class JsonpMaterialTest {
 
     public JsonpMaterialTest() {
     }
