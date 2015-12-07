@@ -376,6 +376,7 @@ public enum JsonpContext {
         boolean isLevel = field.getAnnotation(LevelValue.class) != null;
         boolean isCurrency = field.getAnnotation(CoinValue.class) != null;
 //        boolean isDistance = field.getAnnotation(DistanceValue.class) != null;
+        boolean isLocalizedResource = field.getAnnotation(LocalizedResource.class) != null;
         boolean isQuantity = field.getAnnotation(QuantityValue.class) != null;
         boolean isDate = field.getAnnotation(DateValue.class) != null;
         boolean isDuration = field.getAnnotation(DurationValue.class) != null;
@@ -397,6 +398,8 @@ public enum JsonpContext {
             result = Collections.unmodifiableSet(new HashSet((List) value));
         } else if (isMap) {
             result = Collections.unmodifiableMap((Map) value);
+        } else if (isLocalizedResource) {
+            result = (String)value;
         }
         // As we rely heavily on enums, we need to convert base types obtained from JSON into valid enum values.
         if (isEnum) {
@@ -476,6 +479,7 @@ public enum JsonpContext {
         boolean isLevel = field.getAnnotation(LevelValue.class) != null;
         boolean isCurrency = field.getAnnotation(CoinValue.class) != null;
 //        boolean isDistance = field.getAnnotation(DistanceValue.class) != null;
+        boolean isLocalizedResource = field.getAnnotation(LocalizedResource.class) != null;
         boolean isQuantity = field.getAnnotation(QuantityValue.class) != null;
         boolean isDate = field.getAnnotation(DateValue.class) != null;
         boolean isDuration = field.getAnnotation(DurationValue.class) != null;
@@ -496,8 +500,7 @@ public enum JsonpContext {
                 result = Optional.empty();
             }
         } else if (isLevel) {
-            result = 0;
-//            result = LevelAmount.MIN;
+            result = LevelValue.MIN_LEVEL;
         } else if (isCurrency) {
             result = CoinAmount.ZERO;
 //        } else if (isDistance) {
@@ -510,7 +513,7 @@ public enum JsonpContext {
         } else if (isDuration) {
             result = Duration.ZERO;
         } // Now use the class of the field.
-        else if (fieldType == String.class) {
+        else if (isLocalizedResource || fieldType == String.class) {
             result = ""; // NOI8N.
         } else if (fieldType == Integer.TYPE) {
             result = 0;
@@ -522,10 +525,12 @@ public enum JsonpContext {
             result = 0D;
         } else if (fieldType == Boolean.TYPE) {
             result = Boolean.FALSE;
-        } else if (fieldType == Set.class) {
+        } else if (isSet || fieldType == Set.class) {
             result = Collections.EMPTY_SET;
-        } else if (fieldType == List.class) {
+        } else if (isList || fieldType == List.class) {
             result = Collections.EMPTY_LIST;
+        } else if (isMap || fieldType == Map.class) {
+            result = Collections.EMPTY_MAP;
         }
         return result;
     }
