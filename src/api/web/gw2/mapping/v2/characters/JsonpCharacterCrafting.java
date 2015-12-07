@@ -20,7 +20,7 @@ public final class JsonpCharacterCrafting implements CharacterCrafting {
     @EnumValue(factory = "api.web.gw2.mapping.v2.recipes.RecipesUtils::findRecipeCraftingDiscipline") // NOI18N.
     private RecipeCraftingDiscipline discipline = RecipeCraftingDiscipline.UNKNOWN;
     @CraftingLevelValue
-    private int level = CraftingLevelValue.MIN_LEVEL;
+    private int rating = CraftingLevelValue.MIN_LEVEL;
     private boolean active = false;
 
     /**
@@ -35,8 +35,8 @@ public final class JsonpCharacterCrafting implements CharacterCrafting {
     }
 
     @Override
-    public int getLevel() {
-        return level;
+    public int getRating() {
+        return rating;
     }
 
     @Override
