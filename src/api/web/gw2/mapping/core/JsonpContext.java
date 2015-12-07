@@ -47,6 +47,11 @@ public enum JsonpContext {
     INSTANCE;
 
     /**
+     * The logger instance.
+     */
+    private final Logger logger = Logger.getLogger(JsonpContext.class.getName());
+
+    /**
      * Loads a page from given URL
      * @param <T> The type to use.
      * @param targetClass The target class.
@@ -59,7 +64,7 @@ public enum JsonpContext {
         Objects.requireNonNull(targetClass);
         Objects.requireNonNull(url);
         try (final InputStream input = url.openStream()) {
-            return JsonpContext.this.loadObject(targetClass, input);
+            return loadObject(targetClass, input);
         }
     }
 
@@ -182,7 +187,7 @@ public enum JsonpContext {
                             field = concreteClass.getDeclaredField(fieldName);
                         } catch (NoSuchFieldException nsfe) {
                             final String message = String.format("No matching field \"%s\" found for JSON key \"%s\" in class %s.", fieldName, key, targetClass.getName());
-                            Logger.getLogger(getClass().getName()).warning(message);
+                            logger.warning(message);
                         }
                     }
                     break;
@@ -246,7 +251,7 @@ public enum JsonpContext {
                 }
             }
         } catch (SecurityException | IllegalArgumentException | IllegalAccessException | ClassNotFoundException | NullPointerException | MalformedURLException | NoSuchMethodException | InvocationTargetException ex) {
-            Logger.getLogger(JsonpContext.class.getName()).log(Level.SEVERE, null, ex);
+            logger.log(Level.SEVERE, null, ex);
             final IOException exception = new IOException(ex);
             throw exception;
         }
@@ -324,7 +329,7 @@ public enum JsonpContext {
      * @return A {@code Number}, never {@code null}.
      */
     private Number jsonNumberToJavaNumber(final JsonParser parser) {
-        Logger.getGlobal().log(Level.FINEST, "{0} {1}", new Object[]{parser.isIntegralNumber(), parser.getString()}); // NOI18N.
+//        LOGGER.log(Level.FINEST, "{0} {1}", new Object[]{parser.isIntegralNumber(), parser.getString()}); // NOI18N.
 //        return (parser.isIntegralNumber()) ? parser.getInt() : parser.getBigDecimal().doubleValue();
 //        return (parser.isIntegralNumber()) ? (Integer)parser.getInt() : parser.getBigDecimal().doubleValue();
 // As of JDK 8_66, binary promotion returns a Double instead of an Integer if the test is true.
@@ -398,8 +403,6 @@ public enum JsonpContext {
             result = Collections.unmodifiableSet(new HashSet((List) value));
         } else if (isMap) {
             result = Collections.unmodifiableMap((Map) value);
-        } else if (isLocalizedResource) {
-            result = (String)value;
         }
         // As we rely heavily on enums, we need to convert base types obtained from JSON into valid enum values.
         if (isEnum) {
@@ -429,10 +432,10 @@ public enum JsonpContext {
                 result = Optional.ofNullable(result);
             }
         }
-        Logger.getGlobal().log(Level.INFO, "{0} declaring class: {1}", new Object[]{field.getName(), field.getDeclaringClass()});
-        Logger.getGlobal().log(Level.INFO, "{0} type: {1}", new Object[]{field.getName(), field.getType()});
-        Logger.getGlobal().log(Level.INFO, "{0} annotated type: {1}", new Object[]{field.getName(), field.getAnnotatedType()});
-        Logger.getGlobal().log(Level.INFO, "{0} value returned as: {1} ({2})", new Object[]{field.getName(), result, result.getClass()});
+//        LOGGER.log(Level.INFO, "{0} declaring class: {1}", new Object[]{field.getName(), field.getDeclaringClass()});
+//        LOGGER.log(Level.INFO, "{0} type: {1}", new Object[]{field.getName(), field.getType()});
+//        LOGGER.log(Level.INFO, "{0} annotated type: {1}", new Object[]{field.getName(), field.getAnnotatedType()});
+//        LOGGER.log(Level.INFO, "{0} value returned as: {1} ({2})", new Object[]{field.getName(), result, result.getClass()});
         return result;
     }
 
