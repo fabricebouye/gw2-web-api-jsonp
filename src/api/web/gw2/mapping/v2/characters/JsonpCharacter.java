@@ -7,6 +7,9 @@
  */
 package api.web.gw2.mapping.v2.characters;
 
+import api.web.gw2.mapping.core.DateValue;
+import api.web.gw2.mapping.core.EnumValue;
+import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LevelValue;
 import api.web.gw2.mapping.core.ListValue;
 import api.web.gw2.mapping.core.MapValue;
@@ -29,12 +32,18 @@ import java.util.Set;
 public final class JsonpCharacter implements Character {
 
     private String name = "";
+    @EnumValue(factory = "api.web.gw2.mapping.v2.characters.CharactersUtils::findCharacterRace") // NOI18N.
     private CharacterRace race = CharacterRace.UNKNOWN;
+    @EnumValue(factory = "api.web.gw2.mapping.v2.characters.CharactersUtils::findCharacterProfessions") // NOI18N.
     private CharacterProfession profession = CharacterProfession.UNKNOWN;
+    @EnumValue(factory = "api.web.gw2.mapping.v2.characters.CharactersUtils::findCharacterGender") // NOI18N.
     private CharacterGender gender = CharacterGender.UNKNOWN;
     @LevelValue
-    private int level = 0;
+    private int level = LevelValue.MIN_LEVEL;
+    @OptionalValue
+    @IdValue
     private Optional<String> guild = Optional.empty();
+    @DateValue
     private LocalDate created = LocalDate.MIN;
     @QuantityValue
     private long age = 0;

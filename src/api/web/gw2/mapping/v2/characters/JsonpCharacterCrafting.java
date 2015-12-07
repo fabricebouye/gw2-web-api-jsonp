@@ -7,6 +7,8 @@
  */
 package api.web.gw2.mapping.v2.characters;
 
+import api.web.gw2.mapping.core.CraftingLevelValue;
+import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
 
 /**
@@ -15,8 +17,10 @@ import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
  */
 public final class JsonpCharacterCrafting implements CharacterCrafting {
 
+    @EnumValue(factory = "api.web.gw2.mapping.v2.recipes.RecipesUtils::findRecipeCraftingDiscipline") // NOI18N.
     private RecipeCraftingDiscipline discipline = RecipeCraftingDiscipline.UNKNOWN;
-    private int level = 0;
+    @CraftingLevelValue
+    private int level = CraftingLevelValue.MIN_LEVEL;
     private boolean active = false;
 
     /**
