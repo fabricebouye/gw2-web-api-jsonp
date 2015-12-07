@@ -11,7 +11,7 @@ import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.QuantityValue;
 
 /**
- * Default JSON-P implementation of a material storage.
+ * Default JSON-P implementation of a account material storage.
  * @author Fabrice Bouyé
  */
 public final class JsonpMaterial implements Material {
