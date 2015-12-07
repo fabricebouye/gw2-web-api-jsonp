@@ -488,7 +488,13 @@ public enum JsonpContext {
         Object result = null;
         // Use the annotation of the field.
         if (isOptional) {
-            result = Optional.empty();
+            if (isId || isQuantity || isLevel || isCurrency) {
+                result = OptionalInt.empty();
+            } else if (isPercent) {
+                result = OptionalDouble.empty();
+            } else {
+                result = Optional.empty();
+            }
         } else if (isLevel) {
             result = 0;
 //            result = LevelAmount.MIN;
