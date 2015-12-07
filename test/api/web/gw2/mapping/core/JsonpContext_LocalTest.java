@@ -13,8 +13,10 @@ import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
 import api.web.gw2.mapping.v2.achievements.Achievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievementLevelRange;
+import api.web.gw2.mapping.v2.characters.CharacterCrafting;
 import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
+import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -97,6 +99,18 @@ public class JsonpContext_LocalTest {
     }
 
     @Test
+    public void testLoadObject_CharacterCrafting_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(CharacterCrafting local)"); // NOI18N.
+        final URL url = getClass().getResource("/api/web/gw2/mapping/v2/characters/charactercrafting1.json"); // NOI18N.
+        final JsonpContext instance = JsonpContext.INSTANCE;
+        final CharacterCrafting value = instance.loadObject(CharacterCrafting.class, url);
+        assertNotNull(value);
+        assertEquals(RecipeCraftingDiscipline.ARTIFICER, value.getDiscipline());
+        assertEquals(500, value.getRating());
+        assertEquals(true, value.isActive());
+    }
+
+    @Test
     public void testLoadObject_MaterialStorage_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(MaterialStorage local)"); // NOI18N.
         final URL url = getClass().getResource("/api/web/gw2/mapping/v2/materials/materialstorage1.json"); // NOI18N.
@@ -107,8 +121,7 @@ public class JsonpContext_LocalTest {
         assertEquals("Festive Materials", value.getName()); // NOI18N.
         assertEquals(Collections.unmodifiableSet(new HashSet(Arrays.asList(36060, 36061, 36059, 36041, 38130, 38131, 38132, 38133, 38134, 38135, 43319, 47909, 48807, 48805, 48806))), value.getItems());
     }
-    
-    
+
     @Test
     public void testLoadObject_Achievement_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Achievement local)"); // NOI18N.
