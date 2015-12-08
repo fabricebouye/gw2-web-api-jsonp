@@ -8,6 +8,7 @@
 package api.web.gw2.mapping.v2.colors;
 
 import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.LocalizedResource;
 
 /**
  * Default JSON-P implementation of a dye.
@@ -16,6 +17,7 @@ import api.web.gw2.mapping.core.IdValue;
 public final class JsonpColorDye implements ColorDye {
     @IdValue
     private int id = -1;
+    @LocalizedResource
     private String name = "";
     private ColorRGB baseRGB = ColorRGB.EMPTY;
     private ColorMaterial cloth = ColorMaterial.EMPTY;

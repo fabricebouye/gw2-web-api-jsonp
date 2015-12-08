@@ -8,6 +8,7 @@
 package api.web.gw2.mapping.v2.worlds;
 
 import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.LocalizedResource;
 
 /**
  * Default JSON-P implementation of a world.
@@ -17,6 +18,7 @@ public final class JsonpWorld implements World {
 
     @IdValue
     private int id = -1;
+    @LocalizedResource
     private String name = "";
 
     /**
