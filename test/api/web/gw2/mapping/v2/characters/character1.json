@@ -1,11 +1,23 @@
 {
-  "name": "MyCharacter",
-  "race": "Human",
-  "gender": "Male",
-  "profession": "Warrior",
-  "level": 80,
-  "guild": "3689E89F-7CB5-F611-9621-AC162CAE8ACA",
-  "created": "2012-08-27",
-  "age": 100,
-  "deaths": 3
+    "name": "My Character",
+    "race": "Human",
+    "gender": "Male",
+    "profession": "Warrior",
+    "level": 80,
+    "guild": "3689E89F-7CB5-F611-9621-AC162CAE8ACA",
+    "created": "2015-06-05T19:45:00Z",
+    "age": 91,
+    "deaths": 0,
+    "crafting": [
+        {
+            "discipline": "Artificer",
+            "rating": 500,
+            "active": true
+        },
+        {
+            "discipline": "Huntsman",
+            "rating": 500,
+            "active": true
+        }
+    ]
 }
