@@ -15,7 +15,7 @@ import api.web.gw2.mapping.core.IdValue;
  */
 public final class JsonpGuildDetails implements GuildDetails {
 
-    @IdValue
+    @IdValue(flavor = IdValue.Flavor.STRING)
     private String guildId = "";
     private String guildName = "";
     private String tag = "";

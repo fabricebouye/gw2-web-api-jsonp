@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.v2.quaggans;
 
+import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.URLValue;
 import java.net.URL;
@@ -18,6 +19,7 @@ import java.util.Optional;
  */
 public final class JsonpQuaggan implements Quaggan {
 
+    @IdValue(flavor = IdValue.Flavor.STRING)
     private String id = "";
     @OptionalValue
     @URLValue

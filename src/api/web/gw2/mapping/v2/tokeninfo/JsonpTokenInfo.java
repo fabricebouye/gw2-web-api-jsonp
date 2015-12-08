@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.v2.tokeninfo;
 
+import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.SetValue;
 import java.util.Collections;
@@ -18,10 +19,11 @@ import java.util.Set;
  */
 public final class JsonpTokenInfo implements TokenInfo {
 
-    @IdValue
+    @IdValue(flavor = IdValue.Flavor.STRING)
     private String id = "";
     private String name = "";
     @SetValue
+    @EnumValue(factory = "api.web.gw2.mapping.v2.tokeninfo.TokenInfoUtils::findTokenInfoPermission")
     private Set<TokenInfoPermission> permissions = Collections.EMPTY_SET;
 
     /**
