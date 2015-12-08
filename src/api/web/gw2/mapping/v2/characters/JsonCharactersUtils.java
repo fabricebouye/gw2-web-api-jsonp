@@ -12,6 +12,7 @@ import api.web.gw2.mapping.v2.V2JsonFactories;
 import api.web.gw2.mapping.v2.characters.equipment.Equipment;
 import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -46,11 +47,11 @@ public enum JsonCharactersUtils {
         final DefaultCharacter result = new DefaultCharacter();
         result.name = jsonObject.getString("name"); // NOI18N.
         result.race = CharactersUtils.findCharacterRace(jsonObject.getString("race")); // NOI18N.)
-        result.profession = CharactersUtils.findCharacterProfession(jsonObject.getString("profession")); // NOI18N.)
+        result.profession = CharactersUtils.findCharacterProfession(jsonObject.getString("profession")); // NOI18N.
         result.gender = CharactersUtils.findCharacterGender(jsonObject.getString("gender")); // NOI18N.)
         result.level = jsonObject.getInt("level"); // NOI18N.        
         result.guild = Optional.ofNullable(JsonUtils.nullOrMissingString(jsonObject, "guild")); // NOI18N.
-        result.created = LocalDate.parse(jsonObject.getString("created")); // NOI18N.)
+        result.created = ZonedDateTime.parse(jsonObject.getString("created")); // NOI18N.
         result.age = jsonObject.getJsonNumber("age").longValue(); // NOI18N.
         result.deaths = jsonObject.getInt("deaths"); // NOI18N.
         final Optional<Function<JsonObject, Equipment>> equipmentConverter = V2JsonFactories.INSTANCE.findFactory(Equipment.class);

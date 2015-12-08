@@ -20,6 +20,7 @@ import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
 import api.web.gw2.mapping.v2.characters.equipment.Equipment;
 import api.web.gw2.mapping.v2.specializations.Specialization;
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -34,17 +35,17 @@ public final class JsonpCharacter implements Character {
     private String name = "";
     @EnumValue(factory = "api.web.gw2.mapping.v2.characters.CharactersUtils::findCharacterRace") // NOI18N.
     private CharacterRace race = CharacterRace.UNKNOWN;
-    @EnumValue(factory = "api.web.gw2.mapping.v2.characters.CharactersUtils::findCharacterProfessions") // NOI18N.
+    @EnumValue(factory = "api.web.gw2.mapping.v2.characters.CharactersUtils::findCharacterProfession") // NOI18N.
     private CharacterProfession profession = CharacterProfession.UNKNOWN;
     @EnumValue(factory = "api.web.gw2.mapping.v2.characters.CharactersUtils::findCharacterGender") // NOI18N.
     private CharacterGender gender = CharacterGender.UNKNOWN;
     @LevelValue
     private int level = LevelValue.MIN_LEVEL;
     @OptionalValue
-    @IdValue
+    @IdValue(flavor = IdValue.Flavor.STRING)
     private Optional<String> guild = Optional.empty();
     @DateValue
-    private LocalDate created = LocalDate.MIN;
+    private ZonedDateTime created = DateValue.DEFAULT;
     @QuantityValue
     private long age = 0;
     @QuantityValue
@@ -99,7 +100,7 @@ public final class JsonpCharacter implements Character {
     }
 
     @Override
-    public LocalDate getCreated() {
+    public ZonedDateTime getCreated() {
         return created;
     }
 

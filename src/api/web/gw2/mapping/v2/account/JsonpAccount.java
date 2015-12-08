@@ -20,16 +20,16 @@ import java.util.Set;
  */
 public final class JsonpAccount implements Account {
 
-    @IdValue
+    @IdValue(flavor = IdValue.Flavor.STRING)
     private String id = "";
     private String name = "";
     @IdValue
     private int world = -1;
     @SetValue
-    @IdValue
+    @IdValue(flavor = IdValue.Flavor.STRING)
     private Set<String> guilds = Collections.EMPTY_SET;
     @DateValue
-    private ZonedDateTime created = ZonedDateTime.parse("1970-01-01T00:00:00Z"); // NOI18N.
+    private ZonedDateTime created = DateValue.DEFAULT;
 
     /**
      * Creates an empty instance.

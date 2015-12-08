@@ -233,7 +233,16 @@ public enum JsonpContext {
                             break;
                             case START_ARRAY: {
                                 // @todo Find interface class.
-                                valueFromJSON = marshallArray(parser, null);
+                                System.out.println(field.getGenericType());
+                                // @todo Do better.
+                                // @todo Deal with maps.
+                                String typename = field.getGenericType().getTypeName();
+                                typename = typename.replaceAll("java\\.util\\.Optional<", "");
+                                typename = typename.replaceAll("java\\.util\\.Set<", "");
+                                typename = typename.replaceAll("java\\.util\\.List<", "");
+                                typename = typename.replaceAll(">+", "");
+                                final Class subTargetClass = Class.forName(typename);
+                                valueFromJSON = marshallArray(parser, subTargetClass);
                             }
                             break;
                         }
@@ -424,10 +433,13 @@ public enum JsonpContext {
         }
         // Wrap the result into an Optional instance.
         if (isOptional) {
-            if (isId || isQuantity || isLevel || isCurrency) {
+            if (isQuantity || isLevel || isCurrency) {
                 result = OptionalInt.of((Integer) result);
             } else if (isPercent) {
                 result = OptionalDouble.of((Double) result);
+            } else if (isId) {
+                final boolean isIntegerId = field.getAnnotation(IdValue.class).flavor() == IdValue.Flavor.INTEGER;
+                result = isIntegerId ? OptionalInt.of((Integer) result) : Optional.ofNullable(result);
             } else {
                 result = Optional.ofNullable(result);
             }
@@ -495,10 +507,13 @@ public enum JsonpContext {
         Object result = null;
         // Use the annotation of the field.
         if (isOptional) {
-            if (isId || isQuantity || isLevel || isCurrency) {
+            if (isQuantity || isLevel || isCurrency) {
                 result = OptionalInt.empty();
             } else if (isPercent) {
                 result = OptionalDouble.empty();
+            } else if (isId) {
+                final boolean isIntegerId = field.getAnnotation(IdValue.class).flavor() == IdValue.Flavor.INTEGER;
+                result = isIntegerId ? OptionalInt.empty() : Optional.empty();
             } else {
                 result = Optional.empty();
             }
@@ -512,7 +527,7 @@ public enum JsonpContext {
             result = 0;
 //            result = DistanceAmount.ZERO;
         } else if (isDate) {
-            result = ZonedDateTime.parse("1970-01-01T00:00:00Z"); // NOI18N.
+            result = DateValue.DEFAULT;
         } else if (isDuration) {
             result = Duration.ZERO;
         } // Now use the class of the field.

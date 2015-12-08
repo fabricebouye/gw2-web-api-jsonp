@@ -13,6 +13,7 @@ import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
 import api.web.gw2.mapping.v2.achievements.Achievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievementLevelRange;
+import api.web.gw2.mapping.v2.characters.Character;
 import api.web.gw2.mapping.v2.characters.CharacterCrafting;
 import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
@@ -96,6 +97,15 @@ public class JsonpContext_LocalTest {
         assertEquals(Optional.of(new URL("https://render.guildwars2.com/file/795ED1B945A29EC3E3066797DF57FFB25ABAA631/340551.png")), value.getIcon()); // NOI18N.
         assertEquals(1, value.getOrder());
         assertEquals(21047, value.getItemId());
+    }
+
+    @Test
+    public void testLoadObject_Character_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Character local)"); // NOI18N.
+        final URL url = getClass().getResource("/api/web/gw2/mapping/v2/characters/character1.json"); // NOI18N.
+        final JsonpContext instance = JsonpContext.INSTANCE;
+        final Character value = instance.loadObject(Character.class, url);
+        assertNotNull(value);
     }
 
     @Test
