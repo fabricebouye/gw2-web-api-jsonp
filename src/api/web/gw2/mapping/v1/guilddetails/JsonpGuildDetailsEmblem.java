@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.v1.guilddetails;
 
+import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.SetValue;
 import java.util.Collections;
@@ -23,6 +24,7 @@ public final class JsonpGuildDetailsEmblem implements GuildDetailsEmblem {
     @IdValue
     private int foregroundId = -1;
     @SetValue
+    @EnumValue(factory = "api.web.gw2.mapping.v1.guilddetails.GuildDetailsUtils::findGuildDetailsEmblemFlag") // NOI18N.
     private Set<GuildDetailsEmblemFlag> flags = Collections.EMPTY_SET;
     @IdValue
     private int backgroundColorId = -1;
