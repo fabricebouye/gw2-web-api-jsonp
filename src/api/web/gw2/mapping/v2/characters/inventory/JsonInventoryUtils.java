@@ -62,7 +62,7 @@ public enum JsonInventoryUtils {
     public Inventory jsonObjectToInventory(final JsonObject jsonObject) {
         final DefaultInventory result = new DefaultInventory();
         result.id = jsonObject.getInt("id"); // NOI18N.
-        result.count = (short) jsonObject.getInt("count"); // NOI18N.
+        result.count = jsonObject.getInt("count"); // NOI18N.
         return result;
     }
 }

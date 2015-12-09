@@ -11,7 +11,7 @@ package api.web.gw2.mapping.v2.colors;
  */
 public final class JsonpColorRGB implements ColorRGB {
 
-    private final short[] rgb = new short[3];
+    private final int[] rgb = new int[3];
 
     /**
      * Creates a new empty instance.

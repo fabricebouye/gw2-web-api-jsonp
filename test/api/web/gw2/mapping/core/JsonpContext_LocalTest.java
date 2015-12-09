@@ -16,6 +16,7 @@ import api.web.gw2.mapping.v2.achievements.daily.DailyAchievementLevelRange;
 import api.web.gw2.mapping.v2.characters.Character;
 import api.web.gw2.mapping.v2.characters.CharacterCrafting;
 import api.web.gw2.mapping.v2.characters.equipment.Equipment;
+import api.web.gw2.mapping.v2.characters.inventory.Inventory;
 import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
 import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
@@ -28,8 +29,6 @@ import java.util.Iterator;
 import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.IntStream;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -131,7 +130,8 @@ public class JsonpContext_LocalTest {
             "equipment1.json",
             "equipment2.json",
             "equipment3.json",
-            "equipment4.json"};
+            "equipment4.json"
+        };
         IntStream.range(0, filenames.length)
                 .forEach(index -> {
                     try {
@@ -139,6 +139,28 @@ public class JsonpContext_LocalTest {
                         final URL url = getClass().getResource(basecode + filename); // NOI18N.
                         final JsonpContext instance = JsonpContext.INSTANCE;
                         final Equipment value = instance.loadObject(Equipment.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_Inventory_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Inventory local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/characters/inventory/";
+        final String[] filenames = {
+            "inventory1.json",
+            "inventory2.json"
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    try {
+                        final String filename = filenames[index];
+                        final URL url = getClass().getResource(basecode + filename); // NOI18N.
+                        final JsonpContext instance = JsonpContext.INSTANCE;
+                        final Inventory value = instance.loadObject(Inventory.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());

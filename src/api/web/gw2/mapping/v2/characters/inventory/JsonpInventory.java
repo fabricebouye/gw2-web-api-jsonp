@@ -19,7 +19,7 @@ public final class JsonpInventory implements Inventory {
     @IdValue
     private int id = -1;
     @QuantityValue
-    private short count = 0;
+    private int count = 0;
 
     /**
      * Creates a new empty instance.
@@ -33,7 +33,7 @@ public final class JsonpInventory implements Inventory {
     }
 
     @Override
-    public short getCount() {
+    public int getCount() {
         return count;
     }
 }
