@@ -433,7 +433,9 @@ public enum JsonpContext {
         }
         // Wrap the result into an Optional instance.
         if (isOptional) {
-            if (isQuantity || isLevel || isCurrency) {
+            if (isList || isSet || isMap) {
+                result = Optional.ofNullable(result);
+            } else if (isQuantity || isLevel || isCurrency) {
                 result = OptionalInt.of((Integer) result);
             } else if (isPercent) {
                 result = OptionalDouble.of((Double) result);
@@ -507,7 +509,9 @@ public enum JsonpContext {
         Object result = null;
         // Use the annotation of the field.
         if (isOptional) {
-            if (isQuantity || isLevel || isCurrency) {
+            if (isList || isSet || isMap) {
+                result = Optional.empty();
+            } else if (isQuantity || isLevel || isCurrency) {
                 result = OptionalInt.empty();
             } else if (isPercent) {
                 result = OptionalDouble.empty();
