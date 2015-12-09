@@ -233,14 +233,13 @@ public enum JsonpContext {
                             break;
                             case START_ARRAY: {
                                 // @todo Find interface class.
-                                System.out.println(field.getGenericType());
                                 // @todo Do better.
                                 // @todo Deal with maps.
                                 String typename = field.getGenericType().getTypeName();
-                                typename = typename.replaceAll("java\\.util\\.Optional<", "");
-                                typename = typename.replaceAll("java\\.util\\.Set<", "");
-                                typename = typename.replaceAll("java\\.util\\.List<", "");
-                                typename = typename.replaceAll(">+", "");
+                                typename = typename.replaceAll("java\\.util\\.Optional<", ""); // NOI18N.
+                                typename = typename.replaceAll("java\\.util\\.Set<", ""); // NOI18N.
+                                typename = typename.replaceAll("java\\.util\\.List<", ""); // NOI18N.
+                                typename = typename.replaceAll(">+", ""); // NOI18N.
                                 final Class subTargetClass = Class.forName(typename);
                                 valueFromJSON = marshallArray(parser, subTargetClass);
                             }
@@ -463,20 +462,33 @@ public enum JsonpContext {
      * @throws IllegalAccessException The factory method cannot be accessed.
      * @throws IllegalArgumentException The argument provided to the factory method is invalid.
      * @throws InvocationTargetException If the factory method threw an exception.
+     * @throws NullPointerException If {@code field} or {@code value} is {@code null}.
      */
     private Object marshallEnumValue(final Field field, final Object value) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        Objects.requireNonNull(field);
+        Objects.requireNonNull(value);
         final EnumValue annotation = (EnumValue) field.getAnnotation(EnumValue.class);
         final String factory = annotation.factory();
+        // For simple field this should be the enum type.
+        // The class obtained here is not good when the field holds an optional or a collection.
         Class factoryClass = field.getType();
         String factoryMethodName = "valueOf"; // NOI18N.
+        // We use the provided factory method instead of the enum type's valueOf method.
         if (factory != null && !factory.trim().isEmpty()) {
             final int index = factory.indexOf(EnumValue.METHOD_SEPARATOR);
             final String factoryClassName = factory.substring(0, index);
             factoryClass = Class.forName(factoryClassName);
             factoryMethodName = factory.substring(index + EnumValue.METHOD_SEPARATOR.length(), factory.length());
         }
+        // Will not work if value is not of the proper type (usually String).
         final Method factoryMethod = factoryClass.getMethod(factoryMethodName, value.getClass());
         final Object result = factoryMethod.invoke(null, value);
+        Objects.requireNonNull(result);
+        // Issue a warning if the value returned is the unkown value.
+        if ("UNKOWN".equals(((Enum) result).name())) { // NOI18N.
+            logger.log(Level.WARNING, "Field \"{0}\": unable to marshall enum value \"{1}\", defaulting to value \"{2}\" instead.", new Object[]{field.getName(), value, result}); // NOI18N.
+        }
+        logger.log(Level.FINEST, "Field \"{0}\": marshalled enum value \"{1}\" into value \"{2}\".", new Object[]{field.getName(), value, result}); // NOI18N.
         return result;
     }
 
