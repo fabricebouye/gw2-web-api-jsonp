@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -181,7 +182,7 @@ public enum JsonpContext {
                 final JsonParser.Event event = parser.next();
                 switch (event) {
                     case KEY_NAME: {
-                        String key = parser.getString();
+                        final String key = parser.getString();
                         final String fieldName = jsonKeyToJavaFieldName(key);
                         try {
                             field = concreteClass.getDeclaredField(fieldName);
@@ -223,25 +224,50 @@ public enum JsonpContext {
                                 valueFromJSON = defaultValueForField(field);
                             }
                             break;
-                            case START_OBJECT: {
+                            case START_OBJECT:
+                            case START_ARRAY: {
+//                                final Type fieldType = field.getType();
+//                                Class aClass = Class.forName(fieldType.getTypeName());
                                 // @todo Find interface class.
                                 // @todo Check this.
-                                final Type fieldType = field.getType();
-                                Class aClass = Class.forName(fieldType.getTypeName());
-                                valueFromJSON = marshallObject(parser, aClass);
-                            }
-                            break;
-                            case START_ARRAY: {
-                                // @todo Find interface class.
-                                // @todo Do better.
-                                // @todo Deal with maps.
                                 String typename = field.getGenericType().getTypeName();
-                                typename = typename.replaceAll("java\\.util\\.Optional<", ""); // NOI18N.
-                                typename = typename.replaceAll("java\\.util\\.Set<", ""); // NOI18N.
-                                typename = typename.replaceAll("java\\.util\\.List<", ""); // NOI18N.
+                                final boolean isOptional = field.getAnnotation(OptionalValue.class) != null;
+                                final boolean isSet = field.getAnnotation(SetValue.class) != null;
+                                final boolean isList = field.getAnnotation(ListValue.class) != null;
+                                final boolean isMap = field.getAnnotation(MapValue.class) != null;
+                                if (isOptional) {
+                                    typename = typename.replaceAll("java\\.util\\.Optional<", ""); // NOI18N.
+                                }
+                                if (isSet) {
+                                    typename = typename.replaceAll("java\\.util\\.Set<", ""); // NOI18N.
+                                }
+                                if (isList) {
+                                    typename = typename.replaceAll("java\\.util\\.List<", ""); // NOI18N.
+                                }
+                                if (isMap) {
+                                    typename = typename.replaceAll("java\\.util\\.Map<", ""); // NOI18N.
+                                }
+                                // Remove trailing >.
                                 typename = typename.replaceAll(">+", ""); // NOI18N.
-                                final Class subTargetClass = Class.forName(typename);
-                                valueFromJSON = marshallArray(parser, subTargetClass);
+                                String[] subTargetClassNames = typename.split(",\\s*");
+                                final Class[] subTargetClasses = new Class[subTargetClassNames.length];
+                                for (int index = 0; index < subTargetClassNames.length; index++) {
+                                    subTargetClasses[index] = Class.forName(subTargetClassNames[index]);
+                                }
+                                switch (event) {
+                                    case START_ARRAY: {
+                                        valueFromJSON = marshallArray(parser, subTargetClasses[0]);
+                                    }
+                                    break;
+                                    case START_OBJECT:
+                                    default: {
+                                        if (isMap) {
+                                            valueFromJSON = marshallMap(parser, field, subTargetClasses[0], subTargetClasses[1]);
+                                        } else {
+                                            valueFromJSON = marshallObject(parser, subTargetClasses[0]);
+                                        }
+                                    }
+                                }
                             }
                             break;
                         }
@@ -264,6 +290,55 @@ public enum JsonpContext {
             throw exception;
         }
         return result;
+    }
+
+    private <T, V> Map<T, V> marshallMap(final JsonParser parser, final Field field, final Class<T> keyClass, final Class<V> valueClass) throws IOException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        final Map result = new HashMap();
+        Object keyFromJSON = null;
+        while (parser.hasNext()) {
+            final JsonParser.Event event = parser.next();
+            Object valueFromJSON = null;
+            switch (event) {
+                case KEY_NAME: {
+                    final String key = parser.getString();
+                    keyFromJSON = marshallEnumValue(field, key);
+                }
+                continue;
+                case START_ARRAY: {
+                    valueFromJSON = marshallArray(parser, valueClass);
+                }
+                break;
+                case VALUE_STRING: {
+                    valueFromJSON = parser.getString();
+                }
+                break;
+                case VALUE_NUMBER: {
+                    valueFromJSON = jsonNumberToJavaNumber(parser);
+                }
+                break;
+                case VALUE_TRUE: {
+                    valueFromJSON = Boolean.TRUE;
+                }
+                break;
+                case VALUE_FALSE: {
+                    valueFromJSON = Boolean.FALSE;
+                }
+                break;
+                case VALUE_NULL: {
+                    valueFromJSON = null;
+                }
+                break;
+                case START_OBJECT: {
+                    valueFromJSON = marshallObject(parser, valueClass);
+                }
+                break;
+                case END_OBJECT: {
+                    return result;
+                }
+            }
+            result.put(keyFromJSON, valueFromJSON);
+        }
+        return null;
     }
 
     private <T> List<T> marshallArray(final JsonParser parser, final Class<T> targetClass) throws IOException {
@@ -467,8 +542,15 @@ public enum JsonpContext {
     private Object marshallEnumValue(final Field field, final Object value) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         Objects.requireNonNull(field);
         Objects.requireNonNull(value);
-        final EnumValue annotation = (EnumValue) field.getAnnotation(EnumValue.class);
-        final String factory = annotation.factory();
+        final EnumValue enumAnnotation = (EnumValue) field.getAnnotation(EnumValue.class);
+        final MapValue mapAnnotation = (MapValue) field.getAnnotation(MapValue.class);
+        String factory = null;
+        if (enumAnnotation != null) {
+            factory = enumAnnotation.factory();
+        } else if (mapAnnotation != null) {
+            factory = mapAnnotation.keyFactory();
+        }
+        Objects.requireNonNull(factory);
         // For simple field this should be the enum type.
         // The class obtained here is not good when the field holds an optional or a collection.
         Class factoryClass = field.getType();
