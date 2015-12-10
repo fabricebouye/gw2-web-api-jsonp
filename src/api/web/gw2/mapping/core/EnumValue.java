@@ -29,7 +29,7 @@ public @interface EnumValue {
 
     /**
      * The factory for this enum.
-     * <br>If no factory is defined, the static method {@code valueOf()} of the enum class will be called.
+     * <br>If no factory is defined, the static method {@code valueOf()} of the provided enum class will be called.
      * @return A {@code String}, never {@code null}.
      */
     String factory() default "";

@@ -16,10 +16,23 @@ import java.lang.annotation.Target;
 /**
  * The JSON value defines a {@code Map}.
  * <br>Some recent endpoint store informations as a {@code Map}.
+ * <br>In all instances so far, keys used in the map are instance of enum types.
  * @author Fabrice Bouyé
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD})
 public @interface MapValue {
+
+    /**
+     * Separates the method name from the class name, value is {@value}.
+     */
+    public static final String METHOD_SEPARATOR = "::"; // NOI18N.
+
+    /**
+     * The factory for this map's keys.
+     * <br>If no factory is defined, the static method {@code valueOf()} of the provided enum class will be called.
+     * @return A {@code String}, never {@code null}.
+     */
+    String keyFactory() default "";
 }
