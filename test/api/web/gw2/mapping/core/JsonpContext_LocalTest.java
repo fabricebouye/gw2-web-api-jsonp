@@ -23,6 +23,8 @@ import api.web.gw2.mapping.v2.minis.Mini;
 import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
 import api.web.gw2.mapping.v2.specializations.Specialization;
 import api.web.gw2.mapping.v2.traits.Trait;
+import api.web.gw2.mapping.v2.worlds.World;
+import api.web.gw2.mapping.v2.worlds.WorldPopulation;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -63,6 +65,18 @@ public class JsonpContext_LocalTest {
 
     @After
     public void tearDown() {
+    }
+
+    @Test
+    public void testLoadObject_World_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(World local)"); // NOI18N.
+        final URL url = getClass().getResource("/api/web/gw2/mapping/v2/worlds/world1.json"); // NOI18N.
+        final JsonpContext instance = JsonpContext.INSTANCE;
+        final World value = instance.loadObject(World.class, url);
+        assertNotNull(value);
+        assertEquals(1001, value.getId());
+        assertEquals("Anvil Rock", value.getName()); // NOI18N.
+        assertEquals(WorldPopulation.MEDIUM, value.getPopulation());
     }
 
     @Test
@@ -125,8 +139,8 @@ public class JsonpContext_LocalTest {
         final Trait value = instance.loadObject(Trait.class, url);
         assertNotNull(value);
         assertEquals(214, value.getId());
-    }    
-    
+    }
+
     @Test
     public void testLoadObject_Character_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Character local)"); // NOI18N.

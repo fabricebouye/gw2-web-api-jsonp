@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.v2.worlds;
 
+import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 
@@ -19,7 +20,9 @@ public final class JsonpWorld implements World {
     @IdValue
     private int id = -1;
     @LocalizedResource
-    private String name = "";
+    private String name = ""; // NOI18N.
+    @EnumValue(factory="api.web.gw2.mapping.v2.worlds.WorldsUtils::findWorldPopulation") // NOI18N.
+    private WorldPopulation population = WorldPopulation.UNKNOWN;
 
     /**
      * Creates a new empty instance.
@@ -35,5 +38,10 @@ public final class JsonpWorld implements World {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public WorldPopulation getPopulation() {
+        return population;
     }
 }
