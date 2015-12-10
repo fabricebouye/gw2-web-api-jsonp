@@ -104,10 +104,23 @@ public class JsonpContext_LocalTest {
     @Test
     public void testLoadObject_Character_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Character local)"); // NOI18N.
-        final URL url = getClass().getResource("/api/web/gw2/mapping/v2/characters/character1.json"); // NOI18N.
-        final JsonpContext instance = JsonpContext.INSTANCE;
-        final Character value = instance.loadObject(Character.class, url);
-        assertNotNull(value);
+        final String basecode = "/api/web/gw2/mapping/v2/characters/"; // NOI18N.
+        final String[] filenames = {
+            "character1.json", // NOI18N.
+            "character2.json" // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    try {
+                        final String filename = filenames[index];
+                        final URL url = getClass().getResource(basecode + filename); // NOI18N.
+                        final JsonpContext instance = JsonpContext.INSTANCE;
+                        final Character value = instance.loadObject(Character.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
     }
 
     @Test
@@ -125,12 +138,12 @@ public class JsonpContext_LocalTest {
     @Test
     public void testLoadObject_Equipment_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Equipment local)"); // NOI18N.
-        final String basecode = "/api/web/gw2/mapping/v2/characters/equipment/";
+        final String basecode = "/api/web/gw2/mapping/v2/characters/equipment/"; // NOI18N.
         final String[] filenames = {
-            "equipment1.json",
-            "equipment2.json",
-            "equipment3.json",
-            "equipment4.json"
+            "equipment1.json", // NOI18N.
+            "equipment2.json", // NOI18N.
+            "equipment3.json", // NOI18N.
+            "equipment4.json" // NOI18N.
         };
         IntStream.range(0, filenames.length)
                 .forEach(index -> {
@@ -149,10 +162,10 @@ public class JsonpContext_LocalTest {
     @Test
     public void testLoadObject_InventoryBag_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(InventoryBag local)"); // NOI18N.
-        final String basecode = "/api/web/gw2/mapping/v2/characters/inventory/";
+        final String basecode = "/api/web/gw2/mapping/v2/characters/inventory/"; // NOI18N.
         final String[] filenames = {
-            "inventorybag1.json",
-            "inventorybag2.json"
+            "inventorybag1.json", // NOI18N.
+            "inventorybag2.json" // NOI18N.
         };
         IntStream.range(0, filenames.length)
                 .forEach(index -> {
@@ -339,7 +352,7 @@ public class JsonpContext_LocalTest {
         final URL url = getClass().getResource(baseCode + file); // NOI18N.
         final JsonpContext instance = JsonpContext.INSTANCE;
         final PageResult<BankSlot> value = instance.loadPage(BankSlot.class, url);
-        value.stream().forEach(System.out::println);
+//        value.stream().forEach(System.out::println);
         assertNotNull(value);
         final int expPageSize = expIsNulls.length;
         assertEquals(expPageSize, value.getResultCount());
