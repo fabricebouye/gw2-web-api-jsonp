@@ -15,11 +15,13 @@ import api.web.gw2.mapping.v2.achievements.daily.DailyAchievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievementLevelRange;
 import api.web.gw2.mapping.v2.characters.Character;
 import api.web.gw2.mapping.v2.characters.CharacterCrafting;
+import api.web.gw2.mapping.v2.characters.CharacterProfession;
 import api.web.gw2.mapping.v2.characters.equipment.Equipment;
 import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
 import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
 import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
+import api.web.gw2.mapping.v2.specializations.Specialization;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -101,6 +103,20 @@ public class JsonpContext_LocalTest {
         assertEquals(21047, value.getItemId());
     }
 
+    @Test
+    public void testLoadObject_Specialization_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Specialization local)"); // NOI18N.
+        final URL url = getClass().getResource("/api/web/gw2/mapping/v2/specializations/specialization1.json"); // NOI18N.
+        final JsonpContext instance = JsonpContext.INSTANCE;
+        final Specialization value = instance.loadObject(Specialization.class, url);
+        assertNotNull(value);
+        assertEquals(1, value.getId());
+        assertEquals("Dueling", value.getName()); // NOI18N.
+        assertEquals(CharacterProfession.MESMER, value.getProfession());
+        assertEquals(false, value.isElite());
+    }
+
+    
     @Test
     public void testLoadObject_Character_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Character local)"); // NOI18N.
