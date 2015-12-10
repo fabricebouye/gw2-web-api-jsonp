@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.core;
 
+import api.web.gw2.mapping.v2.traits.TraitFact;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -127,7 +128,7 @@ public enum JsonpContext {
                 switch (event) {
                     // Start array marshalling.
                     case START_ARRAY: {
-                        final Collection<T> result = marshallArray(parser, targetClass);
+                        final Collection<T> result = marshallArray(parser, null, targetClass);
                         return result;
                     }
                     // Ignoge all other events.
@@ -147,7 +148,7 @@ public enum JsonpContext {
                 switch (event) {
                     // Start object marshalling.
                     case START_OBJECT: {
-                        final T result = marshallObject(parser, targetClass);
+                        final T result = marshallObject(parser, null, targetClass);
                         return result;
                     }
                     // Ignoge all other events.
@@ -167,7 +168,20 @@ public enum JsonpContext {
      * @return A {@code T} instance, may be {@code null}.
      * @throws IOException In case of IO errors.
      */
-    private <T> T marshallObject(final JsonParser parser, final Class<T> targetClass) throws IOException {
+    private <T> T marshallObject(final JsonParser parser, final Field field, final Class<T> targetClass) throws IOException {
+        final boolean isRuntimeType = (field != null) && (field.getAnnotation(RuntimeType.class) != null);
+        // For some special objects (ie: v2/traits, v2/items), the real type depends of the response content.
+        if (isRuntimeType) {
+            try {
+                final T result = marshallRuntimeObject(parser, field, targetClass);
+                return result;
+            } catch (ClassNotFoundException ex) {
+                logger.log(Level.SEVERE, null, ex);
+                final IOException exception = new IOException(ex);
+                throw exception;
+            }
+        }
+        // Regular objects, use simple injection.
         // Initialize concrete empty instance.
         final T result = createConcreteEmptyInstance(targetClass);
         if (result == null) {
@@ -175,9 +189,9 @@ public enum JsonpContext {
             return null;
         }
         // Get concrete class for concrete instance.
-        final Class concreteClass = result.getClass();
+        final Class<T> concreteClass = (Class<T>) result.getClass();
         try {
-            Field field = null;
+            Field chidField = null;
             while (parser.hasNext()) {
                 final JsonParser.Event event = parser.next();
                 switch (event) {
@@ -185,7 +199,7 @@ public enum JsonpContext {
                         final String key = parser.getString();
                         final String fieldName = jsonKeyToJavaFieldName(key);
                         try {
-                            field = concreteClass.getDeclaredField(fieldName);
+                            chidField = concreteClass.getDeclaredField(fieldName);
                         } catch (NoSuchFieldException nsfe) {
                             final String message = String.format("No matching field \"%s\" found for JSON key \"%s\" in class %s.", fieldName, key, targetClass.getName());
                             logger.warning(message);
@@ -199,7 +213,7 @@ public enum JsonpContext {
                     case VALUE_NULL:
                     case START_OBJECT:
                     case START_ARRAY: {
-                        if (field == null) {
+                        if (chidField == null) {
                             continue;
                         }
                         Object valueFromJSON = null;
@@ -221,7 +235,7 @@ public enum JsonpContext {
                             }
                             break;
                             case VALUE_NULL: {
-                                valueFromJSON = defaultValueForField(field);
+                                valueFromJSON = defaultValueForField(chidField);
                             }
                             break;
                             case START_OBJECT:
@@ -230,11 +244,11 @@ public enum JsonpContext {
 //                                Class aClass = Class.forName(fieldType.getTypeName());
                                 // @todo Find interface class.
                                 // @todo Check this.
-                                String typename = field.getGenericType().getTypeName();
-                                final boolean isOptional = field.getAnnotation(OptionalValue.class) != null;
-                                final boolean isSet = field.getAnnotation(SetValue.class) != null;
-                                final boolean isList = field.getAnnotation(ListValue.class) != null;
-                                final boolean isMap = field.getAnnotation(MapValue.class) != null;
+                                String typename = chidField.getGenericType().getTypeName();
+                                final boolean isOptional = chidField.getAnnotation(OptionalValue.class) != null;
+                                final boolean isSet = chidField.getAnnotation(SetValue.class) != null;
+                                final boolean isList = chidField.getAnnotation(ListValue.class) != null;
+                                final boolean isMap = chidField.getAnnotation(MapValue.class) != null;
                                 if (isOptional) {
                                     typename = typename.replaceAll("java\\.util\\.Optional<", ""); // NOI18N.
                                 }
@@ -249,34 +263,34 @@ public enum JsonpContext {
                                 }
                                 // Remove trailing >.
                                 typename = typename.replaceAll(">+", ""); // NOI18N.
-                                String[] subTargetClassNames = typename.split(",\\s*");
+                                final String[] subTargetClassNames = typename.split(",\\s*");
                                 final Class[] subTargetClasses = new Class[subTargetClassNames.length];
                                 for (int index = 0; index < subTargetClassNames.length; index++) {
                                     subTargetClasses[index] = Class.forName(subTargetClassNames[index]);
                                 }
                                 switch (event) {
                                     case START_ARRAY: {
-                                        valueFromJSON = marshallArray(parser, subTargetClasses[0]);
+                                        valueFromJSON = marshallArray(parser, chidField, subTargetClasses[0]);
                                     }
                                     break;
                                     case START_OBJECT:
                                     default: {
                                         if (isMap) {
-                                            valueFromJSON = marshallMap(parser, field, subTargetClasses[0], subTargetClasses[1]);
+                                            valueFromJSON = marshallMap(parser, chidField, subTargetClasses[0], subTargetClasses[1]);
                                         } else {
-                                            valueFromJSON = marshallObject(parser, subTargetClasses[0]);
+                                            valueFromJSON = marshallObject(parser, chidField, subTargetClasses[0]);
                                         }
                                     }
                                 }
                             }
                             break;
                         }
-                        final Object value = valueForField(field, valueFromJSON);
-                        final boolean wasAcessible = field.isAccessible();
-                        field.setAccessible(true);
-                        field.set(result, value);
-                        field.setAccessible(wasAcessible);
-                        field = null;
+                        final Object value = valueForField(chidField, valueFromJSON);
+                        final boolean wasAcessible = chidField.isAccessible();
+                        chidField.setAccessible(true);
+                        chidField.set(result, value);
+                        chidField.setAccessible(wasAcessible);
+                        chidField = null;
                     }
                     break;
                     case END_OBJECT: {
@@ -292,6 +306,58 @@ public enum JsonpContext {
         return result;
     }
 
+    private <T> T marshallRuntimeObject(final JsonParser parser, final Field field, Class<T> targetClass) throws IOException, ClassNotFoundException {
+        Objects.requireNonNull(parser);
+        Objects.requireNonNull(field);
+        final RuntimeType runtimeTypeAnnotation = field.getAnnotation(RuntimeType.class);
+        final Map<String, Object> buffer = new HashMap<>();
+        String key = null;
+        while (parser.hasNext()) {
+            Object valueFromJSON = null;
+            final JsonParser.Event event = parser.next();
+            switch (event) {
+                case END_OBJECT: {
+                    final String selector = runtimeTypeAnnotation.selector();
+                    final String pattern = runtimeTypeAnnotation.pattern();
+                    final String type = (String) buffer.get(selector);
+                    final String shortClassName = String.format(pattern, type);
+                    final String fullClassName = targetClass.getPackage().getName() + "." + shortClassName;
+                    final Class<T> newTargetClass = (Class<T>) Class.forName(fullClassName);
+                    final T result = createConcreteEmptyInstance(newTargetClass);
+                    // Load object from buffer.
+                    return result;
+                }
+                case KEY_NAME: {
+                    key = parser.getString();
+                    buffer.put(key, null);
+                }
+                continue;
+                case VALUE_STRING: {
+                    valueFromJSON = parser.getString();
+                }
+                break;
+                case VALUE_NUMBER: {
+                    valueFromJSON = jsonNumberToJavaNumber(parser);
+                }
+                break;
+                case VALUE_TRUE: {
+                    valueFromJSON = Boolean.TRUE;
+                }
+                break;
+                case VALUE_FALSE: {
+                    valueFromJSON = Boolean.FALSE;
+                }
+                break;
+                case VALUE_NULL: {
+                    valueFromJSON = null;
+                }
+                break;
+            }
+            buffer.put(key, valueFromJSON);
+        }
+        return null;
+    }
+
     private <T, V> Map<T, V> marshallMap(final JsonParser parser, final Field field, final Class<T> keyClass, final Class<V> valueClass) throws IOException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         final Map result = new HashMap();
         Object keyFromJSON = null;
@@ -305,7 +371,7 @@ public enum JsonpContext {
                 }
                 continue;
                 case START_ARRAY: {
-                    valueFromJSON = marshallArray(parser, valueClass);
+                    valueFromJSON = marshallArray(parser, field, valueClass);
                 }
                 break;
                 case VALUE_STRING: {
@@ -329,7 +395,7 @@ public enum JsonpContext {
                 }
                 break;
                 case START_OBJECT: {
-                    valueFromJSON = marshallObject(parser, valueClass);
+                    valueFromJSON = marshallObject(parser, field, valueClass);
                 }
                 break;
                 case END_OBJECT: {
@@ -341,7 +407,7 @@ public enum JsonpContext {
         return null;
     }
 
-    private <T> List<T> marshallArray(final JsonParser parser, final Class<T> targetClass) throws IOException {
+    private <T> List<T> marshallArray(final JsonParser parser, final Field field, final Class<T> targetClass) throws IOException {
         // @todo We need to take care of those map values in most recent endpoints.
         final List result = new LinkedList();
         while (parser.hasNext()) {
@@ -350,7 +416,8 @@ public enum JsonpContext {
             switch (event) {
                 case START_ARRAY: {
                     // @todo Find interface class.
-                    valueFromJSON = marshallArray(parser, null);
+                    // Array-ception?
+                    valueFromJSON = marshallArray(parser, field, null);
                 }
                 break;
                 case VALUE_STRING: {
@@ -374,7 +441,7 @@ public enum JsonpContext {
                 }
                 break;
                 case START_OBJECT: {
-                    valueFromJSON = marshallObject(parser, targetClass);
+                    valueFromJSON = marshallObject(parser, field, targetClass);
                 }
                 break;
                 case END_ARRAY: {

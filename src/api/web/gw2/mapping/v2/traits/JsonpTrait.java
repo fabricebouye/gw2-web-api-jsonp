@@ -11,6 +11,7 @@ import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.RuntimeType;
 import api.web.gw2.mapping.core.SetValue;
 import api.web.gw2.mapping.core.URLValue;
 import java.net.URL;
@@ -40,6 +41,7 @@ public final class JsonpTrait implements Trait {
     private TraitSlotType slot = TraitSlotType.UNKNOWN;
     @OptionalValue
     @SetValue
+    @RuntimeType(selector = "type", pattern = "Trait%sFact")
     private Optional<Set<TraitFact>> facts = Optional.empty();
     @OptionalValue
     @SetValue
