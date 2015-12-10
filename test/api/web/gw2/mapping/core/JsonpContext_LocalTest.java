@@ -22,6 +22,7 @@ import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
 import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
 import api.web.gw2.mapping.v2.specializations.Specialization;
+import api.web.gw2.mapping.v2.traits.Trait;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -116,6 +117,15 @@ public class JsonpContext_LocalTest {
         assertEquals(false, value.isElite());
     }
 
+    @Test
+    public void testLoadObject_Trait_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Trait local)"); // NOI18N.
+        final URL url = getClass().getResource("/api/web/gw2/mapping/v2/traits/trait1.json"); // NOI18N.
+        final JsonpContext instance = JsonpContext.INSTANCE;
+        final Trait value = instance.loadObject(Trait.class, url);
+        assertNotNull(value);
+        assertEquals(214, value.getId());
+    }    
     
     @Test
     public void testLoadObject_Character_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
