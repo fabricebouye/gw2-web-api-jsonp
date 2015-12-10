@@ -59,8 +59,8 @@ public final class JsonpCharacter implements Character {
     @SetValue
     private Optional<Set<CharacterCrafting>> crafting = Optional.empty();
     @OptionalValue
-    @MapValue
-    private Optional<Map<CharacterGameType, Specialization>> specializations = Optional.empty();
+    @MapValue(keyFactory = "api.web.gw2.mapping.v2.characters.CharactersUtils::findCharacterGameType") // NOI18N.
+    private Optional<Map<CharacterGameType, CharacterSpecialization>> specializations = Optional.empty();
 
     /**
      * Creates a new empty instance.
@@ -129,8 +129,7 @@ public final class JsonpCharacter implements Character {
     }
 
     @Override
-    public Optional<Map<CharacterGameType, Specialization>> getSpecialisations() {
+    public Optional<Map<CharacterGameType, CharacterSpecialization>> getSpecialisations() {
         return specializations;
     }
-
 }
