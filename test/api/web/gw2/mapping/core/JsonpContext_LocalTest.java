@@ -16,7 +16,7 @@ import api.web.gw2.mapping.v2.achievements.daily.DailyAchievementLevelRange;
 import api.web.gw2.mapping.v2.characters.Character;
 import api.web.gw2.mapping.v2.characters.CharacterCrafting;
 import api.web.gw2.mapping.v2.characters.equipment.Equipment;
-import api.web.gw2.mapping.v2.characters.inventory.Inventory;
+import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
 import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
 import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
@@ -147,12 +147,12 @@ public class JsonpContext_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Inventory_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Inventory local)"); // NOI18N.
+    public void testLoadObject_InventoryBag_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(InventoryBag local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/characters/inventory/";
         final String[] filenames = {
-            "inventory1.json",
-            "inventory2.json"
+            "inventorybag1.json",
+            "inventorybag2.json"
         };
         IntStream.range(0, filenames.length)
                 .forEach(index -> {
@@ -160,7 +160,7 @@ public class JsonpContext_LocalTest {
                         final String filename = filenames[index];
                         final URL url = getClass().getResource(basecode + filename); // NOI18N.
                         final JsonpContext instance = JsonpContext.INSTANCE;
-                        final Inventory value = instance.loadObject(Inventory.class, url);
+                        final InventoryBag value = instance.loadObject(InventoryBag.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
