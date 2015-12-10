@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.Optional;
 
 /**
- * Default JSON-P implementation of a trait.
+ * Default JSON-P implementation of a trait fact.
  * @author Fabrice Bouyé
  */
 public abstract class JsonpTraitFact implements TraitFact {
