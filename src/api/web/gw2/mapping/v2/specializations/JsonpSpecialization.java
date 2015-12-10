@@ -32,10 +32,13 @@ public final class JsonpSpecialization implements Specialization {
     @OptionalValue
     @EnumValue(factory = "api.web.gw2.mapping.v2.characters.CharactersUtils::findCharacterProfession") // NOI18N.
     private CharacterProfession profession = CharacterProfession.UNKNOWN;
-    private boolean elite;
+    private boolean elite = false;
     @OptionalValue
     @URLValue
-    private Optional<URL> icon;
+    private Optional<URL> icon = Optional.empty();
+    @OptionalValue
+    @URLValue
+    private Optional<URL> background = Optional.empty();
     @SetValue
     private Set<Integer> minorTraits = Collections.EMPTY_SET;
     @SetValue
@@ -80,6 +83,11 @@ public final class JsonpSpecialization implements Specialization {
     @Override
     public Set<Integer> getMajorTraits() {
         return majorTraits;
+    }
+
+    @Override
+    public Optional<URL> getBackground() {
+        return background;
     }
 
 }
