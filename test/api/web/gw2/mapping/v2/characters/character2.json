@@ -1,0 +1,109 @@
+
+{
+    "name": "My Character",
+    "race": "Human",
+    "gender": "Male",
+    "profession": "Warrior",
+    "level": 80,
+    "guild": "3689E89F-7CB5-F611-9621-AC162CAE8ACA",
+    "created": "2015-06-05T19:45:00Z",
+    "age": 91,
+    "deaths": 0,
+    "crafting": [
+        {
+            "discipline": "Artificer",
+            "rating": 500,
+            "active": true
+        },
+        {
+            "discipline": "Huntsman",
+            "rating": 347,
+            "active": true
+        }
+    ],
+    "specializations": {
+        "pve": [
+            {
+                "id": 51,
+                "traits": [1413, 1489, 1657]
+            }
+        ]
+    },
+    "equipment": [
+        {
+            "id": 6472,
+            "slot": "Coat"
+        },
+        {
+            "id": 6470,
+            "slot": "Boots"
+        },
+        {
+            "id": 6549,
+            "slot": "Helm"
+        },
+        {
+            "id": 6473,
+            "slot": "Leggings"
+        },
+        {
+            "id": 33345,
+            "slot": "WeaponA1"
+        },
+        {
+            "id": 49812,
+            "slot": "WeaponB1",
+            "upgrades": [
+                24607,
+                24548
+            ]
+        }
+    ],
+    "bags": [
+        {
+            "id": 8941,
+            "size": 4,
+            "inventory": [
+                null,
+                {
+                    "id": 32134,
+                    "count": 1
+                },
+                null,
+                null
+            ]
+        },
+        null,
+        {
+            "id": 8932,
+            "size": 20,
+            "inventory": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        {
+            "id": 48715,
+            "size": 20
+        },
+        null
+    ]
+}
