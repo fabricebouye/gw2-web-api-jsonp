@@ -29,7 +29,6 @@ public final class JsonpSpecialization implements Specialization {
     private int id = -1;
     @LocalizedResource
     private String name = ""; // NOI18N.
-    @OptionalValue
     @EnumValue(factory = "api.web.gw2.mapping.v2.characters.CharactersUtils::findCharacterProfession") // NOI18N.
     private CharacterProfession profession = CharacterProfession.UNKNOWN;
     private boolean elite = false;
