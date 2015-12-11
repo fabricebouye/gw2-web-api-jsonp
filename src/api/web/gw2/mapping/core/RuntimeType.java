@@ -23,6 +23,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD})
 public @interface RuntimeType {
+
     String selector() default "";
+
     String pattern() default "";
 }
