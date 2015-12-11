@@ -14,8 +14,9 @@ import api.web.gw2.mapping.core.QuantityValue;
  * @author Fabrice Bouyé
  */
 public final class JsonpTraitNumberFact extends JsonpTraitFact implements TraitNumberFact {
+
     @QuantityValue
-    private int value;
+    private int value = 0;
 
     /**
      * Creates a new empty instance.
