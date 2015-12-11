@@ -1,0 +1,6 @@
+{
+    "text": "Health Threshold",
+    "type": "Percent",
+    "icon": "url",
+    "percent": 25
+}

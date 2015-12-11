@@ -1,0 +1,15 @@
+{
+    "text": "Apply Buff/Condition",
+    "type": "PrefixedBuff",
+    "icon": "url",
+    "duration": 20,
+    "status": "Might",
+    "description": "Increased outgoing damage; stacks intensity.",
+    "apply_count": 1,
+    "prefix": {
+        "text": "Apply Buff/Condition",
+        "icon": "url",
+        "status": "Fire Attunement",
+        "description": "Cast fire spells."
+    }
+}

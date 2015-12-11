@@ -1,0 +1,9 @@
+{
+    "text": "Apply Buff/Condition",
+    "type": "Buff",
+    "icon": "url",
+    "duration": 5,
+    "status": "Vulnerability",
+    "description": "Damage and condition damage taken are increased; stacks intensity.",
+    "apply_count": 1
+}

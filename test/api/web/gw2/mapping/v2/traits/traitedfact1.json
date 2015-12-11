@@ -1,0 +1,8 @@
+{
+    "text": "Ferocity Increase",
+    "type": "AttributeAdjust",
+    "icon": "https://render.guildwars2.com/file/E1E7C4D3A6E62F3D5C9F627CE8175BFB0C614CBE/156652.png",
+    "value": 190,
+    "requires_trait": 396,
+    "target": "Precision"
+}

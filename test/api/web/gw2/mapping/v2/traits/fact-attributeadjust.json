@@ -1,0 +1,7 @@
+{
+    "text": "Attribute Adjust",
+    "type": "AttributeAdjust",
+    "icon": "url",
+    "value": 150,
+    "target": "CritDamage"
+}
