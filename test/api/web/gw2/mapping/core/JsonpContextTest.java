@@ -81,7 +81,7 @@ public class JsonpContextTest {
             "demoDemoDemo"
         };
         assertEquals(values.length, expResults.length);
-        final Class aClass = JsonpContext.INSTANCE.getClass();
+        final Class aClass = JsonpContext.SAX.getClass();
         final Method method = aClass.getDeclaredMethod("jsonKeyToJavaFieldName", String.class); // NOI18N.
         method.setAccessible(true);
         IntStream.range(0, values.length)
@@ -89,7 +89,7 @@ public class JsonpContextTest {
                     try {
                         final String value = values[index];
                         final String expResult = expResults[index];
-                        final String result = (String) method.invoke(JsonpContext.INSTANCE, value);
+                        final String result = (String) method.invoke(JsonpContext.SAX, value);
                         assertEquals(expResult, result);
                     } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
                         fail(ex.getMessage());
@@ -103,7 +103,7 @@ public class JsonpContextTest {
         final String expId = "box"; // NOI18N.
         final Optional<URL> expURL = Optional.of(new URL("https://static.staticwars.com/quaggans/box.jpg")); // NOI18N.
         final URL url = getClass().getResource("/api/web/gw2/mapping/v2/quaggans/quaggan1.json"); // NOI18N.
-        final JsonpContext instance = JsonpContext.INSTANCE;
+        final JsonpContext instance = JsonpContext.SAX;
         final Quaggan value = instance.loadObject(Quaggan.class, url);
         assertNotNull(value);
         assertEquals(expId, value.getId());
@@ -114,7 +114,7 @@ public class JsonpContextTest {
     public void testLoadObject_Account_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Account local)"); // NOI18N.
         final URL url = getClass().getResource("/api/web/gw2/mapping/v2/account/account1.json"); // NOI18N.
-        final JsonpContext instance = JsonpContext.INSTANCE;
+        final JsonpContext instance = JsonpContext.SAX;
         final Account value = instance.loadObject(Account.class, url);
         assertNotNull(value);
         assertEquals("b8169418-1c11-405f-91bb-e2b29d602b8a", value.getId()); // NOI18N.
@@ -143,7 +143,7 @@ public class JsonpContextTest {
         final String appKey = loadApplicationKey();
         final String path = String.format("https://api.guildwars2.com/v2/account?access_token=%s", appKey);
         final URL url = new URL(path);
-        final Account result = JsonpContext.INSTANCE.loadObject(Account.class, url);
+        final Account result = JsonpContext.SAX.loadObject(Account.class, url);
         assertNotNull(result);
 //        System.out.println(result.getId());
 //        System.out.println(result.getName());
@@ -156,7 +156,7 @@ public class JsonpContextTest {
     public void testLoadObject_CurrencyAmount() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(CurrencyAmount)"); // NOI18N.
         final URL url = getClass().getResource("/api/web/gw2/mapping/v2/account/wallet/currency_amount1.json"); // NOI18N.
-        final JsonpContext instance = JsonpContext.INSTANCE;
+        final JsonpContext instance = JsonpContext.SAX;
         final CurrencyAmount value = instance.loadObject(CurrencyAmount.class, url);
         assertNotNull(value);
         assertEquals(1, value.getId());
@@ -171,7 +171,7 @@ public class JsonpContextTest {
         final int expResultCount = expPageSize;
         final int expResultTotal = expPageSize;
         final URL url = getClass().getResource("test_page1.json"); // NOI18N.
-        final JsonpContext instance = JsonpContext.INSTANCE;
+        final JsonpContext instance = JsonpContext.SAX;
         final PageResult<Integer> value = instance.loadPage(Integer.class, url);
         assertNotNull(value);
         assertEquals(expPageTotal, value.getPageTotal());
@@ -197,7 +197,7 @@ public class JsonpContextTest {
         final Class[] classes = {
             Quaggan.class
         };
-        final JsonpContext instance = JsonpContext.INSTANCE;
+        final JsonpContext instance = JsonpContext.SAX;
         assertEquals(urls.length, classes.length);
         IntStream.range(0, urls.length)
                 .forEach(index -> {
@@ -220,7 +220,7 @@ public class JsonpContextTest {
         final String appKey = loadApplicationKey();
         final String path = String.format("https://api.guildwars2.com/v2/characters?access_token=%s", appKey);
         final URL url = new URL(path);
-        final PageResult<String> result = JsonpContext.INSTANCE.loadPage(String.class, url);
+        final PageResult<String> result = JsonpContext.SAX.loadPage(String.class, url);
         assertNotNull(result);
         result.stream().forEach(characterName -> {
         });
