@@ -79,15 +79,15 @@ abstract class JsonpAbstractMarshaller {
 
     protected final Field lookupField(final Class targetClass, final String fieldName) throws NoSuchFieldException {
         Field field = null;
-        for (Class aClass = targetClass; targetClass != null && field == null; aClass = aClass.getSuperclass()) {
+        for (Class aClass = targetClass; aClass != null && field == null; aClass = aClass.getSuperclass()) {
             try {
                 field = aClass.getDeclaredField(fieldName);
             } catch (NoSuchFieldException ex) {
-                logger.log(Level.WARNING, "Could not find field \"{0}\" in class {1}, attenpting to use class hierachy.", new Object[]{fieldName, targetClass});
+                logger.log(Level.FINEST, "Could not find field \"{0}\" in class {1}, attenpting to use class hierachy.", new Object[]{fieldName, targetClass});
             }
         }
         if (field == null) {
-            throw new NoSuchFieldException(fieldName);
+            logger.log(Level.WARNING, "Could not find field \"{0}\" in class {1}.", new Object[]{fieldName, targetClass});
         }
         return field;
     }
