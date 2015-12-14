@@ -1,6 +1,6 @@
 {
     "text": "Radius",
     "type": "Distance",
-    "icon": "url",
+    "icon": "http://foo.foo.com/foo.png",
     "distance": 180
 }

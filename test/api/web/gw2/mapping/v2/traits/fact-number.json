@@ -1,6 +1,6 @@
 {
     "text": "Conditions Removed",
     "type": "Number",
-    "icon": "url",
+    "icon": "http://foo.foo.com/foo.png",
     "value": 3
 }

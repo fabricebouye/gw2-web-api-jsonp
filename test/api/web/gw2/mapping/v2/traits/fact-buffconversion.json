@@ -1,7 +1,7 @@
 {
     "text": "Attribute Conversion",
     "type": "BuffConversion",
-    "icon": "url",
+    "icon": "http://foo.foo.com/foo.png",
     "percent": 10,
     "source": "Toughness",
     "target": "ConditionDamage"

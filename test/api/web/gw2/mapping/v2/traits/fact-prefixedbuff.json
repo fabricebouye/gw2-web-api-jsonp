@@ -1,14 +1,14 @@
 {
     "text": "Apply Buff/Condition",
     "type": "PrefixedBuff",
-    "icon": "url",
+    "icon": "http://foo.foo.com/foo.png",
     "duration": 20,
     "status": "Might",
     "description": "Increased outgoing damage; stacks intensity.",
     "apply_count": 1,
     "prefix": {
         "text": "Apply Buff/Condition",
-        "icon": "url",
+        "icon": "http://foo.foo.com/foo.png",
         "status": "Fire Attunement",
         "description": "Cast fire spells."
     }

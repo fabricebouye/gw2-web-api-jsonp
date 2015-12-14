@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.v2.traits;
 
+import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.URLValue;
@@ -22,6 +23,7 @@ public abstract class JsonpTraitFact implements TraitFact {
     @OptionalValue
     @LocalizedResource
     private Optional<String> text = Optional.empty();
+    @EnumValue(factory = "api.web.gw2.mapping.v2.traits.TraitsUtils::findTraitFactType") // NOI18N.
     private TraitFactType type = TraitFactType.UNKNOWN;
     @OptionalValue
     @URLValue

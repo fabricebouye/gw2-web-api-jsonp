@@ -1,6 +1,6 @@
 {
     "text": "Damage",
     "type": "Damage",
-    "icon": "url",
+    "icon": "http://foo.foo.com/foo.png",
     "hit_count": 1
 }
