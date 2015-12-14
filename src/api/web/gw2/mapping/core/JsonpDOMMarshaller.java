@@ -90,72 +90,75 @@ final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
         for (final String key : jsonObject.keySet()) {
             final String childFieldName = jsonKeyToJavaFieldName(key);
             final Field childField = lookupField(concreteClass, childFieldName);
+            // If field does not exist, skip key.
+            if (field == null) {
+                continue;
+            }
             Object valueFromJSON = defaultValueForField(childField);
-            if (!jsonObject.isNull(key)) {
-                final JsonValue jsonValue = jsonObject.get(key);
-                final JsonValue.ValueType valueType = jsonValue.getValueType();
-                switch (valueType) {
-                    case TRUE: {
-                        valueFromJSON = Boolean.TRUE;
-                    }
-                    break;
-                    case FALSE: {
-                        valueFromJSON = Boolean.FALSE;
-                    }
-                    break;
-                    case NUMBER: {
-                    }
-                    break;
-                    case STRING: {
-                        valueFromJSON = jsonObject.getString(key);
-                    }
-                    break;
-                    case ARRAY:
-                    case OBJECT: {
-                        String typename = childField.getGenericType().getTypeName();
-                        final boolean isOptional = childField.getAnnotation(OptionalValue.class) != null;
-                        final boolean isSet = childField.getAnnotation(SetValue.class) != null;
-                        final boolean isList = childField.getAnnotation(ListValue.class) != null;
-                        final boolean isMap = childField.getAnnotation(MapValue.class) != null;
-                        if (isOptional) {
-                            typename = typename.replaceAll("java\\.util\\.Optional<", ""); // NOI18N.
-                        }
-                        if (isSet) {
-                            typename = typename.replaceAll("java\\.util\\.Set<", ""); // NOI18N.
-                        }
-                        if (isList) {
-                            typename = typename.replaceAll("java\\.util\\.List<", ""); // NOI18N.
-                        }
-                        if (isMap) {
-                            typename = typename.replaceAll("java\\.util\\.Map<", ""); // NOI18N.
-                        }
-                        // Remove trailing >.
-                        typename = typename.replaceAll(">+", ""); // NOI18N.
-                        final String[] subTargetClassNames = typename.split(",\\s*");
-                        final Class[] subTargetClasses = new Class[subTargetClassNames.length];
-                        for (int index = 0; index < subTargetClassNames.length; index++) {
-                            subTargetClasses[index] = Class.forName(subTargetClassNames[index]);
-                        }
-                        switch (valueType) {
-                            case ARRAY: {
-                                final JsonArray jsonArray = jsonObject.getJsonArray(key);
-                                valueFromJSON = marshallArray(jsonArray, childField, subTargetClasses[0]);
-                            }
-                            break;
-                            case OBJECT:
-                            default: {
-                                final JsonObject childJsonObject = jsonObject.getJsonObject(key);
-                                if (isMap) {
-                                    valueFromJSON = marshallMap(childJsonObject, childField, subTargetClasses[0], subTargetClasses[1]);
-                                } else {
-                                    valueFromJSON = marshallObject(childJsonObject, childField, subTargetClasses[0]);
-                                }
-                            }
-                        }
-                    }
-                    break;
-                    default:
+            final JsonValue jsonValue = jsonObject.get(key);
+            final JsonValue.ValueType valueType = jsonValue.getValueType();
+            switch (valueType) {
+                case TRUE: {
+                    valueFromJSON = Boolean.TRUE;
                 }
+                break;
+                case FALSE: {
+                    valueFromJSON = Boolean.FALSE;
+                }
+                break;
+                case NUMBER: {
+                }
+                break;
+                case STRING: {
+                    valueFromJSON = jsonObject.getString(key);
+                }
+                break;
+                case ARRAY:
+                case OBJECT: {
+                    String typename = childField.getGenericType().getTypeName();
+                    final boolean isOptional = childField.getAnnotation(OptionalValue.class) != null;
+                    final boolean isSet = childField.getAnnotation(SetValue.class) != null;
+                    final boolean isList = childField.getAnnotation(ListValue.class) != null;
+                    final boolean isMap = childField.getAnnotation(MapValue.class) != null;
+                    if (isOptional) {
+                        typename = typename.replaceAll("java\\.util\\.Optional<", ""); // NOI18N.
+                    }
+                    if (isSet) {
+                        typename = typename.replaceAll("java\\.util\\.Set<", ""); // NOI18N.
+                    }
+                    if (isList) {
+                        typename = typename.replaceAll("java\\.util\\.List<", ""); // NOI18N.
+                    }
+                    if (isMap) {
+                        typename = typename.replaceAll("java\\.util\\.Map<", ""); // NOI18N.
+                    }
+                    // Remove trailing >.
+                    typename = typename.replaceAll(">+", ""); // NOI18N.
+                    final String[] subTargetClassNames = typename.split(",\\s*");
+                    final Class[] subTargetClasses = new Class[subTargetClassNames.length];
+                    for (int index = 0; index < subTargetClassNames.length; index++) {
+                        subTargetClasses[index] = Class.forName(subTargetClassNames[index]);
+                    }
+                    switch (valueType) {
+                        case ARRAY: {
+                            final JsonArray jsonArray = jsonObject.getJsonArray(key);
+                            valueFromJSON = marshallArray(jsonArray, childField, subTargetClasses[0]);
+                        }
+                        break;
+                        case OBJECT:
+                        default: {
+                            final JsonObject childJsonObject = jsonObject.getJsonObject(key);
+                            if (isMap) {
+                                valueFromJSON = marshallMap(childJsonObject, childField, subTargetClasses[0], subTargetClasses[1]);
+                            } else {
+                                valueFromJSON = marshallObject(childJsonObject, childField, subTargetClasses[0]);
+                            }
+                        }
+                    }
+                }
+                break;
+                case NULL:
+                default:
             }
             final Object value = valueForField(childField, valueFromJSON);
             childField.setAccessible(true);
