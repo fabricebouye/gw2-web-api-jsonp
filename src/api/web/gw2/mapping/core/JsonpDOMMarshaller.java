@@ -42,7 +42,7 @@ final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
     public <T> T loadObject(Class<T> targetClass, InputStream input) throws NullPointerException, IOException {
         Objects.requireNonNull(targetClass);
         Objects.requireNonNull(input);
-        try (JsonReader jsonReader = Json.createReader(input)) {
+        try (final JsonReader jsonReader = Json.createReader(input)) {
             final JsonObject jsonObject = jsonReader.readObject();
             return marshallObject(jsonObject, null, targetClass);
         } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException | ClassNotFoundException | MalformedURLException | NoSuchMethodException | InvocationTargetException ex) {
@@ -56,7 +56,7 @@ final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
     public <T> Collection<T> loadObjectArray(Class<T> targetClass, InputStream input) throws IOException {
         Objects.requireNonNull(targetClass);
         Objects.requireNonNull(input);
-        try (JsonReader jsonReader = Json.createReader(input)) {
+        try (final JsonReader jsonReader = Json.createReader(input)) {
             final JsonArray jsonArray = jsonReader.readArray();
             return marshallArray(jsonArray, null, targetClass);
         } catch (Exception ex) {
@@ -71,7 +71,7 @@ final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
         Objects.requireNonNull(selector);
         Objects.requireNonNull(pattern);
         Objects.requireNonNull(input);
-        try (JsonReader jsonReader = Json.createReader(input)) {
+        try (final JsonReader jsonReader = Json.createReader(input)) {
             final JsonObject jsonObject = jsonReader.readObject();
             final String type = jsonObject.getString(selector);
             final String targetClassName = String.format(pattern, type);
@@ -108,6 +108,8 @@ final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
                 }
                 break;
                 case NUMBER: {
+                    final JsonNumber jsonNumber = jsonObject.getJsonNumber(key);
+                    valueFromJSON = jsonNumberToJavaNumber(jsonNumber);
                 }
                 break;
                 case STRING: {
