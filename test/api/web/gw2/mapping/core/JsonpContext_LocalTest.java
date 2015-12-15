@@ -135,11 +135,24 @@ public class JsonpContext_LocalTest {
     @Test
     public void testLoadObject_Trait_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Trait local)"); // NOI18N.
-        final URL url = getClass().getResource("/api/web/gw2/mapping/v2/traits/trait1.json"); // NOI18N.
-        final JsonpContext instance = JsonpContext.SAX;
-        final Trait value = instance.loadObject(Trait.class, url);
-        assertNotNull(value);
-        assertEquals(214, value.getId());
+        final String basecode = "/api/web/gw2/mapping/v2/traits/"; // NOI18N.
+        final String[] filenames = {
+            "trait1.json", // NOI18N.
+            "trait2.json" // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    try {
+                        final String filename = filenames[index];
+                        final URL url = getClass().getResource(basecode + filename);
+                        final JsonpContext instance = JsonpContext.SAX;
+                        final Trait value = instance.loadObject(Trait.class, url);
+                        assertNotNull(value);
+                        assertEquals(214, value.getId());
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
     }
 
     @Test
@@ -154,7 +167,7 @@ public class JsonpContext_LocalTest {
                 .forEach(index -> {
                     try {
                         final String filename = filenames[index];
-                        final URL url = getClass().getResource(basecode + filename); // NOI18N.
+                        final URL url = getClass().getResource(basecode + filename);
                         final JsonpContext instance = JsonpContext.SAX;
                         final Character value = instance.loadObject(Character.class, url);
                         assertNotNull(value);
