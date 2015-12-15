@@ -26,7 +26,7 @@ public enum JsonpContext {
     /**
      * This context will use a marshaller that loads wholesome structures in memory whenever possible.
      */
-    DOM(new JsonpSAXMarshaller());
+    DOM(new JsonpDOMMarshaller());
 
     /**
      * The underlying marshaller used by this context.
