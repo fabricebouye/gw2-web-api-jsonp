@@ -32,7 +32,7 @@ public final class JsonpTrait implements Trait {
     @URLValue
     private Optional<URL> icon = Optional.empty();
     @LocalizedResource
-    private String description = "";
+    private String description = ""; // NOI18N.
     @IdValue
     private int specialization = -1;
     @EnumValue(factory = "api.web.gw2.mapping.v2.traits.TraitsUtils::findTraitTier") // NOI18N.
@@ -41,11 +41,11 @@ public final class JsonpTrait implements Trait {
     private TraitSlotType slot = TraitSlotType.UNKNOWN;
     @OptionalValue
     @SetValue
-    @RuntimeType(selector = "type", pattern = "Trait%sFact")
+    @RuntimeType(selector = "type", pattern = "Trait%sFact") // NOI18N.
     private Optional<Set<TraitFact>> facts = Optional.empty();
     @OptionalValue
     @SetValue
-    @RuntimeType(selector = "type", pattern = "Trait%sFact")
+    @RuntimeType(selector = "type", pattern = "Trait%sFact") // NOI18N.
     private Optional<Set<TraitFact>> traitedFacts = Optional.empty();
     @OptionalValue
     @SetValue

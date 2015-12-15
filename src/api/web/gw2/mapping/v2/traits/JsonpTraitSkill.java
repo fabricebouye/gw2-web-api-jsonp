@@ -26,19 +26,19 @@ public final class JsonpTraitSkill implements TraitSkill {
     @IdValue
     private int id = -1;
     @LocalizedResource
-    private String name = "";
+    private String name = ""; // NOI18N.
     @OptionalValue
     @URLValue
     private Optional<URL> icon = Optional.empty();
     @LocalizedResource
-    private String description = "";
+    private String description = ""; // NOI18N.
     @OptionalValue
     @SetValue
-    @RuntimeType(selector = "type", pattern = "Trait%sFact")
+    @RuntimeType(selector = "type", pattern = "Trait%sFact") // NOI18N.
     private Optional<Set<TraitFact>> facts = Optional.empty();
     @OptionalValue
     @SetValue
-    @RuntimeType(selector = "type", pattern = "Trait%sFact")
+    @RuntimeType(selector = "type", pattern = "Trait%sFact") // NOI18N.
     private Optional<Set<TraitFact>> traitedFacts = Optional.empty();
 
     /**
