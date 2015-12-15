@@ -48,11 +48,6 @@ public abstract class JsonpTraitFact implements TraitFact {
     }
 
     @Override
-    public TraitFactType getType() {
-        return type;
-    }
-
-    @Override
     public Optional<URL> getIcon() {
         return icon;
     }
