@@ -111,7 +111,8 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
         // Initialize concrete empty instance.
         final T result = createConcreteEmptyInstance(targetClass);
         if (result == null) {
-            // @todo Throw exception.
+            // @todo We need to skip what's remaining in the parser.
+            // skipContent(parser, Starter.OBJECT);
             return null;
         }
         // Get concrete class for concrete instance.
