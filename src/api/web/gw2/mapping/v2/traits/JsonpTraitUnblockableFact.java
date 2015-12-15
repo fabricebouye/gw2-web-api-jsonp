@@ -13,6 +13,8 @@ package api.web.gw2.mapping.v2.traits;
  */
 public final class JsonpTraitUnblockableFact extends JsonpTraitFact implements TraitUnblockableFact {
 
+    private boolean value = false;
+
     /**
      * Creates a new empty instance.
      */
