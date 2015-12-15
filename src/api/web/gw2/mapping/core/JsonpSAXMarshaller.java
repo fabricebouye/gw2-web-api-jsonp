@@ -348,6 +348,17 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
         return null;
     }
 
+    /**
+    * Marshal a runtime object.
+    * <br>This method converts the content of the parser back to a JSON formatter string and calls the DOM marshaller on it.
+    * @param <T> The result type.
+    * @param parser The parser.
+    * @param field The target field.
+    * @param targetClass The target class.
+    * @return A {@code T} instance, may be {@code null}.
+    * @throws IOException
+    * @throws ClassNotFoundException 
+    */
     private <T> T marshallRuntimeObject(final JsonParser parser, final Field field, Class<T> targetClass) throws IOException, ClassNotFoundException {
         Objects.requireNonNull(parser);
         Objects.requireNonNull(field);
@@ -359,8 +370,6 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
         final String packageName = targetClass.getPackage().getName();
         final String fullPattern = packageName + "." + pattern; // NOI18N.
         final String json = backToJson(parser, Starter.OBJECT);
-        System.out.println("marshallRuntimeObject:");
-        System.out.println(json);
         final JsonpDOMMarshaller delegated = new JsonpDOMMarshaller();
         try (final InputStream input = new ByteArrayInputStream(json.getBytes("UTF-8"))) { // NOI18N.
             final T result = delegated.loadRuntimeObject(selector, fullPattern, input);
@@ -368,22 +377,39 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
         }
     }
 
-    private enum Starter {
-        OBJECT, ARRAY;
+    /**
+     * When skipping or converting back to JSON the content of the parser, we need a description of the starter entity.
+     * @author Fabrice Bouyé
+     */
+    private static enum Starter {
+        /**
+         * The starter entity is a JSON object.
+         */
+        OBJECT,
+        /**
+         * The starter entity is a JSON array.
+         */
+        ARRAY;
     }
 
-    private String backToJson(final JsonParser parser, final Starter starter) {
-        final StringBuilder buffer = new StringBuilder(starter == Starter.OBJECT ? "{" : "[");
-        boolean structureOpen = true;
-        while (parser.hasNext() && structureOpen) {
+    /**
+     * Export the content of the parser back to a JSON formatter string.
+     * @param parser The parser.
+     * @param starter The starter entity.
+     * @return A {@code String} instance, never {@code null}.
+     * @throws IOException
+     */
+    private String backToJson(final JsonParser parser, final Starter starter) throws IOException {
+        final StringBuilder buffer = new StringBuilder(starter == Starter.OBJECT ? "{" : "["); // NOI18N.
+        while (parser.hasNext()) {
             final JsonParser.Event event = parser.next();
             switch (event) {
                 case KEY_NAME: {
                     final String key = parser.getString();
-                    buffer.append('"');
+                    buffer.append('"'); // NOI18N.
                     buffer.append(key);
-                    buffer.append('"');
-                    buffer.append(':');
+                    buffer.append('"'); // NOI18N.
+                    buffer.append(':'); // NOI18N.
                 }
                 continue;
                 case START_ARRAY: {
@@ -397,22 +423,22 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                 }
                 break;
                 case END_ARRAY: {
-                    if (buffer.lastIndexOf(",") == buffer.length() - 1) {
-                        buffer.replace(buffer.length() - 1, buffer.length(), "");
+                    if (buffer.lastIndexOf(",") == buffer.length() - 1) { // NOI18N.
+                        buffer.replace(buffer.length() - 1, buffer.length(), ""); // NOI18N.
                     }
-                    buffer.append(']');
+                    buffer.append(']'); // NOI18N.
                     if (starter == Starter.ARRAY) {
-                        structureOpen = false;
+                        return buffer.toString();
                     }
                 }
                 break;
                 case END_OBJECT: {
-                    if (buffer.lastIndexOf(",") == buffer.length() - 1) {
-                        buffer.replace(buffer.length() - 1, buffer.length(), "");
+                    if (buffer.lastIndexOf(",") == buffer.length() - 1) { // NOI18N.
+                        buffer.replace(buffer.length() - 1, buffer.length(), ""); // NOI18N.
                     }
-                    buffer.append('}');
+                    buffer.append('}'); // NOI18N.
                     if (starter == Starter.OBJECT) {
-                        structureOpen = false;
+                        return buffer.toString();
                     }
                 }
                 break;
@@ -425,32 +451,27 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                 }
                 break;
                 case VALUE_NUMBER: {
-                    if (parser.isIntegralNumber()) {
-                        final int value = parser.getInt();
-                        buffer.append(value);
-                    } else {
-                        final double value = parser.getBigDecimal().doubleValue();
-                        buffer.append(value);
-                    }
+                    final Number value = jsonNumberToJavaNumber(parser);
+                    buffer.append(value);
                 }
                 break;
                 case VALUE_STRING: {
                     final String value = parser.getString();
-                    buffer.append('"');
+                    buffer.append('"'); // NOI18N.
                     buffer.append(value);
-                    buffer.append('"');
+                    buffer.append('"'); // NOI18N.
                 }
                 break;
                 case VALUE_NULL:
                 default: {
-                    buffer.append("null");
+                    buffer.append("null"); // NOI18N.
                 }
             }
-            if (structureOpen) {
-                buffer.append(',');
-            }
+            // Append value separator.
+            buffer.append(','); // NOI18N.
         }
-        return buffer.toString();
+        errorEndOfJsonReached(parser);
+        return null;
     }
 
     /**
@@ -472,6 +493,11 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
         return result;
     }
 
+    /**
+     * Raises an IOException when reaching the end of the parser.
+     * @param parser The parser instance.
+     * @throws IOException Always.
+     */
     private void errorEndOfJsonReached(final JsonParser parser) throws IOException {
         final JsonLocation jsonLocation = parser.getLocation();
         final String message = String.format("Unexpected end of JSON content at line %d, column %d.", jsonLocation.getLineNumber(), jsonLocation.getColumnNumber());
