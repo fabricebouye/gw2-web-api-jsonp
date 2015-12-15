@@ -8,11 +8,13 @@
 package api.web.gw2.mapping.v2.traits;
 
 import api.web.gw2.mapping.core.EnumValue;
+import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.URLValue;
 import java.net.URL;
 import java.util.Optional;
+import java.util.OptionalInt;
 
 /**
  * Default JSON-P implementation of a trait fact.
@@ -28,6 +30,11 @@ public abstract class JsonpTraitFact implements TraitFact {
     @OptionalValue
     @URLValue
     private Optional<URL> icon = Optional.empty();
+    @IdValue
+    @OptionalValue
+    private OptionalInt requiresTrait = OptionalInt.empty();
+    @OptionalValue
+    private OptionalInt overrides = OptionalInt.empty();
 
     /**
      * Creates a new empty instance;
@@ -48,5 +55,15 @@ public abstract class JsonpTraitFact implements TraitFact {
     @Override
     public Optional<URL> getIcon() {
         return icon;
+    }
+
+    @Override
+    public OptionalInt getRequiresTrait() {
+        return requiresTrait;
+    }
+
+    @Override
+    public OptionalInt getOverrides() {
+        return overrides;
     }
 }

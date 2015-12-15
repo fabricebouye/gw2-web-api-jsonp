@@ -45,7 +45,8 @@ public final class JsonpTrait implements Trait {
     private Optional<Set<TraitFact>> facts = Optional.empty();
     @OptionalValue
     @SetValue
-    private Optional<Set<TraitTraitedFact>> traitedFacts = Optional.empty();
+    @RuntimeType(selector = "type", pattern = "Trait%sFact")
+    private Optional<Set<TraitFact>> traitedFacts = Optional.empty();
     @OptionalValue
     @SetValue
     private Optional<Set<TraitSkill>> skills = Optional.empty();
@@ -97,7 +98,7 @@ public final class JsonpTrait implements Trait {
     }
 
     @Override
-    public Optional<Set<TraitTraitedFact>> getTraitedFacts() {
+    public Optional<Set<TraitFact>> getTraitedFacts() {
         return traitedFacts;
     }
 
