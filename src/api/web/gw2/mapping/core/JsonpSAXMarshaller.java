@@ -7,12 +7,14 @@
  */
 package api.web.gw2.mapping.core;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.logging.Level;
 import javax.json.Json;
+import javax.json.stream.JsonLocation;
 import javax.json.stream.JsonParser;
 
 /**
@@ -121,25 +124,21 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                     case KEY_NAME: {
                         final String key = parser.getString();
                         final String fieldName = jsonKeyToJavaFieldName(key);
-                        try {
-                            childField = concreteClass.getDeclaredField(fieldName);
-                        } catch (NoSuchFieldException nsfe) {
-                            final String message = String.format("No matching field \"%s\" found for JSON key \"%s\" in class %s.", fieldName, key, targetClass.getName());
-                            logger.warning(message);
+                        childField = lookupField(fieldName, concreteClass);
+                        if (childField == null) {
+                            logWarningMissingField(key, fieldName, targetClass);
                         }
                     }
                     break;
-                    case VALUE_STRING:
-                    case VALUE_NUMBER:
-                    case VALUE_TRUE:
-                    case VALUE_FALSE:
-                    case VALUE_NULL:
-                    case START_OBJECT:
-                    case START_ARRAY: {
+                    case END_OBJECT: {
+                        return result;
+                    }
+                    default: {
                         if (childField == null) {
+                            // @todo Should skip instead.
                             continue;
                         }
-                        Object valueFromJSON = null;
+                        Object valueFromJSON = defaultValueForField(childField);
                         switch (event) {
                             case VALUE_STRING: {
                                 valueFromJSON = parser.getString();
@@ -155,10 +154,6 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                             break;
                             case VALUE_FALSE: {
                                 valueFromJSON = Boolean.FALSE;
-                            }
-                            break;
-                            case VALUE_NULL: {
-                                valueFromJSON = defaultValueForField(childField);
                             }
                             break;
                             case START_OBJECT:
@@ -207,6 +202,8 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                                 }
                             }
                             break;
+                            case VALUE_NULL:
+                            default:
                         }
                         final Object value = valueForField(childField, valueFromJSON);
                         final boolean wasAcessible = childField.isAccessible();
@@ -214,10 +211,6 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                         childField.set(result, value);
                         childField.setAccessible(wasAcessible);
                         childField = null;
-                    }
-                    break;
-                    case END_OBJECT: {
-                        return result;
                     }
                 }
             }
@@ -229,6 +222,22 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
         return result;
     }
 
+    /**
+     * Marshall the content of the parser into a map.
+     * @param <T> Class for the map's keys.
+     * @param <V> Class for the map's values.
+     * @param parser The parser.
+     * @param field The selected field.
+     * @param keyClass Class for the map's keys.
+     * @param valueClass Class for the map's values.
+     * @return A non-modifiable {@code Map<T, V>} instance, never {@code null}.
+     * @throws IOException
+     * @throws ClassNotFoundException
+     * @throws NoSuchMethodException
+     * @throws IllegalAccessException
+     * @throws IllegalArgumentException
+     * @throws InvocationTargetException 
+     */
     private <T, V> Map<T, V> marshallMap(final JsonParser parser, final Field field, final Class<T> keyClass, final Class<V> valueClass) throws IOException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         final Map result = new HashMap();
         Object keyFromJSON = null;
@@ -241,6 +250,9 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                     keyFromJSON = marshallEnumValue(field, key);
                 }
                 continue;
+                case END_OBJECT: {
+                    return Collections.unmodifiableMap(result);
+                }
                 case START_ARRAY: {
                     valueFromJSON = marshallArray(parser, field, valueClass);
                 }
@@ -269,15 +281,24 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                     valueFromJSON = marshallObject(parser, field, valueClass);
                 }
                 break;
-                case END_OBJECT: {
-                    return result;
+                default: {
                 }
             }
             result.put(keyFromJSON, valueFromJSON);
         }
+        errorEndOfJsonReached(parser);
         return null;
     }
 
+    /**
+     * Marshall a JSON array into a list.
+     * @param <T> The type of the list's values.
+     * @param parser The Json parser.
+     * @param field The target fiedl.
+     * @param targetClass The type of the list's values.
+     * @return A non-modifiable {@code List<T>} instance, never {@code null}.
+     * @throws IOException 
+     */
     private <T> List<T> marshallArray(final JsonParser parser, final Field field, final Class<T> targetClass) throws IOException {
         // @todo We need to take care of those map values in most recent endpoints.
         final List result = new LinkedList();
@@ -285,6 +306,9 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
             final JsonParser.Event event = parser.next();
             Object valueFromJSON = null;
             switch (event) {
+                case END_ARRAY: {
+                    return Collections.unmodifiableList(result);
+                }
                 case START_ARRAY: {
                     // @todo Find interface class.
                     // Array-ception?
@@ -315,12 +339,12 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                     valueFromJSON = marshallObject(parser, field, targetClass);
                 }
                 break;
-                case END_ARRAY: {
-                    return result;
+                default: {
                 }
             }
             result.add(valueFromJSON);
         }
+        errorEndOfJsonReached(parser);
         return null;
     }
 
@@ -328,52 +352,105 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
         Objects.requireNonNull(parser);
         Objects.requireNonNull(field);
         final RuntimeType runtimeTypeAnnotation = field.getAnnotation(RuntimeType.class);
-        final Map<String, Object> buffer = new HashMap<>();
-        String key = null;
-        while (parser.hasNext()) {
-            Object valueFromJSON = null;
+        final String selector = runtimeTypeAnnotation.selector();
+        final String pattern = runtimeTypeAnnotation.pattern();
+        Objects.requireNonNull(selector);
+        Objects.requireNonNull(pattern);
+        final String packageName = targetClass.getPackage().getName();
+        final String fullPattern = packageName + "." + pattern; // NOI18N.
+        final String json = backToJson(parser, Starter.OBJECT);
+        System.out.println("marshallRuntimeObject:");
+        System.out.println(json);
+        final JsonpDOMMarshaller delegated = new JsonpDOMMarshaller();
+        try (final InputStream input = new ByteArrayInputStream(json.getBytes("UTF-8"))) { // NOI18N.
+            final T result = delegated.loadRuntimeObject(selector, fullPattern, input);
+            return result;
+        }
+    }
+
+    private enum Starter {
+        OBJECT, ARRAY;
+    }
+
+    private String backToJson(final JsonParser parser, final Starter starter) {
+        final StringBuilder buffer = new StringBuilder(starter == Starter.OBJECT ? "{" : "[");
+        boolean structureOpen = true;
+        while (parser.hasNext() && structureOpen) {
             final JsonParser.Event event = parser.next();
             switch (event) {
-                case END_OBJECT: {
-                    final String selector = runtimeTypeAnnotation.selector();
-                    final String pattern = runtimeTypeAnnotation.pattern();
-                    final String type = (String) buffer.get(selector);
-                    final String shortClassName = String.format(pattern, type);
-                    final String fullClassName = targetClass.getPackage().getName() + "." + shortClassName;
-                    final Class<T> newTargetClass = (Class<T>) Class.forName(fullClassName);
-                    final T result = createConcreteEmptyInstance(newTargetClass);
-                    // Load object from buffer.
-                    return result;
-                }
                 case KEY_NAME: {
-                    key = parser.getString();
-                    buffer.put(key, null);
+                    final String key = parser.getString();
+                    buffer.append('"');
+                    buffer.append(key);
+                    buffer.append('"');
+                    buffer.append(':');
                 }
                 continue;
-                case VALUE_STRING: {
-                    valueFromJSON = parser.getString();
+                case START_ARRAY: {
+                    final String value = backToJson(parser, Starter.ARRAY);
+                    buffer.append(value);
                 }
                 break;
-                case VALUE_NUMBER: {
-                    valueFromJSON = jsonNumberToJavaNumber(parser);
+                case START_OBJECT: {
+                    final String value = backToJson(parser, Starter.OBJECT);
+                    buffer.append(value);
+                }
+                break;
+                case END_ARRAY: {
+                    if (buffer.lastIndexOf(",") == buffer.length() - 1) {
+                        buffer.replace(buffer.length() - 1, buffer.length(), "");
+                    }
+                    buffer.append(']');
+                    if (starter == Starter.ARRAY) {
+                        structureOpen = false;
+                    }
+                }
+                break;
+                case END_OBJECT: {
+                    if (buffer.lastIndexOf(",") == buffer.length() - 1) {
+                        buffer.replace(buffer.length() - 1, buffer.length(), "");
+                    }
+                    buffer.append('}');
+                    if (starter == Starter.OBJECT) {
+                        structureOpen = false;
+                    }
                 }
                 break;
                 case VALUE_TRUE: {
-                    valueFromJSON = Boolean.TRUE;
+                    buffer.append(true);
                 }
                 break;
                 case VALUE_FALSE: {
-                    valueFromJSON = Boolean.FALSE;
+                    buffer.append(false);
                 }
                 break;
-                case VALUE_NULL: {
-                    valueFromJSON = null;
+                case VALUE_NUMBER: {
+                    if (parser.isIntegralNumber()) {
+                        final int value = parser.getInt();
+                        buffer.append(value);
+                    } else {
+                        final double value = parser.getBigDecimal().doubleValue();
+                        buffer.append(value);
+                    }
                 }
                 break;
+                case VALUE_STRING: {
+                    final String value = parser.getString();
+                    buffer.append('"');
+                    buffer.append(value);
+                    buffer.append('"');
+                }
+                break;
+                case VALUE_NULL:
+                default: {
+                    buffer.append("null");
+                }
             }
-            buffer.put(key, valueFromJSON);
+            if (structureOpen) {
+                buffer.append(',');
+            }
         }
-        return null;
+        return buffer.toString();
     }
 
     /**
@@ -393,5 +470,11 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
             result = parser.getBigDecimal().doubleValue();
         }
         return result;
+    }
+
+    private void errorEndOfJsonReached(final JsonParser parser) throws IOException {
+        final JsonLocation jsonLocation = parser.getLocation();
+        final String message = String.format("Unexpected end of JSON content at line %d, column %d.", jsonLocation.getLineNumber(), jsonLocation.getColumnNumber());
+        throw new IOException(message);
     }
 }

@@ -77,7 +77,13 @@ abstract class JsonpAbstractMarshaller {
         return result;
     }
 
-    protected final Field lookupField(final Class targetClass, final String fieldName) throws NoSuchFieldException {
+    /**
+     * Tries to locate given field in selected class or it's ancestor classes.
+     * @param fieldName The field name.
+     * @param targetClass The target class.
+     * @return A {@code Field} instance, may be {@code null} if field was not found.
+     */
+    protected final Field lookupField(final String fieldName, final Class targetClass) {
         Field field = null;
         for (Class aClass = targetClass; aClass != null && field == null; aClass = aClass.getSuperclass()) {
             try {
@@ -85,9 +91,6 @@ abstract class JsonpAbstractMarshaller {
             } catch (NoSuchFieldException ex) {
                 logger.log(Level.FINEST, "Could not find field \"{0}\" in class {1}, attenpting to use class hierachy.", new Object[]{fieldName, targetClass});
             }
-        }
-        if (field == null) {
-            logger.log(Level.WARNING, "Could not find field \"{0}\" in class {1}.", new Object[]{fieldName, targetClass});
         }
         return field;
     }
@@ -250,7 +253,8 @@ abstract class JsonpAbstractMarshaller {
             }
         }
         // Wrap the result into an Optional instance.
-        if (isOptional) {
+        // Provided default values may already be wrapped into Optional instances.
+        if (isOptional && !(result instanceof Optional || result instanceof OptionalInt)) {
             if (isList || isSet || isMap) {
                 result = Optional.ofNullable(result);
             } else if (isQuantity || isLevel || isCurrency) {
@@ -318,4 +322,8 @@ abstract class JsonpAbstractMarshaller {
         return result;
     }
 
+    protected final void logWarningMissingField(final String key, final String fieldName, final Class targetClass) {
+        final String message = String.format("No matching field \"%s\" found for JSON key \"%s\" in class %s.", fieldName, key, targetClass.getName()); // NOI18N.
+        logger.warning(message);
+    }
 }

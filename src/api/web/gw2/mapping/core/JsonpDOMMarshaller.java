@@ -89,9 +89,10 @@ final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
         final Class<T> concreteClass = (Class<T>) result.getClass();
         for (final String key : jsonObject.keySet()) {
             final String childFieldName = jsonKeyToJavaFieldName(key);
-            final Field childField = lookupField(concreteClass, childFieldName);
+            final Field childField = lookupField(childFieldName, concreteClass);
             // If field does not exist, skip key.
-            if (field == null) {
+            if (childField == null) {
+                logWarningMissingField(key, childFieldName, targetClass);
                 continue;
             }
             Object valueFromJSON = defaultValueForField(childField);
