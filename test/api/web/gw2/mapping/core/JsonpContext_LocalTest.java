@@ -21,6 +21,10 @@ import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
 import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
 import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
+import api.web.gw2.mapping.v2.skins.Skin;
+import api.web.gw2.mapping.v2.skins.SkinArmorDetails;
+import api.web.gw2.mapping.v2.skins.SkinFlag;
+import api.web.gw2.mapping.v2.skins.SkinType;
 import api.web.gw2.mapping.v2.specializations.Specialization;
 import api.web.gw2.mapping.v2.traits.Trait;
 import api.web.gw2.mapping.v2.traits.TraitFact;
@@ -486,5 +490,33 @@ public class JsonpContext_LocalTest {
                 }
             }
         });
+    }
+
+    @Test
+    public void testLoadObject_Skin_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Skin local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/skins/"; // NOI18N.
+        final String[] filenames = {
+            "skin1.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    for (final JsonpContext instance : JsonpContext.values()) {
+                        try {
+                            final Skin value = instance.loadObject(Skin.class, url);
+                            assertNotNull(value);
+                            assertEquals(10, value.getId());
+                            assertEquals("Seer Pants", value.getName());
+                            assertEquals(SkinType.ARMOR, value.getType());
+                            assertEquals(Optional.of(new URL("https://render.guildwars2.com/file/1920ACA302E656B60C38605521760351F147809D/61088.png")), value.getIcon());
+                            assertEquals(Collections.unmodifiableSet(new HashSet(Arrays.asList(SkinFlag.SHOW_IN_WARDROBE))), value.getFlags());
+                            assertTrue(value.getDetails().isPresent());
+                        } catch (NullPointerException | IOException ex) {
+                            fail(ex.getMessage());
+                        }
+                    }
+                });
     }
 }
