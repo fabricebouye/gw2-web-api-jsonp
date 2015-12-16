@@ -9,8 +9,11 @@ package api.web.gw2.mapping.v2.traits;
 
 import api.web.gw2.mapping.core.DurationValue;
 import api.web.gw2.mapping.core.LocalizedResource;
+import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
 import java.time.Duration;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 /**
  * Default JSON-P implementation of a trait buff fact.
@@ -18,14 +21,17 @@ import java.time.Duration;
  */
 public final class JsonpTraitBuffFact extends JsonpTraitFact implements TraitBuffFact {
 
+    @OptionalValue
     @DurationValue
-    private Duration duration = Duration.ZERO;
+    private Optional<Duration> duration = Optional.empty();
     @LocalizedResource
     private String status = "";
+    @OptionalValue
     @LocalizedResource
-    private String description = "";
+    private Optional<String> description = Optional.empty();
+    @OptionalValue
     @QuantityValue
-    private int applyCount = 0;
+    private OptionalInt applyCount = OptionalInt.empty();
 
     /**
      * Creates a new empty instance.
@@ -34,7 +40,7 @@ public final class JsonpTraitBuffFact extends JsonpTraitFact implements TraitBuf
     }
 
     @Override
-    public Duration getDuration() {
+    public Optional<Duration> getDuration() {
         return duration;
     }
 
@@ -44,12 +50,12 @@ public final class JsonpTraitBuffFact extends JsonpTraitFact implements TraitBuf
     }
 
     @Override
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
     @Override
-    public int getApplyCount() {
+    public OptionalInt getApplyCount() {
         return applyCount;
     }
 }
