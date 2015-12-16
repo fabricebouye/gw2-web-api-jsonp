@@ -108,6 +108,21 @@ abstract class JsonpAbstractMarshaller {
         buffer.append(tokens[0]);
         Arrays.stream(tokens, 1, tokens.length)
                 .forEach(token -> {
+                    final String head = token.substring(0, 1).toUpperCase();
+                    final String tail = token.substring(1, token.length());
+                    buffer.append(head);
+                    buffer.append(tail);
+                });
+        return buffer.toString();
+    }
+
+    protected final String javaEnumToJavaClassName(final Enum value) throws NullPointerException {
+        Objects.requireNonNull(value);
+        final String name = value.name().toLowerCase();
+        final String[] tokens = name.split("_"); // NOI18N.
+        final StringBuilder buffer = new StringBuilder(name.length());
+        Arrays.stream(tokens)
+                .forEach(token -> {
                     String head = token.substring(0, 1).toUpperCase();
                     String tail = token.substring(1, token.length());
                     buffer.append(head);

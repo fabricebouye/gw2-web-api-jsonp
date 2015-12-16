@@ -24,7 +24,16 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD})
 public @interface RuntimeType {
 
+    /**
+     * @author Fabrice Bouyé
+     */
+    enum Source {
+        PARENT, SELF;
+    }
+
     String selector() default "";
 
     String pattern() default "";
+
+    Source source() default Source.SELF;
 }

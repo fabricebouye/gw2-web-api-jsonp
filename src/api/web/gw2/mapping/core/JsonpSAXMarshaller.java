@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.json.Json;
 import javax.json.stream.JsonLocation;
 import javax.json.stream.JsonParser;
@@ -88,6 +89,7 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
 
     /**
      * Marshall an object of the desired type from the parser's current location.
+     * <br>Regular objects, use simple injection.
      * @param <T> The type to use.
      * @param parser The parser instance.
      * @param targetClass The target class.
@@ -95,19 +97,6 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
      * @throws IOException In case of IO errors.
      */
     private <T> T marshallObject(final JsonParser parser, final Field field, final Class<T> targetClass) throws IOException {
-        final boolean isRuntimeType = (field != null) && (field.getAnnotation(RuntimeType.class) != null);
-        // For some special objects (ie: v2/traits, v2/items), the real type depends of the response content.
-        if (isRuntimeType) {
-            try {
-                final T result = marshallRuntimeObject(parser, field, targetClass);
-                return result;
-            } catch (ClassNotFoundException ex) {
-                logger.log(Level.SEVERE, null, ex);
-                final IOException exception = new IOException(ex);
-                throw exception;
-            }
-        }
-        // Regular objects, use simple injection.
         // Initialize concrete empty instance.
         final T result = createConcreteEmptyInstance(targetClass);
         if (result == null) {
@@ -197,14 +186,24 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                                         if (isMap) {
                                             valueFromJSON = marshallMap(parser, childField, subTargetClasses[0], subTargetClasses[1]);
                                         } else {
-                                            valueFromJSON = marshallObject(parser, childField, subTargetClasses[0]);
+                                            final boolean isRuntimeType = (childField.getAnnotation(RuntimeType.class) != null);
+                                            // For some special objects (ie: v2/traits, v2/items, v2/skins), the real type depends of the response content.
+                                            if (isRuntimeType) {
+                                                valueFromJSON = marshallRuntimeObject(parser, childField, subTargetClasses[0], result);
+                                            } else {
+                                                valueFromJSON = marshallObject(parser, childField, subTargetClasses[0]);
+                                            }
                                         }
                                     }
                                 }
                             }
                             break;
-                            case VALUE_NULL:
-                            default:
+                            case VALUE_NULL: {
+                                valueFromJSON = null;
+                                break;
+                            }
+                            default: {
+                            }
                         }
                         final Object value = valueForField(childField, valueFromJSON);
                         final boolean wasAcessible = childField.isAccessible();
@@ -274,14 +273,14 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                     valueFromJSON = Boolean.FALSE;
                 }
                 break;
-                case VALUE_NULL: {
-                    valueFromJSON = null;
-                }
-                break;
                 case START_OBJECT: {
                     valueFromJSON = marshallObject(parser, field, valueClass);
                 }
                 break;
+                case VALUE_NULL: {
+                    valueFromJSON = null;
+                    break;
+                }
                 default: {
                 }
             }
@@ -332,14 +331,14 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                     valueFromJSON = Boolean.FALSE;
                 }
                 break;
-                case VALUE_NULL: {
-                    valueFromJSON = null;
-                }
-                break;
                 case START_OBJECT: {
                     valueFromJSON = marshallObject(parser, field, targetClass);
                 }
                 break;
+                case VALUE_NULL: {
+                    valueFromJSON = null;
+                    break;
+                }
                 default: {
                 }
             }
@@ -350,17 +349,16 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
     }
 
     /**
-    * Marshal a runtime object.
-    * <br>This method converts the content of the parser back to a JSON formatter string and calls the DOM marshaller on it.
-    * @param <T> The result type.
-    * @param parser The parser.
-    * @param field The target field.
-    * @param targetClass The target class.
-    * @return A {@code T} instance, may be {@code null}.
-    * @throws IOException
-    * @throws ClassNotFoundException 
-    */
-    private <T> T marshallRuntimeObject(final JsonParser parser, final Field field, Class<T> targetClass) throws IOException, ClassNotFoundException {
+     * Marshal a runtime object.
+     * <br>This method converts the content of the parser back to a JSON formatter string and calls the DOM marshaller on it.
+     * @param <T> The result type.
+     * @param parser The parser.
+     * @param field The target field.
+     * @param targetClass The target class.
+     * @return A {@code T} instance, may be {@code null}.
+     * @throws IOException
+     */
+    private <T> T marshallRuntimeObject(final JsonParser parser, final Field field, Class<T> targetClass, final Object parent) throws IOException {
         Objects.requireNonNull(parser);
         Objects.requireNonNull(field);
         final RuntimeType runtimeTypeAnnotation = field.getAnnotation(RuntimeType.class);
@@ -370,11 +368,30 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
         Objects.requireNonNull(pattern);
         final String packageName = targetClass.getPackage().getName();
         final String fullPattern = packageName + "." + pattern; // NOI18N.
-        final String json = backToJson(parser, Starter.OBJECT);
-        final JsonpDOMMarshaller delegated = new JsonpDOMMarshaller();
-        try (final InputStream input = new ByteArrayInputStream(json.getBytes("UTF-8"))) { // NOI18N.
-            final T result = delegated.loadRuntimeObject(selector, fullPattern, input);
-            return result;
+        final RuntimeType.Source source = runtimeTypeAnnotation.source();
+        if (source == RuntimeType.Source.PARENT) {
+            Objects.requireNonNull(parent);
+            try {
+                final Field parentField = lookupField(selector, parent.getClass());
+                parentField.setAccessible(true);
+                final Object selectorValue = parentField.get(parent);
+                final String selectorName = javaEnumToJavaClassName((Enum) selectorValue);
+                final String className = String.format(fullPattern, selectorName);
+                final Class<T> newTargetClass = (Class<T>) Class.forName(className);
+                return marshallObject(parser, field, newTargetClass);
+            } catch (ClassNotFoundException | IllegalArgumentException | IllegalAccessException ex) {
+                logger.log(Level.SEVERE, ex.getMessage(), ex);
+                final IOException exception = new IOException(ex);
+                throw exception;
+
+            }
+        } else {
+            final String json = backToJson(parser, Starter.OBJECT);
+            final JsonpDOMMarshaller delegated = new JsonpDOMMarshaller();
+            try (final InputStream input = new ByteArrayInputStream(json.getBytes("UTF-8"))) { // NOI18N.
+                final T result = delegated.loadRuntimeObject(selector, fullPattern, input);
+                return result;
+            }
         }
     }
 
