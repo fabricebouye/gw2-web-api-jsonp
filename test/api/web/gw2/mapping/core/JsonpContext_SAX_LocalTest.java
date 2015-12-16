@@ -22,7 +22,6 @@ import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
 import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
 import api.web.gw2.mapping.v2.skins.Skin;
-import api.web.gw2.mapping.v2.skins.SkinArmorDetails;
 import api.web.gw2.mapping.v2.skins.SkinFlag;
 import api.web.gw2.mapping.v2.skins.SkinType;
 import api.web.gw2.mapping.v2.specializations.Specialization;
@@ -51,9 +50,9 @@ import org.junit.Test;
  * Unit test.
  * @author Fabrice Bouyé
  */
-public class JsonpContext_LocalTest {
+public class JsonpContext_SAX_LocalTest {
 
-    public JsonpContext_LocalTest() {
+    public JsonpContext_SAX_LocalTest() {
     }
 
     @BeforeClass
@@ -63,6 +62,8 @@ public class JsonpContext_LocalTest {
     @AfterClass
     public static void tearDownClass() {
     }
+
+    final JsonpContext instance = JsonpContext.SAX;
 
     @Before
     public void setUp() {
@@ -78,13 +79,11 @@ public class JsonpContext_LocalTest {
         final String basecode = "/api/web/gw2/mapping/v2/worlds/"; // NOI18N.
         final String filename = "world1.json"; // NOI18N.
         final URL url = getClass().getResource(basecode + filename);
-        for (final JsonpContext instance : JsonpContext.values()) {
-            final World value = instance.loadObject(World.class, url);
-            assertNotNull(value);
-            assertEquals(1001, value.getId());
-            assertEquals("Anvil Rock", value.getName()); // NOI18N.
-            assertEquals(WorldPopulation.MEDIUM, value.getPopulation());
-        }
+        final World value = instance.loadObject(World.class, url);
+        assertNotNull(value);
+        assertEquals(1001, value.getId());
+        assertEquals("Anvil Rock", value.getName()); // NOI18N.
+        assertEquals(WorldPopulation.MEDIUM, value.getPopulation());
     }
 
     @Test
@@ -93,14 +92,12 @@ public class JsonpContext_LocalTest {
         final String basecode = "/api/web/gw2/mapping/v2/account/"; // NOI18N.
         final String filename = "account1.json"; // NOI18N.
         final URL url = getClass().getResource(basecode + filename);
-        for (final JsonpContext instance : JsonpContext.values()) {
-            final Account value = instance.loadObject(Account.class, url);
-            assertNotNull(value);
-            assertEquals("b8169418-1c11-405f-91bb-e2b29d602b8a", value.getId()); // NOI18N.
-            assertEquals("ExampleAccount.1234", value.getName()); // NOI18N.
-            assertEquals(1007, value.getWorld());
-            assertEquals(Collections.unmodifiableSet(new HashSet(Arrays.asList("75FD83CF-0C45-4834-BC4C-097F93A487AF"))), value.getGuilds()); // NOI18N.
-        }
+        final Account value = instance.loadObject(Account.class, url);
+        assertNotNull(value);
+        assertEquals("b8169418-1c11-405f-91bb-e2b29d602b8a", value.getId()); // NOI18N.
+        assertEquals("ExampleAccount.1234", value.getName()); // NOI18N.
+        assertEquals(1007, value.getWorld());
+        assertEquals(Collections.unmodifiableSet(new HashSet(Arrays.asList("75FD83CF-0C45-4834-BC4C-097F93A487AF"))), value.getGuilds()); // NOI18N.
     }
 
     @Test
@@ -109,12 +106,10 @@ public class JsonpContext_LocalTest {
         final String basecode = "/api/web/gw2/mapping/v2/account/wallet/"; // NOI18N.
         final String filename = "currency_amount1.json"; // NOI18N.
         final URL url = getClass().getResource(basecode + filename);
-        for (final JsonpContext instance : JsonpContext.values()) {
-            final CurrencyAmount value = instance.loadObject(CurrencyAmount.class, url);
-            assertNotNull(value);
-            assertEquals(1, value.getId());
-            assertEquals(100001, value.getValue());
-        }
+        final CurrencyAmount value = instance.loadObject(CurrencyAmount.class, url);
+        assertNotNull(value);
+        assertEquals(1, value.getId());
+        assertEquals(100001, value.getValue());
     }
 
     @Test
@@ -123,16 +118,14 @@ public class JsonpContext_LocalTest {
         final String basecode = "/api/web/gw2/mapping/v2/minis/"; // NOI18N.
         final String filename = "mini1.json"; // NOI18N.
         final URL url = getClass().getResource(basecode + filename);
-        for (final JsonpContext instance : JsonpContext.values()) {
-            final Mini value = instance.loadObject(Mini.class, url);
-            assertNotNull(value);
-            assertEquals(1, value.getId());
-            assertEquals("Mini-Rytlock", value.getName()); // NOI18N.
-            assertEquals(Optional.empty(), value.getUnlock());
-            assertEquals(Optional.of(new URL("https://render.guildwars2.com/file/795ED1B945A29EC3E3066797DF57FFB25ABAA631/340551.png")), value.getIcon()); // NOI18N.
-            assertEquals(1, value.getOrder());
-            assertEquals(21047, value.getItemId());
-        }
+        final Mini value = instance.loadObject(Mini.class, url);
+        assertNotNull(value);
+        assertEquals(1, value.getId());
+        assertEquals("Mini-Rytlock", value.getName()); // NOI18N.
+        assertEquals(Optional.empty(), value.getUnlock());
+        assertEquals(Optional.of(new URL("https://render.guildwars2.com/file/795ED1B945A29EC3E3066797DF57FFB25ABAA631/340551.png")), value.getIcon()); // NOI18N.
+        assertEquals(1, value.getOrder());
+        assertEquals(21047, value.getItemId());
     }
 
     @Test
@@ -141,14 +134,12 @@ public class JsonpContext_LocalTest {
         final String basecode = "/api/web/gw2/mapping/v2/specializations/"; // NOI18N.
         final String filename = "specialization1.json"; // NOI18N.
         final URL url = getClass().getResource(basecode + filename);
-        for (final JsonpContext instance : JsonpContext.values()) {
-            final Specialization value = instance.loadObject(Specialization.class, url);
-            assertNotNull(value);
-            assertEquals(1, value.getId());
-            assertEquals("Dueling", value.getName()); // NOI18N.
-            assertEquals(CharacterProfession.MESMER, value.getProfession());
-            assertEquals(false, value.isElite());
-        }
+        final Specialization value = instance.loadObject(Specialization.class, url);
+        assertNotNull(value);
+        assertEquals(1, value.getId());
+        assertEquals("Dueling", value.getName()); // NOI18N.
+        assertEquals(CharacterProfession.MESMER, value.getProfession());
+        assertEquals(false, value.isElite());
     }
 
     @Test
@@ -163,14 +154,12 @@ public class JsonpContext_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
-                    for (final JsonpContext instance : JsonpContext.values()) {
-                        try {
-                            final Trait value = instance.loadObject(Trait.class, url);
-                            assertNotNull(value);
-                            assertEquals(214, value.getId());
-                        } catch (NullPointerException | IOException ex) {
-                            fail(ex.getMessage());
-                        }
+                    try {
+                        final Trait value = instance.loadObject(Trait.class, url);
+                        assertNotNull(value);
+                        assertEquals(214, value.getId());
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
                     }
                 });
     }
@@ -187,13 +176,11 @@ public class JsonpContext_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
-                    for (final JsonpContext instance : JsonpContext.values()) {
-                        try {
-                            final Character value = instance.loadObject(Character.class, url);
-                            assertNotNull(value);
-                        } catch (NullPointerException | IOException ex) {
-                            fail(ex.getMessage());
-                        }
+                    try {
+                        final Character value = instance.loadObject(Character.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
                     }
                 });
     }
@@ -204,13 +191,11 @@ public class JsonpContext_LocalTest {
         final String basecode = "/api/web/gw2/mapping/v2/characters/"; // NOI18N.
         final String filename = "charactercrafting1.json"; // NOI18N.
         final URL url = getClass().getResource(basecode + filename);
-        for (final JsonpContext instance : JsonpContext.values()) {
-            final CharacterCrafting value = instance.loadObject(CharacterCrafting.class, url);
-            assertNotNull(value);
-            assertEquals(RecipeCraftingDiscipline.ARTIFICER, value.getDiscipline());
-            assertEquals(500, value.getRating());
-            assertEquals(true, value.isActive());
-        }
+        final CharacterCrafting value = instance.loadObject(CharacterCrafting.class, url);
+        assertNotNull(value);
+        assertEquals(RecipeCraftingDiscipline.ARTIFICER, value.getDiscipline());
+        assertEquals(500, value.getRating());
+        assertEquals(true, value.isActive());
     }
 
     @Test
@@ -227,13 +212,11 @@ public class JsonpContext_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
-                    for (final JsonpContext instance : JsonpContext.values()) {
-                        try {
-                            final Equipment value = instance.loadObject(Equipment.class, url);
-                            assertNotNull(value);
-                        } catch (NullPointerException | IOException ex) {
-                            fail(ex.getMessage());
-                        }
+                    try {
+                        final Equipment value = instance.loadObject(Equipment.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
                     }
                 });
     }
@@ -250,13 +233,11 @@ public class JsonpContext_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
-                    for (final JsonpContext instance : JsonpContext.values()) {
-                        try {
-                            final InventoryBag value = instance.loadObject(InventoryBag.class, url);
-                            assertNotNull(value);
-                        } catch (NullPointerException | IOException ex) {
-                            fail(ex.getMessage());
-                        }
+                    try {
+                        final InventoryBag value = instance.loadObject(InventoryBag.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
                     }
                 });
     }
@@ -267,13 +248,11 @@ public class JsonpContext_LocalTest {
         final String basecode = "/api/web/gw2/mapping/v2/materials/"; // NOI18N.
         final String filename = "materialstorage1.json"; // NOI18N.
         final URL url = getClass().getResource(basecode + filename);
-        for (final JsonpContext instance : JsonpContext.values()) {
-            final MaterialStorage value = instance.loadObject(MaterialStorage.class, url);
-            assertNotNull(value);
-            assertEquals(38, value.getId());
-            assertEquals("Festive Materials", value.getName()); // NOI18N.
-            assertEquals(Collections.unmodifiableSet(new HashSet(Arrays.asList(36060, 36061, 36059, 36041, 38130, 38131, 38132, 38133, 38134, 38135, 43319, 47909, 48807, 48805, 48806))), value.getItems());
-        }
+        final MaterialStorage value = instance.loadObject(MaterialStorage.class, url);
+        assertNotNull(value);
+        assertEquals(38, value.getId());
+        assertEquals("Festive Materials", value.getName()); // NOI18N.
+        assertEquals(Collections.unmodifiableSet(new HashSet(Arrays.asList(36060, 36061, 36059, 36041, 38130, 38131, 38132, 38133, 38134, 38135, 43319, 47909, 48807, 48805, 48806))), value.getItems());
     }
 
     @Test
@@ -282,11 +261,9 @@ public class JsonpContext_LocalTest {
         final String basecode = "/api/web/gw2/mapping/v2/achievements/"; // NOI18N.
         final String filename = "achievement1.json"; // NOI18N.
         final URL url = getClass().getResource(basecode + filename);
-        for (final JsonpContext instance : JsonpContext.values()) {
-            final Achievement value = instance.loadObject(Achievement.class, url);
-            assertNotNull(value);
-            assertEquals(1840, value.getId());
-        }
+        final Achievement value = instance.loadObject(Achievement.class, url);
+        assertNotNull(value);
+        assertEquals(1840, value.getId());
     }
 
     @Test
@@ -324,17 +301,15 @@ public class JsonpContext_LocalTest {
         IntStream.range(0, files.length).forEach(index -> {
             final String file = files[index];
             final URL url = getClass().getResource(baseCode + file);
-            for (final JsonpContext instance : JsonpContext.values()) {
-                try {
-                    final DailyAchievement value = instance.loadObject(DailyAchievement.class, url);
-                    assertNotNull(value);
-                    final int expId = expIds[index];
-                    assertEquals(expId, value.getId());
-                    final DailyAchievementLevelRange expLevel = expLevels[index];
-                    assertEquals(expLevel, value.getLevel());
-                } catch (IOException ex) {
-                    fail(ex.getMessage());
-                }
+            try {
+                final DailyAchievement value = instance.loadObject(DailyAchievement.class, url);
+                assertNotNull(value);
+                final int expId = expIds[index];
+                assertEquals(expId, value.getId());
+                final DailyAchievementLevelRange expLevel = expLevels[index];
+                assertEquals(expLevel, value.getLevel());
+            } catch (IOException ex) {
+                fail(ex.getMessage());
             }
         });
     }
@@ -380,23 +355,21 @@ public class JsonpContext_LocalTest {
         IntStream.range(0, files.length).forEach(index -> {
             final String file = files[index];
             final URL url = getClass().getResource(baseCode + file);
-            for (final JsonpContext instance : JsonpContext.values()) {
-                try {
-                    final api.web.gw2.mapping.v2.account.achievements.Achievement value = instance.loadObject(api.web.gw2.mapping.v2.account.achievements.Achievement.class, url);
-                    assertNotNull(value);
-                    final int expId = expIds[index];
-                    assertEquals(expId, value.getId());
-                    final OptionalInt expCurrent = expCurrents[index];
-                    assertEquals(expCurrent, value.getCurrent());
-                    final OptionalInt expMax = expMaxs[index];
-                    assertEquals(expMax, value.getMax());
-                    final boolean expDone = expDones[index];
-                    assertEquals(expDone, value.isDone());
-                    final Optional<Set<Integer>> expBit = expBits[index];
-                    assertEquals(expBit, value.getBits());
-                } catch (IOException ex) {
-                    fail(ex.getMessage());
-                }
+            try {
+                final api.web.gw2.mapping.v2.account.achievements.Achievement value = instance.loadObject(api.web.gw2.mapping.v2.account.achievements.Achievement.class, url);
+                assertNotNull(value);
+                final int expId = expIds[index];
+                assertEquals(expId, value.getId());
+                final OptionalInt expCurrent = expCurrents[index];
+                assertEquals(expCurrent, value.getCurrent());
+                final OptionalInt expMax = expMaxs[index];
+                assertEquals(expMax, value.getMax());
+                final boolean expDone = expDones[index];
+                assertEquals(expDone, value.isDone());
+                final Optional<Set<Integer>> expBit = expBits[index];
+                assertEquals(expBit, value.getBits());
+            } catch (IOException ex) {
+                fail(ex.getMessage());
             }
         });
     }
@@ -409,20 +382,18 @@ public class JsonpContext_LocalTest {
         final int expResultCount = expPageSize;
         final int expResultTotal = expPageSize;
         final URL url = getClass().getResource("test_page1.json"); // NOI18N.
-        for (final JsonpContext instance : JsonpContext.values()) {
-            final PageResult<Integer> value = instance.loadPage(Integer.class, url);
-            assertNotNull(value);
-            assertEquals(expPageTotal, value.getPageTotal());
-            assertEquals(expPageSize, value.getPageSize());
-            assertEquals(expResultCount, value.getResultCount());
-            assertEquals(expResultTotal, value.getResultTotal());
-            final Iterator<Integer> iterator = value.iterator();
-            IntStream.range(0, expPageSize).forEach(index -> {
-                final int expResult = index;
-                final int result = iterator.next();
-                assertEquals(expResult, result);
-            });
-        }
+        final PageResult<Integer> value = instance.loadPage(Integer.class, url);
+        assertNotNull(value);
+        assertEquals(expPageTotal, value.getPageTotal());
+        assertEquals(expPageSize, value.getPageSize());
+        assertEquals(expResultCount, value.getResultCount());
+        assertEquals(expResultTotal, value.getResultTotal());
+        final Iterator<Integer> iterator = value.iterator();
+        IntStream.range(0, expPageSize).forEach(index -> {
+            final int expResult = index;
+            final int result = iterator.next();
+            assertEquals(expResult, result);
+        });
     }
 
     @Test
@@ -439,20 +410,18 @@ public class JsonpContext_LocalTest {
         final String baseCode = "/api/web/gw2/mapping/v2/account/bank/"; // NOI18N.
         String filename = "bankresponse.json"; // NOI18N.
         final URL url = getClass().getResource(baseCode + filename);
-        for (final JsonpContext instance : JsonpContext.values()) {
-            final PageResult<BankSlot> value = instance.loadPage(BankSlot.class, url);
+        final PageResult<BankSlot> value = instance.loadPage(BankSlot.class, url);
 //        value.stream().forEach(System.out::println);
-            assertNotNull(value);
-            final int expPageSize = expIsNulls.length;
-            assertEquals(expPageSize, value.getResultCount());
-            final Iterator<BankSlot> iterator = value.iterator();
-            IntStream.range(0, expPageSize).forEach(index -> {
-                final BankSlot result = iterator.next();
-                final boolean expIsNull = expIsNulls[index];
-                final boolean isNull = result == null;
-                assertEquals(expIsNull, isNull);
-            });
-        }
+        assertNotNull(value);
+        final int expPageSize = expIsNulls.length;
+        assertEquals(expPageSize, value.getResultCount());
+        final Iterator<BankSlot> iterator = value.iterator();
+        IntStream.range(0, expPageSize).forEach(index -> {
+            final BankSlot result = iterator.next();
+            final boolean expIsNull = expIsNulls[index];
+            final boolean isNull = result == null;
+            assertEquals(expIsNull, isNull);
+        });
     }
 
     @Test
@@ -481,13 +450,11 @@ public class JsonpContext_LocalTest {
             System.out.println(files[index]);
             final String file = files[index];
             final URL url = getClass().getResource(baseCode + file);
-            for (final JsonpContext instance : JsonpContext.values()) {
-                try {
-                    final TraitFact value = instance.loadRuntimeObject("type", "api.web.gw2.mapping.v2.traits.Trait%sFact", url);
-                    assertNotNull(value);
-                } catch (IOException ex) {
-                    fail(ex.getMessage());
-                }
+            try {
+                final TraitFact value = instance.loadRuntimeObject("type", "api.web.gw2.mapping.v2.traits.Trait%sFact", url);
+                assertNotNull(value);
+            } catch (IOException ex) {
+                fail(ex.getMessage());
             }
         });
     }
@@ -503,19 +470,17 @@ public class JsonpContext_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
-                    for (final JsonpContext instance : JsonpContext.values()) {
-                        try {
-                            final Skin value = instance.loadObject(Skin.class, url);
-                            assertNotNull(value);
-                            assertEquals(10, value.getId());
-                            assertEquals("Seer Pants", value.getName());
-                            assertEquals(SkinType.ARMOR, value.getType());
-                            assertEquals(Optional.of(new URL("https://render.guildwars2.com/file/1920ACA302E656B60C38605521760351F147809D/61088.png")), value.getIcon());
-                            assertEquals(Collections.unmodifiableSet(new HashSet(Arrays.asList(SkinFlag.SHOW_IN_WARDROBE))), value.getFlags());
-                            assertTrue(value.getDetails().isPresent());
-                        } catch (NullPointerException | IOException ex) {
-                            fail(ex.getMessage());
-                        }
+                    try {
+                        final Skin value = instance.loadObject(Skin.class, url);
+                        assertNotNull(value);
+                        assertEquals(10, value.getId());
+                        assertEquals("Seer Pants", value.getName());
+                        assertEquals(SkinType.ARMOR, value.getType());
+                        assertEquals(Optional.of(new URL("https://render.guildwars2.com/file/1920ACA302E656B60C38605521760351F147809D/61088.png")), value.getIcon());
+                        assertEquals(Collections.unmodifiableSet(new HashSet(Arrays.asList(SkinFlag.SHOW_IN_WARDROBE))), value.getFlags());
+                        assertTrue(value.getDetails().isPresent());
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
                     }
                 });
     }
