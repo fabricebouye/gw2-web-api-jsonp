@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ import javax.json.JsonArray;
 import javax.json.JsonNumber;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
+import javax.json.JsonString;
 import javax.json.JsonValue;
 
 /**
@@ -95,9 +97,9 @@ final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
                 logWarningMissingField(key, childFieldName, targetClass);
                 continue;
             }
-            Object valueFromJSON = defaultValueForField(childField);
             final JsonValue jsonValue = jsonObject.get(key);
             final JsonValue.ValueType valueType = jsonValue.getValueType();
+            Object valueFromJSON = defaultValueForField(childField);
             switch (valueType) {
                 case TRUE: {
                     valueFromJSON = Boolean.TRUE;
@@ -160,8 +162,12 @@ final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
                     }
                 }
                 break;
-                case NULL:
-                default:
+                case NULL: {
+                    valueFromJSON = null;
+                }
+                break;
+                default: {
+                }
             }
             final Object value = valueForField(childField, valueFromJSON);
             childField.setAccessible(true);
@@ -170,8 +176,54 @@ final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
         return result;
     }
 
-    private <T> List<T> marshallArray(final JsonArray jsonArray, final Field field, final Class<T> targetClass) {
-        return null;
+    private <T> List<T> marshallArray(final JsonArray jsonArray, final Field field, final Class<T> targetClass) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException, ClassNotFoundException, NullPointerException, MalformedURLException, NoSuchMethodException, InvocationTargetException {
+        final int size = jsonArray.size();
+        final List result = new ArrayList(size);
+        for (int index = 0; index < size; index++) {
+            final JsonValue jsonValue = jsonArray.get(index);
+            final JsonValue.ValueType valueType = jsonValue.getValueType();
+            Object valueFromJSON = null;
+            switch (valueType) {
+                case TRUE: {
+                    valueFromJSON = Boolean.TRUE;
+                }
+                break;
+                case FALSE: {
+                    valueFromJSON = Boolean.FALSE;
+                }
+                break;
+                case NUMBER: {
+                    final JsonNumber jsonNumber = (JsonNumber) jsonValue;
+                    valueFromJSON = jsonNumberToJavaNumber(jsonNumber);
+                }
+                break;
+                case STRING: {
+                    final JsonString jsonString = (JsonString) jsonValue;
+                    valueFromJSON = jsonString.getString();
+                }
+                break;
+                case ARRAY: {
+                    // @todo Find interface class.
+                    // Array-ception?
+                    final JsonArray childJsonArray = (JsonArray) jsonValue;
+                    valueFromJSON = marshallArray(childJsonArray, field, null);
+                }
+                break;
+                case OBJECT: {
+                    final JsonObject jsonObject = (JsonObject) jsonValue;
+                    valueFromJSON = marshallObject(jsonObject, field, targetClass);
+                }
+                break;
+                case NULL: {
+                    valueFromJSON = null;
+                }
+                break;
+                default: {
+                }
+            }
+            result.add(valueFromJSON);
+        }
+        return result;
     }
 
     private <T, V> Map<T, V> marshallMap(final JsonObject jsonObject, final Field field, final Class<T> keyClass, final Class<V> valueClass) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchFieldException, NullPointerException, MalformedURLException {
@@ -205,8 +257,12 @@ final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
                     valueFromJSON = jsonObject.getString(key);
                 }
                 break;
-                case NULL:
-                default:
+                case NULL: {
+                    valueFromJSON = null;
+                }
+                break;
+                default: {
+                }
             }
             result.put(keyFromJSON, valueFromJSON);
         }
