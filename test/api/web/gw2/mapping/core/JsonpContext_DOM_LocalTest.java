@@ -21,6 +21,7 @@ import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
 import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
 import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
+import api.web.gw2.mapping.v2.skins.JsonpSkinArmorDetails;
 import api.web.gw2.mapping.v2.skins.Skin;
 import api.web.gw2.mapping.v2.skins.SkinFlag;
 import api.web.gw2.mapping.v2.skins.SkinType;
@@ -479,6 +480,7 @@ public class JsonpContext_DOM_LocalTest {
                         assertEquals(Optional.of(new URL("https://render.guildwars2.com/file/1920ACA302E656B60C38605521760351F147809D/61088.png")), value.getIcon());
                         assertEquals(Collections.unmodifiableSet(new HashSet(Arrays.asList(SkinFlag.SHOW_IN_WARDROBE))), value.getFlags());
                         assertTrue(value.getDetails().isPresent());
+                        assertEquals(JsonpSkinArmorDetails.class, value.getDetails().get().getClass());
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
                     }
