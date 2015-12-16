@@ -239,15 +239,24 @@ abstract class JsonpAbstractMarshaller {
         Object result = value;
         // Base types.
         if (isURL) {
-            result = new URL((String) value);
+            final String path = (String) value;
+            result = new URL(path);
+        } else if (isDuration) {
+            // @todo In game some skill cast time can be 3/4 seconds. Need to check if it's the same for buffs.
+            final Number number = (Number) value;
+            result = Duration.ofSeconds(number.intValue());
         } else if (isDate) {
-            result = ZonedDateTime.parse((String) value);
+            final String string = (String) value;
+            result = ZonedDateTime.parse(string);
         } else if (isList) {
-            result = Collections.unmodifiableList((List) value);
+            final List list = (List) value;
+            result = Collections.unmodifiableList(list);
         } else if (isSet) {
-            result = Collections.unmodifiableSet(new HashSet((List) value));
+            final Set set = new HashSet((List) value);
+            result = Collections.unmodifiableSet(set);
         } else if (isMap) {
-            result = Collections.unmodifiableMap((Map) value);
+            final Map map = (Map) value;
+            result = Collections.unmodifiableMap(map);
         }
         // As we rely heavily on enums, we need to convert base types obtained from JSON into valid enum values.
         if (isEnum) {
