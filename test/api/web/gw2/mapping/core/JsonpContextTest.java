@@ -9,23 +9,20 @@ package api.web.gw2.mapping.core;
 
 import api.web.gw2.mapping.v2.account.Account;
 import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
+import api.web.gw2.mapping.v2.guild.id.ranks.Rank;
+import api.web.gw2.mapping.v2.guild.permissions.PermissionId;
+import api.web.gw2.mapping.v2.guild.permissions.PermissionsUtils;
 import api.web.gw2.mapping.v2.quaggans.*;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.Optional;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.IntStream;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -60,44 +57,6 @@ public class JsonpContextTest {
     }
 
     @Test
-    public void testJsonKeyToJavaFieldName() throws NoSuchMethodException {
-        System.out.println("jsonKeyToJavaFieldName"); // NOI18N.
-        final String[] values = {
-            "demo",
-            "demo_d",
-            "demo_d_d",
-            "demo_d_demo",
-            "demo_demo",
-            "demo_demo_d",
-            "demo_demo_demo"
-        };
-        final String[] expResults = {
-            "demo",
-            "demoD",
-            "demoDD",
-            "demoDDemo",
-            "demoDemo",
-            "demoDemoD",
-            "demoDemoDemo"
-        };
-        assertEquals(values.length, expResults.length);
-        final Class aClass = JsonpContext.SAX.getClass();
-        final Method method = aClass.getDeclaredMethod("jsonKeyToJavaFieldName", String.class); // NOI18N.
-        method.setAccessible(true);
-        IntStream.range(0, values.length)
-                .forEach(index -> {
-                    try {
-                        final String value = values[index];
-                        final String expResult = expResults[index];
-                        final String result = (String) method.invoke(JsonpContext.SAX, value);
-                        assertEquals(expResult, result);
-                    } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-                        fail(ex.getMessage());
-                    }
-                });
-    }
-
-    @Test
     public void testLoadObject_Quaggan_Remote() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Quaggan remote)"); // NOI18N.
         final String expId = "box"; // NOI18N.
@@ -108,19 +67,6 @@ public class JsonpContextTest {
         assertNotNull(value);
         assertEquals(expId, value.getId());
         assertEquals(expURL, value.getUrl());
-    }
-
-    @Test
-    public void testLoadObject_Account_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Account local)"); // NOI18N.
-        final URL url = getClass().getResource("/api/web/gw2/mapping/v2/account/account1.json"); // NOI18N.
-        final JsonpContext instance = JsonpContext.SAX;
-        final Account value = instance.loadObject(Account.class, url);
-        assertNotNull(value);
-        assertEquals("b8169418-1c11-405f-91bb-e2b29d602b8a", value.getId()); // NOI18N.
-        assertEquals("ExampleAccount.1234", value.getName()); // NOI18N.
-        assertEquals(1007, value.getWorld());
-        assertEquals(Collections.unmodifiableSet(new HashSet(Arrays.asList("75FD83CF-0C45-4834-BC4C-097F93A487AF"))), value.getGuilds()); // NOI18N.
     }
 
     private String loadApplicationKey() throws IOException {
@@ -150,6 +96,25 @@ public class JsonpContextTest {
 //        System.out.println(result.getWorld());
 //        result.getGuilds().forEach(System.out::println);
 //        System.out.println(result.getCreated());
+    }
+
+    @Test
+    public void testLoadObject_Account_Permission_Rank_Remote() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Account Permisson Rank remote)"); // NOI18N.
+        final String appKey = loadApplicationKey();
+        String path = String.format("https://api.guildwars2.com/v2/account?access_token=%s", appKey);
+        URL url = new URL(path);
+        final Account account = JsonpContext.SAX.loadObject(Account.class, url);
+        assertNotNull(account);
+        final String guildId = account.getGuilds().iterator().next();
+        path = "https://api.guildwars2.com/v2/guild/permissions";
+        url = new URL(path);
+        final Collection<PermissionId> permissions = JsonpContext.SAX.loadEnumArray(PermissionsUtils::findPermissionId, url);
+        assertNotNull(permissions);
+        path = String.format("https://api.guildwars2.com/v2/guild/%s/ranks?access_token=%s", guildId, appKey);
+        url = new URL(path);
+        final Collection<Rank> ranks = JsonpContext.SAX.loadObjectArray(Rank.class, url);
+        assertNotNull(ranks);
     }
 
     @Test
