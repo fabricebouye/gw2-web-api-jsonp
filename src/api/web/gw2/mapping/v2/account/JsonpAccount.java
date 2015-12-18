@@ -8,7 +8,9 @@
 package api.web.gw2.mapping.v2.account;
 
 import api.web.gw2.mapping.core.DateValue;
+import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.LevelValue;
 import api.web.gw2.mapping.core.SetValue;
 import java.time.ZonedDateTime;
 import java.util.Collections;
@@ -30,6 +32,10 @@ public final class JsonpAccount implements Account {
     private Set<String> guilds = Collections.EMPTY_SET;
     @DateValue
     private ZonedDateTime created = DateValue.DEFAULT;
+    @EnumValue(factory="api.web.gw2.mapping.v2.account.AccountUtils::findAccountAccessType")
+    private AccountAccessType access = AccountAccessType.UNKNOWN;
+    @LevelValue
+    private int fractalLevel = 1;
 
     /**
      * Creates an empty instance.
@@ -60,5 +66,15 @@ public final class JsonpAccount implements Account {
     @Override
     public ZonedDateTime getCreated() {
         return created;
+    }
+
+    @Override
+    public AccountAccessType getAccess() {
+        return access;
+    }
+
+    @Override
+    public int getFractalLevel() {
+        return fractalLevel;
     }
 }

@@ -1,8 +1,11 @@
 {
-   "id"     : "b8169418-1c11-405f-91bb-e2b29d602b8a",
-   "name"   : "ExampleAccount.1234",
-   "world"  : 1007,
-   "guilds" : [
-     "75FD83CF-0C45-4834-BC4C-097F93A487AF"
-   ]
- }
+    "id": "b8169418-1c11-405f-91bb-e2b29d602b8a",
+    "name": "ExampleAccount.1234",
+    "world": 1007,
+    "guilds": [
+        "75FD83CF-0C45-4834-BC4C-097F93A487AF"
+    ],
+    "created": "2012-01-01T00:00:00Z",
+    "access": "GuildWars2",
+    "fractal_level": 64
+}

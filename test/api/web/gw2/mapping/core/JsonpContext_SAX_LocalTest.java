@@ -8,6 +8,7 @@
 package api.web.gw2.mapping.core;
 
 import api.web.gw2.mapping.v2.account.Account;
+import api.web.gw2.mapping.v2.account.AccountAccessType;
 import api.web.gw2.mapping.v2.account.bank.BankSlot;
 import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
 import api.web.gw2.mapping.v2.achievements.Achievement;
@@ -99,6 +100,8 @@ public class JsonpContext_SAX_LocalTest {
         assertEquals("ExampleAccount.1234", value.getName()); // NOI18N.
         assertEquals(1007, value.getWorld());
         assertEquals(Collections.unmodifiableSet(new HashSet(Arrays.asList("75FD83CF-0C45-4834-BC4C-097F93A487AF"))), value.getGuilds()); // NOI18N.
+        assertEquals(AccountAccessType.GUILD_WARS_2, value.getAccess());
+        assertEquals(64, value.getFractalLevel());
     }
 
     @Test
