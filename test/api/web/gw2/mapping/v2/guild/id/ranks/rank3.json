@@ -1,0 +1,7 @@
+{
+    "id": "Member",
+    "order": 3,
+    "permissions": [
+        "StartingRole"
+    ]
+}

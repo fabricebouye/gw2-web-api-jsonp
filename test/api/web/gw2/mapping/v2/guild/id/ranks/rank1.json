@@ -1,0 +1,9 @@
+{
+    "id": "Leader",
+    "order": 1,
+    "permissions": [
+        "Admin",
+        "EditRoles",
+        "ClaimableEditOptions"
+    ]
+}
