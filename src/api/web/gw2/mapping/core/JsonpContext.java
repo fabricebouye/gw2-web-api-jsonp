@@ -12,7 +12,11 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * The public context that allows to parse results provided by the GW2 Web API.
@@ -72,6 +76,27 @@ public enum JsonpContext {
         Objects.requireNonNull(url);
         try (final InputStream input = url.openStream()) {
             return marshaller.loadObjectArray(targetClass, input);
+        }
+    }
+
+    /**
+     * Loads an enum array from given URL
+     * @param <T> The type to use.
+     * @param factory The enum factory.
+     * @param url The url to query.
+     * @return A {@code Collection<T>} instance, may be {@code null}.
+     * @throws NullPointerException If either {@code targetClass} or {@code url} is {@code null}.
+     * @throws IOException In case of IO errors.
+     */
+    public <T extends Enum> Collection<T> loadEnumArray(final Function<String, T> factory, final URL url) throws IOException {
+        Objects.requireNonNull(factory);
+        Objects.requireNonNull(url);
+        try (final InputStream input = url.openStream()) {
+            final Collection<String> values = marshaller.loadObjectArray(String.class, input);
+            final List<T> result = values.stream()
+                    .map(factory)
+                    .collect(Collectors.toList());
+            return Collections.unmodifiableList(result);
         }
     }
 
