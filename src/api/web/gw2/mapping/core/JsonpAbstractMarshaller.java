@@ -101,7 +101,7 @@ abstract class JsonpAbstractMarshaller {
      * @return A {@code String}, never {@code null}.
      * @throws NullPointerException If {@code key} is {@code null}.
      */
-    protected final String jsonKeyToJavaFieldName(final String key) throws NullPointerException {
+    protected static final String jsonKeyToJavaFieldName(final String key) throws NullPointerException {
         Objects.requireNonNull(key);
         final String[] tokens = key.split("_"); // NOI18N.
         final StringBuilder buffer = new StringBuilder(key.length());
@@ -116,7 +116,7 @@ abstract class JsonpAbstractMarshaller {
         return buffer.toString();
     }
 
-    protected final String javaEnumToJavaClassName(final Enum value) throws NullPointerException {
+    protected static final String javaEnumToJavaClassName(final Enum value) throws NullPointerException {
         Objects.requireNonNull(value);
         final String name = value.name().toLowerCase();
         final String[] tokens = name.split("_"); // NOI18N.
