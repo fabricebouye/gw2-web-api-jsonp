@@ -32,7 +32,7 @@ public final class JsonpAccount implements Account {
     private Set<String> guilds = Collections.EMPTY_SET;
     @DateValue
     private ZonedDateTime created = DateValue.DEFAULT;
-    @EnumValue(factory="api.web.gw2.mapping.v2.account.AccountUtils::findAccountAccessType")
+    @EnumValue
     private AccountAccessType access = AccountAccessType.UNKNOWN;
     @LevelValue
     private int fractalLevel = 1;

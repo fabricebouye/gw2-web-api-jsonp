@@ -17,7 +17,7 @@ import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
  */
 public final class JsonpCharacterCrafting implements CharacterCrafting {
 
-    @EnumValue(factory = "api.web.gw2.mapping.v2.recipes.RecipesUtils::findRecipeCraftingDiscipline") // NOI18N.
+    @EnumValue
     private RecipeCraftingDiscipline discipline = RecipeCraftingDiscipline.UNKNOWN;
     @CraftingLevelValue
     private int rating = CraftingLevelValue.MIN_LEVEL;

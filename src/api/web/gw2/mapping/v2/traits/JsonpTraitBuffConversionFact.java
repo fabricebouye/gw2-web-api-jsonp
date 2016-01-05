@@ -18,9 +18,9 @@ public final class JsonpTraitBuffConversionFact extends JsonpTraitFact implement
 
     @PercentValue
     private int percent = 0;
-    @EnumValue(factory = "api.web.gw2.mapping.v2.traits.TraitsUtils::findTraitAttribute") // NOI18N.
+    @EnumValue
     private TraitAttribute source = TraitAttribute.UNKNOWN;
-    @EnumValue(factory = "api.web.gw2.mapping.v2.traits.TraitsUtils::findTraitAttribute") // NOI18N.
+    @EnumValue
     private TraitAttribute target = TraitAttribute.UNKNOWN;
 
     /**

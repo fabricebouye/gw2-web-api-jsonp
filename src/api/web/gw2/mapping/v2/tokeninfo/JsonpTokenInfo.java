@@ -23,7 +23,7 @@ public final class JsonpTokenInfo implements TokenInfo {
     private String id = "";
     private String name = "";
     @SetValue
-    @EnumValue(factory = "api.web.gw2.mapping.v2.tokeninfo.TokenInfoUtils::findTokenInfoPermission")
+    @EnumValue
     private Set<TokenInfoPermission> permissions = Collections.EMPTY_SET;
 
     /**

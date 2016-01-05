@@ -25,7 +25,7 @@ public abstract class JsonpTraitFact implements TraitFact {
     @OptionalValue
     @LocalizedResource
     private Optional<String> text = Optional.empty();
-    @EnumValue(factory = "api.web.gw2.mapping.v2.traits.TraitsUtils::findTraitFactType") // NOI18N.
+    @EnumValue
     private TraitFactType type = TraitFactType.UNKNOWN;
     @OptionalValue
     @URLValue

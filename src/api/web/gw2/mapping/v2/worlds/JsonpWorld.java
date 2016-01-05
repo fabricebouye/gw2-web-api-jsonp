@@ -21,7 +21,7 @@ public final class JsonpWorld implements World {
     private int id = -1;
     @LocalizedResource
     private String name = ""; // NOI18N.
-    @EnumValue(factory="api.web.gw2.mapping.v2.worlds.WorldsUtils::findWorldPopulation") // NOI18N.
+    @EnumValue
     private WorldPopulation population = WorldPopulation.UNKNOWN;
 
     /**

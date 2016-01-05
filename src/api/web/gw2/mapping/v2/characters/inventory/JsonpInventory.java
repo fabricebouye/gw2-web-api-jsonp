@@ -38,7 +38,7 @@ public final class JsonpInventory implements Inventory {
     @IdValue
     private Optional<List<Integer>> infusions = Optional.empty();
     @OptionalValue
-    @EnumValue(factory = "api.web.gw2.mapping.v2.characters.inventory.InventoryUtils::findInventoryBinding")
+    @EnumValue
     private Optional<InventoryBinding> binding = Optional.empty();
     @OptionalValue
     private Optional<String> boundTo = Optional.empty();

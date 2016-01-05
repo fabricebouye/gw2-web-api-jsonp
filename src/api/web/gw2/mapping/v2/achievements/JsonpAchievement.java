@@ -35,10 +35,10 @@ public final class JsonpAchievement implements Achievement {
     private String description = "";
     @LocalizedResource
     private String requirement = "";
-    @EnumValue(factory = "api.web.gw2.mapping.v2.achievements.AchievementsUtils::findAchievementType")
+    @EnumValue
     private AchievementType type = AchievementType.UNKNOWN;
     @SetValue
-    @EnumValue(factory = "api.web.gw2.mapping.v2.achievements.AchievementsUtils::findAchievementFlag")
+    @EnumValue
     private Set<AchievementFlag> flags = Collections.EMPTY_SET;
 
     /**

@@ -18,7 +18,7 @@ import api.web.gw2.mapping.core.LocalizedResource;
 public final class JsonpPermission implements Permission {
 
     @IdValue
-    @EnumValue(factory = "api.web.gw2.mapping.v2.guild.permissions.PermissionsUtils::findPermissionId") // NOI18N.
+    @EnumValue
     private PermissionId id = PermissionId.UNKNOWN;
     @LocalizedResource
     private String name = ""; // NOI18N.

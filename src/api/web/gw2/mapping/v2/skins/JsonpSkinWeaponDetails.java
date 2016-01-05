@@ -15,9 +15,9 @@ import api.web.gw2.mapping.core.EnumValue;
  */
 public final class JsonpSkinWeaponDetails extends JsonpSkinDetails implements SkinWeaponDetails {
 
-    @EnumValue(factory = "api.web.gw2.mapping.v2.skins.SkinsUtils::findSkinWeaponType") // NOI18N.
+    @EnumValue
     private SkinWeaponType type = SkinWeaponType.UNKNOWN;
-    @EnumValue(factory = "api.web.gw2.mapping.v2.skins.SkinsUtils::findSkinWeaponDamageType") // NOI18N.
+    @EnumValue
     private SkinWeaponDamageType damageType = SkinWeaponDamageType.UNKNOWN;
 
     /**

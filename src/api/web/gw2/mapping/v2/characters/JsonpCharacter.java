@@ -18,7 +18,6 @@ import api.web.gw2.mapping.core.QuantityValue;
 import api.web.gw2.mapping.core.SetValue;
 import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
 import api.web.gw2.mapping.v2.characters.equipment.Equipment;
-import api.web.gw2.mapping.v2.specializations.Specialization;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
@@ -32,11 +31,11 @@ import java.util.Set;
 public final class JsonpCharacter implements Character {
 
     private String name = "";
-    @EnumValue(factory = "api.web.gw2.mapping.v2.characters.CharactersUtils::findCharacterRace") // NOI18N.
+    @EnumValue
     private CharacterRace race = CharacterRace.UNKNOWN;
-    @EnumValue(factory = "api.web.gw2.mapping.v2.characters.CharactersUtils::findCharacterProfession") // NOI18N.
+    @EnumValue
     private CharacterProfession profession = CharacterProfession.UNKNOWN;
-    @EnumValue(factory = "api.web.gw2.mapping.v2.characters.CharactersUtils::findCharacterGender") // NOI18N.
+    @EnumValue
     private CharacterGender gender = CharacterGender.UNKNOWN;
     @LevelValue
     private int level = LevelValue.MIN_LEVEL;
@@ -59,7 +58,7 @@ public final class JsonpCharacter implements Character {
     @SetValue
     private Optional<Set<CharacterCrafting>> crafting = Optional.empty();
     @OptionalValue
-    @MapValue(keyFactory = "api.web.gw2.mapping.v2.characters.CharactersUtils::findCharacterGameType") // NOI18N.
+    @MapValue
     private Optional<Map<CharacterGameType, CharacterSpecialization>> specializations = Optional.empty();
 
     /**

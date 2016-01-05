@@ -30,7 +30,7 @@ public final class JsonpRank implements Rank {
     @QuantityValue
     private int order = 0;
     @SetValue
-    @EnumValue(factory = "api.web.gw2.mapping.v2.guild.permissions.PermissionsUtils::findPermissionId") // NOI8N.
+    @EnumValue
     private Set<PermissionId> permissions = Collections.EMPTY_SET;
     @OptionalValue
     @URLValue

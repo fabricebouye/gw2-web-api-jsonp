@@ -22,7 +22,7 @@ public final class JsonpEquipment implements Equipment {
 
     @IdValue
     private int id = -1;
-    @EnumValue(factory = "api.web.gw2.mapping.v2.characters.equipment.EquipmentUtils::findEquipmentSlot")
+    @EnumValue
     private EquipmentSlot slot = EquipmentSlot.UNKNOWN;
     @OptionalValue
     @ListValue

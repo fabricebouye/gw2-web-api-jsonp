@@ -15,7 +15,7 @@ import api.web.gw2.mapping.core.EnumValue;
  */
 public final class JsonpTraitComboFieldFact extends JsonpTraitFact implements TraitComboFieldFact {
 
-    @EnumValue(factory = "api.web.gw2.mapping.v2.traits.TraitsUtils::findTraitComboFieldType") // NOI18N.
+    @EnumValue
     private TraitComboFieldType fieldType = TraitComboFieldType.UNKNOWN;
 
     /**

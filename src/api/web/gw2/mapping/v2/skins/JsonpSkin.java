@@ -29,13 +29,13 @@ public final class JsonpSkin implements Skin {
     private int id = 1;
     @LocalizedResource
     private String name = ""; // NOI18N.
-    @EnumValue(factory = "api.web.gw2.mapping.v2.skins.SkinsUtils::findSkinType") // NOI18N.
+    @EnumValue
     private SkinType type = SkinType.UNKNOWN;
     @SetValue
-    @EnumValue(factory = "api.web.gw2.mapping.v2.skins.SkinsUtils::findSkinFlag") // NOI18N.
+    @EnumValue
     private Set<SkinFlag> flags = Collections.EMPTY_SET;
     @SetValue
-    @EnumValue(factory = "api.web.gw2.mapping.v2.skins.SkinsUtils::findSkinRestriction") // NOI18N.
+    @EnumValue
     private Set<SkinRestriction> restrictions = Collections.EMPTY_SET;
     @OptionalValue
     @URLValue

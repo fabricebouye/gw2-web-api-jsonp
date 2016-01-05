@@ -35,9 +35,9 @@ public final class JsonpTrait implements Trait {
     private String description = ""; // NOI18N.
     @IdValue
     private int specialization = -1;
-    @EnumValue(factory = "api.web.gw2.mapping.v2.traits.TraitsUtils::findTraitTier") // NOI18N.
+    @EnumValue
     private TraitTier tier = TraitTier.UNKNOWN;
-    @EnumValue(factory = "api.web.gw2.mapping.v2.traits.TraitsUtils::findTraitSlotType") // NOI18N.
+    @EnumValue
     private TraitSlotType slot = TraitSlotType.UNKNOWN;
     @OptionalValue
     @SetValue

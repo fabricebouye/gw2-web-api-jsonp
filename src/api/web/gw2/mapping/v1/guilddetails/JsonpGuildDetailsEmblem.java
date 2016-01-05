@@ -24,7 +24,7 @@ public final class JsonpGuildDetailsEmblem implements GuildDetailsEmblem {
     @IdValue
     private int foregroundId = -1;
     @SetValue
-    @EnumValue(factory = "api.web.gw2.mapping.v1.guilddetails.GuildDetailsUtils::findGuildDetailsEmblemFlag") // NOI18N.
+    @EnumValue
     private Set<GuildDetailsEmblemFlag> flags = Collections.EMPTY_SET;
     @IdValue
     private int backgroundColorId = -1;

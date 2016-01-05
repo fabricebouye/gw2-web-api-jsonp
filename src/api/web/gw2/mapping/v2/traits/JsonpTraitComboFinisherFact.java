@@ -18,7 +18,7 @@ public final class JsonpTraitComboFinisherFact extends JsonpTraitFact implements
 
     @PercentValue
     private int percent = 0;
-    @EnumValue(factory = "api.web.gw2.mapping.v2.traits.TraitsUtils::findTraitComboFinisherType") // NOI18N.
+    @EnumValue
     private TraitComboFinisherType finisherType = TraitComboFinisherType.UNKNOWN;
 
     /**

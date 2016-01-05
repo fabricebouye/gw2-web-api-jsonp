@@ -17,7 +17,7 @@ public final class JsonpTraitAttributeAdjustFact extends JsonpTraitFact implemen
 
     @QuantityValue
     private int value = 0;
-    @EnumValue(factory = "api.web.gw2.mapping.v2.traits.TraitsUtils::findTraitAttribute") // NOI18N.
+    @EnumValue
     private TraitAttribute target = TraitAttribute.UNKNOWN;
 
     /**
