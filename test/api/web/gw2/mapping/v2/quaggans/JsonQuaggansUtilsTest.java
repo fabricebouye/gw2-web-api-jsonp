@@ -61,53 +61,6 @@ public class JsonQuaggansUtilsTest {
         assertEquals(jsonObject.getString("url"), result.getUrl().get().toExternalForm()); // NOI18N.
     }
 
-    /**
-     * Test of getQuagganFactory method, of class JsonQuaggansUtilsTest.
-     */
-    @Test
-    public void testGetQuagganFactory() throws IOException {
-        System.out.println("getQuagganFactory"); // NOI18N.
-        final QuagganFactory factory = JsonQuaggansUtils.getQuagganFactory();
-        assertNotNull(factory);
-        final URL url = getClass().getResource("quaggan1.json"); // NOI18N.
-        final String basecode = url.toExternalForm();
-        final JsonObject jsonObject = JsonUtils.asJsonObject(basecode);
-        final Quaggan result = factory.create(basecode);
-        testQuaggan(jsonObject, result);
-    }
-
-    /**
-     * Test of jsonObjectToQuaggan method, of class JsonQuaggansUtilsTest.
-     */
-    @Test
-    public void testJsonObjectToQuaggan_1() throws IOException {
-        System.out.println("jsonObjectToQuaggan_1"); // NOI18N.
-        final URL url = getClass().getResource("quaggan1.json"); // NOI18N.
-        final String basecode = url.toExternalForm();
-        final JsonObject jsonObject = JsonUtils.asJsonObject(basecode);
-        final Quaggan result = JsonQuaggansUtils.INSTANCE.jsonObjectToQuaggan(jsonObject);
-        testQuaggan(jsonObject, result);
-    }
-
-    /**
-     * Test of jsonObjectToQuaggan method, of class JsonQuaggansUtilsTest.
-     */
-    @Test
-    public void getJsonObjectToQuaggan_2() throws IOException {
-        System.out.println("jsonObjectToQuaggan_2"); // NOI18N.
-        final URL url = getClass().getResource("quaggan2.json"); // NOI18N.
-        final String basecode = url.toExternalForm();
-        final JsonArray jsonArray = JsonUtils.asJsonArray(basecode);
-        final List<Quaggan> results = JsonUtils.listFromJsonArray(url.toExternalForm(), JsonObject.class, JsonQuaggansUtils.INSTANCE::jsonObjectToQuaggan);
-        assertEquals(jsonArray.size(), results.size());
-        IntStream.range(0, jsonArray.size())
-                .forEach(index -> {
-                    final JsonObject jsonObject = jsonArray.getJsonObject(index);
-                    final Quaggan result = results.get(index);
-                    testQuaggan(jsonObject, result);
-                });
-    }
-
     @Test
     public void stream() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         final URL url = getClass().getResource("quaggan1.json"); // NOI18N.
