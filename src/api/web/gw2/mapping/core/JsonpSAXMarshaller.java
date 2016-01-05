@@ -148,50 +148,24 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                             break;
                             case START_OBJECT:
                             case START_ARRAY: {
-//                                final Type fieldType = field.getType();
-//                                Class aClass = Class.forName(fieldType.getTypeName());
-                                // @todo Find interface class.
-                                // @todo Check this.
-                                String typename = childField.getGenericType().getTypeName();
-                                final boolean isOptional = childField.getAnnotation(OptionalValue.class) != null;
-                                final boolean isSet = childField.getAnnotation(SetValue.class) != null;
-                                final boolean isList = childField.getAnnotation(ListValue.class) != null;
                                 final boolean isMap = childField.getAnnotation(MapValue.class) != null;
-                                if (isOptional) {
-                                    typename = typename.replaceAll("java\\.util\\.Optional<", ""); // NOI18N.
-                                }
-                                if (isSet) {
-                                    typename = typename.replaceAll("java\\.util\\.Set<", ""); // NOI18N.
-                                }
-                                if (isList) {
-                                    typename = typename.replaceAll("java\\.util\\.List<", ""); // NOI18N.
-                                }
-                                if (isMap) {
-                                    typename = typename.replaceAll("java\\.util\\.Map<", ""); // NOI18N.
-                                }
-                                // Remove trailing >.
-                                typename = typename.replaceAll(">+", ""); // NOI18N.
-                                final String[] subTargetClassNames = typename.split(",\\s*");
-                                final Class[] subTargetClasses = new Class[subTargetClassNames.length];
-                                for (int index = 0; index < subTargetClassNames.length; index++) {
-                                    subTargetClasses[index] = Class.forName(subTargetClassNames[index]);
-                                }
+                                final Class[] childFieldClasses = findClassesForField(childField);
                                 switch (event) {
                                     case START_ARRAY: {
-                                        valueFromJSON = marshallArray(parser, childField, subTargetClasses[0]);
+                                        valueFromJSON = marshallArray(parser, childField, childFieldClasses[0]);
                                     }
                                     break;
                                     case START_OBJECT:
                                     default: {
                                         if (isMap) {
-                                            valueFromJSON = marshallMap(parser, childField, subTargetClasses[0], subTargetClasses[1]);
+                                            valueFromJSON = marshallMap(parser, childField, childFieldClasses[0], childFieldClasses[1]);
                                         } else {
                                             final boolean isRuntimeType = (childField.getAnnotation(RuntimeType.class) != null);
                                             // For some special objects (ie: v2/traits, v2/items, v2/skins), the real type depends of the response content.
                                             if (isRuntimeType) {
-                                                valueFromJSON = marshallRuntimeObject(parser, childField, subTargetClasses[0], result);
+                                                valueFromJSON = marshallRuntimeObject(parser, childField, childFieldClasses[0], result);
                                             } else {
-                                                valueFromJSON = marshallObject(parser, childField, subTargetClasses[0]);
+                                                valueFromJSON = marshallObject(parser, childField, childFieldClasses[0]);
                                             }
                                         }
                                     }

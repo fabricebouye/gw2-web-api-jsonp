@@ -314,29 +314,19 @@ abstract class JsonpAbstractMarshaller {
     protected final Object marshallEnumValue(final Field field, final Object value) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         Objects.requireNonNull(field);
         Objects.requireNonNull(value);
-        final EnumValue enumAnnotation = (EnumValue) field.getAnnotation(EnumValue.class);
-        final MapValue mapAnnotation = (MapValue) field.getAnnotation(MapValue.class);
-        String factory = null;
-        if (enumAnnotation != null) {
-            factory = enumAnnotation.factory();
-        } else if (mapAnnotation != null) {
-            factory = mapAnnotation.keyFactory();
-        }
-        Objects.requireNonNull(factory);
         // For simple field this should be the enum type.
         // The class obtained here is not good when the field holds an optional or a collection.
-        Class factoryClass = field.getType();
-        String factoryMethodName = "valueOf"; // NOI18N.
-        // We use the provided factory method instead of the enum type's valueOf method.
-        if (factory != null && !factory.trim().isEmpty()) {
-            final int index = factory.indexOf(EnumValue.METHOD_SEPARATOR);
-            final String factoryClassName = factory.substring(0, index);
-            factoryClass = Class.forName(factoryClassName);
-            factoryMethodName = factory.substring(index + EnumValue.METHOD_SEPARATOR.length(), factory.length());
+        Class enumClass = field.getType();
+        final boolean isList = field.getAnnotation(ListValue.class) != null;
+        final boolean isSet = field.getAnnotation(SetValue.class) != null;
+        final boolean isMap = field.getAnnotation(MapValue.class) != null;
+        final boolean isOptional = field.getAnnotation(OptionalValue.class) != null;
+        if (isList || isSet || isMap || isOptional) {
+            final Class[] classes = findClassesForField(field);
+            enumClass = classes[0];
         }
-        // Will not work if value is not of the proper type (usually String).
-        final Method factoryMethod = factoryClass.getMethod(factoryMethodName, value.getClass());
-        final Object result = factoryMethod.invoke(null, value);
+        // Will not work if value is not of the proper type (usually String or integer).
+        final Object result = EnumValueFactory.INSTANCE.mapEnumValue(enumClass, value);
         Objects.requireNonNull(result);
         // Issue a warning if the value returned is the unkown value.
         if ("UNKOWN".equals(((Enum) result).name())) { // NOI18N.
@@ -344,6 +334,36 @@ abstract class JsonpAbstractMarshaller {
         }
         logger.log(Level.FINEST, "Field \"{0}\": marshalled enum value \"{1}\" into value \"{2}\".", new Object[]{field.getName(), value, result}); // NOI18N.
         return result;
+    }
+
+    protected Class[] findClassesForField(final Field field) throws ClassNotFoundException {
+        // @todo Find interface class.
+        // @todo Check the validity this.
+        final boolean isList = field.getAnnotation(ListValue.class) != null;
+        final boolean isSet = field.getAnnotation(SetValue.class) != null;
+        final boolean isMap = field.getAnnotation(MapValue.class) != null;
+        final boolean isOptional = field.getAnnotation(OptionalValue.class) != null;
+        String typename = field.getGenericType().getTypeName();
+        if (isOptional) {
+            typename = typename.replaceAll("java\\.util\\.Optional<", ""); // NOI18N.
+        }
+        if (isSet) {
+            typename = typename.replaceAll("java\\.util\\.Set<", ""); // NOI18N.
+        }
+        if (isList) {
+            typename = typename.replaceAll("java\\.util\\.List<", ""); // NOI18N.
+        }
+        if (isMap) {
+            typename = typename.replaceAll("java\\.util\\.Map<", ""); // NOI18N.
+        }
+        // Remove trailing >.
+        typename = typename.replaceAll(">+", ""); // NOI18N.
+        final String[] subTargetClassNames = typename.split(",\\s*");
+        final Class[] subTargetClasses = new Class[subTargetClassNames.length];
+        for (int index = 0; index < subTargetClassNames.length; index++) {
+            subTargetClasses[index] = Class.forName(subTargetClassNames[index]);
+        }
+        return subTargetClasses;
     }
 
     protected final void logWarningMissingField(final String key, final String fieldName, final Class targetClass) {

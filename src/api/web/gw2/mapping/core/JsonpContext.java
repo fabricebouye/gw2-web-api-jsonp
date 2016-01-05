@@ -82,19 +82,19 @@ public enum JsonpContext {
     /**
      * Loads an enum array from given URL
      * @param <T> The type to use.
-     * @param factory The enum factory.
+     * @param enumClass The enum class.
      * @param url The url to query.
      * @return A {@code Collection<T>} instance, may be {@code null}.
-     * @throws NullPointerException If either {@code targetClass} or {@code url} is {@code null}.
+     * @throws NullPointerException If either {@code enumClass} or {@code url} is {@code null}.
      * @throws IOException In case of IO errors.
      */
-    public <T extends Enum> Collection<T> loadEnumArray(final Function<String, T> factory, final URL url) throws IOException {
-        Objects.requireNonNull(factory);
+    public <T extends Enum> Collection<T> loadEnumArray(final Class<T> enumClass, final URL url) throws IOException {
+        Objects.requireNonNull(enumClass);
         Objects.requireNonNull(url);
         try (final InputStream input = url.openStream()) {
             final Collection<String> values = marshaller.loadObjectArray(String.class, input);
             final List<T> result = values.stream()
-                    .map(factory)
+                    .map(value -> EnumValueFactory.INSTANCE.mapEnumValue(enumClass, value))
                     .collect(Collectors.toList());
             return Collections.unmodifiableList(result);
         }
