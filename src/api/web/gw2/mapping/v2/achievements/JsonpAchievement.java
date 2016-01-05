@@ -47,6 +47,7 @@ public final class JsonpAchievement implements Achievement {
     @SetValue
     @RuntimeType(selector = "type", pattern = "Achievement%sReward")
     private Optional<Set<AchievementReward>> rewards = Optional.empty();
+    @OptionalValue
     @SetValue
     private Optional<Set<AchievementBit>> bits = Optional.empty();
 
