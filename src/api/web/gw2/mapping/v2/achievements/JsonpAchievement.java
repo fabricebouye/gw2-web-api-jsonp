@@ -47,6 +47,8 @@ public final class JsonpAchievement implements Achievement {
     @SetValue
     @RuntimeType(selector = "type", pattern = "Achievement%sReward")
     private Optional<Set<AchievementReward>> rewards = Optional.empty();
+    @SetValue
+    private Optional<Set<AchievementBit>> bits = Optional.empty();
 
     /**
      * Creates a new empty instance.
@@ -97,5 +99,10 @@ public final class JsonpAchievement implements Achievement {
     @Override
     public Optional<Set<AchievementReward>> getRewards() {
         return rewards;
+    }
+
+    @Override
+    public Optional<Set<AchievementBit>> getBits() {
+        return bits;
     }
 }
