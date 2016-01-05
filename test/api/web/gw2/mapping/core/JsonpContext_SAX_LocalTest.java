@@ -263,11 +263,29 @@ public class JsonpContext_SAX_LocalTest {
     public void testLoadObject_Achievement_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Achievement local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/achievements/"; // NOI18N.
-        final String filename = "achievement1.json"; // NOI18N.
-        final URL url = getClass().getResource(basecode + filename);
-        final Achievement value = instance.loadObject(Achievement.class, url);
-        assertNotNull(value);
-        assertEquals(1840, value.getId());
+        final String[] files = {
+            "achievement1.json", // NOI18N.
+            "achievement2.json", // NOI18N.
+            "achievement3.json" // NOI18N.
+        };
+        final int[] expIds = {
+            1840,
+            910,
+            2258
+        };
+        assertEquals(files.length, expIds.length);
+        IntStream.range(0, files.length).forEach(index -> {
+            final String file = files[index];
+            final URL url = getClass().getResource(basecode + file);
+            try {
+                final Achievement value = instance.loadObject(Achievement.class, url);
+                assertNotNull(value);
+                final int expId = expIds[index];
+                assertEquals(expId, value.getId());
+            } catch (IOException ex) {
+                fail(ex.getMessage());
+            }
+        });
     }
 
     @Test

@@ -1,0 +1,47 @@
+{
+    "id": 2258,
+    "name": "Mistward Legguards",
+    "description": "",
+    "requirement": "Collect all  items and skins to forge your Mistward Legguards.",
+    "type": "ItemSet",
+    "flags": [
+        "IgnoreNearlyComplete",
+        "Pvp",
+        "RepairOnLogin"
+    ],
+    "bits": [
+        {
+            "type": "Skin",
+            "id": 208
+        },
+        {
+            "type": "Item",
+            "id": 70502
+        },
+        {
+            "type": "Item",
+            "id": 74774
+        }
+    ],
+    "tiers": [
+        {
+            "count": 1,
+            "points": 1
+        },
+        {
+            "count": 3,
+            "points": 1
+        },
+        {
+            "count": 7,
+            "points": 1
+        }
+    ],
+    "rewards": [
+        {
+            "type": "Item",
+            "id": 70598,
+            "count": 1
+        }
+    ]
+}
