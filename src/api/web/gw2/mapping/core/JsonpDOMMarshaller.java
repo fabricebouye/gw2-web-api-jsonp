@@ -7,7 +7,6 @@
  */
 package api.web.gw2.mapping.core;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -28,7 +27,6 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.json.JsonString;
 import javax.json.JsonValue;
-import javax.json.stream.JsonParser;
 
 /**
  * A DOM (structure in memory) implementation of the JSON-P marshaller.
