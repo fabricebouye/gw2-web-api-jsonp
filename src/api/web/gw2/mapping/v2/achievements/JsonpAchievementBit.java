@@ -10,6 +10,7 @@ package api.web.gw2.mapping.v2.achievements;
 import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
+import api.web.gw2.mapping.core.OptionalValue;
 import java.util.Optional;
 import java.util.OptionalInt;
 
@@ -22,8 +23,10 @@ public final class JsonpAchievementBit implements AchievementBit {
     @EnumValue
     private AchievementBitType type = AchievementBitType.UNKNOWN;
     @IdValue
+    @OptionalValue
     private OptionalInt id = OptionalInt.empty();
     @LocalizedResource
+    @OptionalValue
     private Optional<String> text = Optional.empty();
     
     /**
