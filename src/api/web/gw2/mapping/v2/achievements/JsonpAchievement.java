@@ -11,6 +11,7 @@ import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.RuntimeType;
 import api.web.gw2.mapping.core.SetValue;
 import api.web.gw2.mapping.core.URLValue;
 import java.net.URL;
@@ -42,6 +43,10 @@ public final class JsonpAchievement implements Achievement {
     private Set<AchievementFlag> flags = Collections.EMPTY_SET;
     @SetValue
     private Set<AchievementTier> tiers = Collections.EMPTY_SET;
+    @OptionalValue
+    @SetValue
+    @RuntimeType(selector = "type", pattern = "Achievement%sReward")
+    private Optional<Set<AchievementReward>> rewards = Optional.empty();
 
     /**
      * Creates a new empty instance.
@@ -87,5 +92,10 @@ public final class JsonpAchievement implements Achievement {
     @Override
     public Set<AchievementTier> getTiers() {
         return tiers;
+    }
+
+    @Override
+    public Optional<Set<AchievementReward>> getRewards() {
+        return rewards;
     }
 }
