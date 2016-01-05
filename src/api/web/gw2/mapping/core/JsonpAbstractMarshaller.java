@@ -50,10 +50,38 @@ abstract class JsonpAbstractMarshaller {
     public JsonpAbstractMarshaller() {
     }
 
+    /**
+     * Load an object from JSON.
+     * @param <T> The type to use.
+     * @param targetClass The target class.
+     * @param input The source stream.
+     * @return A {@code T} instance, may be {@code null}.
+     * @throws NullPointerException If {@code targetClass} or {@code input} is {@code null}/
+     * @throws IOException In case of IO error.
+     */
     public abstract <T> T loadObject(final Class<T> targetClass, final InputStream input) throws NullPointerException, IOException;
 
+    /**
+     * Load a collection from JSON.
+     * @param <T> The type to use.
+     * @param targetClass The target class.
+     * @param input The source stream.
+     * @return A {@code Collection<T>} instance, may be {@code null}.
+     * @throws NullPointerException If {@code targetClass} or {@code input} is {@code null}/
+     * @throws IOException In case of IO error.
+     */
     public abstract <T> Collection<T> loadObjectArray(final Class<T> targetClass, final InputStream input) throws IOException;
 
+    /**
+     * Load a runtime object from JSON.
+     * @param <T> The type to use.
+     * @param selector The name of the selector value.
+     * @param pattern The pattern which allows to construct the class name.
+     * @param input The source stream.
+     * @return A {@code T} instance, may be {@code null}.
+     * @throws NullPointerException If {@code targetClass} or {@code input} is {@code null}/
+     * @throws IOException In case of IO error.
+     */
     public abstract <T> T loadRuntimeObject(final String selector, final String pattern, final InputStream input) throws IOException;
 
     /**
@@ -115,6 +143,12 @@ abstract class JsonpAbstractMarshaller {
         return buffer.toString();
     }
 
+    /**
+    * Convert an enum value to a proper Java class name (by removing '_' and setting the proper letter case). 
+    * @param value The source enum value.
+    * @return A {@code String} instance, never {@code null}.
+    * @throws NullPointerException If {@code value} is {@code null}.
+    */
     protected static final String javaEnumToJavaClassName(final Enum value) throws NullPointerException {
         Objects.requireNonNull(value);
         final String name = value.name().toLowerCase();
@@ -335,7 +369,33 @@ abstract class JsonpAbstractMarshaller {
         return result;
     }
 
-    protected Class[] findClassesForField(final Field field) throws ClassNotFoundException {
+    /**
+     * Common method used to retrieve proper class(es) for a given field.
+     * <br>Classes for the fields are determined by the annotations set on this field.
+     * <br>Currently this method is able to process the following annotations:
+     * <ul>
+     * <li>{@code OptionalValue}</li>
+     * <li>{@code ListValue}</li>
+     * <li>{@code SetValue}</li>
+     * <li>{@code MapValue}</li>
+     * </ul>
+     * @param field The source field.
+     * @return A {@code Class[]} instance, never {@code null}
+     * <br>If the given field is marked with the {@code MapValue} annotation, the array will be of size 2:
+     * <ul>
+     * <li>Class at index 0 is the class of the keys to the map.</li>
+     * <li>Class at index 1 is the class of the values to the map.</li>
+     * </ul>
+     * Otherwise the array returned will be of size 1.
+     * @throws ClassNotFoundException If one of the target classes cannot be found.
+     * @throws NullPointerException If {@code field} is {@code null}.
+     * @see OptionalValue
+     * @see ListValue
+     * @see SetValue
+     * @see MapValue
+     */
+    protected Class[] findClassesForField(final Field field) throws ClassNotFoundException, NullPointerException {
+        Objects.requireNonNull(field);
         // @todo Find interface class.
         // @todo Check the validity this.
         final boolean isList = field.getAnnotation(ListValue.class) != null;
@@ -365,6 +425,12 @@ abstract class JsonpAbstractMarshaller {
         return subTargetClasses;
     }
 
+    /**
+     * Logs a warning about a missing field.
+     * @param key The source key from the JSON.
+     * @param fieldName The name of the target field that is missing.
+     * @param targetClass The target class.
+     */
     protected final void logWarningMissingField(final String key, final String fieldName, final Class targetClass) {
         final String message = String.format("No matching field \"%s\" found for JSON key \"%s\" in class %s.", fieldName, key, targetClass.getName()); // NOI18N.
         logger.warning(message);
