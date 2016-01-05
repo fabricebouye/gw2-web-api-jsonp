@@ -40,6 +40,8 @@ public final class JsonpAchievement implements Achievement {
     @SetValue
     @EnumValue
     private Set<AchievementFlag> flags = Collections.EMPTY_SET;
+    @SetValue
+    private Set<AchievementTier> tiers = Collections.EMPTY_SET;
 
     /**
      * Creates a new empty instance.
@@ -82,4 +84,8 @@ public final class JsonpAchievement implements Achievement {
         return flags;
     }
 
+    @Override
+    public Set<AchievementTier> getTiers() {
+        return tiers;
+    }
 }
