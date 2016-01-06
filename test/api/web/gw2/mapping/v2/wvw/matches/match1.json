@@ -1,0 +1,70 @@
+{
+    "id": "1-3",
+    "start_time": "2015-10-03T01:00:00Z",
+    "end_time": "2015-10-10T01:00:00Z",
+    "scores": {
+        "red": 251084,
+        "blue": 197361,
+        "green": 172221
+    },
+    "worlds": {
+        "red": 1011,
+        "blue": 1005,
+        "green": 1014
+    },
+    "deaths": {
+        "red": 25491,
+        "blue": 20135,
+        "green": 21644
+    },
+    "kills": {
+        "red": 25554,
+        "blue": 25467,
+        "green": 13881
+    },
+    "maps": [
+        {
+            "id": 94,
+            "type": "RedHome",
+            "scores": {
+                "red": 91299,
+                "blue": 26439,
+                "green": 17072
+            },
+            "bonuses": [
+                {
+                    "type": "Bloodlust",
+                    "owner": "Red"
+                }
+            ],
+            "deaths": {
+                "red": 5514,
+                "blue": 3115,
+                "green": 3239
+            },
+            "kills": {
+                "red": 4563,
+                "blue": 3851,
+                "green": 2737
+            },
+            "objectives": [
+                {
+                    "id": "94-32",
+                    "type": "Keep",
+                    "owner": "Red",
+                    "last_flipped": "2015-10-09T18:05:34Z",
+                    "claimed_by": null,
+                    "claimed_at": null
+                },
+                {
+                    "id": "94-33",
+                    "type": "Keep",
+                    "owner": "Red",
+                    "last_flipped": "2015-10-09T18:05:34Z",
+                    "claimed_by": "FB9D47F7-4117-4CD4-A479-CC9622E230B0",
+                    "claimed_at": "2015-10-09T18:05:34Z"
+                }
+            ]
+        }
+    ]
+}
