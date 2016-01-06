@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.v1.eventdetails;
 
+import api.web.gw2.mapping.core.Coord2DValue;
 import api.web.gw2.mapping.core.ListValue;
 import api.web.gw2.mapping.core.NumericRange;
 import api.web.gw2.mapping.core.Point2D;
@@ -21,6 +22,7 @@ public final class JsonpEventDetailsPolyLocation extends JsonpEventDetailsLocati
 
     private NumericRange<Double> zRange = new NumericRange<>(0d, 0d);
     @ListValue
+    @Coord2DValue
     private List<Point2D> points = Collections.EMPTY_LIST;
 
     /**

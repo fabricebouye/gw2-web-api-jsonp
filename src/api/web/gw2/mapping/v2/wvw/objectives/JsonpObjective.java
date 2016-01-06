@@ -7,6 +7,8 @@
  */
 package api.web.gw2.mapping.v2.wvw.objectives;
 
+import api.web.gw2.mapping.core.Coord2DValue;
+import api.web.gw2.mapping.core.Coord3DValue;
 import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
@@ -36,7 +38,9 @@ public final class JsonpObjective implements Objective {
     private MapType mapType = MapType.UNKNOWN;
     @IdValue
     private int mapId = -1;
+    @Coord3DValue
     private Point3D coord = Point3D.ORIGIN;
+    @Coord2DValue
     private Point2D labelCoord = Point2D.ORIGIN;
     @URLValue
     @OptionalValue
