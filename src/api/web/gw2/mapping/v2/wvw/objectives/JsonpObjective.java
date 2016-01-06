@@ -28,8 +28,8 @@ public final class JsonpObjective implements Objective {
     private String id = "";
     @LocalizedResource
     private String name = "";
-    @IdValue(flavor = IdValue.Flavor.STRING)
-    private String sectorId = "";
+    @IdValue
+    private int sectorId = -1;
     @EnumValue
     private ObjectiveType type = ObjectiveType.UNKNOWN;
     @EnumValue
@@ -59,7 +59,7 @@ public final class JsonpObjective implements Objective {
     }
 
     @Override
-    public String getSectorId() {
+    public int getSectorId() {
         return sectorId;
     }
 
