@@ -24,8 +24,8 @@ import java.util.Set;
  */
 public final class JsonpMatchMap implements MatchMap {
 
-    @IdValue(flavor = IdValue.Flavor.STRING)
-    private String id = "";
+    @IdValue
+    private int id = -1;
     @MapValue
     private Map<MatchTeam, Integer> scores = Collections.EMPTY_MAP;
     @QuantityValue
@@ -48,7 +48,7 @@ public final class JsonpMatchMap implements MatchMap {
     }
 
     @Override
-    public String getId() {
+    public int getId() {
         return id;
     }
 
