@@ -538,7 +538,7 @@ public class JsonpContext_SAX_LocalTest {
             "match1.json", // NOI18N.
         };
         final String[] expIds = {
-            "1-3" // NOI18N.
+            "1-4" // NOI18N.
         };
         assertEquals(filenames.length, expIds.length);
         IntStream.range(0, filenames.length)
