@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Default JSON-P implementation of a match.
+ * Default JSON-P implementation of a match map.
  * @author Fabrice Bouyé
  */
 public final class JsonpMatchMap implements MatchMap {
