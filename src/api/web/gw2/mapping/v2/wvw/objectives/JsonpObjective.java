@@ -36,8 +36,8 @@ public final class JsonpObjective implements Objective {
     private MapType mapType = MapType.UNKNOWN;
     @IdValue
     private int mapId = -1;
-    private Point3D<Double> coord = new Point3D<>(0d, 0d, 0d);
-    private Point2D<Double> labelCoord = new Point2D<>(0d, 0d);
+    private Point3D coord = Point3D.ORIGIN;
+    private Point2D labelCoord = Point2D.ORIGIN;
     @URLValue
     @OptionalValue
     private Optional<URL> marker = Optional.empty();
@@ -79,7 +79,7 @@ public final class JsonpObjective implements Objective {
     }
 
     @Override
-    public Point3D<Double> getCoord() {
+    public Point3D getCoord() {
         return coord;
     }
 
@@ -89,7 +89,7 @@ public final class JsonpObjective implements Objective {
     }
 
     @Override
-    public Point2D<Double> getLabelCoord() {
+    public Point2D getLabelCoord() {
         return labelCoord;
     }
 }

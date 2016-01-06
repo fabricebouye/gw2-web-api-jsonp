@@ -21,7 +21,7 @@ public final class JsonpEventDetailsPolyLocation extends JsonpEventDetailsLocati
 
     private NumericRange<Double> zRange = new NumericRange<>(0d, 0d);
     @ListValue
-    private List<Point2D<Double>> points = Collections.EMPTY_LIST;
+    private List<Point2D> points = Collections.EMPTY_LIST;
 
     /**
      * Creates a new empty instance.
@@ -35,7 +35,7 @@ public final class JsonpEventDetailsPolyLocation extends JsonpEventDetailsLocati
     }
 
     @Override
-    public List<Point2D<Double>> getPoints() {
+    public List<Point2D> getPoints() {
         return points;
     }
 }

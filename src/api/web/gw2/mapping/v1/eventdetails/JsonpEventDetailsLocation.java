@@ -16,7 +16,7 @@ import api.web.gw2.mapping.core.Point3D;
 public abstract class JsonpEventDetailsLocation implements EventDetailsLocation {
 
     EventDetailsLocationType type = EventDetailsLocationType.UNKNOWN;
-    Point3D<Double> center = new Point3D<>(0d, 0d, 0d);
+    Point3D center = Point3D.ORIGIN;
 
     /**
      * Creates a new empty instance.
@@ -30,7 +30,7 @@ public abstract class JsonpEventDetailsLocation implements EventDetailsLocation 
     }
 
     @Override
-    public final Point3D<Double> getCenter() {
+    public final Point3D getCenter() {
         return center;
     }
 }

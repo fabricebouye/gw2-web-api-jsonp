@@ -22,38 +22,28 @@ public enum JsonCoreUtils {
      */
     INSTANCE;
 
-    public MapDimension<Integer> jsonArrayToMapDimension(final JsonArray jsonArray) throws NullPointerException, IllegalArgumentException {
+    public MapDimension jsonArrayToMapDimension(final JsonArray jsonArray) throws NullPointerException, IllegalArgumentException {
         testArraySize(jsonArray, 2);
-        final Point2D<Integer> p1 = jsonArrayToPoint2DInt(jsonArray.getJsonArray(0));
-        final Point2D<Integer> p2 = jsonArrayToPoint2DInt(jsonArray.getJsonArray(1));
-        final MapDimension<Integer> result = new MapDimension<>(p1.getX(), p1.getY(), p2.getX(), p2.getY());
+        final Point2D p1 = jsonArrayToPoint2D(jsonArray.getJsonArray(0));
+        final Point2D p2 = jsonArrayToPoint2D(jsonArray.getJsonArray(1));
+        final MapDimension result = new MapDimension(p1.getX(), p1.getY(), p2.getX(), p2.getY());
         return result;
     }
 
-    public ContinentDimension<Integer> jsonArrayToContinentDimension(final JsonArray jsonArray) throws NullPointerException, IllegalArgumentException {
+    public ContinentDimension jsonArrayToContinentDimension(final JsonArray jsonArray) throws NullPointerException, IllegalArgumentException {
         testArraySize(jsonArray, 2);
-        final Point2D<Integer> p1 = jsonArrayToPoint2DInt(jsonArray.getJsonArray(0));
-        final Point2D<Integer> p2 = jsonArrayToPoint2DInt(jsonArray.getJsonArray(1));
-        final ContinentDimension<Integer> result = new ContinentDimension<>(p1.getX(), p1.getY(), p2.getX(), p2.getY());
+        final Point2D p1 = jsonArrayToPoint2D(jsonArray.getJsonArray(0));
+        final Point2D p2 = jsonArrayToPoint2D(jsonArray.getJsonArray(1));
+        final ContinentDimension result = new ContinentDimension(p1.getX(), p1.getY(), p2.getX(), p2.getY());
         return result;
     }
 
-    public Point2D<Integer> jsonArrayToPoint2DInt(final JsonArray jsonArray) throws NullPointerException, IllegalArgumentException {
-        testArraySize(jsonArray, 2);
-        return from2Value(jsonArray::getInt, Point2D::new);
-    }
-
-    public Point2D<Double> jsonArrayToPoint2DDouble(final JsonArray jsonArray) throws NullPointerException, IllegalArgumentException {
+    public Point2D jsonArrayToPoint2D(final JsonArray jsonArray) throws NullPointerException, IllegalArgumentException {
         testArraySize(jsonArray, 2);
         return from2Value(index -> jsonArray.getJsonNumber(index).doubleValue(), Point2D::new);
     }
 
-    public Point3D<Integer> jsonArrayToPoint3DInt(final JsonArray jsonArray) throws NullPointerException, IllegalArgumentException {
-        testArraySize(jsonArray, 3);
-        return from3Value(jsonArray::getInt, Point3D::new);
-    }
-
-    public Point3D<Double> jsonArrayToPoint3DDouble(final JsonArray jsonArray) throws NullPointerException, IllegalArgumentException {
+    public Point3D jsonArrayToPoint3D(final JsonArray jsonArray) throws NullPointerException, IllegalArgumentException {
         testArraySize(jsonArray, 3);
         return from3Value(index -> jsonArray.getJsonNumber(index).doubleValue(), Point3D::new);
     }
@@ -113,7 +103,7 @@ public enum JsonCoreUtils {
     /**
      * Defines a factory method that takes 2 arguments.
      * @param <T> The input type.
-     * @param <V> The output type. 
+     * @param <V> The output type.
      * @author Fabrice Bouyé
      */
     @FunctionalInterface
@@ -131,7 +121,7 @@ public enum JsonCoreUtils {
     /**
      * Defines a factory method that takes 3 arguments.
      * @param <T> The input type.
-     * @param <V> The output type. 
+     * @param <V> The output type.
      * @author Fabrice Bouyé
      */
     @FunctionalInterface
