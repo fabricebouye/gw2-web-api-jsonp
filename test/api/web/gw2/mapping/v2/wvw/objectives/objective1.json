@@ -1,0 +1,17 @@
+{
+    "id": "38-6",
+    "name": "Speldan Clearcut",
+    "sector_id": 844,
+    "type": "Camp",
+    "map_type": "Center",
+    "map_id": 38,
+    "coord": [
+        9841.05,
+        13545.8,
+        -508.295
+    ],
+    "label_coord": [
+        9739.81,
+        13586.9
+    ]
+}
