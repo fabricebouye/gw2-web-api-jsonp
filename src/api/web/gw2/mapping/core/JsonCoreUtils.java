@@ -48,14 +48,9 @@ public enum JsonCoreUtils {
         return from3Value(index -> jsonArray.getJsonNumber(index).doubleValue(), Point3D::new);
     }
 
-    public NumericRange<Integer> jsonArrayToNumericRangeInt(final JsonArray jsonArray) throws NullPointerException, IllegalArgumentException {
+    public AltitudeRange jsonArrayToNumericRange(final JsonArray jsonArray) throws NullPointerException, IllegalArgumentException {
         testArraySize(jsonArray, 2);
-        return from2Value(jsonArray::getInt, NumericRange::new);
-    }
-
-    public NumericRange<Double> jsonArrayToNumericRangeDouble(final JsonArray jsonArray) throws NullPointerException, IllegalArgumentException {
-        testArraySize(jsonArray, 2);
-        return from2Value(index -> jsonArray.getJsonNumber(index).doubleValue(), NumericRange::new);
+        return from2Value(index -> jsonArray.getJsonNumber(index).doubleValue(), AltitudeRange::new);
     }
 
     private void testArraySize(JsonArray jsonArray, int minSize) throws NullPointerException, IllegalArgumentException {

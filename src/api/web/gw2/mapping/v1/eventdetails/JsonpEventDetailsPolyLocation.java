@@ -9,7 +9,7 @@ package api.web.gw2.mapping.v1.eventdetails;
 
 import api.web.gw2.mapping.core.Coord2DValue;
 import api.web.gw2.mapping.core.ListValue;
-import api.web.gw2.mapping.core.NumericRange;
+import api.web.gw2.mapping.core.AltitudeRange;
 import api.web.gw2.mapping.core.Point2D;
 import java.util.Collections;
 import java.util.List;
@@ -20,7 +20,7 @@ import java.util.List;
  */
 public final class JsonpEventDetailsPolyLocation extends JsonpEventDetailsLocation implements EventDetailsPolyLocation {
 
-    private NumericRange<Double> zRange = new NumericRange<>(0d, 0d);
+    private AltitudeRange zRange = AltitudeRange.EMPTY;
     @ListValue
     @Coord2DValue
     private List<Point2D> points = Collections.EMPTY_LIST;
@@ -32,7 +32,7 @@ public final class JsonpEventDetailsPolyLocation extends JsonpEventDetailsLocati
     }
 
     @Override
-    public NumericRange<Double> getZRange() {
+    public AltitudeRange getZRange() {
         return zRange;
     }
 
