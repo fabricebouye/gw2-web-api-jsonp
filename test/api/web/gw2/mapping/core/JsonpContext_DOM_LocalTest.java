@@ -30,6 +30,7 @@ import api.web.gw2.mapping.v2.traits.Trait;
 import api.web.gw2.mapping.v2.traits.TraitFact;
 import api.web.gw2.mapping.v2.worlds.World;
 import api.web.gw2.mapping.v2.worlds.WorldPopulation;
+import api.web.gw2.mapping.v2.wvw.matches.Match;
 import api.web.gw2.mapping.v2.wvw.objectives.Objective;
 import java.io.IOException;
 import java.net.URL;
@@ -520,6 +521,32 @@ public class JsonpContext_DOM_LocalTest {
                     try {
                         final Objective value = instance.loadObject(Objective.class, url);
                         assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_Match_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Objective local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/wvw/matches/"; // NOI18N.
+        final String[] filenames = {
+            "match1.json", // NOI18N.
+        };
+        final String[] expIds = {
+            "1-3" // NOI18N.
+        };
+        assertEquals(filenames.length, expIds.length);
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    try {
+                        final Match value = instance.loadObject(Match.class, url);
+                        assertNotNull(value);
+                        final String expId = expIds[index];
+                        assertEquals(expId, value.getId());
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
                     }
