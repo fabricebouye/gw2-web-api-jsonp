@@ -281,7 +281,9 @@ abstract class JsonpAbstractMarshaller {
         boolean isCoord3D = field.getAnnotation(Coord3DValue.class) != null;
         Object result = value;
         // Base types.
-        if (isURL) {
+        if (isOptional && value == null) {
+            result = null;
+        } else if (isURL) {
             final String path = (String) value;
             result = new URL(path);
         } else if (isDuration) {
