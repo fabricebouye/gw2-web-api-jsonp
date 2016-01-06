@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.core;
 
+import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Currency;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -144,11 +146,11 @@ abstract class JsonpAbstractMarshaller {
     }
 
     /**
-    * Convert an enum value to a proper Java class name (by removing '_' and setting the proper letter case). 
-    * @param value The source enum value.
-    * @return A {@code String} instance, never {@code null}.
-    * @throws NullPointerException If {@code value} is {@code null}.
-    */
+     * Convert an enum value to a proper Java class name (by removing '_' and setting the proper letter case). 
+     * @param value The source enum value.
+     * @return A {@code String} instance, never {@code null}.
+     * @throws NullPointerException If {@code value} is {@code null}.
+     */
     protected static final String javaEnumToJavaClassName(final Enum value) throws NullPointerException {
         Objects.requireNonNull(value);
         final String name = value.name().toLowerCase();
@@ -189,13 +191,15 @@ abstract class JsonpAbstractMarshaller {
         boolean isList = field.getAnnotation(ListValue.class) != null;
         boolean isSet = field.getAnnotation(SetValue.class) != null;
         boolean isMap = field.getAnnotation(MapValue.class) != null;
+        boolean isCoord2D = field.getAnnotation(Coord2DValue.class) != null;
+        boolean isCoord3D = field.getAnnotation(Coord3DValue.class) != null;
         //
         Object result = null;
         // Use the annotation of the field.
         if (isOptional) {
             if (isList || isSet || isMap) {
                 result = Optional.empty();
-            } else if (isQuantity || isLevel || isCurrency) {
+            } else if (isQuantity || isLevel) {
                 result = OptionalInt.empty();
             } else if (isPercent) {
                 result = OptionalDouble.empty();
@@ -211,6 +215,10 @@ abstract class JsonpAbstractMarshaller {
             result = CoinAmount.ZERO;
 //        } else if (isDistance) {
 //            result = QuantityAmount.ZERO;
+        } else if (isCoord2D) {
+            result = Point2D.ORIGIN;
+        } else if (isCoord3D) {
+            result = Point3D.ORIGIN;
         } else if (isQuantity) {
             result = 0;
 //            result = DistanceAmount.ZERO;
@@ -269,6 +277,8 @@ abstract class JsonpAbstractMarshaller {
         boolean isSet = field.getAnnotation(SetValue.class) != null;
         boolean isMap = field.getAnnotation(MapValue.class) != null;
         boolean isEnum = field.getAnnotation(EnumValue.class) != null;
+        boolean isCoord2D = field.getAnnotation(Coord2DValue.class) != null;
+        boolean isCoord3D = field.getAnnotation(Coord3DValue.class) != null;
         Object result = value;
         // Base types.
         if (isURL) {
@@ -290,6 +300,20 @@ abstract class JsonpAbstractMarshaller {
         } else if (isMap) {
             final Map map = (Map) value;
             result = Collections.unmodifiableMap(map);
+        } else if (isCurrency) {
+            final Number number = (Number) value;
+            result = CoinAmount.ofCopper(number.intValue());
+        } else if (isCoord2D) {
+            final List<? extends Number> list = (List) value;
+            final double x = list.get(0).doubleValue();
+            final double y = list.get(1).doubleValue();
+            result = new Point2D(x, y);
+        } else if (isCoord3D) {
+            final List<? extends Number> list = (List) value;
+            final double x = list.get(0).doubleValue();
+            final double y = list.get(1).doubleValue();
+            final double z = list.get(2).doubleValue();
+            result = new Point3D(x, y, z);
         }
         // As we rely heavily on enums, we need to convert base types obtained from JSON into valid enum values.
         if (isEnum) {
@@ -314,7 +338,7 @@ abstract class JsonpAbstractMarshaller {
         if (isOptional && !(result instanceof Optional || result instanceof OptionalInt)) {
             if (isList || isSet || isMap) {
                 result = Optional.ofNullable(result);
-            } else if (isQuantity || isLevel || isCurrency) {
+            } else if (isQuantity || isLevel) {
                 result = OptionalInt.of((Integer) result);
             } else if (isPercent) {
                 result = OptionalDouble.of((Double) result);
