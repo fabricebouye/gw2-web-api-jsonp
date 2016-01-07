@@ -8,6 +8,7 @@
 package api.web.gw2.mapping.v2.characters;
 
 import api.web.gw2.mapping.core.DateValue;
+import api.web.gw2.mapping.core.DurationValue;
 import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LevelValue;
@@ -45,7 +46,7 @@ public final class JsonpCharacter implements Character {
     private Optional<String> guild = Optional.empty();
     @DateValue
     private ZonedDateTime created = DateValue.DEFAULT;
-    @QuantityValue
+    @DurationValue
     private Duration age = Duration.ZERO;
     @QuantityValue
     private int deaths = 0;
