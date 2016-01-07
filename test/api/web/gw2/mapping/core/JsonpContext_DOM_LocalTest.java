@@ -18,6 +18,8 @@ import api.web.gw2.mapping.v2.characters.CharacterCrafting;
 import api.web.gw2.mapping.v2.characters.CharacterProfession;
 import api.web.gw2.mapping.v2.characters.equipment.Equipment;
 import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
+import api.web.gw2.mapping.v2.items.ItemDetails;
+import api.web.gw2.mapping.v2.items.ItemType;
 import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
 import api.web.gw2.mapping.v2.recipes.Recipe;
@@ -572,5 +574,38 @@ public class JsonpContext_DOM_LocalTest {
                         fail(ex.getMessage());
                     }
                 });
+    }
+
+    @Test
+    public void testLoadRuntimeObject_ItemDetails_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(ItemDetails local)"); // NOI18N.
+        final String classPattern = "api.web.gw2.mapping.v2.items.Item%sDetails";
+        final String baseCode = "/api/web/gw2/mapping/v2/items/";// NOI18N.    
+        // @todo Need more test files.
+        final String[] files = {
+            "details-consumable.json", // NOI18N.
+            "details-weapon.json", // NOI18N.
+        };
+        // As the type is determined in the parent object we cannot use loadRuntimeObject() for this test.
+        final ItemType[] itemTypes = {
+            ItemType.CONSUMABLE,
+            ItemType.WEAPON
+        };
+        assertEquals(files.length, itemTypes.length);
+        IntStream.range(0, files.length).forEach(index -> {
+            System.out.println(files[index]);
+            final String file = files[index];
+            final URL url = getClass().getResource(baseCode + file);
+            final ItemType itemType = itemTypes[index];
+            final String token = JsonpAbstractMarshaller.javaEnumToJavaClassName(itemType);
+            final String className = String.format(classPattern, token);
+            try {
+                final Class<? extends ItemDetails> detailsClass = (Class<? extends ItemDetails>) Class.forName(className);
+                final ItemDetails value = instance.loadObject(detailsClass, url);
+                assertNotNull(value);
+            } catch (Exception ex) {
+                fail(ex.getMessage());
+            }
+        });
     }
 }

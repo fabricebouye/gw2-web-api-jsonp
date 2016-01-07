@@ -7,6 +7,11 @@
  */
 package api.web.gw2.mapping.v2.items;
 
+import api.web.gw2.mapping.core.EnumValue;
+import api.web.gw2.mapping.core.ListValue;
+import api.web.gw2.mapping.core.LocalizedResource;
+import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.SetValue;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -18,11 +23,19 @@ import java.util.Set;
  */
 public final class JsonpItemUpgradeComponentDetails extends JsonpItemDetails implements ItemUpgradeComponentDetails {
 
+    @EnumValue
     private ItemUpgradeComponentType type = ItemUpgradeComponentType.UNKNOWN;
+    @SetValue
+    @EnumValue
     private Set<ItemUpgradeComponentFlag> flags = Collections.EMPTY_SET;
+    @SetValue
     private Set<ItemInfusionSlotFlag> infusionUpgradeFlags = Collections.EMPTY_SET;
+    @LocalizedResource
     private String suffix = "";
     private ItemInfixUpgrade infixUpgrade;
+    @OptionalValue
+    @ListValue
+    @LocalizedResource
     private Optional<List<String>> bonuses = Optional.empty();
 
     /**

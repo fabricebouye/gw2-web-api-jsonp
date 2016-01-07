@@ -7,6 +7,10 @@
  */
 package api.web.gw2.mapping.v2.items;
 
+import api.web.gw2.mapping.core.EnumValue;
+import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.SetValue;
 import java.util.Collections;
 import java.util.OptionalInt;
 import java.util.Set;
@@ -16,8 +20,11 @@ import java.util.Set;
  * @author Fabrice Bouyé
  */
 public final class JsonpItemInfusionSlot implements ItemInfusionSlot {
-
+    @OptionalValue
+    @IdValue
     private OptionalInt itemId = OptionalInt.empty();
+    @SetValue
+    @EnumValue
     private Set<ItemInfusionSlotFlag> flags = Collections.EMPTY_SET;
 
     /**

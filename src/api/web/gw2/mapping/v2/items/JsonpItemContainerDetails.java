@@ -7,12 +7,15 @@
  */
 package api.web.gw2.mapping.v2.items;
 
+import api.web.gw2.mapping.core.EnumValue;
+
 /**
  * Default JSON-P implementation of a container details.
  * @author Fabrice Bouyé
  */
 public final class JsonpItemContainerDetails extends JsonpItemDetails implements ItemContainerDetails {
 
+    @EnumValue
     private ItemContainerType type = ItemContainerType.UNKNOWN;
 
     public JsonpItemContainerDetails() {

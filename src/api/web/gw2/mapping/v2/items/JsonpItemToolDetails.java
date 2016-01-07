@@ -7,14 +7,18 @@
  */
 package api.web.gw2.mapping.v2.items;
 
+import api.web.gw2.mapping.core.EnumValue;
+import api.web.gw2.mapping.core.QuantityValue;
+
 /**
  * Default JSON-P implementation of an tool details.
  * @author Fabrice Bouyé
  */
 public final class JsonpItemToolDetails extends JsonpItemDetails implements ItemToolDetails {
-
+    @EnumValue
     private ItemToolType type = ItemToolType.UNKNOWN;
-    private int charges = -1;
+    @QuantityValue
+    private int charges = 0;
 
     public JsonpItemToolDetails() {
         super(ItemType.TOOL);

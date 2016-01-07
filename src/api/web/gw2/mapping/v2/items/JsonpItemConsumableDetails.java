@@ -7,6 +7,11 @@
  */
 package api.web.gw2.mapping.v2.items;
 
+import api.web.gw2.mapping.core.DurationValue;
+import api.web.gw2.mapping.core.EnumValue;
+import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.LocalizedResource;
+import api.web.gw2.mapping.core.OptionalValue;
 import java.time.Duration;
 import java.util.Optional;
 import java.util.OptionalInt;
@@ -17,11 +22,22 @@ import java.util.OptionalInt;
  */
 public final class JsonpItemConsumableDetails extends JsonpItemDetails implements ItemConsumableDetails {
 
+    @EnumValue
     private ItemConsumableType type = ItemConsumableType.UNKNOWN;
+    @OptionalValue
+    @LocalizedResource
     private Optional<String> description = Optional.empty();
-    private Optional<Duration> duration = Optional.empty();
+    @OptionalValue
+    @DurationValue(flavor = DurationValue.Flavor.MILLIS)
+    private Optional<Duration> durationMs = Optional.empty();
+    @OptionalValue
+    @EnumValue
     private Optional<ItemConsumableUnlockType> unlockType = Optional.empty();
+    @OptionalValue
+    @IdValue
     private OptionalInt colorId = OptionalInt.empty();
+    @OptionalValue
+    @IdValue
     private OptionalInt recipeId = OptionalInt.empty();
 
     public JsonpItemConsumableDetails() {
@@ -40,7 +56,7 @@ public final class JsonpItemConsumableDetails extends JsonpItemDetails implement
 
     @Override
     public Optional<Duration> getDurationMs() {
-        return duration;
+        return durationMs;
     }
 
     @Override

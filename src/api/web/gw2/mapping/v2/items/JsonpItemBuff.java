@@ -7,13 +7,18 @@
  */
 package api.web.gw2.mapping.v2.items;
 
+import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.LocalizedResource;
+
 /**
  * Default JSON-P implementation of a buff.
  * @author Fabrice Bouyé
  */
 public final class JsonpItemBuff implements ItemBuff {
 
+    @IdValue
     private int skillId = -1;
+    @LocalizedResource
     private String description = "";
 
     /**
@@ -30,5 +35,5 @@ public final class JsonpItemBuff implements ItemBuff {
     @Override
     public String getDescription() {
         return description;
-    }       
+    }
 }

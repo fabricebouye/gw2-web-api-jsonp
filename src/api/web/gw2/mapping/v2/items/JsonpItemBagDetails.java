@@ -7,13 +7,16 @@
  */
 package api.web.gw2.mapping.v2.items;
 
+import api.web.gw2.mapping.core.QuantityValue;
+
 /**
  * Default JSON-P implementation of a bag details.
  * @author Fabrice Bouyé
  */
 public final class JsonpItemBagDetails extends JsonpItemDetails implements ItemBagDetails {
 
-    private int size = -1;
+    @QuantityValue
+    private int size = 0;
     private boolean noSellOrSort = false;
 
     public JsonpItemBagDetails() {

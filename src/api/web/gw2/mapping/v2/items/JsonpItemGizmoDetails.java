@@ -7,12 +7,15 @@
  */
 package api.web.gw2.mapping.v2.items;
 
+import api.web.gw2.mapping.core.EnumValue;
+
 /**
  * Default JSON-P implementation for an item gizmo details.
  * @author Fabrice Bouyé
  */
 public final class JsonpItemGizmoDetails extends JsonpItemDetails implements ItemGizmoDetails {
 
+    @EnumValue
     private ItemGizmoType type = ItemGizmoType.UNKNOWN;
 
     public JsonpItemGizmoDetails() {

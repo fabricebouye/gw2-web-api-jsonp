@@ -7,13 +7,18 @@
  */
 package api.web.gw2.mapping.v2.items;
 
+import api.web.gw2.mapping.core.EnumValue;
+import api.web.gw2.mapping.core.QuantityValue;
+
 /**
  * Default JSON-P implementation of an item infix upgrade attribute value.
  * @author Fabrice Bouyé
  */
 public final class JsonpItemInfixUpgradeAttributeValue implements ItemInfixUpgradeAttributeValue {
 
+    @EnumValue
     private ItemInfixUpgradeAttribute attribute = ItemInfixUpgradeAttribute.UNKNOWN;
+    @QuantityValue
     private int modifier = 0;
 
     public JsonpItemInfixUpgradeAttributeValue() {

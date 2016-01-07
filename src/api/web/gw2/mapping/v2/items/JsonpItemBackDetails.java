@@ -7,6 +7,9 @@
  */
 package api.web.gw2.mapping.v2.items;
 
+import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.ListValue;
+import api.web.gw2.mapping.core.OptionalValue;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -18,9 +21,14 @@ import java.util.OptionalInt;
  */
 public final class JsonpItemBackDetails extends JsonpItemDetails implements ItemBackDetails {
 
+    @ListValue
     private List<ItemInfusionSlot> infusionSlots = Collections.EMPTY_LIST;
+    @OptionalValue
     private Optional<ItemInfixUpgrade> infixUpgrade = Optional.empty();
+    @OptionalValue
+    @IdValue
     private OptionalInt suffixItemId = OptionalInt.empty();
+    @IdValue(flavor = IdValue.Flavor.STRING)
     private String secondarySuffixItemId = "";
 
     /**

@@ -1,0 +1,22 @@
+{
+    "type": "LongBow",
+    "damage_type": "Physical",
+    "min_power": 385,
+    "max_power": 452,
+    "defense": 0,
+    "infusion_slots": [],
+    "infix_upgrade": {
+        "attributes": [
+            {
+                "attribute": "Power",
+                "modifier": 62
+            },
+            {
+                "attribute": "Precision",
+                "modifier": 44
+            }
+        ]
+    },
+    "suffix_item_id": 24547,
+    "secondary_suffix_item_id": ""
+}

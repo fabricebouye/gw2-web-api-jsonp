@@ -7,12 +7,17 @@
  */
 package api.web.gw2.mapping.v2.items;
 
+import api.web.gw2.mapping.core.EnumValue;
+import api.web.gw2.mapping.core.ImplementationSpecific;
+
 /**
  * Base type for all item details implementations.
  * @author Fabrice Bouyé
  */
 public abstract class JsonpItemDetails implements ItemDetails {
 
+    @EnumValue
+    @ImplementationSpecific
     private final ItemType itemType;
 
     /**

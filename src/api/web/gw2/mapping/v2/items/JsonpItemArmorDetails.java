@@ -7,6 +7,11 @@
  */
 package api.web.gw2.mapping.v2.items;
 
+import api.web.gw2.mapping.core.EnumValue;
+import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.ListValue;
+import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.QuantityValue;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -18,12 +23,20 @@ import java.util.OptionalInt;
  */
 public final class JsonpItemArmorDetails extends JsonpItemDetails implements ItemArmorDetails {
 
+    @EnumValue
     private ItemArmorType type = ItemArmorType.UNKNOWN;
+    @EnumValue
     private ItemArmorWeightClass weightClass = ItemArmorWeightClass.UNKNOWN;
-    private int defense = -1;
+    @QuantityValue
+    private int defense = 0;
+    @ListValue
     private List<ItemInfusionSlot> infusions = Collections.EMPTY_LIST;
+    @OptionalValue
     private Optional<ItemInfixUpgrade> infixUpgrade = Optional.empty();
+    @OptionalValue
+    @IdValue
     private OptionalInt suffixItemId = OptionalInt.empty();
+    @IdValue(flavor = IdValue.Flavor.STRING)
     private String secondarySuffixItemId = "";
 
     /**
