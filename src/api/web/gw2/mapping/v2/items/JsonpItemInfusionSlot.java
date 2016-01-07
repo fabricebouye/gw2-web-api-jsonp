@@ -20,6 +20,7 @@ import java.util.Set;
  * @author Fabrice Bouyé
  */
 public final class JsonpItemInfusionSlot implements ItemInfusionSlot {
+
     @OptionalValue
     @IdValue
     private OptionalInt itemId = OptionalInt.empty();

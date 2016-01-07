@@ -9,7 +9,13 @@ package api.web.gw2.mapping.v2.items;
 
 import api.web.gw2.mapping.core.CoinAmount;
 import api.web.gw2.mapping.core.CoinValue;
+import api.web.gw2.mapping.core.EnumValue;
+import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LevelValue;
+import api.web.gw2.mapping.core.LocalizedResource;
+import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.SetValue;
+import api.web.gw2.mapping.core.URLValue;
 import java.net.URL;
 import java.util.Collections;
 import java.util.Optional;
@@ -22,19 +28,37 @@ import java.util.Set;
  */
 public final class JsonpItem implements Item {
 
+    @IdValue
     private int id = -1;
+    @LocalizedResource
     private String name = "";
+    @OptionalValue
+    @LocalizedResource
     private Optional<String> description = Optional.empty();
+    @EnumValue
     private ItemType type = ItemType.WEAPON;
+    @LevelValue
     private int level = LevelValue.MIN_LEVEL;
+    @EnumValue
     private ItemRarity rarity = ItemRarity.UNKNOWN;
     @CoinValue
     private CoinAmount vendorValue = CoinAmount.ZERO;
+    @OptionalValue
+    @IdValue
     private OptionalInt defaultSkin = OptionalInt.empty();
+    @SetValue
+    @EnumValue
     private Set<ItemFlag> flags = Collections.EMPTY_SET;
+    @SetValue
+    @EnumValue
     private Set<ItemGameType> gameTypes = Collections.EMPTY_SET;
+    @SetValue
+    @EnumValue
     private Set<ItemRestriction> restrictions = Collections.EMPTY_SET;
+    @OptionalValue
+    @URLValue
     private Optional<URL> icon = Optional.empty();
+    @OptionalValue
     private Optional<ItemDetails> details = Optional.empty();
 
     /**
