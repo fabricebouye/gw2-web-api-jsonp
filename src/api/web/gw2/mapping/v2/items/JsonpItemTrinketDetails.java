@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.v2.items;
 
+import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.ListValue;
 import api.web.gw2.mapping.core.OptionalValue;
@@ -20,7 +21,9 @@ import java.util.OptionalInt;
  * @author Fabrice Bouyé
  */
 public final class JsonpItemTrinketDetails extends JsonpItemDetails implements ItemTrinketDetails {
-
+    
+    @EnumValue
+    private ItemTrinketType type = ItemTrinketType.UNKNOWN;
     @ListValue
     private List<ItemInfusionSlot> infusionSlots = Collections.EMPTY_LIST;
     @OptionalValue
@@ -33,6 +36,11 @@ public final class JsonpItemTrinketDetails extends JsonpItemDetails implements I
 
     public JsonpItemTrinketDetails() {
         super(ItemType.TRINKET);
+    }
+
+    @Override
+    public ItemTrinketType getType() {
+        return type;
     }
 
     @Override
