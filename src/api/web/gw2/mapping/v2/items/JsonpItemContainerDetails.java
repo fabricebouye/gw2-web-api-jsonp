@@ -16,7 +16,7 @@ public final class JsonpItemContainerDetails extends JsonpItemDetails implements
     private ItemContainerType type = ItemContainerType.UNKNOWN;
 
     public JsonpItemContainerDetails() {
-        super(ItemType.BAG);
+        super(ItemType.CONTAINER);
     }
 
     @Override
