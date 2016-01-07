@@ -43,6 +43,7 @@ public final class JsonpRecipe implements Recipe {
     private Set<RecipeFlag> flags = Collections.EMPTY_SET;
     @SetValue
     private Set<RecipeIngredient> ingredients = Collections.EMPTY_SET;
+    private String chatLink = "";
 
     /**
      * Creates a new empty instance.
@@ -93,5 +94,10 @@ public final class JsonpRecipe implements Recipe {
     @Override
     public Set<RecipeIngredient> getIngredients() {
         return ingredients;
+    }
+
+    @Override
+    public String getChatLink() {
+        return chatLink;
     }
 }
