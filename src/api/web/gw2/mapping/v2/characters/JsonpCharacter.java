@@ -18,6 +18,7 @@ import api.web.gw2.mapping.core.QuantityValue;
 import api.web.gw2.mapping.core.SetValue;
 import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
 import api.web.gw2.mapping.v2.characters.equipment.Equipment;
+import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +46,7 @@ public final class JsonpCharacter implements Character {
     @DateValue
     private ZonedDateTime created = DateValue.DEFAULT;
     @QuantityValue
-    private long age = 0;
+    private Duration age = Duration.ZERO;
     @QuantityValue
     private int deaths = 0;
     @OptionalValue
@@ -103,7 +104,7 @@ public final class JsonpCharacter implements Character {
     }
 
     @Override
-    public long getAge() {
+    public Duration getAge() {
         return age;
     }
 
