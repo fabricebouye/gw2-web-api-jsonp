@@ -1,0 +1,35 @@
+{
+    "type": "Amulet",
+    "infusion_slots": [{
+            "flags": ["Utility"]
+        }],
+    "infix_upgrade": {
+        "buff": {
+            "skill_id": 15750,
+            "description": "Dégâts par altération +13\nPrécision +13\nRobustesse +13\nPuissance +13\nVitalité +13\nGuérison +13<br>\nFérocité +13"
+        },
+        "attributes": [{
+                "attribute": "Power",
+                "modifier": 44
+            }, {
+                "attribute": "Precision",
+                "modifier": 44
+            }, {
+                "attribute": "Toughness",
+                "modifier": 44
+            }, {
+                "attribute": "Vitality",
+                "modifier": 44
+            }, {
+                "attribute": "Healing",
+                "modifier": 44
+            }, {
+                "attribute": "ConditionDamage",
+                "modifier": 44
+            }, {
+                "attribute": "CritDamage",
+                "modifier": 44
+            }]
+    },
+    "secondary_suffix_item_id": ""
+}

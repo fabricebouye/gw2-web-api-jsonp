@@ -1,0 +1,13 @@
+{
+    "type": "Sigil",
+    "flags": ["Axe", "LongBow", "ShortBow", "Dagger", "Focus", "Greatsword", "Hammer", "Harpoon", "Mace", "Pistol", "Rifle", "Scepter", "Shield", "Speargun", "Staff", "Sword", "Torch", "Trident", "Warhorn"],
+    "infusion_upgrade_flags": [],
+    "infix_upgrade": {
+        "buff": {
+            "skill_id": 9313,
+            "description": "Augmente de 20% la durée des Saignements infligés"
+        },
+        "attributes": []
+    },
+    "suffix": "d'agonie"
+}

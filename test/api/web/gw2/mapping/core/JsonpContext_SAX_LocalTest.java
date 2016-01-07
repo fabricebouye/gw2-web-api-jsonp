@@ -586,26 +586,47 @@ public class JsonpContext_SAX_LocalTest {
         final String baseCode = "/api/web/gw2/mapping/v2/items/";// NOI18N.    
         // @todo Need more test files.
         final String[] files = {
+            "details-armor.json", // NOI18N.
+            "details-back.json", // NOI18N.
+            "details-bag.json", // NOI18N.
             "details-consumable.json", // NOI18N.
+            "details-container.json", // NOI18N.
+            "details-gathering.json", // NOI18N.
+            "details-gizmo.json", // NOI18N.
+            //"details-minipet.json", // NOI18N.
+            "details-tool.json", // NOI18N.
+            "details-trinket.json", // NOI18N.
+            "details-upgradecomponent.json", // NOI18N.
             "details-weapon.json", // NOI18N.
         };
         // As the type is determined in the parent object we cannot use loadRuntimeObject() for this test.
-        final ItemType[] itemTypes = {
+        final ItemType[] expItemTypes = {
+            ItemType.ARMOR,
+            ItemType.BACK,
+            ItemType.BAG,
             ItemType.CONSUMABLE,
+            ItemType.CONTAINER,
+            ItemType.GATHERING,
+            ItemType.GIZMO,
+            //ItemType.MINI_PET,
+            ItemType.TOOL,
+            ItemType.TRINKET,
+            ItemType.UPGRADE_COMPONENT,
             ItemType.WEAPON
         };
-        assertEquals(files.length, itemTypes.length);
+        assertEquals(files.length, expItemTypes.length);
         IntStream.range(0, files.length).forEach(index -> {
             System.out.println(files[index]);
             final String file = files[index];
             final URL url = getClass().getResource(baseCode + file);
-            final ItemType itemType = itemTypes[index];
-            final String token = JsonpAbstractMarshaller.javaEnumToJavaClassName(itemType);
+            final ItemType expItemType = expItemTypes[index];
+            final String token = JsonpAbstractMarshaller.javaEnumToJavaClassName(expItemType);
             final String className = String.format(classPattern, token);
             try {
                 final Class<? extends ItemDetails> detailsClass = (Class<? extends ItemDetails>) Class.forName(className);
                 final ItemDetails value = instance.loadObject(detailsClass, url);
                 assertNotNull(value);
+                assertEquals(expItemType, value.getItemType());
             } catch (Exception ex) {
                 fail(ex.getMessage());
             }

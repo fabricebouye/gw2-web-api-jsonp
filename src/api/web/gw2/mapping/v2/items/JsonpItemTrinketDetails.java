@@ -21,7 +21,7 @@ import java.util.OptionalInt;
  * @author Fabrice Bouyé
  */
 public final class JsonpItemTrinketDetails extends JsonpItemDetails implements ItemTrinketDetails {
-    
+
     @EnumValue
     private ItemTrinketType type = ItemTrinketType.UNKNOWN;
     @ListValue

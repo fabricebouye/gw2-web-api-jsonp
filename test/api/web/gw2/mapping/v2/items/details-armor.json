@@ -1,0 +1,16 @@
+{
+    "type": "Helm",
+    "weight_class": "Light",
+    "defense": 24,
+    "infusion_slots": [],
+    "infix_upgrade": {
+        "attributes": [{
+                "attribute": "Power",
+                "modifier": 13
+            }, {
+                "attribute": "Precision",
+                "modifier": 9
+            }]
+    },
+    "secondary_suffix_item_id": ""
+}
