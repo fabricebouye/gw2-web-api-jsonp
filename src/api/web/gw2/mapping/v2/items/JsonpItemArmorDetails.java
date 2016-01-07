@@ -30,7 +30,7 @@ public final class JsonpItemArmorDetails extends JsonpItemDetails implements Ite
     @QuantityValue
     private int defense = 0;
     @ListValue
-    private List<ItemInfusionSlot> infusions = Collections.EMPTY_LIST;
+    private List<ItemInfusionSlot> infusionSlots = Collections.EMPTY_LIST;
     @OptionalValue
     private Optional<ItemInfixUpgrade> infixUpgrade = Optional.empty();
     @OptionalValue
@@ -63,7 +63,7 @@ public final class JsonpItemArmorDetails extends JsonpItemDetails implements Ite
 
     @Override
     public List<ItemInfusionSlot> getInfusionSlots() {
-        return infusions;
+        return infusionSlots;
     }
 
     @Override
