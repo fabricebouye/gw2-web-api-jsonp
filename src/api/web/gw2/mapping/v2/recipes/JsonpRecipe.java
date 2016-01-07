@@ -31,7 +31,7 @@ public final class JsonpRecipe implements Recipe {
     private int outputItemId = -1;
     @QuantityValue
     private int outputItemCount = 0;
-    @DurationValue
+    @DurationValue(flavor = DurationValue.Flavor.MILLIS)
     private Duration timeToCraftMs = Duration.ZERO;
     @SetValue
     @EnumValue
