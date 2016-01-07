@@ -287,21 +287,9 @@ abstract class JsonpAbstractMarshaller {
             final String path = (String) value;
             result = new URL(path);
         } else if (isDuration) {
+            // @todo In game some skill cast time can be 3/4 seconds. Need to check if it's the same for buffs.
             final Number number = (Number) value;
-            // @todo In game, some skill cast time can be 3/4 seconds. Need to check if it's the same for buffs.
-            final int quantity = number.intValue();
-            final DurationValue durationValueAnnotation = field.getAnnotation(DurationValue.class);
-            final DurationValue.Flavor flavor = durationValueAnnotation.flavor();
-            switch (flavor) {
-                case MILLIS: {
-                    result = Duration.ofMillis(quantity);
-                }
-                break;
-                case SECONDS:
-                default: {
-                    result = Duration.ofSeconds(quantity);
-                }
-            }
+            result = Duration.ofSeconds(number.intValue());
         } else if (isDate) {
             final String string = (String) value;
             result = ZonedDateTime.parse(string);
