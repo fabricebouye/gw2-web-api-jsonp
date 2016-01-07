@@ -21,6 +21,7 @@ import api.web.gw2.mapping.v2.characters.equipment.Equipment;
 import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
 import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
+import api.web.gw2.mapping.v2.recipes.Recipe;
 import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
 import api.web.gw2.mapping.v2.skins.JsonpSkinArmorDetails;
 import api.web.gw2.mapping.v2.skins.Skin;
@@ -550,6 +551,26 @@ public class JsonpContext_SAX_LocalTest {
                         assertNotNull(value);
                         final String expId = expIds[index];
                         assertEquals(expId, value.getId());
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_Recipe_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Recipe local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/recipes/"; // NOI18N.
+        final String[] filenames = {
+            "recipe1.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    try {
+                        final Recipe value = instance.loadObject(Recipe.class, url);
+                        assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
                     }
