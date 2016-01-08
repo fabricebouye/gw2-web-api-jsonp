@@ -129,7 +129,7 @@ public class JsonpContext_DOM_LocalTest {
         assertEquals(1, value.getId());
         assertEquals("Mini-Rytlock", value.getName()); // NOI18N.
         assertEquals(Optional.empty(), value.getUnlock());
-        assertEquals(Optional.of(new URL("https://render.guildwars2.com/file/795ED1B945A29EC3E3066797DF57FFB25ABAA631/340551.png")), value.getIcon()); // NOI18N.
+        assertEquals(URLReference.of("https://render.guildwars2.com/file/795ED1B945A29EC3E3066797DF57FFB25ABAA631/340551.png"), value.getIcon()); // NOI18N.
         assertEquals(1, value.getOrder());
         assertEquals(21047, value.getItemId());
     }
@@ -500,7 +500,7 @@ public class JsonpContext_DOM_LocalTest {
                         assertEquals(10, value.getId());
                         assertEquals("Seer Pants", value.getName());
                         assertEquals(SkinType.ARMOR, value.getType());
-                        assertEquals(Optional.of(new URL("https://render.guildwars2.com/file/1920ACA302E656B60C38605521760351F147809D/61088.png")), value.getIcon());
+                        assertEquals(URLReference.of("https://render.guildwars2.com/file/1920ACA302E656B60C38605521760351F147809D/61088.png"), value.getIcon());
                         assertEquals(Collections.unmodifiableSet(new HashSet(Arrays.asList(SkinFlag.SHOW_IN_WARDROBE))), value.getFlags());
                         assertTrue(value.getDetails().isPresent());
                         assertEquals(JsonpSkinArmorDetails.class, value.getDetails().get().getClass());

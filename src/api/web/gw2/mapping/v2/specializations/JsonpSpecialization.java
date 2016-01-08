@@ -12,6 +12,7 @@ import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.SetValue;
+import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
 import api.web.gw2.mapping.v2.characters.CharacterProfession;
 import java.net.URL;
@@ -32,12 +33,10 @@ public final class JsonpSpecialization implements Specialization {
     @EnumValue
     private CharacterProfession profession = CharacterProfession.UNKNOWN;
     private boolean elite = false;
-    @OptionalValue
     @URLValue
-    private Optional<URL> icon = Optional.empty();
-    @OptionalValue
+    private URLReference icon = URLReference.empty();
     @URLValue
-    private Optional<URL> background = Optional.empty();
+    private URLReference background = URLReference.empty();
     @SetValue
     private Set<Integer> minorTraits = Collections.EMPTY_SET;
     @SetValue
@@ -70,7 +69,7 @@ public final class JsonpSpecialization implements Specialization {
     }
 
     @Override
-    public Optional<URL> getIcon() {
+    public URLReference getIcon() {
         return icon;
     }
 
@@ -85,7 +84,7 @@ public final class JsonpSpecialization implements Specialization {
     }
 
     @Override
-    public Optional<URL> getBackground() {
+    public URLReference getBackground() {
         return background;
     }
 

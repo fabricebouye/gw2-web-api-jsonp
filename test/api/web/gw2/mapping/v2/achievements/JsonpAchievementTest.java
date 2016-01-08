@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.v2.achievements;
 
+import api.web.gw2.mapping.core.URLReference;
 import java.lang.reflect.Field;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -49,7 +50,7 @@ public final class JsonpAchievementTest {
         idField.setInt(instance, 1);
         final Field iconField = instance.getClass().getDeclaredField("icon"); // NOI18N.
         iconField.setAccessible(true);
-        iconField.set(instance, Optional.of(new URL("http://foo.foo.foo/foo.png"))); // NOI18N.
+        iconField.set(instance, URLReference.of("http://foo.foo.foo/foo.png")); // NOI18N.
         final Field nameField = instance.getClass().getDeclaredField("name"); // NOI18N.
         nameField.setAccessible(true);
         nameField.set(instance, "Foo"); // NOI18N.
@@ -95,8 +96,8 @@ public final class JsonpAchievementTest {
         System.out.println("getIcon");
         final Field iconField = instance.getClass().getDeclaredField("icon"); // NOI18N.
         iconField.setAccessible(true);
-        final Optional<URL> expResult = (Optional<URL>) iconField.get(instance);
-        final Optional<URL> result = instance.getIcon();
+        final URLReference expResult = (URLReference) iconField.get(instance);
+        final URLReference result = instance.getIcon();
         assertEquals(expResult, result);
     }
 

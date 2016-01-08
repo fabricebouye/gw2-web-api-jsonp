@@ -13,8 +13,8 @@ import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.RuntimeType;
 import api.web.gw2.mapping.core.SetValue;
+import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
-import java.net.URL;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
@@ -28,8 +28,7 @@ public final class JsonpAchievement implements Achievement {
     @IdValue
     private int id = -1;
     @URLValue
-    @OptionalValue
-    private Optional<URL> icon = Optional.empty();
+    private URLReference icon = URLReference.empty();
     @LocalizedResource
     private String name = "";
     @LocalizedResource
@@ -63,7 +62,7 @@ public final class JsonpAchievement implements Achievement {
     }
 
     @Override
-    public Optional<URL> getIcon() {
+    public URLReference getIcon() {
         return icon;
     }
 

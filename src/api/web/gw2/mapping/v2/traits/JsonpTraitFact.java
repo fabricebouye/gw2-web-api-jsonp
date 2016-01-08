@@ -11,8 +11,8 @@ import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
-import java.net.URL;
 import java.util.Optional;
 import java.util.OptionalInt;
 
@@ -27,9 +27,8 @@ public abstract class JsonpTraitFact implements TraitFact {
     private Optional<String> text = Optional.empty();
     @EnumValue
     private TraitFactType type = TraitFactType.UNKNOWN;
-    @OptionalValue
     @URLValue
-    private Optional<URL> icon = Optional.empty();
+    private URLReference icon = URLReference.empty();
     @IdValue
     @OptionalValue
     private OptionalInt requiresTrait = OptionalInt.empty();
@@ -48,7 +47,7 @@ public abstract class JsonpTraitFact implements TraitFact {
     }
 
     @Override
-    public Optional<URL> getIcon() {
+    public URLReference getIcon() {
         return icon;
     }
 

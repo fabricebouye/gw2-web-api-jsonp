@@ -285,7 +285,7 @@ abstract class JsonpAbstractMarshaller {
             result = null;
         } else if (isURL) {
             final String path = (String) value;
-            result = new URL(path);
+            result = URLReference.of(path);
         } else if (isDuration) {
             final Number number = (Number) value;
             // @todo In game some skill cast time can be 3/4 seconds. Need to check if it's the same for buffs.

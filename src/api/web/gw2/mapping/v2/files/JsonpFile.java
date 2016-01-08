@@ -8,10 +8,8 @@
 package api.web.gw2.mapping.v2.files;
 
 import api.web.gw2.mapping.core.IdValue;
-import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
-import java.net.URL;
-import java.util.Optional;
 
 /**
  * Default JSON-P implementation of a file.
@@ -21,9 +19,8 @@ public final class JsonpFile implements File {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String id = "";
-    @OptionalValue
     @URLValue
-    Optional<URL> icon = Optional.empty();
+    private URLReference icon = URLReference.empty();
 
     /**
      * Creates a new empty instance.
@@ -37,7 +34,7 @@ public final class JsonpFile implements File {
     }
 
     @Override
-    public Optional<URL> getIcon() {
+    public URLReference getIcon() {
         return icon;
     }
 }

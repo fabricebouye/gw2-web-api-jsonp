@@ -7,9 +7,9 @@
  */
 package api.web.gw2.mapping.v2.minis;
 
+import api.web.gw2.mapping.core.URLReference;
 import java.lang.reflect.Field;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Optional;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -51,7 +51,7 @@ public final class JsonpMiniTest {
         unlockField.set(instance, Optional.of("Fuu")); // NOI18N.
         final Field iconField = instance.getClass().getDeclaredField("icon"); // NOI18N.
         iconField.setAccessible(true);
-        iconField.set(instance, Optional.of(new URL("http://foo.foo/foo.png"))); // NOI18N.
+        iconField.set(instance, URLReference.of("http://foo.foo/foo.png")); // NOI18N.
         final Field orderField = instance.getClass().getDeclaredField("order"); // NOI18N.
         orderField.setAccessible(true);
         orderField.setInt(instance, 10);
@@ -112,8 +112,8 @@ public final class JsonpMiniTest {
         System.out.println("getIcon");
         final Field iconField = instance.getClass().getDeclaredField("icon"); // NOI18N.
         iconField.setAccessible(true);
-        final Optional<URL> expResult = (Optional<URL>) iconField.get(instance);
-        final Optional<URL> result = instance.getIcon();
+        final URLReference expResult = (URLReference) iconField.get(instance);
+        final URLReference result = instance.getIcon();
         assertEquals(expResult, result);
     }
 

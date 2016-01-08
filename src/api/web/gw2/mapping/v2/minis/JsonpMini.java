@@ -11,8 +11,8 @@ import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
+import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
-import java.net.URL;
 import java.util.Optional;
 
 /**
@@ -28,10 +28,8 @@ public final class JsonpMini implements Mini {
     @LocalizedResource
     @OptionalValue
     private Optional<String> unlock = Optional.empty();
-    @LocalizedResource
-    @OptionalValue
     @URLValue
-    private Optional<URL> icon = Optional.empty();
+    private URLReference icon = URLReference.empty();
     @QuantityValue
     private int order = 0;
     @IdValue
@@ -59,7 +57,7 @@ public final class JsonpMini implements Mini {
     }
 
     @Override
-    public Optional<URL> getIcon() {
+    public URLReference getIcon() {
         return icon;
     }
 

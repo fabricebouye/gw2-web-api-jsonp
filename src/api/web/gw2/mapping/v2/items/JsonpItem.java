@@ -15,8 +15,8 @@ import api.web.gw2.mapping.core.LevelValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.SetValue;
+import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
-import java.net.URL;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.OptionalInt;
@@ -55,9 +55,8 @@ public final class JsonpItem implements Item {
     @SetValue
     @EnumValue
     private Set<ItemRestriction> restrictions = Collections.EMPTY_SET;
-    @OptionalValue
     @URLValue
-    private Optional<URL> icon = Optional.empty();
+    private URLReference icon = URLReference.empty();
     @OptionalValue
     private Optional<ItemDetails> details = Optional.empty();
 
@@ -123,7 +122,7 @@ public final class JsonpItem implements Item {
     }
 
     @Override
-    public Optional<URL> getIcon() {
+    public URLReference getIcon() {
         return icon;
     }
 

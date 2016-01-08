@@ -13,8 +13,8 @@ import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.RuntimeType;
 import api.web.gw2.mapping.core.SetValue;
+import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
-import java.net.URL;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
@@ -37,9 +37,8 @@ public final class JsonpSkin implements Skin {
     @SetValue
     @EnumValue
     private Set<SkinRestriction> restrictions = Collections.EMPTY_SET;
-    @OptionalValue
     @URLValue
-    private Optional<URL> icon = Optional.empty();
+    private URLReference icon = URLReference.empty();
     @OptionalValue
     @LocalizedResource
     private Optional<String> description = Optional.empty();
@@ -79,7 +78,7 @@ public final class JsonpSkin implements Skin {
     }
 
     @Override
-    public Optional<URL> getIcon() {
+    public URLReference getIcon() {
         return icon;
     }
 

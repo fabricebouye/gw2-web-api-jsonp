@@ -8,10 +8,8 @@
 package api.web.gw2.mapping.v2.traits;
 
 import api.web.gw2.mapping.core.LocalizedResource;
-import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
-import java.net.URL;
-import java.util.Optional;
 
 /**
  * Default JSON-P implementation of a trait prefix.
@@ -21,9 +19,8 @@ public final class JsonpTraitPrefix implements TraitPrefix {
 
     @LocalizedResource
     private String text = "";
-    @OptionalValue
     @URLValue
-    private Optional<URL> icon = Optional.empty();
+    private URLReference icon = URLReference.empty();
     @LocalizedResource
     private String status = "";
     @LocalizedResource
@@ -35,7 +32,7 @@ public final class JsonpTraitPrefix implements TraitPrefix {
     }
 
     @Override
-    public Optional<URL> getIcon() {
+    public URLReference getIcon() {
         return icon;
     }
 

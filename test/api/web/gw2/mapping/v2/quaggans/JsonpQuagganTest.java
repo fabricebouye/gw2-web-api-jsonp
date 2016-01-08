@@ -7,9 +7,8 @@
  */
 package api.web.gw2.mapping.v2.quaggans;
 
+import api.web.gw2.mapping.core.URLReference;
 import java.lang.reflect.Field;
-import java.net.URL;
-import java.util.Optional;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,7 +43,7 @@ public class JsonpQuagganTest {
         idField.set(instance, "testId"); // NOI18N.
         final Field urlField = instance.getClass().getDeclaredField("url"); // NOI18N.
         urlField.setAccessible(true);
-        urlField.set(instance, Optional.of(new URL("http://testUrl"))); // NOI18N.
+        urlField.set(instance, URLReference.of("http://testUrl")); // NOI18N.
     }
 
     @After
@@ -74,8 +73,8 @@ public class JsonpQuagganTest {
         System.out.println("getUrl"); // NOI18N.
         final Field urlField = instance.getClass().getDeclaredField("url"); // NOI18N.
         urlField.setAccessible(true);
-        final Optional<URL> expResult = (Optional<URL>) urlField.get(instance);
-        final Optional<URL> result = instance.getUrl();
+        final URLReference expResult = (URLReference) urlField.get(instance);
+        final URLReference result = instance.getUrl();
         assertNotNull(result);
         assertEquals(expResult, result);
     }

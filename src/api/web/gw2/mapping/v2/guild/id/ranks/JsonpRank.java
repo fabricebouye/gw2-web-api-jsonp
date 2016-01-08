@@ -9,14 +9,12 @@ package api.web.gw2.mapping.v2.guild.id.ranks;
 
 import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
-import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
 import api.web.gw2.mapping.core.SetValue;
+import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
 import api.web.gw2.mapping.v2.guild.permissions.PermissionId;
-import java.net.URL;
 import java.util.Collections;
-import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -32,9 +30,8 @@ public final class JsonpRank implements Rank {
     @SetValue
     @EnumValue
     private Set<PermissionId> permissions = Collections.EMPTY_SET;
-    @OptionalValue
     @URLValue
-    private Optional<URL> icon = Optional.empty();
+    private URLReference icon = URLReference.empty();
 
     /**
      * Creates a new empty instance.
@@ -58,7 +55,7 @@ public final class JsonpRank implements Rank {
     }
 
     @Override
-    public Optional<URL> getIcon() {
+    public URLReference getIcon() {
         return icon;
     }
 }

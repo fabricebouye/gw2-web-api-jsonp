@@ -8,10 +8,8 @@
 package api.web.gw2.mapping.v2.quaggans;
 
 import api.web.gw2.mapping.core.IdValue;
-import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
-import java.net.URL;
-import java.util.Optional;
 
 /**
  * Default JSON-P implementation of a guaggan.
@@ -21,9 +19,8 @@ public final class JsonpQuaggan implements Quaggan {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String id = "";
-    @OptionalValue
     @URLValue
-    private Optional<URL> url = Optional.empty();
+    private URLReference url = URLReference.empty();
 
     /**
      * Creates a new empty instance.
@@ -37,7 +34,7 @@ public final class JsonpQuaggan implements Quaggan {
     }
 
     @Override
-    public Optional<URL> getUrl() {
+    public URLReference getUrl() {
         return url;
     }
 }

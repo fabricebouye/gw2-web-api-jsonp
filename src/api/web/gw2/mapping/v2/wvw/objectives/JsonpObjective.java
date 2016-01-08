@@ -15,6 +15,7 @@ import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.Point2D;
 import api.web.gw2.mapping.core.Point3D;
+import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
 import api.web.gw2.mapping.v2.wvw.MapType;
 import java.net.URL;
@@ -43,8 +44,7 @@ public final class JsonpObjective implements Objective {
     @Coord2DValue
     private Point2D labelCoord = Point2D.ORIGIN;
     @URLValue
-    @OptionalValue
-    private Optional<URL> marker = Optional.empty();
+    private URLReference marker = URLReference.empty();
 
     /**
      * Creates a new empty instance.
@@ -88,7 +88,7 @@ public final class JsonpObjective implements Objective {
     }
 
     @Override
-    public Optional<URL> getMarker() {
+    public URLReference getMarker() {
         return marker;
     }
 
