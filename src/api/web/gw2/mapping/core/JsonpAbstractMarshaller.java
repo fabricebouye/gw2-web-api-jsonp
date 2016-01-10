@@ -7,21 +7,18 @@
  */
 package api.web.gw2.mapping.core;
 
-import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Type;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Currency;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -216,9 +213,9 @@ abstract class JsonpAbstractMarshaller {
 //        } else if (isDistance) {
 //            result = QuantityAmount.ZERO;
         } else if (isCoord2D) {
-            result = Point2D.ORIGIN;
+            result = Point2D.origin();
         } else if (isCoord3D) {
-            result = Point3D.ORIGIN;
+            result = Point3D.origin();
         } else if (isQuantity) {
             result = 0;
 //            result = DistanceAmount.ZERO;
@@ -321,13 +318,13 @@ abstract class JsonpAbstractMarshaller {
             final List<? extends Number> list = (List) value;
             final double x = list.get(0).doubleValue();
             final double y = list.get(1).doubleValue();
-            result = new Point2D(x, y);
+            result = Point2D.of(x, y);
         } else if (isCoord3D) {
             final List<? extends Number> list = (List) value;
             final double x = list.get(0).doubleValue();
             final double y = list.get(1).doubleValue();
             final double z = list.get(2).doubleValue();
-            result = new Point3D(x, y, z);
+            result = Point3D.of(x, y, z);
         }
         // As we rely heavily on enums, we need to convert base types obtained from JSON into valid enum values.
         if (isEnum) {

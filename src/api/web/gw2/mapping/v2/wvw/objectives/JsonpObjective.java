@@ -12,14 +12,11 @@ import api.web.gw2.mapping.core.Coord3DValue;
 import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
-import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.Point2D;
 import api.web.gw2.mapping.core.Point3D;
 import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
 import api.web.gw2.mapping.v2.wvw.MapType;
-import java.net.URL;
-import java.util.Optional;
 
 /**
  * Default JSON-P implementation of an objective.
@@ -40,9 +37,9 @@ public final class JsonpObjective implements Objective {
     @IdValue
     private int mapId = -1;
     @Coord3DValue
-    private Point3D coord = Point3D.ORIGIN;
+    private Point3D coord = Point3D.origin();
     @Coord2DValue
-    private Point2D labelCoord = Point2D.ORIGIN;
+    private Point2D labelCoord = Point2D.origin();
     @URLValue
     private URLReference marker = URLReference.empty();
 

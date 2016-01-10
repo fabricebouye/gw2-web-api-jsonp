@@ -7,6 +7,8 @@
  */
 package api.web.gw2.mapping.v1.eventdetails;
 
+import api.web.gw2.mapping.core.Coord3DValue;
+import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.Point3D;
 
 /**
@@ -15,8 +17,10 @@ import api.web.gw2.mapping.core.Point3D;
  */
 public abstract class JsonpEventDetailsLocation implements EventDetailsLocation {
 
-    EventDetailsLocationType type = EventDetailsLocationType.UNKNOWN;
-    Point3D center = Point3D.ORIGIN;
+    @EnumValue
+    private EventDetailsLocationType type = EventDetailsLocationType.UNKNOWN;
+    @Coord3DValue
+    private Point3D center = Point3D.origin();
 
     /**
      * Creates a new empty instance.
