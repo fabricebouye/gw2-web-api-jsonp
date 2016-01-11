@@ -25,7 +25,7 @@ public final class JsonpContinent implements Continent {
     private String id = "";
     @LocalizedResource
     private String name = "";
-    private ContinentDimensions continentDims = ContinentDimensions.EMPTY;
+    private ContinentDimensions continentDims = ContinentDimensions.empty();
     @QuantityValue
     private int minZoom = 0;
     @QuantityValue
