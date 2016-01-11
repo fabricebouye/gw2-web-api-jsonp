@@ -343,18 +343,18 @@ abstract class JsonpAbstractMarshaller {
             final double h = list.get(1).doubleValue();
             result = ContinentDimensions.of(w, h);
         } else if (isContinentRect) {
-            final List<? extends Number> list = (List) value;
-            final double nwX = list.get(0).doubleValue();
-            final double nwY = list.get(1).doubleValue();
-            final double seX = list.get(2).doubleValue();
-            final double seY = list.get(3).doubleValue();
+            final List<List<? extends Number>> list = (List) value;
+            final double nwX = list.get(0).get(0).doubleValue();
+            final double nwY = list.get(0).get(1).doubleValue();
+            final double seX = list.get(1).get(0).doubleValue();
+            final double seY = list.get(1).get(1).doubleValue();
             result = ContinentBounds.of(nwX, nwY, seX, seY);
         } else if (isMapRect) {
-            final List<? extends Number> list = (List) value;
-            final double swX = list.get(0).doubleValue();
-            final double swY = list.get(1).doubleValue();
-            final double neX = list.get(2).doubleValue();
-            final double neY = list.get(3).doubleValue();
+            final List<List<? extends Number>> list = (List) value;
+            final double swX = list.get(0).get(0).doubleValue();
+            final double swY = list.get(0).get(1).doubleValue();
+            final double neX = list.get(1).get(0).doubleValue();
+            final double neY = list.get(1).get(1).doubleValue();
             result = MapBounds.of(swX, swY, neX, neY);
         }
         // As we rely heavily on enums, we need to convert base types obtained from JSON into valid enum values.
