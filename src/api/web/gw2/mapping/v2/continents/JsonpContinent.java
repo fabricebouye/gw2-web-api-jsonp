@@ -8,6 +8,7 @@
 package api.web.gw2.mapping.v2.continents;
 
 import api.web.gw2.mapping.core.ContinentDimensions;
+import api.web.gw2.mapping.core.ContinentDims;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.QuantityValue;
@@ -21,10 +22,11 @@ import java.util.Set;
  */
 public final class JsonpContinent implements Continent {
 
-    @IdValue(flavor = IdValue.Flavor.STRING)
-    private String id = "";
+    @IdValue
+    private int id = -1;
     @LocalizedResource
     private String name = "";
+    @ContinentDims
     private ContinentDimensions continentDims = ContinentDimensions.empty();
     @QuantityValue
     private int minZoom = 0;
@@ -41,7 +43,7 @@ public final class JsonpContinent implements Continent {
     }
 
     @Override
-    public String getId() {
+    public int getId() {
         return id;
     }
 
