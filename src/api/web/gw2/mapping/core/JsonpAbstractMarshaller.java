@@ -190,6 +190,9 @@ abstract class JsonpAbstractMarshaller {
         boolean isMap = field.getAnnotation(MapValue.class) != null;
         boolean isCoord2D = field.getAnnotation(Coord2DValue.class) != null;
         boolean isCoord3D = field.getAnnotation(Coord3DValue.class) != null;
+        boolean isContinentDims = field.getAnnotation(ContinentDims.class) != null;
+        boolean isContinentRect = field.getAnnotation(ContinentRect.class) != null;
+        boolean isMapRect = field.getAnnotation(MapRect.class) != null;
         //
         Object result = null;
         // Use the annotation of the field.
@@ -216,6 +219,12 @@ abstract class JsonpAbstractMarshaller {
             result = Point2D.origin();
         } else if (isCoord3D) {
             result = Point3D.origin();
+        } else if (isContinentDims) {
+            result = ContinentDimensions.empty();
+        } else if (isContinentRect) {
+            result = ContinentBounds.empty();
+        } else if (isMapRect) {
+            result = MapBounds.empty();
         } else if (isQuantity) {
             result = 0;
 //            result = DistanceAmount.ZERO;
@@ -276,6 +285,9 @@ abstract class JsonpAbstractMarshaller {
         boolean isEnum = field.getAnnotation(EnumValue.class) != null;
         boolean isCoord2D = field.getAnnotation(Coord2DValue.class) != null;
         boolean isCoord3D = field.getAnnotation(Coord3DValue.class) != null;
+        boolean isContinentDims = field.getAnnotation(ContinentDims.class) != null;
+        boolean isContinentRect = field.getAnnotation(ContinentRect.class) != null;
+        boolean isMapRect = field.getAnnotation(MapRect.class) != null;
         Object result = value;
         // Base types.
         if (isOptional && value == null) {
@@ -325,6 +337,25 @@ abstract class JsonpAbstractMarshaller {
             final double y = list.get(1).doubleValue();
             final double z = list.get(2).doubleValue();
             result = Point3D.of(x, y, z);
+        } else if (isContinentDims) {
+            final List<? extends Number> list = (List) value;
+            final double w = list.get(0).doubleValue();
+            final double h = list.get(1).doubleValue();
+            result = ContinentDimensions.of(w, h);
+        } else if (isContinentRect) {
+            final List<? extends Number> list = (List) value;
+            final double nwX  = list.get(0).doubleValue();
+            final double nwY  = list.get(1).doubleValue();
+            final double seX  = list.get(2).doubleValue();
+            final double seY  = list.get(3).doubleValue();
+            result = ContinentBounds.of(nwX, nwY, seX, seY);
+        } else if (isMapRect) {
+            final List<? extends Number> list = (List) value;
+            final double swX  = list.get(0).doubleValue();
+            final double swY  = list.get(1).doubleValue();
+            final double neX  = list.get(2).doubleValue();
+            final double neY  = list.get(3).doubleValue();
+            result = MapBounds.of(swX, swY, neX, neY);
         }
         // As we rely heavily on enums, we need to convert base types obtained from JSON into valid enum values.
         if (isEnum) {
