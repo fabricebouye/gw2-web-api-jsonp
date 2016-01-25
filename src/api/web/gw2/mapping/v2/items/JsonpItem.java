@@ -14,6 +14,7 @@ import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LevelValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.RuntimeType;
 import api.web.gw2.mapping.core.SetValue;
 import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
@@ -58,6 +59,7 @@ public final class JsonpItem implements Item {
     @URLValue
     private URLReference icon = URLReference.empty();
     @OptionalValue
+    @RuntimeType(selector = "type", pattern = "Item%sDetails", source = RuntimeType.Source.PARENT)
     private Optional<ItemDetails> details = Optional.empty();
 
     /**
