@@ -21,6 +21,7 @@ import api.web.gw2.mapping.v2.characters.equipment.Equipment;
 import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
 import api.web.gw2.mapping.v2.continents.Continent;
 import api.web.gw2.mapping.v2.currencies.Currency;
+import api.web.gw2.mapping.v2.items.Item;
 import api.web.gw2.mapping.v2.items.ItemDetails;
 import api.web.gw2.mapping.v2.items.ItemType;
 import api.web.gw2.mapping.v2.maps.Map;
@@ -696,4 +697,41 @@ public class JsonpContext_SAX_LocalTest {
                     }
                 });
     }
+
+    @Test
+    public void testLoadObject_Item_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Item local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/items/"; // NOI18N.
+        final String[] filenames = {
+            "item01.json", // NOI18N.
+            "item02.json", // NOI18N.
+            "item03.json", // NOI18N.
+            "item04.json", // NOI18N.
+            "item05.json", // NOI18N.
+            "item06.json", // NOI18N.
+            "item07.json", // NOI18N.
+            "item08.json", // NOI18N.
+            "item09.json", // NOI18N.
+            "item10.json", // NOI18N.
+            "item11.json", // NOI18N.
+            "item12.json", // NOI18N.
+            "item13.json", // NOI18N.
+            "item14.json", // NOI18N.
+            "item15.json", // NOI18N.
+            "item16.json", // NOI18N.
+            "item17.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    try {
+                        final Item value = instance.loadObject(Item.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
 }

@@ -1,0 +1,17 @@
+{
+    "name": "Barre aux baies d'Omnom",
+    "type": "Consumable",
+    "level": 80,
+    "rarity": "Fine",
+    "vendor_value": 33,
+    "game_types": ["Dungeon", "Pve", "Wvw"],
+    "flags": ["NoSell"],
+    "restrictions": [],
+    "id": 12452,
+    "icon": "https://render.guildwars2.com/file/6BD5B65FBC6ED450219EC86DD570E59F4DA3791F/433643.png",
+    "details": {
+        "type": "Food",
+        "duration_ms": 1800000,
+        "description": "Découverte de magie +30%\nOr trouvé sur les monstres +40%\nExpérience à chaque ennemi tué +10%"
+    }
+}

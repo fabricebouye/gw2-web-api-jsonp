@@ -1,0 +1,26 @@
+{
+    "name": "Cachet d'agonie supérieur",
+    "description": "Double-cliquez pour l'appliquer à une arme.",
+    "type": "UpgradeComponent",
+    "level": 60,
+    "rarity": "Exotic",
+    "vendor_value": 216,
+    "game_types": ["Activity", "Dungeon", "Pve", "Wvw"],
+    "flags": [],
+    "restrictions": [],
+    "id": 28445,
+    "icon": "https://render.guildwars2.com/file/BAF34EB051D118F8A7C1645E0D940ED0660E6269/220658.png",
+    "details": {
+        "type": "Sigil",
+        "flags": ["Axe", "LongBow", "ShortBow", "Dagger", "Focus", "Greatsword", "Hammer", "Harpoon", "Mace", "Pistol", "Rifle", "Scepter", "Shield", "Speargun", "Staff", "Sword", "Torch", "Trident", "Warhorn"],
+        "infusion_upgrade_flags": [],
+        "infix_upgrade": {
+            "buff": {
+                "skill_id": 9313,
+                "description": "Augmente de 20% la durée des Saignements infligés"
+            },
+            "attributes": []
+        },
+        "suffix": "d'agonie"
+    }
+}
