@@ -620,7 +620,7 @@ public class JsonpContext_DOM_LocalTest {
             final String file = files[index];
             final URL url = getClass().getResource(baseCode + file);
             final ItemType expItemType = expItemTypes[index];
-            final String token = JsonpAbstractMarshaller.javaEnumToJavaClassName(expItemType);
+            final String token = JsonpUtils.INSTANCE.javaEnumToJavaClassName(expItemType);
             final String className = String.format(classPattern, token);
             try {
                 final Class<? extends ItemDetails> detailsClass = (Class<? extends ItemDetails>) Class.forName(className);

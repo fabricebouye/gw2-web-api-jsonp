@@ -7,7 +7,7 @@
  */
 package api.web.gw2.mapping.v2.quaggans;
 
-import api.web.gw2.mapping.core.JsonUtils;
+import api.web.gw2.mapping.core.JsonpUtils;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.URLValue;
 import java.io.IOException;

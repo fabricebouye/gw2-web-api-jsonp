@@ -31,9 +31,9 @@ import static org.junit.Assert.*;
  * Unit test.
  * @author Fabrice Bouyé
  */
-public class JsonUtilsTest {
+public class JsonpUtilsTest {
 
-    public JsonUtilsTest() {
+    public JsonpUtilsTest() {
     }
 
     @BeforeClass
@@ -73,7 +73,7 @@ public class JsonUtilsTest {
                 .forEach(index -> {
                     final int[] value = values[index];
                     final String expResult = expResults[index];
-                    final String result = JsonUtils.idsToParameter(value);
+                    final String result = JsonpUtils.INSTANCE.idsToParameter(value);
                     assertEquals(expResult, result);
                 });
     }
@@ -99,7 +99,7 @@ public class JsonUtilsTest {
                 .forEach(index -> {
                     final String[] value = values[index];
                     final String expResult = expResults[index];
-                    final String result = JsonUtils.idsToParameter(value);
+                    final String result = JsonpUtils.INSTANCE.idsToParameter(value);
                     assertEquals(expResult, result);
                 });
     }
@@ -121,7 +121,7 @@ public class JsonUtilsTest {
                 .add(5)
                 .add(6)
                 .build();
-        final JsonArray result = JsonUtils.asJsonArray(basecode);
+        final JsonArray result = JsonpUtils.asJsonArray(basecode);
         assertEquals(expResult.size(), result.size());
         assertEquals(expResult, result);
     }
@@ -138,7 +138,7 @@ public class JsonUtilsTest {
                 .add("id", 1) // NOI18N.
                 .add("name", "FabriceB") // NOI18N.
                 .build();
-        final JsonObject result = JsonUtils.asJsonObject(basecode);
+        final JsonObject result = JsonpUtils.asJsonObject(basecode);
         assertEquals(expResult, result);
     }
 
@@ -191,7 +191,7 @@ public class JsonUtilsTest {
         final Foo expResult = new Foo();
         expResult.id = 1;
         expResult.name = "FabriceB"; // NOI18N.
-        final Foo result = JsonUtils.fromJsonObject(basecode, JSON_FOO_FACTORY);
+        final Foo result = JsonpUtils.fromJsonObject(basecode, JSON_FOO_FACTORY);
         assertEquals(expResult, result);
     }
 
@@ -208,7 +208,7 @@ public class JsonUtilsTest {
         expValues.get(0).name = "FabriceB"; // NOI18N.
         expValues.get(1).id = 2;
         expValues.get(1).name = "Toto"; // NOI18N.
-        final List<Foo> resultValues = JsonUtils.listFromJsonArray(basecode, JsonObject.class, JSON_FOO_FACTORY);
+        final List<Foo> resultValues = JsonpUtils.listFromJsonArray(basecode, JsonObject.class, JSON_FOO_FACTORY);
         assertEquals(expValues.size(), resultValues.size());
         IntStream.range(0, expValues.size())
                 .forEach(index -> {
@@ -227,7 +227,7 @@ public class JsonUtilsTest {
         final URL url = getClass().getResource("jsonarray2.json"); // NOI18N.
         final String basecode = url.toExternalForm();
         final List<String> expValues = Arrays.asList("0", "1", "2", "3", "4", "5", "6"); // NOI18N.
-        final List<String> values = JsonUtils.listFromJsonArray(basecode, JsonString.class, JsonString::getString);
+        final List<String> values = JsonpUtils.listFromJsonArray(basecode, JsonString.class, JsonString::getString);
         assertEquals(expValues.size(), values.size());
         IntStream.range(0, expValues.size())
                 .forEach(index -> {
@@ -250,7 +250,7 @@ public class JsonUtilsTest {
         expValues.get(0).name = "FabriceB"; // NOI18N
         expValues.get(1).id = 2;
         expValues.get(1).name = "Toto"; // NOI18N
-        final Set<Foo> resultValues = JsonUtils.setFromJsonArray(basecode, JsonObject.class, JSON_FOO_FACTORY);
+        final Set<Foo> resultValues = JsonpUtils.setFromJsonArray(basecode, JsonObject.class, JSON_FOO_FACTORY);
         assertEquals(expValues.size(), resultValues.size());
         IntStream.range(0, expValues.size())
                 .forEach(index -> {
@@ -270,7 +270,7 @@ public class JsonUtilsTest {
         final URL url = getClass().getResource("jsonarray2.json"); // NOI18N.
         final String basecode = url.toExternalForm();
         final List<String> expValues = Arrays.asList("0", "1", "2", "3", "4", "5", "6"); // NOI18N.
-        final Set<String> resultValues = JsonUtils.setFromJsonArray(basecode, JsonString.class, JsonString::getString);
+        final Set<String> resultValues = JsonpUtils.setFromJsonArray(basecode, JsonString.class, JsonString::getString);
         assertEquals(expValues.size(), resultValues.size());
         IntStream.range(0, expValues.size())
                 .forEach(index -> {
@@ -298,8 +298,8 @@ public class JsonUtilsTest {
                     final String path = filesForNullTests[index];
                     final URL url = getClass().getResource(path);
                     try {
-                        final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
-                        final int result = JsonUtils.nullOrMissingInt(jsonObject, "id", -1); // NOI18N.
+                        final JsonObject jsonObject = JsonpUtils.asJsonObject(url.toExternalForm());
+                        final int result = JsonpUtils.nullOrMissingInt(jsonObject, "id", -1); // NOI18N.
                         final int expResult = expResults[index];
                         assertEquals(expResult, result);
                     } catch (NullPointerException | IOException ex) {
@@ -320,8 +320,8 @@ public class JsonUtilsTest {
                     final String path = filesForNullTests[index];
                     final URL url = getClass().getResource(path);
                     try {
-                        final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
-                        final String result = JsonUtils.nullOrMissingString(jsonObject, "name"); // NOI18N.
+                        final JsonObject jsonObject = JsonpUtils.asJsonObject(url.toExternalForm());
+                        final String result = JsonpUtils.nullOrMissingString(jsonObject, "name"); // NOI18N.
                         final String expResult = expResults[index];
                         assertEquals(expResult, result);
                     } catch (NullPointerException | IOException ex) {
@@ -346,8 +346,8 @@ public class JsonUtilsTest {
                     final String path = filesForNullTests[index];
                     final URL url = getClass().getResource(path);
                     try {
-                        final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
-                        final JsonString result = JsonUtils.nullOrMissingJsonString(jsonObject, "description"); // NOI18N.
+                        final JsonObject jsonObject = JsonpUtils.asJsonObject(url.toExternalForm());
+                        final JsonString result = JsonpUtils.nullOrMissingJsonString(jsonObject, "description"); // NOI18N.
                         final JsonString expResult = expResults[index];
                         assertEquals(expResult, result);
                     } catch (NullPointerException | IOException ex) {
@@ -372,8 +372,8 @@ public class JsonUtilsTest {
                     final String path = filesForNullTests[index];
                     final URL url = getClass().getResource(path);
                     try {
-                        final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
-                        final JsonNumber result = JsonUtils.nullOrMissingJsonNumber(jsonObject, "size"); // NOI18N.
+                        final JsonObject jsonObject = JsonpUtils.asJsonObject(url.toExternalForm());
+                        final JsonNumber result = JsonpUtils.nullOrMissingJsonNumber(jsonObject, "size"); // NOI18N.
                         final JsonNumber expResult = expResults[index];
                         assertEquals(expResult, result);
                     } catch (NullPointerException | IOException ex) {
@@ -397,8 +397,8 @@ public class JsonUtilsTest {
                     final String path = filesForNullTests[index];
                     final URL url = getClass().getResource(path);
                     try {
-                        final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
-                        final JsonObject result = JsonUtils.nullOrMissingJsonObject(jsonObject, "value"); // NOI18N.
+                        final JsonObject jsonObject = JsonpUtils.asJsonObject(url.toExternalForm());
+                        final JsonObject result = JsonpUtils.nullOrMissingJsonObject(jsonObject, "value"); // NOI18N.
                         final JsonObject expResult = expResults[index];
                         assertEquals(expResult, result);
                     } catch (NullPointerException | IOException ex) {
@@ -426,8 +426,8 @@ public class JsonUtilsTest {
                     final String path = filesForNullTests[index];
                     final URL url = getClass().getResource(path);
                     try {
-                        final JsonObject jsonObject = JsonUtils.asJsonObject(url.toExternalForm());
-                        final JsonArray result = JsonUtils.nullOrMissingJsonArray(jsonObject, "amounts"); // NOI18N.
+                        final JsonObject jsonObject = JsonpUtils.asJsonObject(url.toExternalForm());
+                        final JsonArray result = JsonpUtils.nullOrMissingJsonArray(jsonObject, "amounts"); // NOI18N.
                         final JsonArray expResult = expResults[index];
                         assertEquals(expResult, result);
                     } catch (NullPointerException | IOException ex) {

@@ -122,48 +122,6 @@ abstract class JsonpAbstractMarshaller {
     }
 
     /**
-     * Converts a JSON key into a Java field name.
-     * @param key The JSON key.
-     * @return A {@code String}, never {@code null}.
-     * @throws NullPointerException If {@code key} is {@code null}.
-     */
-    protected static final String jsonKeyToJavaFieldName(final String key) throws NullPointerException {
-        Objects.requireNonNull(key);
-        final String[] tokens = key.split("_"); // NOI18N.
-        final StringBuilder buffer = new StringBuilder(key.length());
-        buffer.append(tokens[0]);
-        Arrays.stream(tokens, 1, tokens.length)
-                .forEach(token -> {
-                    final String head = token.substring(0, 1).toUpperCase();
-                    final String tail = token.substring(1, token.length());
-                    buffer.append(head);
-                    buffer.append(tail);
-                });
-        return buffer.toString();
-    }
-
-    /**
-     * Convert an enum value to a proper Java class name (by removing '_' and setting the proper letter case). 
-     * @param value The source enum value.
-     * @return A {@code String} instance, never {@code null}.
-     * @throws NullPointerException If {@code value} is {@code null}.
-     */
-    protected static final String javaEnumToJavaClassName(final Enum value) throws NullPointerException {
-        Objects.requireNonNull(value);
-        final String name = value.name().toLowerCase();
-        final String[] tokens = name.split("_"); // NOI18N.
-        final StringBuilder buffer = new StringBuilder(name.length());
-        Arrays.stream(tokens)
-                .forEach(token -> {
-                    String head = token.substring(0, 1).toUpperCase();
-                    String tail = token.substring(1, token.length());
-                    buffer.append(head);
-                    buffer.append(tail);
-                });
-        return buffer.toString();
-    }
-
-    /**
      * Gets the default value for given field.
      * <br/>This method is usually called when encountering a {@code null} value.
      * @param field The field on which the value will be set.

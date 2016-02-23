@@ -90,7 +90,7 @@ final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
         final T result = createConcreteEmptyInstance(targetClass);
         final Class<T> concreteClass = (Class<T>) result.getClass();
         for (final String key : jsonObject.keySet()) {
-            final String childFieldName = jsonKeyToJavaFieldName(key);
+            final String childFieldName = JsonpUtils.INSTANCE.jsonKeyToJavaFieldName(key);
             final Field childField = lookupField(childFieldName, concreteClass);
             // If field does not exist, skip key.
             if (childField == null) {
@@ -264,7 +264,7 @@ final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
                 final Field parentField = lookupField(selector, parent.getClass());
                 parentField.setAccessible(true);
                 final Object selectorValue = parentField.get(parent);
-                final String selectorName = javaEnumToJavaClassName((Enum) selectorValue);
+                final String selectorName = JsonpUtils.INSTANCE.javaEnumToJavaClassName((Enum) selectorValue);
                 final String className = String.format(fullPattern, selectorName);
                 final Class<T> newTargetClass = (Class<T>) Class.forName(className);
                 return marshallObject(jsonObject, field, newTargetClass, parent);

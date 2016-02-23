@@ -32,9 +32,51 @@ import javax.json.JsonValue;
  * <br>This class provides core utility methods that are used throughout this factory implementation.
  * @author Fabrice Bouyé
  */
-public enum JsonUtils {
+public enum JsonpUtils {
 
     INSTANCE;
+
+    /**
+     * Converts a JSON key into a Java field name.
+     * @param key The JSON key.
+     * @return A {@code String}, never {@code null}.
+     * @throws NullPointerException If {@code key} is {@code null}.
+     */
+    public final String jsonKeyToJavaFieldName(final String key) throws NullPointerException {
+        Objects.requireNonNull(key);
+        final String[] tokens = key.split("_"); // NOI18N.
+        final StringBuilder buffer = new StringBuilder(key.length());
+        buffer.append(tokens[0]);
+        Arrays.stream(tokens, 1, tokens.length)
+                .forEach(token -> {
+                    final String head = token.substring(0, 1).toUpperCase();
+                    final String tail = token.substring(1, token.length());
+                    buffer.append(head);
+                    buffer.append(tail);
+                });
+        return buffer.toString();
+    }
+
+    /**
+     * Convert an enum value to a proper Java class name (by removing '_' and setting the proper letter case). 
+     * @param value The source enum value.
+     * @return A {@code String} instance, never {@code null}.
+     * @throws NullPointerException If {@code value} is {@code null}.
+     */
+    public final String javaEnumToJavaClassName(final Enum value) throws NullPointerException {
+        Objects.requireNonNull(value);
+        final String name = value.name().toLowerCase();
+        final String[] tokens = name.split("_"); // NOI18N.
+        final StringBuilder buffer = new StringBuilder(name.length());
+        Arrays.stream(tokens)
+                .forEach(token -> {
+                    String head = token.substring(0, 1).toUpperCase();
+                    String tail = token.substring(1, token.length());
+                    buffer.append(head);
+                    buffer.append(tail);
+                });
+        return buffer.toString();
+    }
 
     /**
      * Converts JSON string into Java strings.
@@ -56,7 +98,7 @@ public enum JsonUtils {
      * @return A {@code String} instance, never {@code null}.
      * <br>If no ids are provided, the value {@code "all"} is returned.
      */
-    public static String idsToParameter(final int... ids) {
+    public String idsToParameter(final int... ids) {
         final String result = (ids.length == 0) ? "all" : Arrays.stream(ids) // NOI18N.
                 .mapToObj(String::valueOf)
                 .collect(Collectors.joining(",")); // NOI18N.
@@ -69,7 +111,7 @@ public enum JsonUtils {
      * @return A {@code String} instance, never {@code null}.
      * <br>If no ids are provided, the value {@code "all"} is returned.
      */
-    public static String idsToParameter(final String... ids) {
+    public String idsToParameter(final String... ids) {
         final String result = (ids.length == 0) ? "all" : Arrays.stream(ids) // NOI18N.
                 .collect(Collectors.joining(",")); // NOI18N.
         return result;

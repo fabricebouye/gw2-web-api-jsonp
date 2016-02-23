@@ -113,7 +113,7 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                 switch (event) {
                     case KEY_NAME: {
                         final String key = parser.getString();
-                        final String fieldName = jsonKeyToJavaFieldName(key);
+                        final String fieldName = JsonpUtils.INSTANCE.jsonKeyToJavaFieldName(key);
                         childField = lookupField(fieldName, concreteClass);
                         if (childField == null) {
                             logWarningMissingField(key, fieldName, targetClass);
@@ -349,7 +349,7 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                 final Field parentField = lookupField(selector, parent.getClass());
                 parentField.setAccessible(true);
                 final Object selectorValue = parentField.get(parent);
-                final String selectorName = javaEnumToJavaClassName((Enum) selectorValue);
+                final String selectorName = JsonpUtils.INSTANCE.javaEnumToJavaClassName((Enum) selectorValue);
                 final String className = String.format(fullPattern, selectorName);
                 final Class<T> newTargetClass = (Class<T>) Class.forName(className);
                 return marshallObject(parser, field, newTargetClass);
