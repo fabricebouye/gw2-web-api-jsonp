@@ -1,0 +1,8 @@
+{
+    "id": 1,
+    "name": "Slayer",
+    "description": "",
+    "order": 30,
+    "icon": "https://render.guildwars2.com/file/E00460A2CAD85D47406EAB4213D1010B3E80C9B0/42675.png",
+    "achievements": [1, 5, 4, 6]
+}

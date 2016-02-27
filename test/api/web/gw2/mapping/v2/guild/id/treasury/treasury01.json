@@ -1,0 +1,10 @@
+{
+    "id": 12138,
+    "count": 200,
+    "needed_by": [
+        {
+            "upgrade_id": 42,
+            "count": 1000
+        }
+    ]
+}

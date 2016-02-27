@@ -1,0 +1,38 @@
+{
+    "id": 1,
+    "members": [{
+            "name": "AnAccount.1234",
+            "role": "Member"
+        }, {
+            "name": "AnAccount.5678",
+            "role": "Member"
+        }, {
+            "name": "AnAccount.9012",
+            "role": "Captain"
+        }],
+    "name": "The name",
+    "state": "Active",
+    "aggregate": {
+        "wins": 2,
+        "losses": 2,
+        "desertions": 0,
+        "byes": 2,
+        "forfeits": 0
+    },
+    "ladders": {
+        "unranked": {
+            "wins": 2,
+            "losses": 2,
+            "desertions": 0,
+            "byes": 2,
+            "forfeits": 0
+        },
+        "ranked": {
+            "wins": 3,
+            "losses": 1,
+            "desertions": 0,
+            "byes": 0,
+            "forfeits": 0
+        }
+    }
+}
