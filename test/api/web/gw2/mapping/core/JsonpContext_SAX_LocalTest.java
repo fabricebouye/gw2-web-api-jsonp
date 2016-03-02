@@ -27,6 +27,7 @@ import api.web.gw2.mapping.v2.items.ItemType;
 import api.web.gw2.mapping.v2.maps.Map;
 import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
+import api.web.gw2.mapping.v2.pvp.games.Game;
 import api.web.gw2.mapping.v2.recipes.Recipe;
 import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
 import api.web.gw2.mapping.v2.skins.JsonpSkinArmorDetails;
@@ -734,4 +735,23 @@ public class JsonpContext_SAX_LocalTest {
                 });
     }
 
+    @Test
+    public void testLoadObject_Game_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Game local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/pvp/games/"; // NOI18N.
+        final String[] filenames = {
+            "game01.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    try {
+                        final Game value = instance.loadObject(Game.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
 }
