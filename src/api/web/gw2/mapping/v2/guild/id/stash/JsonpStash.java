@@ -27,7 +27,7 @@ public final class JsonpStash implements Stash {
     private int size = 0;
     @CoinValue
     private CoinAmount coins = CoinAmount.ZERO;
-    private String notes = "";
+    private String note = "";
     @ListValue
     private List<StashInventory> inventory = Collections.EMPTY_LIST;
 
@@ -54,7 +54,7 @@ public final class JsonpStash implements Stash {
 
     @Override
     public String getNote() {
-        return notes;
+        return note;
     }
 
     @Override
