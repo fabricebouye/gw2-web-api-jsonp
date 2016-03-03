@@ -21,6 +21,7 @@ import api.web.gw2.mapping.v2.characters.equipment.Equipment;
 import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
 import api.web.gw2.mapping.v2.continents.Continent;
 import api.web.gw2.mapping.v2.currencies.Currency;
+import api.web.gw2.mapping.v2.guild.id.log.LogEvent;
 import api.web.gw2.mapping.v2.items.Item;
 import api.web.gw2.mapping.v2.items.ItemDetails;
 import api.web.gw2.mapping.v2.items.ItemType;
@@ -813,6 +814,27 @@ public class JsonpContext_SAX_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     try {
                         final Standing value = instance.loadObject(Standing.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_LogEvent_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(LogEvent local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/guild/id/log/"; // NOI18N.
+        final String[] filenames = {
+            "eventlog01.json", // NOI18N.
+            "eventlog02.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    try {
+                        final LogEvent value = instance.loadObject(LogEvent.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
