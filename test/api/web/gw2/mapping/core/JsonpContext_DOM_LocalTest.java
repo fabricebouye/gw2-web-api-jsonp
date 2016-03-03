@@ -21,6 +21,7 @@ import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
 import api.web.gw2.mapping.v2.continents.Continent;
 import api.web.gw2.mapping.v2.currencies.Currency;
 import api.web.gw2.mapping.v2.guild.id.log.LogEvent;
+import api.web.gw2.mapping.v2.guild.id.stash.Stash;
 import api.web.gw2.mapping.v2.items.ItemDetails;
 import api.web.gw2.mapping.v2.items.ItemType;
 import api.web.gw2.mapping.v2.maps.Map;
@@ -795,6 +796,26 @@ public class JsonpContext_DOM_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     try {
                         final LogEvent value = instance.loadObject(LogEvent.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_Stash_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Stash local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/guild/id/stash/"; // NOI18N.
+        final String[] filenames = {
+            "stash01.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    try {
+                        final Stash value = instance.loadObject(Stash.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
