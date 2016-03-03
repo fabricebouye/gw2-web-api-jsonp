@@ -29,6 +29,7 @@ import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
 import api.web.gw2.mapping.v2.pvp.games.Game;
 import api.web.gw2.mapping.v2.pvp.seasons.Season;
+import api.web.gw2.mapping.v2.pvp.standings.Standing;
 import api.web.gw2.mapping.v2.pvp.stats.Stat;
 import api.web.gw2.mapping.v2.recipes.Recipe;
 import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
@@ -779,7 +780,7 @@ public class JsonpContext_SAX_LocalTest {
 
     @Test
     public void testLoadObject_Season_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Seasont local)"); // NOI18N.
+        System.out.println("loadObject(Season local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/pvp/seasons/"; // NOI18N.
         final String[] filenames = {
             "season01.json", // NOI18N.
@@ -791,6 +792,27 @@ public class JsonpContext_SAX_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     try {
                         final Season value = instance.loadObject(Season.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_Standing_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Standing local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/pvp/standings/"; // NOI18N.
+        final String[] filenames = {
+            "standing01.json", // NOI18N.
+            "standing02.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    try {
+                        final Standing value = instance.loadObject(Standing.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
