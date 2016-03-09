@@ -11,6 +11,7 @@ import api.web.gw2.mapping.core.DateValue;
 import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LevelValue;
+import api.web.gw2.mapping.core.QuantityValue;
 import api.web.gw2.mapping.core.SetValue;
 import java.time.ZonedDateTime;
 import java.util.Collections;
@@ -36,6 +37,11 @@ public final class JsonpAccount implements Account {
     private AccountAccessType access = AccountAccessType.UNKNOWN;
     @LevelValue
     private int fractalLevel = 1;
+    private boolean commander = false;
+    @QuantityValue
+    private int dailyAp = 0;
+    @QuantityValue
+    private int monthlyAp = 0;
 
     /**
      * Creates an empty instance.
@@ -76,5 +82,20 @@ public final class JsonpAccount implements Account {
     @Override
     public int getFractalLevel() {
         return fractalLevel;
+    }
+
+    @Override
+    public boolean isCommander() {
+        return commander;
+    }
+
+    @Override
+    public int getDailyAp() {
+        return dailyAp;
+    }
+
+    @Override
+    public int getMonthlyAp() {
+        return monthlyAp;
     }
 }
