@@ -42,6 +42,8 @@ public final class JsonpAccount implements Account {
     private int dailyAp = 0;
     @QuantityValue
     private int monthlyAp = 0;
+    @LevelValue
+    private int wvwRank = 0;
 
     /**
      * Creates an empty instance.
@@ -97,5 +99,10 @@ public final class JsonpAccount implements Account {
     @Override
     public int getMonthlyAp() {
         return monthlyAp;
+    }
+
+    @Override
+    public int getWvwRank() {
+        return wvwRank;
     }
 }
