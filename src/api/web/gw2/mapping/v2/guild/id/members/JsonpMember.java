@@ -10,6 +10,7 @@ package api.web.gw2.mapping.v2.guild.id.members;
 import api.web.gw2.mapping.core.DateValue;
 import api.web.gw2.mapping.core.IdValue;
 import java.time.ZonedDateTime;
+import java.util.Optional;
 
 /**
  * Default JSON-P implementation of a guild member.
@@ -22,7 +23,7 @@ public final class JsonpMember implements Member {
     @IdValue
     private String rank = ""; // NOI18N.
     @DateValue
-    private ZonedDateTime joined = DateValue.DEFAULT;
+    private Optional<ZonedDateTime> joined = Optional.empty();
 
     /**
      * Creates a new empty instance.
@@ -41,7 +42,7 @@ public final class JsonpMember implements Member {
     }
 
     @Override
-    public ZonedDateTime getJoined() {
+    public Optional<ZonedDateTime> getJoined() {
         return joined;
     }
 }
