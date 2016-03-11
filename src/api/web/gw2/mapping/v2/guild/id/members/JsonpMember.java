@@ -9,6 +9,7 @@ package api.web.gw2.mapping.v2.guild.id.members;
 
 import api.web.gw2.mapping.core.DateValue;
 import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.OptionalValue;
 import java.time.ZonedDateTime;
 import java.util.Optional;
 
@@ -23,6 +24,7 @@ public final class JsonpMember implements Member {
     @IdValue
     private String rank = ""; // NOI18N.
     @DateValue
+    @OptionalValue
     private Optional<ZonedDateTime> joined = Optional.empty();
 
     /**
