@@ -61,7 +61,8 @@ public final class JsonpCharacter implements Character {
     private Optional<Set<CharacterCrafting>> crafting = Optional.empty();
     @OptionalValue
     @MapValue
-    private Optional<Map<CharacterGameType, CharacterSpecialization>> specializations = Optional.empty();
+    @SetValue
+    private Optional<Map<CharacterGameType, Set<CharacterSpecialization>>> specializations = Optional.empty();
     @OptionalValue
     @SetValue
     @IdValue
@@ -134,7 +135,7 @@ public final class JsonpCharacter implements Character {
     }
 
     @Override
-    public Optional<Map<CharacterGameType, CharacterSpecialization>> getSpecialisations() {
+    public Optional<Map<CharacterGameType, Set<CharacterSpecialization>>> getSpecialisations() {
         return specializations;
     }
 
