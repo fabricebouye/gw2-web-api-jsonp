@@ -62,6 +62,10 @@ public final class JsonpCharacter implements Character {
     @OptionalValue
     @MapValue
     private Optional<Map<CharacterGameType, CharacterSpecialization>> specializations = Optional.empty();
+    @OptionalValue
+    @SetValue
+    @IdValue
+    private Optional<Set<Integer>> recipes = Optional.empty();
 
     /**
      * Creates a new empty instance.
@@ -132,5 +136,10 @@ public final class JsonpCharacter implements Character {
     @Override
     public Optional<Map<CharacterGameType, CharacterSpecialization>> getSpecialisations() {
         return specializations;
+    }
+
+    @Override
+    public Optional<Set<Integer>> getRecipes() {
+        return recipes;
     }
 }
