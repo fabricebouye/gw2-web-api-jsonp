@@ -16,6 +16,7 @@ import java.net.MalformedURLException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -229,6 +230,11 @@ final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                 }
                 case START_ARRAY: {
                     valueFromJSON = marshallArray(parser, field, valueClass);
+                    // 2016-03-21 FB: hack to return proper type when dealing with Map<Enum, Set>.                    
+                    final boolean isSet = field.getAnnotation(SetValue.class) != null;
+                    if (isSet) {
+                        valueFromJSON = new HashSet((List) valueFromJSON);                        
+                    }
                 }
                 break;
                 case VALUE_STRING: {
