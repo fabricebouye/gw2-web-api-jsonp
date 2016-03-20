@@ -42,6 +42,9 @@ public final class JsonpInventory implements Inventory {
     private Optional<InventoryBinding> binding = Optional.empty();
     @OptionalValue
     private Optional<String> boundTo = Optional.empty();
+    @OptionalValue
+    @IdValue
+    private OptionalInt infixUpgradeId = OptionalInt.empty();
 
     /**
      * Creates a new empty instance.
@@ -82,5 +85,10 @@ public final class JsonpInventory implements Inventory {
     @Override
     public Optional<String> getBoundTo() {
         return boundTo;
+    }
+
+    @Override
+    public OptionalInt getInfixUpgradeId() {
+        return infixUpgradeId;
     }
 }
