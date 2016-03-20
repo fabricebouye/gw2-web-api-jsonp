@@ -10,7 +10,7 @@ package api.web.gw2.mapping.v2.tokeninfo;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -49,7 +49,7 @@ public class JsonpTokenInfoTest {
         nameField.set(instance, "Test Key"); // NOI18N.
         final Field permissionsField = instance.getClass().getDeclaredField("permissions"); // NOI18N.
         permissionsField.setAccessible(true);
-        permissionsField.set(instance, Collections.unmodifiableSet(new HashSet<>(Arrays.asList(TokenInfoPermission.ACCOUNT))));
+        permissionsField.set(instance, Collections.unmodifiableSet(new LinkedHashSet<>(Arrays.asList(TokenInfoPermission.ACCOUNT))));
     }
 
     @After

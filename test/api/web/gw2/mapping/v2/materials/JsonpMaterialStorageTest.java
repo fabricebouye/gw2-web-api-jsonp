@@ -10,7 +10,7 @@ package api.web.gw2.mapping.v2.materials;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -49,7 +49,7 @@ public final class JsonpMaterialStorageTest {
         nameField.set(instance, "Foo"); // NOI18N.
         final Field itemsField = instance.getClass().getDeclaredField("items"); // NOI18N.
         itemsField.setAccessible(true);
-        itemsField.set(instance, Collections.unmodifiableSet(new HashSet(Arrays.asList(1, 2, 3, 4, 5))));
+        itemsField.set(instance, Collections.unmodifiableSet(new LinkedHashSet(Arrays.asList(1, 2, 3, 4, 5))));
     }
 
     @After

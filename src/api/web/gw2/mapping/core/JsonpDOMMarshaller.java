@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -296,7 +296,7 @@ final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
                     // 2016-03-21 FB: hack to return proper type when dealing with Map<Enum, Set>.
                     final boolean isSet = field.getAnnotation(SetValue.class) != null;
                     if (isSet) {
-                        valueFromJSON = new HashSet((List) valueFromJSON);                        
+                        valueFromJSON = new LinkedHashSet((List) valueFromJSON);                        
                     }                    
                 }
                 break;

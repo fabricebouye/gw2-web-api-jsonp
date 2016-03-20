@@ -10,7 +10,7 @@ package api.web.gw2.mapping.v2.account.achievements;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.Set;
@@ -57,7 +57,7 @@ public final class JsonpAchievementTest {
         doneField.setBoolean(instance, false);
         final Field bitsField = instance.getClass().getDeclaredField("bits"); // NOI18N.
         bitsField.setAccessible(true);
-        bitsField.set(instance, Optional.of(Collections.unmodifiableSet(new HashSet(Arrays.asList(2, 5, 7)))));
+        bitsField.set(instance, Optional.of(Collections.unmodifiableSet(new LinkedHashSet(Arrays.asList(2, 5, 7)))));
     }
 
     @After

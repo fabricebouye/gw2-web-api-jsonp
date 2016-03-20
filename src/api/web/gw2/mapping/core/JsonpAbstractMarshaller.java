@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -279,7 +279,7 @@ abstract class JsonpAbstractMarshaller {
             final List list = (List) value;
             result = Collections.unmodifiableList(list);
         } else if (isSet) {
-            final Set set = new HashSet((List) value);
+            final Set set = new LinkedHashSet((List) value);
             result = Collections.unmodifiableSet(set);
         } else if (isCurrency) {
             final Number number = (Number) value;
@@ -326,7 +326,7 @@ abstract class JsonpAbstractMarshaller {
                     final Object target = marshallEnumValue(field, v);
                     destination.add(target);
                 }
-                result = (isList) ? Collections.unmodifiableList(destination) : Collections.unmodifiableSet(new HashSet(destination));
+                result = (isList) ? Collections.unmodifiableList(destination) : Collections.unmodifiableSet(new LinkedHashSet(destination));
             } // @todo What about maps?
             // Single value.
             else {

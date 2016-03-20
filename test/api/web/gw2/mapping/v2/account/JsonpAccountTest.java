@@ -10,7 +10,7 @@ package api.web.gw2.mapping.v2.account;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -52,7 +52,7 @@ public final class JsonpAccountTest {
         worldField.setInt(instance, 10);
         final Field guildsField = instance.getClass().getDeclaredField("guilds"); // NOI18N.
         guildsField.setAccessible(true);
-        guildsField.set(instance, Collections.unmodifiableSet(new HashSet<>(Arrays.asList("test-guild")))); // NOI18N.
+        guildsField.set(instance, Collections.unmodifiableSet(new LinkedHashSet<>(Arrays.asList("test-guild")))); // NOI18N.
     }
 
     @After

@@ -50,7 +50,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Iterator;
 import java.util.Optional;
 import java.util.OptionalInt;
@@ -114,7 +114,7 @@ public class JsonpContext_DOM_LocalTest {
         assertEquals("b8169418-1c11-405f-91bb-e2b29d602b8a", value.getId()); // NOI18N.
         assertEquals("ExampleAccount.1234", value.getName()); // NOI18N.
         assertEquals(1007, value.getWorld());
-        assertEquals(Collections.unmodifiableSet(new HashSet(Arrays.asList("75FD83CF-0C45-4834-BC4C-097F93A487AF"))), value.getGuilds()); // NOI18N.
+        assertEquals(Collections.unmodifiableSet(new LinkedHashSet(Arrays.asList("75FD83CF-0C45-4834-BC4C-097F93A487AF"))), value.getGuilds()); // NOI18N.
     }
 
     @Test
@@ -269,7 +269,7 @@ public class JsonpContext_DOM_LocalTest {
         assertNotNull(value);
         assertEquals(38, value.getId());
         assertEquals("Festive Materials", value.getName()); // NOI18N.
-        assertEquals(Collections.unmodifiableSet(new HashSet(Arrays.asList(36060, 36061, 36059, 36041, 38130, 38131, 38132, 38133, 38134, 38135, 43319, 47909, 48807, 48805, 48806))), value.getItems());
+        assertEquals(Collections.unmodifiableSet(new LinkedHashSet(Arrays.asList(36060, 36061, 36059, 36041, 38130, 38131, 38132, 38133, 38134, 38135, 43319, 47909, 48807, 48805, 48806))), value.getItems());
     }
 
     @Test
@@ -381,7 +381,7 @@ public class JsonpContext_DOM_LocalTest {
         final Optional[] expBits = {
             Optional.empty(),
             Optional.empty(),
-            Optional.of(Collections.unmodifiableSet(new HashSet(Arrays.asList(2, 3, 4, 5)))),};
+            Optional.of(Collections.unmodifiableSet(new LinkedHashSet(Arrays.asList(2, 3, 4, 5)))),};
         assertEquals(files.length, expIds.length);
         assertEquals(files.length, expCurrents.length);
         assertEquals(files.length, expMaxs.length);
@@ -512,7 +512,7 @@ public class JsonpContext_DOM_LocalTest {
                         assertEquals("Seer Pants", value.getName());
                         assertEquals(SkinType.ARMOR, value.getType());
                         assertEquals(URLReference.of("https://render.guildwars2.com/file/1920ACA302E656B60C38605521760351F147809D/61088.png"), value.getIcon());
-                        assertEquals(Collections.unmodifiableSet(new HashSet(Arrays.asList(SkinFlag.SHOW_IN_WARDROBE))), value.getFlags());
+                        assertEquals(Collections.unmodifiableSet(new LinkedHashSet(Arrays.asList(SkinFlag.SHOW_IN_WARDROBE))), value.getFlags());
                         assertTrue(value.getDetails().isPresent());
                         assertEquals(JsonpSkinArmorDetails.class, value.getDetails().get().getClass());
                     } catch (NullPointerException | IOException ex) {

@@ -13,7 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
 import org.junit.After;
@@ -65,7 +65,7 @@ public final class JsonpAchievementTest {
         typeField.set(instance, AchievementType.DEFAULT);
         final Field flagsField = instance.getClass().getDeclaredField("flags"); // NOI18N.
         flagsField.setAccessible(true);
-        flagsField.set(instance, Collections.unmodifiableSet(new HashSet(Arrays.asList(
+        flagsField.set(instance, Collections.unmodifiableSet(new LinkedHashSet(Arrays.asList(
                 AchievementFlag.PVP,
                 AchievementFlag.MOVE_TO_TOP
         ))));
