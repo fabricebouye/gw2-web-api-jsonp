@@ -135,7 +135,7 @@ public final class JsonpCharacter implements Character {
     }
 
     @Override
-    public Optional<Map<CharacterGameType, Set<CharacterSpecialization>>> getSpecialisations() {
+    public Optional<Map<CharacterGameType, Set<CharacterSpecialization>>> getSpecializations() {
         return specializations;
     }
 
