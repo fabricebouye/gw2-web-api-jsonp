@@ -7,9 +7,11 @@
  */
 package api.web.gw2.mapping.v2.pvp.seasons;
 
+import api.web.gw2.mapping.core.DateValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.SetValue;
+import java.time.ZonedDateTime;
 import java.util.Collections;
 import java.util.Set;
 
@@ -25,6 +27,11 @@ public final class JsonpSeason implements Season {
     private String name = "";
     @SetValue
     private Set<SeasonDivision> divisions = Collections.EMPTY_SET;
+    @DateValue
+    private ZonedDateTime start = DateValue.DEFAULT;
+    @DateValue
+    private ZonedDateTime end = DateValue.DEFAULT;
+    private boolean active = false;
 
     /**
      * Creates a new empty instance.
@@ -45,5 +52,20 @@ public final class JsonpSeason implements Season {
     @Override
     public Set<SeasonDivision> getDivisions() {
         return divisions;
+    }
+
+    @Override
+    public ZonedDateTime getStart() {
+        return start;
+    }
+
+    @Override
+    public ZonedDateTime getEnd() {
+        return end;
+    }
+
+    @Override
+    public boolean isActive() {
+        return active;
     }
 }
