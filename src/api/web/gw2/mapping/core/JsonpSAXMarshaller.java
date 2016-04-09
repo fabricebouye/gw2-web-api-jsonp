@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.json.Json;
 import javax.json.stream.JsonLocation;
 import javax.json.stream.JsonParser;
@@ -31,7 +30,7 @@ import javax.json.stream.JsonParser;
  * A SAX (event-based) implementation of the JSON-P marshaller.
  * @author Fabrice Bouyé
  */
-final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
+public final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
 
     /**
      * Creates a new empty instance.

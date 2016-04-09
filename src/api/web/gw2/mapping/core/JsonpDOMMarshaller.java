@@ -33,7 +33,7 @@ import javax.json.JsonValue;
  * A DOM (structure in memory) implementation of the JSON-P marshaller.
  * @author Fabrice Bouyé
  */
-final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
+public final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
 
     /**
      * Creates a new empty instance.
