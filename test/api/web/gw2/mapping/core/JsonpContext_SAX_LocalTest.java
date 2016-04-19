@@ -10,6 +10,7 @@ package api.web.gw2.mapping.core;
 import api.web.gw2.mapping.v2.account.Account;
 import api.web.gw2.mapping.v2.account.AccountAccessType;
 import api.web.gw2.mapping.v2.account.bank.BankSlot;
+import api.web.gw2.mapping.v2.account.inventory.SharedInventory;
 import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
 import api.web.gw2.mapping.v2.achievements.Achievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievement;
@@ -19,6 +20,7 @@ import api.web.gw2.mapping.v2.characters.CharacterCrafting;
 import api.web.gw2.mapping.v2.characters.CharacterProfession;
 import api.web.gw2.mapping.v2.characters.equipment.Equipment;
 import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
+import api.web.gw2.mapping.v2.characters.inventory.InventoryBinding;
 import api.web.gw2.mapping.v2.continents.Continent;
 import api.web.gw2.mapping.v2.currencies.Currency;
 import api.web.gw2.mapping.v2.guild.id.log.LogEvent;
@@ -51,6 +53,7 @@ import api.web.gw2.mapping.v2.wvw.objectives.Objective;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Iterator;
@@ -899,6 +902,38 @@ public class JsonpContext_SAX_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     try {
                         final Team value = instance.loadObject(Team.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_SharedInventory_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(SharedInventory local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/account/inventory/"; // NOI18N.
+        final String[] filenames = {
+            "inventories.json", // NOI18N.
+        };
+        final int[] expectedIds = {44602, 20321};
+        final int[] expectedCounts = {1, 1};
+        assertEquals(expectedIds.length, expectedCounts.length);
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    try {
+                        final Collection<SharedInventory> value = instance.loadObjectArray(SharedInventory.class, url);
+                        assertEquals(expectedIds.length, value.size());
+                        final Iterator<SharedInventory> it = value.iterator();
+                        IntStream.range(0, expectedIds.length)
+                                .forEach(i -> {
+                                    final SharedInventory sharedInventory = it.next();
+                                    assertEquals(expectedIds[i], sharedInventory.getId());
+                                    assertEquals(expectedCounts[i], sharedInventory.getCount());
+                                    assertEquals(InventoryBinding.ACCOUNT, sharedInventory.getBinding());
+                                });
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
