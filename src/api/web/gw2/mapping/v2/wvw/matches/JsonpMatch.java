@@ -34,6 +34,10 @@ public final class JsonpMatch implements Match {
     @IdValue
     @MapValue
     private Map<MatchTeam, Integer> worlds = Collections.EMPTY_MAP;
+    @IdValue
+    @MapValue
+    @SetValue
+    private Map<MatchTeam, Set<Integer>> allWorlds = Collections.EMPTY_MAP;
     @QuantityValue
     @MapValue
     private Map<MatchTeam, Integer> deaths = Collections.EMPTY_MAP;
@@ -72,6 +76,11 @@ public final class JsonpMatch implements Match {
     @Override
     public Map<MatchTeam, Integer> getWorlds() {
         return worlds;
+    }
+
+    @Override
+    public Map<MatchTeam, Set<Integer>> getAllWorlds() {
+        return allWorlds;
     }
 
     @Override
