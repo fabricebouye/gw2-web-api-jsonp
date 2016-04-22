@@ -7,10 +7,12 @@
  */
 package api.web.gw2.mapping.v2.account.bank;
 
+import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.ListValue;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
+import api.web.gw2.mapping.v2.characters.inventory.InventoryBinding;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
@@ -34,6 +36,12 @@ public final class JsonpBankSlot implements BankSlot {
     @OptionalValue
     @ListValue
     private Optional<List<Integer>> infusions = Optional.empty();
+    @OptionalValue
+    @EnumValue
+    private Optional<InventoryBinding> binding = Optional.empty();
+    @IdValue
+    @OptionalValue
+    private Optional<String> boundTo = Optional.empty();
 
     /**
      * Creates a new empty instance.
@@ -64,5 +72,15 @@ public final class JsonpBankSlot implements BankSlot {
     @Override
     public Optional<List<Integer>> getInfusions() {
         return infusions;
+    }
+
+    @Override
+    public Optional<InventoryBinding> getBinding() {
+        return binding;
+    }
+
+    @Override
+    public Optional<String> getBoundTo() {
+        return boundTo;
     }
 }
