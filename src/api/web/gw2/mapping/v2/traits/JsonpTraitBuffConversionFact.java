@@ -17,7 +17,7 @@ import api.web.gw2.mapping.core.PercentValue;
 public final class JsonpTraitBuffConversionFact extends JsonpTraitFact implements TraitBuffConversionFact {
 
     @PercentValue
-    private int percent = 0;
+    private int percent = PercentValue.DEFAULT;
     @EnumValue
     private TraitAttribute source = TraitAttribute.UNKNOWN;
     @EnumValue

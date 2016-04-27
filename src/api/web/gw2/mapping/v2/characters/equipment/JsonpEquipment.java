@@ -21,7 +21,7 @@ import java.util.Optional;
 public final class JsonpEquipment implements Equipment {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @EnumValue
     private EquipmentSlot slot = EquipmentSlot.UNKNOWN;
     @OptionalValue
@@ -33,7 +33,7 @@ public final class JsonpEquipment implements Equipment {
     @IdValue
     private Optional<List<Integer>> infusions = Optional.empty();
     @IdValue
-    private int skin = -1;
+    private int skin = IdValue.DEFAULT_INTEGER_ID;
 
     /**
      * Creates a new empty instance.

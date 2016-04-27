@@ -16,9 +16,9 @@ import api.web.gw2.mapping.core.LocalizedResource;
  */
 public final class JsonpColorDye implements ColorDye {
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     private ColorRGB baseRGB = ColorRGB.EMPTY;
     private ColorMaterial cloth = ColorMaterial.EMPTY;
     private ColorMaterial leather = ColorMaterial.EMPTY;

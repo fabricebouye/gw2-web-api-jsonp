@@ -11,6 +11,7 @@ import api.web.gw2.mapping.core.DateValue;
 import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LevelValue;
+import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.QuantityValue;
 import api.web.gw2.mapping.core.SetValue;
 import java.time.ZonedDateTime;
@@ -24,10 +25,10 @@ import java.util.Set;
 public final class JsonpAccount implements Account {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String id = ""; // NOI18N.
-    private String name = ""; // NOI18N.
+    private String id = IdValue.DEFAULT_STRING_ID;
+    private String name = LocalizedResource.DEFAULT;
     @IdValue
-    private int world = -1;
+    private int world = IdValue.DEFAULT_INTEGER_ID;
     @SetValue
     @IdValue(flavor = IdValue.Flavor.STRING)
     private Set<String> guilds = Collections.EMPTY_SET;
@@ -39,11 +40,11 @@ public final class JsonpAccount implements Account {
     private int fractalLevel = 1;
     private boolean commander = false;
     @QuantityValue
-    private int dailyAp = 0;
+    private int dailyAp = QuantityValue.DEFAULT;
     @QuantityValue
-    private int monthlyAp = 0;
+    private int monthlyAp = QuantityValue.DEFAULT;
     @LevelValue
-    private int wvwRank = 0;
+    private int wvwRank = LevelValue.MIN_LEVEL;
 
     /**
      * Creates an empty instance.

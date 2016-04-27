@@ -27,19 +27,19 @@ public final class JsonpItemWeaponDetails extends JsonpItemDetails implements It
     @EnumValue
     private ItemWeaponDamageType damageType = ItemWeaponDamageType.UNKNOWN;
     @QuantityValue
-    private int minPower = 0;
+    private int minPower = QuantityValue.DEFAULT;
     @QuantityValue
-    private int maxPower = 0;
+    private int maxPower = QuantityValue.DEFAULT;
     @QuantityValue
-    private int defense = 0;
+    private int defense = QuantityValue.DEFAULT;
     @ListValue
     private List<ItemInfusionSlot> infusionSlots = Collections.EMPTY_LIST;
     @OptionalValue
     private Optional<ItemInfixUpgrade> infixUpgrade = Optional.empty();
     @IdValue
-    private int suffixItemId = -1;
+    private int suffixItemId = IdValue.DEFAULT_INTEGER_ID;
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String secondarySuffixItemId = ""; // NOI18N.
+    private String secondarySuffixItemId = IdValue.DEFAULT_STRING_ID;
 
     /**
      * Creates a new empty instance.

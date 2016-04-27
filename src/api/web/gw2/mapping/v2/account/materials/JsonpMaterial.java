@@ -17,11 +17,11 @@ import api.web.gw2.mapping.core.QuantityValue;
 public final class JsonpMaterial implements Material {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @IdValue
-    private int category = -1;
+    private int category = IdValue.DEFAULT_INTEGER_ID;
     @QuantityValue
-    private int count = 0;
+    private int count = QuantityValue.DEFAULT;
 
     /**
      * Creates a new empty instance.

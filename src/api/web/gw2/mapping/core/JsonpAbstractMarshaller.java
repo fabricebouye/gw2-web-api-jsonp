@@ -157,16 +157,17 @@ abstract class JsonpAbstractMarshaller {
         if (isOptional) {
             if (isList || isSet || isMap) {
                 result = Optional.empty();
-            } else if (isQuantity || isLevel) {
+            } else if (isQuantity || isLevel || isPercent) {
                 result = OptionalInt.empty();
-            } else if (isPercent) {
-                result = OptionalDouble.empty();
             } else if (isId) {
                 final boolean isIntegerId = field.getAnnotation(IdValue.class).flavor() == IdValue.Flavor.INTEGER;
                 result = isIntegerId ? OptionalInt.empty() : Optional.empty();
             } else {
                 result = Optional.empty();
             }
+        } else if (isId) {
+            final boolean isIntegerId = field.getAnnotation(IdValue.class).flavor() == IdValue.Flavor.INTEGER;
+            result = isIntegerId ? IdValue.DEFAULT_INTEGER_ID : IdValue.DEFAULT_STRING_ID;
         } else if (isLevel) {
             result = LevelValue.MIN_LEVEL;
         } else if (isCurrency) {
@@ -184,15 +185,16 @@ abstract class JsonpAbstractMarshaller {
         } else if (isMapRect) {
             result = MapBounds.empty();
         } else if (isQuantity) {
-            result = 0;
-//            result = DistanceAmount.ZERO;
+            result = QuantityValue.DEFAULT;
+        } else if (isPercent) {
+            result = PercentValue.DEFAULT;
         } else if (isDate) {
             result = DateValue.DEFAULT;
         } else if (isDuration) {
-            result = Duration.ZERO;
+            result = DurationValue.DEFAULT;
         } // Now use the class of the field.
         else if (isLocalizedResource || fieldType == String.class) {
-            result = ""; // NOI8N.
+            result = LocalizedResource.DEFAULT;
         } else if (fieldType == Integer.TYPE) {
             result = 0;
         } else if (fieldType == Long.TYPE) {
@@ -338,10 +340,8 @@ abstract class JsonpAbstractMarshaller {
         if (isOptional && !(result instanceof Optional || result instanceof OptionalInt)) {
             if (isList || isSet || isMap) {
                 result = Optional.ofNullable(result);
-            } else if (isQuantity || isLevel) {
+            } else if (isQuantity || isLevel || isPercent) {
                 result = OptionalInt.of((Integer) result);
-            } else if (isPercent) {
-                result = OptionalDouble.of((Double) result);
             } else if (isId) {
                 final boolean isIntegerId = field.getAnnotation(IdValue.class).flavor() == IdValue.Flavor.INTEGER;
                 result = isIntegerId ? OptionalInt.of((Integer) result) : Optional.ofNullable(result);

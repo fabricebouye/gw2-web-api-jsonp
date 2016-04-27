@@ -22,11 +22,11 @@ import java.util.Map;
 public final class JsonpStat implements Stat {
 
     @LevelValue
-    private int pvpRank = 0;
+    private int pvpRank = LevelValue.MIN_LEVEL;
     @QuantityValue
-    private int pvpRankPoints = 0;
+    private int pvpRankPoints = QuantityValue.DEFAULT;
     @QuantityValue
-    private int pvpRankRollovers = 0;
+    private int pvpRankRollovers = QuantityValue.DEFAULT;
     private StatResult aggregate = StatResult.EMPTY;
     @MapValue
     private Map<CharacterProfession, StatResult> professions = Collections.EMPTY_MAP;

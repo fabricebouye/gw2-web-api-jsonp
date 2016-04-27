@@ -16,15 +16,15 @@ import api.web.gw2.mapping.core.QuantityValue;
 public final class JsonpTeamLadderResult implements TeamLadderResult {
 
     @QuantityValue
-    private int wins = 0;
+    private int wins = QuantityValue.DEFAULT;
     @QuantityValue
-    private int losses = 0;
+    private int losses = QuantityValue.DEFAULT;
     @QuantityValue
-    private int desertions = 0;
+    private int desertions = QuantityValue.DEFAULT;
     @QuantityValue
-    private int byes = 0;
+    private int byes = QuantityValue.DEFAULT;
     @QuantityValue
-    private int forfeits = 0;
+    private int forfeits = QuantityValue.DEFAULT;
 
     /**
      * Create a new empty instance.

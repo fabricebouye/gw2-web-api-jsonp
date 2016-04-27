@@ -23,9 +23,9 @@ import java.util.OptionalInt;
 public final class JsonpInventory implements Inventory {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @QuantityValue
-    private int count = 0;
+    private int count = QuantityValue.DEFAULT;
     @OptionalValue
     @IdValue
     private OptionalInt skin = OptionalInt.empty();

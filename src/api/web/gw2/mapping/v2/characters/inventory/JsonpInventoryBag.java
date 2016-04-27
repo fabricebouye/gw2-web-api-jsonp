@@ -19,9 +19,9 @@ import java.util.List;
  */
 public final class JsonpInventoryBag implements InventoryBag {
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @QuantityValue
-    private int size = 0;
+    private int size = QuantityValue.DEFAULT;
     @ListValue
     private List<Inventory> inventory = Collections.EMPTY_LIST;
 

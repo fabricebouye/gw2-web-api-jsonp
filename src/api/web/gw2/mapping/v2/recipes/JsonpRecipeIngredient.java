@@ -16,9 +16,9 @@ import api.web.gw2.mapping.core.QuantityValue;
  */
 public final class JsonpRecipeIngredient implements RecipeIngredient {
     @IdValue
-    private int itemId = -1;
+    private int itemId = IdValue.DEFAULT_INTEGER_ID;
     @QuantityValue
-    private int count = 0;
+    private int count = QuantityValue.DEFAULT;
 
     /**
      * Creates a new empty instance.

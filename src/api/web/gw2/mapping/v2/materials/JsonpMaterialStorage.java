@@ -20,9 +20,9 @@ import java.util.Set;
 public final class JsonpMaterialStorage implements MaterialStorage {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @SetValue
     @IdValue
     private Set<Integer> items = Collections.EMPTY_SET;

@@ -17,7 +17,7 @@ import java.time.Duration;
 public final class JsonpTraitTimeFact extends JsonpTraitFact implements TraitTimeFact {
 
     @DurationValue
-    private Duration duration = Duration.ZERO;
+    private Duration duration = DurationValue.DEFAULT;
 
     /**
      * Creates a new empty instance.

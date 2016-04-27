@@ -31,7 +31,7 @@ public final class JsonpItemUpgradeComponentDetails extends JsonpItemDetails imp
     @SetValue
     private Set<ItemInfusionSlotFlag> infusionUpgradeFlags = Collections.EMPTY_SET;
     @LocalizedResource
-    private String suffix = ""; // NOI18N.
+    private String suffix = LocalizedResource.DEFAULT;
     private ItemInfixUpgrade infixUpgrade;
     @OptionalValue
     @ListValue

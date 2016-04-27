@@ -16,9 +16,9 @@ import api.web.gw2.mapping.core.LocalizedResource;
  */
 public final class JsonpEventName implements EventName {
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String id = ""; // NOI18N.
+    private String id = IdValue.DEFAULT_STRING_ID;
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
 
     /**
      * Creates a new empty instance.

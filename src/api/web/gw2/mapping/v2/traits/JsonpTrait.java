@@ -25,15 +25,15 @@ import java.util.Set;
 public final class JsonpTrait implements Trait {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @URLValue
     private URLReference icon = URLReference.empty();
     @LocalizedResource
-    private String description = ""; // NOI18N.
+    private String description = LocalizedResource.DEFAULT;
     @IdValue
-    private int specialization = -1;
+    private int specialization = IdValue.DEFAULT_INTEGER_ID;
     @EnumValue
     private TraitTier tier = TraitTier.UNKNOWN;
     @EnumValue

@@ -16,7 +16,7 @@ import api.web.gw2.mapping.core.QuantityValue;
 public final class JsonpSeasonTier implements SeasonTier {
 
     @QuantityValue
-    private int points = 0;
+    private int points = QuantityValue.DEFAULT;
 
     /**
      * Create a new empty instance.

@@ -26,15 +26,15 @@ import java.util.Set;
 public final class JsonpAchievement implements Achievement {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @URLValue
     private URLReference icon = URLReference.empty();
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @LocalizedResource
-    private String description = ""; // NOI18N.
+    private String description = LocalizedResource.DEFAULT;
     @LocalizedResource
-    private String requirement = ""; // NOI18N.
+    private String requirement = LocalizedResource.DEFAULT;
     @EnumValue
     private AchievementType type = AchievementType.UNKNOWN;
     @SetValue

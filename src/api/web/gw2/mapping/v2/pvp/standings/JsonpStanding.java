@@ -16,7 +16,7 @@ import api.web.gw2.mapping.core.IdValue;
 public final class JsonpStanding implements Standing {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String seasonId = ""; // NOI18N.
+    private String seasonId = IdValue.DEFAULT_STRING_ID;
     private StandingReport current = StandingReport.EMPTY;
     private StandingReport best = StandingReport.EMPTY;
 

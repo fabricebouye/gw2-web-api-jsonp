@@ -8,6 +8,7 @@
 package api.web.gw2.mapping.v2.pvp.seasons;
 
 import api.web.gw2.mapping.core.EnumValue;
+import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.SetValue;
 import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
@@ -19,8 +20,9 @@ import java.util.Set;
  * @author Fabrice Bouyé
  */
 public final class JsonpSeasonDivision implements SeasonDivision {
-    
-    private String name = ""; // NOI18N.
+
+    @LocalizedResource
+    private String name = LocalizedResource.DEFAULT;
     @SetValue
     @EnumValue
     private Set<SeasonDivisionFlag> flags = Collections.EMPTY_SET;
@@ -32,11 +34,11 @@ public final class JsonpSeasonDivision implements SeasonDivision {
     private URLReference pipIcon = URLReference.empty();
     @SetValue
     private Set<SeasonTier> tiers = Collections.EMPTY_SET;
-    
+
     /**
-    * Creates a new empty instance.
-    */
-    public JsonpSeasonDivision() {        
+     * Creates a new empty instance.
+     */
+    public JsonpSeasonDivision() {
     }
 
     @Override

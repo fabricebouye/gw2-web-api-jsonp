@@ -27,11 +27,11 @@ import java.util.Set;
 public final class JsonpLogEvent implements LogEvent {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @DateValue
     private ZonedDateTime time = DateValue.DEFAULT;
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String user = ""; // NOI18N.
+    private String user = IdValue.DEFAULT_STRING_ID;
     @EnumValue
     private LogEventType type = LogEventType.UNKNOWN;
     @IdValue

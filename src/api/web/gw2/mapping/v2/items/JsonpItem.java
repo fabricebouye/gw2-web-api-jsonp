@@ -30,9 +30,9 @@ import java.util.Set;
 public final class JsonpItem implements Item {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @OptionalValue
     @LocalizedResource
     private Optional<String> description = Optional.empty();
@@ -61,7 +61,7 @@ public final class JsonpItem implements Item {
     @OptionalValue
     @RuntimeType(selector = "type", pattern = "Item%sDetails", source = RuntimeType.Source.PARENT)
     private Optional<ItemDetails> details = Optional.empty();
-    private String chatLink = "";
+    private String chatLink = LocalizedResource.DEFAULT;
 
     /**
      * Creates a new empty instance.

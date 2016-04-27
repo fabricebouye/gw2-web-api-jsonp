@@ -20,7 +20,7 @@ import java.util.Optional;
  */
 public final class JsonpItemInfixUpgrade implements ItemInfixUpgrade {
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @ListValue
     private List<ItemInfixUpgradeAttributeValue> attributes = Collections.EMPTY_LIST;
     @OptionalValue

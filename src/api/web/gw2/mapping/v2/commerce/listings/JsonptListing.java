@@ -18,11 +18,11 @@ import api.web.gw2.mapping.core.QuantityValue;
 public final class JsonptListing implements Listing {
 
     @QuantityValue
-    private int listing = 0;
+    private int listing = QuantityValue.DEFAULT;
     @CoinValue
     private CoinAmount unitPrice = CoinAmount.ZERO;
     @QuantityValue
-    private int quantity = 0;
+    private int quantity = QuantityValue.DEFAULT;
 
     /**
      * Creates a new empty instance.

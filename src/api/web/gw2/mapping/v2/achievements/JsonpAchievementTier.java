@@ -16,9 +16,9 @@ import api.web.gw2.mapping.core.QuantityValue;
 public final class JsonpAchievementTier implements AchievementTier {
 
     @QuantityValue
-    private int count = 0;
+    private int count = QuantityValue.DEFAULT;
     @QuantityValue
-    private int points = 0;
+    private int points = QuantityValue.DEFAULT;
 
     /**
      * Creates a new empty instance.

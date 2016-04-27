@@ -18,7 +18,7 @@ import api.web.gw2.mapping.core.URLValue;
 public final class JsonpQuaggan implements Quaggan {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String id = ""; // NOI18N.
+    private String id = IdValue.DEFAULT_STRING_ID;
     @URLValue
     private URLReference url = URLReference.empty();
 

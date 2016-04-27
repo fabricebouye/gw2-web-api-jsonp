@@ -16,7 +16,7 @@ import api.web.gw2.mapping.core.IdValue;
 public final class JsonpItemMiniPetDetails extends JsonpItemDetails implements ItemMiniPetDetails {
 
     @IdValue
-    private int minipetId = -1;
+    private int minipetId = IdValue.DEFAULT_INTEGER_ID;
 
     public JsonpItemMiniPetDetails() {
         super(ItemType.MINI_PET);

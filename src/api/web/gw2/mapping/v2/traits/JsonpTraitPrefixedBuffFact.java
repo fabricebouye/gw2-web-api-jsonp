@@ -19,13 +19,13 @@ import java.time.Duration;
 public final class JsonpTraitPrefixedBuffFact extends JsonpTraitFact implements TraitPrefixedBuffFact {
 
     @DurationValue
-    private Duration duration = Duration.ZERO;
+    private Duration duration = DurationValue.DEFAULT;
     @LocalizedResource
-    private String status = ""; // NOI18N.
+    private String status = LocalizedResource.DEFAULT;
     @LocalizedResource
-    private String description = ""; // NOI18N.
+    private String description = LocalizedResource.DEFAULT;
     @QuantityValue
-    private int applyCount = 0;
+    private int applyCount = QuantityValue.DEFAULT;
     private TraitPrefix prefix = TraitPrefix.EMPTY;
 
     /**

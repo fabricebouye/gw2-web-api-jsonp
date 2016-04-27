@@ -32,21 +32,21 @@ import java.util.Set;
 public final class JsonpUpgrade implements Upgrade {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @EnumValue
     private UpgradeType type = UpgradeType.UNKNOWN;
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @LocalizedResource
-    private String description = ""; // NOI18N.
+    private String description = LocalizedResource.DEFAULT;
     @URLValue
     private URLReference icon = URLReference.empty();
     @DurationValue
-    private Duration buildTime = Duration.ZERO;
+    private Duration buildTime = DurationValue.DEFAULT;
     @LevelValue
-    private int requiredLevel = 0;
+    private int requiredLevel = LevelValue.MIN_LEVEL;
     @QuantityValue
-    private int experience = 0;
+    private int experience = QuantityValue.DEFAULT;
     @SetValue
     private Set<Integer> prerequisites = Collections.EMPTY_SET;
     @SetValue

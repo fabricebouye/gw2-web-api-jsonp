@@ -25,7 +25,7 @@ import java.util.Set;
 public final class JsonpMatchMap implements MatchMap {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @MapValue
     private Map<MatchTeam, Integer> scores = Collections.EMPTY_MAP;
     @QuantityValue

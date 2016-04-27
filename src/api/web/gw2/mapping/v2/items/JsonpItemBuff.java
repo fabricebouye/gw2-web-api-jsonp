@@ -17,9 +17,9 @@ import api.web.gw2.mapping.core.LocalizedResource;
 public final class JsonpItemBuff implements ItemBuff {
 
     @IdValue
-    private int skillId = -1;
+    private int skillId = IdValue.DEFAULT_INTEGER_ID;
     @LocalizedResource
-    private String description = ""; // NOI18N.
+    private String description = LocalizedResource.DEFAULT;
 
     /**
      * Creates a new empty instance.

@@ -19,7 +19,7 @@ import java.util.Set;
 public final class JsonpListingResponse implements ListingResponse {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @SetValue
     private Set<Listing> buys = Collections.EMPTY_SET;
     @SetValue

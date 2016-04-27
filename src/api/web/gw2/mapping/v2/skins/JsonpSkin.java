@@ -28,7 +28,7 @@ public final class JsonpSkin implements Skin {
     @IdValue
     private int id = 1;
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @EnumValue
     private SkinType type = SkinType.UNKNOWN;
     @SetValue

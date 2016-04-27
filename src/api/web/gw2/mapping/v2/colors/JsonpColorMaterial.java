@@ -7,6 +7,8 @@
  */
 package api.web.gw2.mapping.v2.colors;
 
+import api.web.gw2.mapping.core.QuantityValue;
+
 /**
  * Default JSON-P implementation of a color material.
  * @author Fabrice Bouyé
@@ -14,11 +16,11 @@ package api.web.gw2.mapping.v2.colors;
 public final class JsonpColorMaterial implements ColorMaterial {
 
     private ColorRGB rgb = ColorRGB.EMPTY;
-    private int brightness = 0;
-    private double contrast = 0;
-    private int hue = 0;
-    private double saturation = 0;
-    private double lightness = 0;
+    private int brightness = QuantityValue.DEFAULT;
+    private double contrast = QuantityValue.DEFAULT;
+    private int hue = QuantityValue.DEFAULT;
+    private double saturation = QuantityValue.DEFAULT;
+    private double lightness = QuantityValue.DEFAULT;
 
     /**
      * Creates a new empty instance.
@@ -40,7 +42,7 @@ public final class JsonpColorMaterial implements ColorMaterial {
     public ColorRGB getRGB() {
         return rgb;
     }
-    
+
     @Override
     public int getHue() {
         return hue;

@@ -20,20 +20,18 @@ import api.web.gw2.mapping.v2.characters.inventory.InventoryBinding;
 public final class JsonpSharedInventory implements SharedInventory {
 
     @IdValue
-    private int id = -1;
-
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @QuantityValue
-    private int count = 0;
-    
+    private int count = QuantityValue.DEFAULT;
     @EnumValue
     private InventoryBinding binding = InventoryBinding.UNKNOWN;
 
     /**
-    * Creates a new empty instance.
-    */
-    public JsonpSharedInventory() {        
+     * Creates a new empty instance.
+     */
+    public JsonpSharedInventory() {
     }
-    
+
     @Override
     public int getId() {
         return id;

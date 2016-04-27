@@ -22,7 +22,7 @@ import java.util.Set;
 public final class JsonpAchievement implements Achievement {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @QuantityValue
     @OptionalValue
     private OptionalInt current = OptionalInt.empty();

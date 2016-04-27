@@ -17,9 +17,9 @@ import api.web.gw2.mapping.core.QuantityValue;
 public final class JsonpStashInventory implements StashInventory {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @QuantityValue
-    private int count = 0;
+    private int count = QuantityValue.DEFAULT;
 
     /**
      * Create a new empty instance.

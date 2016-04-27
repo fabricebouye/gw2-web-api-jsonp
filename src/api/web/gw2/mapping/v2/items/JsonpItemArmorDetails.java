@@ -28,7 +28,7 @@ public final class JsonpItemArmorDetails extends JsonpItemDetails implements Ite
     @EnumValue
     private ItemArmorWeightClass weightClass = ItemArmorWeightClass.UNKNOWN;
     @QuantityValue
-    private int defense = 0;
+    private int defense = QuantityValue.DEFAULT;
     @ListValue
     private List<ItemInfusionSlot> infusionSlots = Collections.EMPTY_LIST;
     @OptionalValue
@@ -37,7 +37,7 @@ public final class JsonpItemArmorDetails extends JsonpItemDetails implements Ite
     @IdValue
     private OptionalInt suffixItemId = OptionalInt.empty();
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String secondarySuffixItemId = ""; // NOI18N.
+    private String secondarySuffixItemId = IdValue.DEFAULT_STRING_ID;
 
     /**
      * Create a new empty instance.

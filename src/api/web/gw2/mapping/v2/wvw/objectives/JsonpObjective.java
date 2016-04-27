@@ -25,17 +25,17 @@ import api.web.gw2.mapping.v2.wvw.MapType;
 public final class JsonpObjective implements Objective {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String id = ""; // NOI18N.
+    private String id = IdValue.DEFAULT_STRING_ID;
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @IdValue
-    private int sectorId = -1;
+    private int sectorId = IdValue.DEFAULT_INTEGER_ID;
     @EnumValue
     private ObjectiveType type = ObjectiveType.UNKNOWN;
     @EnumValue
     private MapType mapType = MapType.UNKNOWN;
     @IdValue
-    private int mapId = -1;
+    private int mapId = IdValue.DEFAULT_INTEGER_ID;
     @Coord3DValue
     private Point3D coord = Point3D.origin();
     @Coord2DValue

@@ -20,18 +20,18 @@ import java.util.Set;
 public final class JsonpGuildDetailsEmblem implements GuildDetailsEmblem {
 
     @IdValue
-    private int backgroundId = -1;
+    private int backgroundId = IdValue.DEFAULT_INTEGER_ID;
     @IdValue
-    private int foregroundId = -1;
+    private int foregroundId = IdValue.DEFAULT_INTEGER_ID;
     @SetValue
     @EnumValue
     private Set<GuildDetailsEmblemFlag> flags = Collections.EMPTY_SET;
     @IdValue
-    private int backgroundColorId = -1;
+    private int backgroundColorId = IdValue.DEFAULT_INTEGER_ID;
     @IdValue
-    private int foregroundPrimaryColorId = -1;
+    private int foregroundPrimaryColorId = IdValue.DEFAULT_INTEGER_ID;
     @IdValue
-    private int foregroundSecondaryColorId = -1;
+    private int foregroundSecondaryColorId = IdValue.DEFAULT_INTEGER_ID;
 
     /**
      * Creates a new empty instance.

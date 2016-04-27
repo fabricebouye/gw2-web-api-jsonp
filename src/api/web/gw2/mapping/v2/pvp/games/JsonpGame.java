@@ -23,9 +23,9 @@ import java.util.Map;
 public final class JsonpGame implements Game {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String id = ""; // NOI18N.
+    private String id = IdValue.DEFAULT_STRING_ID;
     @IdValue
-    private int mapId = -1;
+    private int mapId = IdValue.DEFAULT_INTEGER_ID;
     @DateValue
     private ZonedDateTime started = DateValue.DEFAULT;
     @DateValue

@@ -22,18 +22,18 @@ import java.util.Optional;
 public final class JsonpMini implements Mini {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @LocalizedResource
     @OptionalValue
     private Optional<String> unlock = Optional.empty();
     @URLValue
     private URLReference icon = URLReference.empty();
     @QuantityValue
-    private int order = 0;
+    private int order = QuantityValue.DEFAULT;
     @IdValue
-    private int itemId = -1;
+    private int itemId = IdValue.DEFAULT_INTEGER_ID;
 
     /**
      * Creates a new empty instance.

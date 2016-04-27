@@ -23,15 +23,15 @@ import java.util.Set;
 public final class JsonpContinent implements Continent {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @ContinentDims
     private ContinentDimensions continentDims = ContinentDimensions.empty();
     @QuantityValue
-    private int minZoom = 0;
+    private int minZoom = QuantityValue.DEFAULT;
     @QuantityValue
-    private int maxZoom = 0;
+    private int maxZoom = QuantityValue.DEFAULT;
     @SetValue
     @IdValue
     private Set<Integer> floors = Collections.EMPTY_SET;

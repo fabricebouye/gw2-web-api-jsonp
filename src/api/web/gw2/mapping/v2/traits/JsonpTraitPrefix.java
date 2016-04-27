@@ -18,13 +18,13 @@ import api.web.gw2.mapping.core.URLValue;
 public final class JsonpTraitPrefix implements TraitPrefix {
 
     @LocalizedResource
-    private String text = ""; // NOI18N.
+    private String text = LocalizedResource.DEFAULT;
     @URLValue
     private URLReference icon = URLReference.empty();
     @LocalizedResource
-    private String status = ""; // NOI18N.
+    private String status = LocalizedResource.DEFAULT;
     @LocalizedResource
-    private String description = ""; // NOI18N.
+    private String description = LocalizedResource.DEFAULT;
 
     @Override
     public String getText() {

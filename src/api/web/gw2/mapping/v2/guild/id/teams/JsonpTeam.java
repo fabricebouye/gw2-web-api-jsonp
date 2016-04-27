@@ -9,6 +9,7 @@ package api.web.gw2.mapping.v2.guild.id.teams;
 
 import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.MapValue;
 import api.web.gw2.mapping.core.SetValue;
 import api.web.gw2.mapping.v2.pvp.PvPLadder;
@@ -23,10 +24,10 @@ import java.util.Set;
 public final class JsonpTeam implements Team {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @SetValue
     private Set<TeamMember> members = Collections.EMPTY_SET;
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @EnumValue
     private TeamState state = TeamState.UNKNOWN;
     private TeamLadderResult aggregate = TeamLadderResult.EMPTY;

@@ -299,7 +299,7 @@ public class JsonpUtilsTest {
                     final URL url = getClass().getResource(path);
                     try {
                         final JsonObject jsonObject = JsonpUtils.asJsonObject(url.toExternalForm());
-                        final int result = JsonpUtils.nullOrMissingInt(jsonObject, "id", -1); // NOI18N.
+                        final int result = JsonpUtils.nullOrMissingInt(jsonObject, "id", IdValue.DEFAULT_INTEGER_ID); // NOI18N.
                         final int expResult = expResults[index];
                         assertEquals(expResult, result);
                     } catch (NullPointerException | IOException ex) {

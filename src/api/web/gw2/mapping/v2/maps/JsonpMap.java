@@ -25,26 +25,26 @@ import java.util.Set;
 public final class JsonpMap implements Map {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @LevelValue
     private int minLevel = LevelValue.MIN_LEVEL;
     @LevelValue
     private int maxLevel = LevelValue.MIN_LEVEL;
     @IdValue
-    private int defaultFloor = -1;
+    private int defaultFloor = IdValue.DEFAULT_INTEGER_ID;
     @IdValue
     @SetValue
     private Set<Integer> floors = Collections.EMPTY_SET;
     @IdValue
-    private int continentId = -1;
+    private int continentId = IdValue.DEFAULT_INTEGER_ID;
     @LocalizedResource
-    private String continentName = ""; // NOI18N.
+    private String continentName = LocalizedResource.DEFAULT;
     @IdValue
-    private int regionId = -1;
+    private int regionId = IdValue.DEFAULT_INTEGER_ID;
     @LocalizedResource
-    private String regionName = ""; // NOI18N.
+    private String regionName = LocalizedResource.DEFAULT;
     @MapRect
     private MapBounds mapRect = MapBounds.empty();
     @ContinentRect

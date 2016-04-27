@@ -7,13 +7,16 @@
  */
 package api.web.gw2.mapping.v2.traits;
 
+import api.web.gw2.mapping.core.QuantityValue;
+
 /**
  * Default JSON-P implementation of a trait radius fact.
  * @author Fabrice Bouyé
  */
 public final class JsonpTraitRadiusFact extends JsonpTraitFact implements TraitRadiusFact {
 
-    private int distance = 0;
+    @QuantityValue
+    private int distance = QuantityValue.DEFAULT;
 
     /**
      * Creates a new empty instance.

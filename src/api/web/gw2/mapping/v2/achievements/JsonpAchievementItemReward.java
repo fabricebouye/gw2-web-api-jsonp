@@ -17,9 +17,9 @@ import api.web.gw2.mapping.core.QuantityValue;
 public final class JsonpAchievementItemReward extends JsonpAchievementReward implements AchievementItemReward {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @QuantityValue
-    private int count = 0;
+    private int count = QuantityValue.DEFAULT;
 
     /**
      * Creates a new empty instance.

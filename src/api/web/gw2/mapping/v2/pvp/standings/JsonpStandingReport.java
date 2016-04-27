@@ -17,15 +17,15 @@ import api.web.gw2.mapping.core.QuantityValue;
 public final class JsonpStandingReport implements StandingReport {
 
     @QuantityValue
-    private int totalPoints = 0;
+    private int totalPoints = QuantityValue.DEFAULT;
     @IdValue
-    private int division = 0;
+    private int division = QuantityValue.DEFAULT;
     @QuantityValue
-    private int tier = 0;
+    private int tier = QuantityValue.DEFAULT;
     @QuantityValue
-    private int points = 0;
+    private int points = QuantityValue.DEFAULT;
     @QuantityValue
-    private int repeats = 0;
+    private int repeats = QuantityValue.DEFAULT;
 
     /**
      * Creates a new empty instance.

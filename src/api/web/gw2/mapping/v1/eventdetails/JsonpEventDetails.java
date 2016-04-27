@@ -9,6 +9,7 @@ package api.web.gw2.mapping.v1.eventdetails;
 
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LevelValue;
+import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.RuntimeType;
 import api.web.gw2.mapping.core.SetValue;
 import java.util.Collections;
@@ -20,11 +21,11 @@ import java.util.Set;
  */
 public final class JsonpEventDetails implements EventDetails {
 
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @LevelValue
-    private int level = -1;
+    private int level = LevelValue.MIN_LEVEL;
     @IdValue
-    private int mapId = -1;
+    private int mapId = IdValue.DEFAULT_INTEGER_ID;
     @SetValue
     private Set<EventDetailsFlag> flags = Collections.EMPTY_SET;
     @RuntimeType(selector = "type", pattern = "EventDetails%sLocation") // NOI18N.

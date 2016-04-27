@@ -7,15 +7,18 @@
  */
 package api.web.gw2.mapping.v1.eventdetails;
 
+import api.web.gw2.mapping.core.QuantityValue;
+
 /**
  * Default JSON-P implementation of a cylinder event details location.
  * @author Fabrice Bouyé
  */
 public final class JsonptEventDetailsCylinderLocation extends JsonpEventDetailsLocation implements EventDetailsCylinderLocation {
-    private double height = 0;
-    private double radius = 0;
-    private double rotation = 0;
-    
+
+    private double height = QuantityValue.DEFAULT;
+    private double radius = QuantityValue.DEFAULT;
+    private double rotation = QuantityValue.DEFAULT;
+
     /**
      * Creates a new empty instance.
      */
@@ -36,5 +39,5 @@ public final class JsonptEventDetailsCylinderLocation extends JsonpEventDetailsL
     public double getRotation() {
         return rotation;
     }
-    
+
 }

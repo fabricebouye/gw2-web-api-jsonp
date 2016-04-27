@@ -18,9 +18,9 @@ import api.web.gw2.mapping.core.LocalizedResource;
 public final class JsonpWorld implements World {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @EnumValue
     private WorldPopulation population = WorldPopulation.UNKNOWN;
 

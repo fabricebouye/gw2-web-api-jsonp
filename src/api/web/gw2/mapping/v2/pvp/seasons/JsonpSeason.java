@@ -22,9 +22,9 @@ import java.util.Set;
 public final class JsonpSeason implements Season {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String id = ""; // NOI18N.
+    private String id = IdValue.DEFAULT_STRING_ID;
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @SetValue
     private Set<SeasonDivision> divisions = Collections.EMPTY_SET;
     @DateValue

@@ -16,7 +16,7 @@ import api.web.gw2.mapping.core.PercentValue;
 public final class JsonpTraitPercentFact extends JsonpTraitFact implements TraitPercentFact {
 
     @PercentValue
-    private int percent = 0;
+    private int percent = PercentValue.DEFAULT;
 
     /**
      * Creates a new empty instance.

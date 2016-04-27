@@ -27,9 +27,9 @@ import java.util.Set;
 public final class JsonpSpecialization implements Specialization {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @EnumValue
     private CharacterProfession profession = CharacterProfession.UNKNOWN;
     private boolean elite = false;

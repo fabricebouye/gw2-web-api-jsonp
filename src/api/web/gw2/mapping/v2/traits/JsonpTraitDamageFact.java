@@ -16,7 +16,7 @@ import api.web.gw2.mapping.core.QuantityValue;
 public final class JsonpTraitDamageFact extends JsonpTraitFact implements TraitDamageFact {
 
     @QuantityValue
-    private int hitCount = 0;
+    private int hitCount = QuantityValue.DEFAULT;
 
     /**
      * Creates a new empty instance.

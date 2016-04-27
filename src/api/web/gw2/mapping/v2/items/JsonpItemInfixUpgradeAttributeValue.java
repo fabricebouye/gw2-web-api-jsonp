@@ -19,7 +19,7 @@ public final class JsonpItemInfixUpgradeAttributeValue implements ItemInfixUpgra
     @EnumValue
     private ItemInfixUpgradeAttribute attribute = ItemInfixUpgradeAttribute.UNKNOWN;
     @QuantityValue
-    private int modifier = 0;
+    private int modifier = QuantityValue.DEFAULT;
 
     public JsonpItemInfixUpgradeAttributeValue() {
     }

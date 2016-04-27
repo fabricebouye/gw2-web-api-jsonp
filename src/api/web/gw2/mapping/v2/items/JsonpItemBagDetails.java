@@ -16,7 +16,7 @@ import api.web.gw2.mapping.core.QuantityValue;
 public final class JsonpItemBagDetails extends JsonpItemDetails implements ItemBagDetails {
 
     @QuantityValue
-    private int size = 0;
+    private int size = QuantityValue.DEFAULT;
     private boolean noSellOrSort = false;
 
     public JsonpItemBagDetails() {

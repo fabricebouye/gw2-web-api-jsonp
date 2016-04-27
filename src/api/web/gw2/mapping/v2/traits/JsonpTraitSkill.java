@@ -24,13 +24,13 @@ import java.util.Set;
 public final class JsonpTraitSkill implements TraitSkill {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @URLValue
     private URLReference icon = URLReference.empty();
     @LocalizedResource
-    private String description = ""; // NOI18N.
+    private String description = LocalizedResource.DEFAULT;
     @OptionalValue
     @SetValue
     @RuntimeType(selector = "type", pattern = "Trait%sFact") // NOI18N.

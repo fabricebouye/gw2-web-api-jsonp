@@ -25,7 +25,7 @@ public final class JsonpTraitBuffFact extends JsonpTraitFact implements TraitBuf
     @DurationValue
     private Optional<Duration> duration = Optional.empty();
     @LocalizedResource
-    private String status = ""; // NOI18N.
+    private String status = LocalizedResource.DEFAULT;
     @OptionalValue
     @LocalizedResource
     private Optional<String> description = Optional.empty();

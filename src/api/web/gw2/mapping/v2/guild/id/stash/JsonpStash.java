@@ -11,6 +11,7 @@ import api.web.gw2.mapping.core.CoinAmount;
 import api.web.gw2.mapping.core.CoinValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.ListValue;
+import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.QuantityValue;
 import java.util.Collections;
 import java.util.List;
@@ -22,12 +23,12 @@ import java.util.List;
 public final class JsonpStash implements Stash {
 
     @IdValue
-    private int upgradeId = -1;
+    private int upgradeId = IdValue.DEFAULT_INTEGER_ID;
     @QuantityValue
-    private int size = 0;
+    private int size = QuantityValue.DEFAULT;
     @CoinValue
     private CoinAmount coins = CoinAmount.ZERO;
-    private String note = ""; // NOI18N.
+    private String note = LocalizedResource.DEFAULT;
     @ListValue
     private List<StashInventory> inventory = Collections.EMPTY_LIST;
 

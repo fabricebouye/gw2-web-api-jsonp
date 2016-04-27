@@ -15,7 +15,7 @@ import api.web.gw2.mapping.core.IdValue;
  */
 public final class JsonpPrice implements Price {
     @IdValue
-    private int id = -1;    
+    private int id = IdValue.DEFAULT_INTEGER_ID;    
     private PriceOrder buys = PriceOrder.EMPTY;
     private PriceOrder sells = PriceOrder.EMPTY;
     private boolean whitelisted = false;

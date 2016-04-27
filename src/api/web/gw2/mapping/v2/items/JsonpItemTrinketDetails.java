@@ -32,7 +32,7 @@ public final class JsonpItemTrinketDetails extends JsonpItemDetails implements I
     @IdValue
     private OptionalInt suffixItemId = OptionalInt.empty();
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String secondarySuffixItemId = ""; // NOI18N.
+    private String secondarySuffixItemId = IdValue.DEFAULT_STRING_ID;
 
     public JsonpItemTrinketDetails() {
         super(ItemType.TRINKET);

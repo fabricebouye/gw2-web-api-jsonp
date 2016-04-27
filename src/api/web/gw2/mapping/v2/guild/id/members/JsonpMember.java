@@ -19,10 +19,10 @@ import java.util.Optional;
  */
 public final class JsonpMember implements Member {
 
-    @IdValue
-    private String name = ""; // NOI18N.
-    @IdValue
-    private String rank = ""; // NOI18N.
+    @IdValue(flavor = IdValue.Flavor.STRING)
+    private String name = IdValue.DEFAULT_STRING_ID;
+    @IdValue(flavor = IdValue.Flavor.STRING)
+    private String rank = IdValue.DEFAULT_STRING_ID;
     @DateValue
     @OptionalValue
     private Optional<ZonedDateTime> joined = Optional.empty();

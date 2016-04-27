@@ -32,7 +32,8 @@ import java.util.Set;
  */
 public final class JsonpCharacter implements Character {
 
-    private String name = ""; // NOI18N.
+    @IdValue(flavor = IdValue.Flavor.STRING)
+    private String name = IdValue.DEFAULT_STRING_ID;
     @EnumValue
     private CharacterRace race = CharacterRace.UNKNOWN;
     @EnumValue
@@ -47,9 +48,9 @@ public final class JsonpCharacter implements Character {
     @DateValue
     private ZonedDateTime created = DateValue.DEFAULT;
     @DurationValue
-    private Duration age = Duration.ZERO;
+    private Duration age = DurationValue.DEFAULT;
     @QuantityValue
-    private int deaths = 0;
+    private int deaths = QuantityValue.DEFAULT;
     @OptionalValue
     @ListValue
     private Optional<List<Equipment>> equipment = Optional.empty();
@@ -70,7 +71,7 @@ public final class JsonpCharacter implements Character {
     @OptionalValue
     @MapValue
     private Optional<Map<CharacterGameType, CharacterSkillSet>> skills = Optional.empty();
-    
+
     /**
      * Creates a new empty instance.
      */

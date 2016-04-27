@@ -20,7 +20,7 @@ public final class JsonptExchangeRate implements ExchangeRate {
     @CoinValue
     private CoinAmount coinsPerGem = CoinAmount.ZERO;
     @QuantityValue
-    private int quantity = 0;
+    private int quantity = QuantityValue.DEFAULT;
 
     /**
      * Creates a new empty instance.

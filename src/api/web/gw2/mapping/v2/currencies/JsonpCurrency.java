@@ -20,15 +20,15 @@ import api.web.gw2.mapping.core.URLValue;
 public final class JsonpCurrency implements Currency {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @LocalizedResource
-    private String description = ""; // NOI18N.
+    private String description = LocalizedResource.DEFAULT;
     @URLValue
     private URLReference icon = URLReference.empty();
     @QuantityValue
-    private int order = 0;
+    private int order = QuantityValue.DEFAULT;
 
     /**
      * Creates a new empty instance.

@@ -23,13 +23,13 @@ import java.util.Optional;
 final class JsonpTransaction implements Transaction {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @IdValue
-    private int itemId = -1;
+    private int itemId = IdValue.DEFAULT_INTEGER_ID;
     @CoinValue
     private CoinAmount price = CoinAmount.ZERO;
     @QuantityValue
-    private int quantity = 0;
+    private int quantity = QuantityValue.DEFAULT;
     @DateValue
     private ZonedDateTime created = DateValue.DEFAULT;
     @DateValue

@@ -16,7 +16,7 @@ import api.web.gw2.mapping.core.QuantityValue;
 public final class JsonpTraitDistanceFact extends JsonpTraitFact implements TraitDistanceFact {
 
     @QuantityValue
-    private int distance = 0;
+    private int distance = QuantityValue.DEFAULT;
 
     /**
      * Creates a new empty instance.

@@ -18,7 +18,7 @@ public final class JsonpItemToolDetails extends JsonpItemDetails implements Item
     @EnumValue
     private ItemToolType type = ItemToolType.UNKNOWN;
     @QuantityValue
-    private int charges = 0;
+    private int charges = QuantityValue.DEFAULT;
 
     public JsonpItemToolDetails() {
         super(ItemType.TOOL);

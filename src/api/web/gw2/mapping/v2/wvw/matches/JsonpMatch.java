@@ -24,7 +24,7 @@ import java.util.Set;
 public final class JsonpMatch implements Match {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String id = ""; // NOI18N.
+    private String id = IdValue.DEFAULT_STRING_ID;
     @DateValue
     private ZonedDateTime startTime = DateValue.DEFAULT;
     @DateValue

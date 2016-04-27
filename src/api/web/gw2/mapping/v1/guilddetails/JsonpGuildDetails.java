@@ -8,6 +8,7 @@
 package api.web.gw2.mapping.v1.guilddetails;
 
 import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.LocalizedResource;
 
 /**
  * Default JSON-P implementation of the details of a guild.
@@ -16,9 +17,9 @@ import api.web.gw2.mapping.core.IdValue;
 public final class JsonpGuildDetails implements GuildDetails {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String guildId = ""; // NOI18N.
-    private String guildName = ""; // NOI18N.
-    private String tag = ""; // NOI18N.
+    private String guildId = IdValue.DEFAULT_STRING_ID;
+    private String guildName = LocalizedResource.DEFAULT;
+    private String tag = LocalizedResource.DEFAULT;
     private GuildDetailsEmblem emblem = null;
 
     /**

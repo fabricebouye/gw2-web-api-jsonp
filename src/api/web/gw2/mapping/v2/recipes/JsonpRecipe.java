@@ -11,6 +11,7 @@ import api.web.gw2.mapping.core.CraftingLevelValue;
 import api.web.gw2.mapping.core.DurationValue;
 import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.QuantityValue;
 import api.web.gw2.mapping.core.SetValue;
 import java.time.Duration;
@@ -24,15 +25,15 @@ import java.util.Set;
 public final class JsonpRecipe implements Recipe {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @EnumValue
     private RecipeType type = RecipeType.UNKNOWN;
     @IdValue
-    private int outputItemId = -1;
+    private int outputItemId = IdValue.DEFAULT_INTEGER_ID;
     @QuantityValue
-    private int outputItemCount = 0;
+    private int outputItemCount = QuantityValue.DEFAULT;
     @DurationValue(flavor = DurationValue.Flavor.MILLIS)
-    private Duration timeToCraftMs = Duration.ZERO;
+    private Duration timeToCraftMs = DurationValue.DEFAULT;
     @SetValue
     @EnumValue
     private Set<RecipeCraftingDiscipline> disciplines = Collections.EMPTY_SET;
@@ -43,7 +44,7 @@ public final class JsonpRecipe implements Recipe {
     private Set<RecipeFlag> flags = Collections.EMPTY_SET;
     @SetValue
     private Set<RecipeIngredient> ingredients = Collections.EMPTY_SET;
-    private String chatLink = ""; // NOI18N.
+    private String chatLink = LocalizedResource.DEFAULT;
 
     /**
      * Creates a new empty instance.

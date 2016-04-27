@@ -15,7 +15,7 @@ import api.web.gw2.mapping.core.IdValue;
  */
 public final class JsonpBuild implements Build {
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
 
     /**
      * Creates a new empty instance.

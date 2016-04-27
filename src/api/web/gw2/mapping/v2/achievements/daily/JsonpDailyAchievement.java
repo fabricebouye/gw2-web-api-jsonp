@@ -16,7 +16,7 @@ import api.web.gw2.mapping.core.IdValue;
 public final class JsonpDailyAchievement implements DailyAchievement {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
 
     private DailyAchievementLevelRange level = DailyAchievementLevelRange.ALL_LEVELS;
 

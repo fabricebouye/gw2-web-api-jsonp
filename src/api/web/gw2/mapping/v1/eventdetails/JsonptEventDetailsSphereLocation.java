@@ -7,13 +7,15 @@
  */
 package api.web.gw2.mapping.v1.eventdetails;
 
+import api.web.gw2.mapping.core.QuantityValue;
+
 /**
  * Default JSON-P implementation of a sphere event details location.
  * @author Fabrice Bouyé
  */
 public final class JsonptEventDetailsSphereLocation extends JsonpEventDetailsLocation implements EventDetailsSphereLocation {    
-    private double radius = 0;
-    private double rotation = 0;
+    private double radius = QuantityValue.DEFAULT;
+    private double rotation = QuantityValue.DEFAULT;
 
     /**
      * Creates a new empty instance.

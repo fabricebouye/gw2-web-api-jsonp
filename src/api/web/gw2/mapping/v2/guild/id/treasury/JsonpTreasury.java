@@ -20,9 +20,9 @@ import java.util.Set;
 public final class JsonpTreasury implements Treasury {
 
     @IdValue
-    private int itemId = -1;
+    private int itemId = IdValue.DEFAULT_INTEGER_ID;
     @QuantityValue
-    private int count = 0;
+    private int count = QuantityValue.DEFAULT;
     @SetValue
     private Set<TreasuryUpgrade> neededBy = Collections.EMPTY_SET;
 

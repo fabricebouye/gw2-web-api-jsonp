@@ -29,7 +29,7 @@ public final class JsonpItemBackDetails extends JsonpItemDetails implements Item
     @IdValue
     private OptionalInt suffixItemId = OptionalInt.empty();
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String secondarySuffixItemId = ""; // NOI18N.
+    private String secondarySuffixItemId = IdValue.DEFAULT_STRING_ID;
 
     /**
      * Creates a new default empty instance.

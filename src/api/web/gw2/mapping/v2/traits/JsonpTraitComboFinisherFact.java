@@ -17,7 +17,7 @@ import api.web.gw2.mapping.core.PercentValue;
 public final class JsonpTraitComboFinisherFact extends JsonpTraitFact implements TraitComboFinisherFact {
 
     @PercentValue
-    private int percent = 0;
+    private int percent = PercentValue.DEFAULT;
     @EnumValue
     private TraitComboFinisherType finisherType = TraitComboFinisherType.UNKNOWN;
 

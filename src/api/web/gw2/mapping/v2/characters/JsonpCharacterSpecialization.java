@@ -19,7 +19,7 @@ import java.util.Set;
 public final class JsonpCharacterSpecialization implements CharacterSpecialization {
 
     @IdValue
-    private int id = -1;
+    private int id = IdValue.DEFAULT_INTEGER_ID;
     @SetValue
     @IdValue
     private Set<Integer> traits = Collections.EMPTY_SET;

@@ -19,9 +19,9 @@ import java.util.Set;
 public final class JsonpCharacterSkillSet implements CharacterSkillSet {
     
     @IdValue
-    private int heal = -1;
+    private int heal = IdValue.DEFAULT_INTEGER_ID;
     @IdValue
-    private int elite = -1;
+    private int elite = IdValue.DEFAULT_INTEGER_ID;
     @SetValue
     @IdValue
     private Set<Integer> utilities= Collections.EMPTY_SET;

@@ -24,9 +24,9 @@ import java.util.Set;
 public final class JsonpRank implements Rank {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String id = ""; // NOI18N.
+    private String id = IdValue.DEFAULT_STRING_ID;
     @QuantityValue
-    private int order = 0;
+    private int order = QuantityValue.DEFAULT;
     @SetValue
     @EnumValue
     private Set<PermissionId> permissions = Collections.EMPTY_SET;

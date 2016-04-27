@@ -21,9 +21,9 @@ public final class JsonpPermission implements Permission {
     @EnumValue
     private PermissionId id = PermissionId.UNKNOWN;
     @LocalizedResource
-    private String name = ""; // NOI18N.
+    private String name = LocalizedResource.DEFAULT;
     @LocalizedResource
-    private String description = ""; // NOI18N.
+    private String description = LocalizedResource.DEFAULT;
 
     /**
      * Creates a new empty instance.
