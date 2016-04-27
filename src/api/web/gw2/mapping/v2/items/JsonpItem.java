@@ -61,6 +61,7 @@ public final class JsonpItem implements Item {
     @OptionalValue
     @RuntimeType(selector = "type", pattern = "Item%sDetails", source = RuntimeType.Source.PARENT)
     private Optional<ItemDetails> details = Optional.empty();
+    private String chatLink = "";
 
     /**
      * Creates a new empty instance.
@@ -131,5 +132,10 @@ public final class JsonpItem implements Item {
     @Override
     public Optional<ItemDetails> getDetails() {
         return details;
+    }
+
+    @Override
+    public String getChatLink() {
+        return chatLink;
     }
 }
