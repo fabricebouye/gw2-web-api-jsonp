@@ -113,5 +113,22 @@
             "size": 20
         },
         null
-    ]
+    ],
+    "skills": {
+        "pve": {
+            "heal": 312,
+            "utilities": [null, 310, 330, 255],
+            "elite": 4745
+        },
+        "pvp": {
+            "heal": 259,
+            "utilities": [null, 332, 327, 4746],
+            "elite": 4745
+        },
+        "wvw": {
+            "heal": 259,
+            "utilities": [null, 4858, 4862, 310],
+            "elite": 4745
+        }
+    }
 }
