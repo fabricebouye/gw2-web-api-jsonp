@@ -1,0 +1,66 @@
+{
+    "id": 151,
+    "name": "Illustration : Point de passage d'urgence",
+    "description": "Concevoir les plans d'une tactique de niveau 3 qui invoque un point de passage temporaire à votre objectif revendiqué, même durant une attaque ennemie.",
+    "build_time": 0,
+    "icon": "https://render.guildwars2.com/file/5B317569DAA2130A6D6495423233CC937CCFD826/1228600.png",
+    "type": "Unlock",
+    "required_level": 31,
+    "experience": 35,
+    "prerequisites": [256],
+    "costs": [{
+            "type": "Collectible",
+            "count": 300,
+            "name": "Faveur de guilde",
+            "item_id": 70701
+        }, {
+            "type": "Item",
+            "count": 20,
+            "name": "Feuille de papier doux",
+            "item_id": 71702
+        }, {
+            "type": "Item",
+            "count": 100,
+            "name": "Lingot de mithril",
+            "item_id": 19684
+        }, {
+            "type": "Item",
+            "count": 100,
+            "name": "Pièce de cuir épais traité",
+            "item_id": 19735
+        }, {
+            "type": "Item",
+            "count": 20,
+            "name": "Cristal mystique",
+            "item_id": 20799
+        }, {
+            "type": "Item",
+            "count": 10,
+            "name": "Boule d'ectoplasme",
+            "item_id": 19721
+        }, {
+            "type": "Item",
+            "count": 100,
+            "name": "Planche de bois ancestral",
+            "item_id": 19709
+        }, {
+            "type": "Item",
+            "count": 100,
+            "name": "Grande écaille",
+            "item_id": 24288
+        }, {
+            "type": "Item",
+            "count": 100,
+            "name": "Tas de poussière incandescente",
+            "item_id": 24276
+        }, {
+            "type": "Item",
+            "count": 50,
+            "name": "Tas de poussière cristalline",
+            "item_id": 24277
+        }, {
+            "type": "Currency",
+            "count": 3000,
+            "name": "Aetherium"
+        }]
+}
