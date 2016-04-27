@@ -20,7 +20,7 @@ import java.util.Set;
  */
 public final class JsonpEventDetails implements EventDetails {
 
-    private String name = "";
+    private String name = ""; // NOI18N.
     @LevelValue
     private int level = -1;
     @IdValue

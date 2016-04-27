@@ -30,11 +30,11 @@ public final class JsonpAchievement implements Achievement {
     @URLValue
     private URLReference icon = URLReference.empty();
     @LocalizedResource
-    private String name = "";
+    private String name = ""; // NOI18N.
     @LocalizedResource
-    private String description = "";
+    private String description = ""; // NOI18N.
     @LocalizedResource
-    private String requirement = "";
+    private String requirement = ""; // NOI18N.
     @EnumValue
     private AchievementType type = AchievementType.UNKNOWN;
     @SetValue
@@ -44,7 +44,7 @@ public final class JsonpAchievement implements Achievement {
     private Set<AchievementTier> tiers = Collections.EMPTY_SET;
     @OptionalValue
     @SetValue
-    @RuntimeType(selector = "type", pattern = "Achievement%sReward")
+    @RuntimeType(selector = "type", pattern = "Achievement%sReward") // NOI18N.
     private Optional<Set<AchievementReward>> rewards = Optional.empty();
     @OptionalValue
     @SetValue

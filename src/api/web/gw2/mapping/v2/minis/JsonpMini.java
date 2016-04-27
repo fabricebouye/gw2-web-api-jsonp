@@ -24,7 +24,7 @@ public final class JsonpMini implements Mini {
     @IdValue
     private int id = -1;
     @LocalizedResource
-    private String name = "";
+    private String name = ""; // NOI18N.
     @LocalizedResource
     @OptionalValue
     private Optional<String> unlock = Optional.empty();

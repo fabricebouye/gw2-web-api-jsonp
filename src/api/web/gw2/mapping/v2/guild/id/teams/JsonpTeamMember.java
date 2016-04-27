@@ -17,7 +17,7 @@ import api.web.gw2.mapping.core.IdValue;
 public final class JsonpTeamMember implements TeamMember {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String name = "";
+    private String name = ""; // NOI18N.
     @EnumValue
     private TeamMemberRole role = TeamMemberRole.UNKNOWN;
 

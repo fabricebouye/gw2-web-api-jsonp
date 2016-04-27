@@ -31,7 +31,7 @@ public final class JsonpLogEvent implements LogEvent {
     @DateValue
     private ZonedDateTime time = DateValue.DEFAULT;
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String user = "";
+    private String user = ""; // NOI18N.
     @EnumValue
     private LogEventType type = LogEventType.UNKNOWN;
     @IdValue

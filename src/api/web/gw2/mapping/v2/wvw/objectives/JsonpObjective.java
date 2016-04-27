@@ -25,9 +25,9 @@ import api.web.gw2.mapping.v2.wvw.MapType;
 public final class JsonpObjective implements Objective {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String id = "";
+    private String id = ""; // NOI18N.
     @LocalizedResource
-    private String name = "";
+    private String name = ""; // NOI18N.
     @IdValue
     private int sectorId = -1;
     @EnumValue

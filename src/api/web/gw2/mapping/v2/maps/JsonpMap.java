@@ -27,7 +27,7 @@ public final class JsonpMap implements Map {
     @IdValue
     private int id = -1;
     @LocalizedResource
-    private String name = "";
+    private String name = ""; // NOI18N.
     @LevelValue
     private int minLevel = LevelValue.MIN_LEVEL;
     @LevelValue
@@ -40,11 +40,11 @@ public final class JsonpMap implements Map {
     @IdValue
     private int continentId = -1;
     @LocalizedResource
-    private String continentName = "";
+    private String continentName = ""; // NOI18N.
     @IdValue
     private int regionId = -1;
     @LocalizedResource
-    private String regionName = "";
+    private String regionName = ""; // NOI18N.
     @MapRect
     private MapBounds mapRect = MapBounds.empty();
     @ContinentRect

@@ -16,9 +16,9 @@ import api.web.gw2.mapping.core.IdValue;
 public final class JsonpGuildDetails implements GuildDetails {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String guildId = "";
-    private String guildName = "";
-    private String tag = "";
+    private String guildId = ""; // NOI18N.
+    private String guildName = ""; // NOI18N.
+    private String tag = ""; // NOI18N.
     private GuildDetailsEmblem emblem = null;
 
     /**

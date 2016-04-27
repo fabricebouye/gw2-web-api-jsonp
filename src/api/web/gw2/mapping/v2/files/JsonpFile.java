@@ -18,7 +18,7 @@ import api.web.gw2.mapping.core.URLValue;
 public final class JsonpFile implements File {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String id = "";
+    private String id = ""; // NOI18N.
     @URLValue
     private URLReference icon = URLReference.empty();
 

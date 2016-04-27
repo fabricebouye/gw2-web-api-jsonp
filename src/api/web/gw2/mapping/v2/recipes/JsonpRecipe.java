@@ -43,7 +43,7 @@ public final class JsonpRecipe implements Recipe {
     private Set<RecipeFlag> flags = Collections.EMPTY_SET;
     @SetValue
     private Set<RecipeIngredient> ingredients = Collections.EMPTY_SET;
-    private String chatLink = "";
+    private String chatLink = ""; // NOI18N.
 
     /**
      * Creates a new empty instance.

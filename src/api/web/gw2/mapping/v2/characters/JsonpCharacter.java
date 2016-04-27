@@ -32,7 +32,7 @@ import java.util.Set;
  */
 public final class JsonpCharacter implements Character {
 
-    private String name = "";
+    private String name = ""; // NOI18N.
     @EnumValue
     private CharacterRace race = CharacterRace.UNKNOWN;
     @EnumValue

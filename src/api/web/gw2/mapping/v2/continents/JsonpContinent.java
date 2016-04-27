@@ -25,7 +25,7 @@ public final class JsonpContinent implements Continent {
     @IdValue
     private int id = -1;
     @LocalizedResource
-    private String name = "";
+    private String name = ""; // NOI18N.
     @ContinentDims
     private ContinentDimensions continentDims = ContinentDimensions.empty();
     @QuantityValue

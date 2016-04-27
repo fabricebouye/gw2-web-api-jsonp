@@ -18,7 +18,7 @@ public final class JsonpColorDye implements ColorDye {
     @IdValue
     private int id = -1;
     @LocalizedResource
-    private String name = "";
+    private String name = ""; // NOI18N.
     private ColorRGB baseRGB = ColorRGB.EMPTY;
     private ColorMaterial cloth = ColorMaterial.EMPTY;
     private ColorMaterial leather = ColorMaterial.EMPTY;

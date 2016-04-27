@@ -22,7 +22,7 @@ import java.util.Optional;
 public final class JsonpMatchMapObjective implements MatchMapObjective {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String id = "";
+    private String id = ""; // NOI18N.
     @EnumValue
     private ObjectiveType type = ObjectiveType.UNKNOWN;
     @EnumValue

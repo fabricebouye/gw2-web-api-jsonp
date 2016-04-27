@@ -31,9 +31,9 @@ public @interface RuntimeType {
         PARENT, SELF;
     }
 
-    String selector() default "";
+    String selector() default ""; // NOI18N.
 
-    String pattern() default "";
+    String pattern() default ""; // NOI18N.
 
     Source source() default Source.SELF;
 }

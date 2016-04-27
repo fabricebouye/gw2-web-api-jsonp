@@ -19,7 +19,7 @@ public final class JsonpItemBuff implements ItemBuff {
     @IdValue
     private int skillId = -1;
     @LocalizedResource
-    private String description = "";
+    private String description = ""; // NOI18N.
 
     /**
      * Creates a new empty instance.

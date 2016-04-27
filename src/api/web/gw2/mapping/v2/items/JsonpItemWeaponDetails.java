@@ -39,7 +39,7 @@ public final class JsonpItemWeaponDetails extends JsonpItemDetails implements It
     @IdValue
     private int suffixItemId = -1;
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String secondarySuffixItemId = "";
+    private String secondarySuffixItemId = ""; // NOI18N.
 
     /**
      * Creates a new empty instance.

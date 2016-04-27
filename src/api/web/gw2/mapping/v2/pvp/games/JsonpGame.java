@@ -23,7 +23,7 @@ import java.util.Map;
 public final class JsonpGame implements Game {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String id = "";
+    private String id = ""; // NOI18N.
     @IdValue
     private int mapId = -1;
     @DateValue

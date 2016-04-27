@@ -22,9 +22,9 @@ public final class JsonpCurrency implements Currency {
     @IdValue
     private int id = -1;
     @LocalizedResource
-    private String name = "";
+    private String name = ""; // NOI18N.
     @LocalizedResource
-    private String description = "";
+    private String description = ""; // NOI18N.
     @URLValue
     private URLReference icon = URLReference.empty();
     @QuantityValue

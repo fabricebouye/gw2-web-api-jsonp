@@ -23,8 +23,8 @@ import java.util.Set;
  */
 public final class JsonpRank implements Rank {
 
-    @IdValue
-    private String id = "";
+    @IdValue(flavor = IdValue.Flavor.STRING)
+    private String id = ""; // NOI18N.
     @QuantityValue
     private int order = 0;
     @SetValue

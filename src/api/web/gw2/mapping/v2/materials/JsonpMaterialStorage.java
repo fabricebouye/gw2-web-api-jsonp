@@ -22,7 +22,7 @@ public final class JsonpMaterialStorage implements MaterialStorage {
     @IdValue
     private int id = -1;
     @LocalizedResource
-    private String name = "";
+    private String name = ""; // NOI18N.
     @SetValue
     @IdValue
     private Set<Integer> items = Collections.EMPTY_SET;

@@ -20,7 +20,7 @@ import java.util.Set;
  */
 public final class JsonpSeasonDivision implements SeasonDivision {
     
-    private String name = "";
+    private String name = ""; // NOI18N.
     @SetValue
     @EnumValue
     private Set<SeasonDivisionFlag> flags = Collections.EMPTY_SET;

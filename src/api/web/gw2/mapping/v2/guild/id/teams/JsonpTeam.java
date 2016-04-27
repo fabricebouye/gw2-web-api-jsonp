@@ -26,7 +26,7 @@ public final class JsonpTeam implements Team {
     private int id = -1;
     @SetValue
     private Set<TeamMember> members = Collections.EMPTY_SET;
-    private String name = "";
+    private String name = ""; // NOI18N.
     @EnumValue
     private TeamState state = TeamState.UNKNOWN;
     private TeamLadderResult aggregate = TeamLadderResult.EMPTY;

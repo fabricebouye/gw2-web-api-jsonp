@@ -21,9 +21,9 @@ public final class JsonpTraitPrefixedBuffFact extends JsonpTraitFact implements 
     @DurationValue
     private Duration duration = Duration.ZERO;
     @LocalizedResource
-    private String status = "";
+    private String status = ""; // NOI18N.
     @LocalizedResource
-    private String description = "";
+    private String description = ""; // NOI18N.
     @QuantityValue
     private int applyCount = 0;
     private TraitPrefix prefix = TraitPrefix.EMPTY;

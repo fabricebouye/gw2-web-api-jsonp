@@ -27,7 +27,7 @@ public final class JsonpStash implements Stash {
     private int size = 0;
     @CoinValue
     private CoinAmount coins = CoinAmount.ZERO;
-    private String note = "";
+    private String note = ""; // NOI18N.
     @ListValue
     private List<StashInventory> inventory = Collections.EMPTY_LIST;
 

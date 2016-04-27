@@ -24,8 +24,8 @@ import java.util.Set;
 public final class JsonpAccount implements Account {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String id = "";
-    private String name = "";
+    private String id = ""; // NOI18N.
+    private String name = ""; // NOI18N.
     @IdValue
     private int world = -1;
     @SetValue

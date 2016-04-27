@@ -20,8 +20,8 @@ import java.util.Set;
 public final class JsonpTokenInfo implements TokenInfo {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String id = "";
-    private String name = "";
+    private String id = ""; // NOI18N.
+    private String name = ""; // NOI18N.
     @SetValue
     @EnumValue
     private Set<TokenInfoPermission> permissions = Collections.EMPTY_SET;

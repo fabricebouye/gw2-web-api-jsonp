@@ -23,7 +23,7 @@ public final class JsonpUpgradeCost implements UpgradeCost {
     @EnumValue
     private UpgradeCostType type = UpgradeCostType.UNKNOWN;
     @LocalizedResource
-    private String name = "";
+    private String name = ""; // NOI18N.
     @QuantityValue
     private int count = 0;
     @IdValue

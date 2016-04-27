@@ -36,9 +36,9 @@ public final class JsonpUpgrade implements Upgrade {
     @EnumValue
     private UpgradeType type = UpgradeType.UNKNOWN;
     @LocalizedResource
-    private String name = "";
+    private String name = ""; // NOI18N.
     @LocalizedResource
-    private String description = "";
+    private String description = ""; // NOI18N.
     @URLValue
     private URLReference icon = URLReference.empty();
     @DurationValue

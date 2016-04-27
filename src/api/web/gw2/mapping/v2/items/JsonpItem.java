@@ -32,7 +32,7 @@ public final class JsonpItem implements Item {
     @IdValue
     private int id = -1;
     @LocalizedResource
-    private String name = "";
+    private String name = ""; // NOI18N.
     @OptionalValue
     @LocalizedResource
     private Optional<String> description = Optional.empty();

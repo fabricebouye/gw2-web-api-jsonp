@@ -37,7 +37,7 @@ public final class JsonpItemArmorDetails extends JsonpItemDetails implements Ite
     @IdValue
     private OptionalInt suffixItemId = OptionalInt.empty();
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private String secondarySuffixItemId = "";
+    private String secondarySuffixItemId = ""; // NOI18N.
 
     /**
      * Create a new empty instance.
