@@ -20,7 +20,7 @@ import java.util.Set;
 public final class JsonpTreasury implements Treasury {
 
     @IdValue
-    private int id = -1;
+    private int itemId = -1;
     @QuantityValue
     private int count = 0;
     @SetValue
@@ -33,8 +33,8 @@ public final class JsonpTreasury implements Treasury {
     }
 
     @Override
-    public int getId() {
-        return id;
+    public int getItemId() {
+        return itemId;
     }
 
     @Override
