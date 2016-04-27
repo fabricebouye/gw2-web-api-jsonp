@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.v2.items;
 
+import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.ListValue;
 import api.web.gw2.mapping.core.OptionalValue;
 import java.util.Collections;
@@ -18,7 +19,8 @@ import java.util.Optional;
  * @author Fabrice Bouyé
  */
 public final class JsonpItemInfixUpgrade implements ItemInfixUpgrade {
-
+    @IdValue
+    private int id = -1;
     @ListValue
     private List<ItemInfixUpgradeAttributeValue> attributes = Collections.EMPTY_LIST;
     @OptionalValue
@@ -30,6 +32,11 @@ public final class JsonpItemInfixUpgrade implements ItemInfixUpgrade {
     public JsonpItemInfixUpgrade() {
     }
 
+    @Override
+    public int getId() {
+        return id;
+    }
+    
     @Override
     public List<ItemInfixUpgradeAttributeValue> getAttributes() {
         return attributes;
