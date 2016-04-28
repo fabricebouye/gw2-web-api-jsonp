@@ -76,7 +76,7 @@ public final class JsonpUpgrade implements Upgrade {
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
