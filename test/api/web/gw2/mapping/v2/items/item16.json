@@ -6,10 +6,11 @@
     "rarity": "Ascended",
     "vendor_value": 0,
     "default_skin": 2334,
-    "game_types": ["Activity", "Dungeon", "Pve", "Wvw"],
-    "flags": ["AccountBound", "NoSalvage", "NoSell", "NotUpgradeable", "AccountBindOnUse"],
+    "game_types": ["Activity", "Wvw", "Dungeon", "Pve"],
+    "flags": ["AccountBound", "NoSell", "NotUpgradeable", "AccountBindOnUse"],
     "restrictions": [],
     "id": 50051,
+    "chat_link": "[&AgGDwwAA]",
     "icon": "https://render.guildwars2.com/file/CADED6EF33A971BFD2403706361F9F4BABC8DC0A/740251.png",
     "details": {
         "infusion_slots": [{

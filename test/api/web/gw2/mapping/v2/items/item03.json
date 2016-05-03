@@ -5,9 +5,13 @@
     "level": 0,
     "rarity": "Exotic",
     "vendor_value": 5000,
-    "game_types": ["Activity", "Dungeon", "Pve", "PvpLobby", "Wvw"],
+    "game_types": ["PvpLobby", "Activity", "Wvw", "Dungeon", "Pve"],
     "flags": ["NoSell"],
     "restrictions": [],
     "id": 20159,
-    "icon": "https://render.guildwars2.com/file/04FF79CB9C292DC4C89C6A1B0A00A2F309E4F270/220503.png"
+    "chat_link": "[&AgG/TgAA]",
+    "icon": "https://render.guildwars2.com/file/04FF79CB9C292DC4C89C6A1B0A00A2F309E4F270/220503.png",
+    "details": {
+        "minipet_id": 48
+    }
 }

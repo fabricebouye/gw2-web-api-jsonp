@@ -4,14 +4,18 @@
     "level": 80,
     "rarity": "Fine",
     "vendor_value": 33,
-    "game_types": ["Dungeon", "Pve", "Wvw"],
+    "game_types": ["Wvw", "Dungeon", "Pve"],
     "flags": ["NoSell"],
     "restrictions": [],
     "id": 12452,
+    "chat_link": "[&AgGkMAAA]",
     "icon": "https://render.guildwars2.com/file/6BD5B65FBC6ED450219EC86DD570E59F4DA3791F/433643.png",
     "details": {
         "type": "Food",
         "duration_ms": 1800000,
+        "apply_count": 1,
+        "name": "Produit consommable",
+        "icon": "https://render.guildwars2.com/file/779D3F0ABE5B46C09CFC57374DA8CC3A495F291C/436367.png",
         "description": "Découverte de magie +30%\nOr trouvé sur les monstres +40%\nExpérience à chaque ennemi tué +10%"
     }
 }

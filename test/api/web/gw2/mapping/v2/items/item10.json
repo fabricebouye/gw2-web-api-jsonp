@@ -5,9 +5,10 @@
     "level": 0,
     "rarity": "Basic",
     "vendor_value": 3,
-    "game_types": ["Activity", "Dungeon", "Pve", "Wvw"],
+    "game_types": ["Activity", "Wvw", "Dungeon", "Pve"],
     "flags": ["NoSell"],
     "restrictions": [],
     "id": 38448,
+    "chat_link": "[&AgEwlgAA]",
     "icon": "https://render.guildwars2.com/file/A314E6A94A6AF4A8EB245F4E5C9DD6CEF62F5958/526314.png"
 }
