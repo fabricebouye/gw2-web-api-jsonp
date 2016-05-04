@@ -9,6 +9,9 @@ package api.web.gw2.mapping.v2.professions;
 
 import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.v2.items.ItemWeaponType;
+import java.util.Optional;
 
 /**
  * Default JSON-P implementation of a profession weapon skill.
@@ -20,6 +23,12 @@ public final class JsonpProfessionWeaponSkill implements ProfessionWeaponSkill {
     private int id = IdValue.DEFAULT_INTEGER_ID;
     @EnumValue
     private ProfessionWeaponSlot slot = ProfessionWeaponSlot.UNKNOWN;
+    @OptionalValue
+    @EnumValue
+    private Optional<ItemWeaponType> offhand = Optional.empty();
+    @OptionalValue
+    @EnumValue
+    private Optional<ProfessionElementalistAttunement> attunement = Optional.empty();
 
     /**
      * Creates a new empty instance.
@@ -35,5 +44,15 @@ public final class JsonpProfessionWeaponSkill implements ProfessionWeaponSkill {
     @Override
     public ProfessionWeaponSlot getSlot() {
         return slot;
+    }
+
+    @Override
+    public Optional<ItemWeaponType> getOffhand() {
+        return offhand;
+    }
+
+    @Override
+    public Optional<ProfessionElementalistAttunement> getAttunement() {
+        return attunement;
     }
 }
