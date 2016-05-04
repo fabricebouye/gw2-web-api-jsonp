@@ -12,6 +12,8 @@ import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.URLReference;
+import api.web.gw2.mapping.core.URLValue;
 import java.time.Duration;
 import java.util.Optional;
 import java.util.OptionalInt;
@@ -39,6 +41,14 @@ public final class JsonpItemConsumableDetails extends JsonpItemDetails implement
     @OptionalValue
     @IdValue
     private OptionalInt recipeId = OptionalInt.empty();
+    @OptionalValue
+    @IdValue
+    private OptionalInt applyCount = OptionalInt.empty();
+    @OptionalValue
+    @LocalizedResource
+    private Optional<String> name = Optional.empty();
+    @URLValue
+    private URLReference icon = URLReference.empty();
 
     public JsonpItemConsumableDetails() {
         super(ItemType.CONSUMABLE);
@@ -72,5 +82,20 @@ public final class JsonpItemConsumableDetails extends JsonpItemDetails implement
     @Override
     public OptionalInt getRecipeId() {
         return recipeId;
+    }
+
+    @Override
+    public OptionalInt getApplyCount() {
+        return applyCount;
+    }
+    
+    @Override
+    public Optional<String> getName() {
+        return name;
+    }
+
+    @Override
+    public URLReference getIcon() {
+        return icon;
     }
 }

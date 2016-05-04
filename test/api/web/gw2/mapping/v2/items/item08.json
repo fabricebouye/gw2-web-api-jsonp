@@ -5,10 +5,11 @@
     "rarity": "Rare",
     "vendor_value": 500,
     "default_skin": 373,
-    "game_types": ["Activity", "Dungeon", "Pve", "Wvw"],
+    "game_types": ["Activity", "Wvw", "Dungeon", "Pve"],
     "flags": ["SoulbindOnAcquire", "SoulBindOnUse"],
     "restrictions": ["Human"],
     "id": 3700,
+    "chat_link": "[&AgF0DgAA]",
     "icon": "https://render.guildwars2.com/file/12FF92732CD3F6E62BE79E6F053778C8B545D638/414950.png",
     "details": {
         "type": "Helm",
@@ -16,12 +17,13 @@
         "defense": 24,
         "infusion_slots": [],
         "infix_upgrade": {
+            "id": 142,
             "attributes": [{
                     "attribute": "Power",
-                    "modifier": 13
+                    "modifier": 17
                 }, {
                     "attribute": "Precision",
-                    "modifier": 9
+                    "modifier": 12
                 }]
         },
         "secondary_suffix_item_id": ""

@@ -5,16 +5,18 @@
     "level": 60,
     "rarity": "Exotic",
     "vendor_value": 216,
-    "game_types": ["Activity", "Dungeon", "Pve", "Wvw"],
+    "game_types": ["Activity", "Wvw", "Dungeon", "Pve"],
     "flags": [],
     "restrictions": [],
-    "id": 28445,
+    "id": 24612,
+    "chat_link": "[&AgEkYAAA]",
     "icon": "https://render.guildwars2.com/file/BAF34EB051D118F8A7C1645E0D940ED0660E6269/220658.png",
     "details": {
         "type": "Sigil",
-        "flags": ["Axe", "LongBow", "ShortBow", "Dagger", "Focus", "Greatsword", "Hammer", "Harpoon", "Mace", "Pistol", "Rifle", "Scepter", "Shield", "Speargun", "Staff", "Sword", "Torch", "Trident", "Warhorn"],
+        "flags": ["ShortBow", "Dagger", "Focus", "Greatsword", "Hammer", "Harpoon", "Mace", "Pistol", "Rifle", "Scepter", "Shield", "Speargun", "Axe", "Staff", "Sword", "Torch", "Trident", "Warhorn", "LongBow"],
         "infusion_upgrade_flags": [],
         "infix_upgrade": {
+            "id": 258,
             "buff": {
                 "skill_id": 9313,
                 "description": "Augmente de 20% la durée des Saignements infligés"

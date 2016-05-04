@@ -6,10 +6,11 @@
     "rarity": "Rare",
     "vendor_value": 192,
     "default_skin": 2399,
-    "game_types": ["Activity", "Dungeon", "Pve", "Wvw"],
+    "game_types": ["PvpLobby", "Activity", "Wvw", "Dungeon", "Pve"],
     "flags": ["AccountBound", "NoSalvage", "NoSell", "SoulBindOnUse"],
     "restrictions": [],
     "id": 41807,
+    "chat_link": "[&AgFPowAA]",
     "icon": "https://render.guildwars2.com/file/ACF90CA6BCD9CEEFD4D0DCEF2AA87C97B50BDC56/561815.png",
     "details": {
         "type": "Mining"
