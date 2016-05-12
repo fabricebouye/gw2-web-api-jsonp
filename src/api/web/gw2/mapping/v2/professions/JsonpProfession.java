@@ -13,7 +13,6 @@ import api.web.gw2.mapping.core.MapValue;
 import api.web.gw2.mapping.core.SetValue;
 import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
-import api.web.gw2.mapping.v2.items.ItemWeaponType;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
@@ -35,7 +34,7 @@ public final class JsonpProfession implements Profession {
     @SetValue
     private Set<Integer> specializations = Collections.EMPTY_SET;
     @MapValue
-    private Map<ItemWeaponType, ProfessionWeaponSkillSet> weapons = Collections.EMPTY_MAP;
+    private Map<ProfessionWeaponType, ProfessionWeaponSkillSet> weapons = Collections.EMPTY_MAP;
     @SetValue
     private Set<ProfessionTrack> training = Collections.EMPTY_SET;
 
@@ -71,7 +70,7 @@ public final class JsonpProfession implements Profession {
     }
 
     @Override
-    public Map<ItemWeaponType, ProfessionWeaponSkillSet> getWeapons() {
+    public Map<ProfessionWeaponType, ProfessionWeaponSkillSet> getWeapons() {
         return weapons;
     }
 
