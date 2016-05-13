@@ -15,7 +15,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -213,7 +213,7 @@ public final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
      * @throws InvocationTargetException 
      */
     private <T, V> Map<T, V> marshallMap(final JsonParser parser, final Field field, final Class<T> keyClass, final Class<V> valueClass) throws IOException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-        final Map result = new HashMap();
+        final Map result = new LinkedHashMap();
         Object keyFromJSON = null;
         while (parser.hasNext()) {
             final JsonParser.Event event = parser.next();

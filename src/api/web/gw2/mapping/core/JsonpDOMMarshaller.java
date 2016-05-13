@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -284,7 +285,7 @@ public final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
     }
 
     private <T, V> Map<T, V> marshallMap(final JsonObject jsonObject, final Field field, final Class<T> keyClass, final Class<V> valueClass, Object parent) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchFieldException, NullPointerException, MalformedURLException, IOException {
-        final HashMap result = new HashMap();
+        final HashMap result = new LinkedHashMap();
         for (String key : jsonObject.keySet()) {
             final JsonValue value = jsonObject.get(key);
             final Object keyFromJSON = marshallEnumValue(field, key);
