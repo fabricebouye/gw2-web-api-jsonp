@@ -36,7 +36,7 @@ public final class JsonpProfessionWeaponSkill implements ProfessionWeaponSkill {
     }
 
     @Override
-    public int id() {
+    public int getId() {
         return id;
     }
 
