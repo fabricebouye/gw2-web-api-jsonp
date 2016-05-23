@@ -11,12 +11,14 @@ import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.QuantityValue;
 import api.web.gw2.mapping.core.RuntimeType;
 import api.web.gw2.mapping.core.SetValue;
 import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
 import java.util.Collections;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
 
 /**
@@ -49,6 +51,16 @@ public final class JsonpAchievement implements Achievement {
     @OptionalValue
     @SetValue
     private Optional<Set<AchievementBit>> bits = Optional.empty();
+    @OptionalValue
+    @LocalizedResource
+    private Optional<String> lockedText = Optional.empty();
+    @OptionalValue
+    @IdValue
+    @SetValue
+    private Optional<Set<Integer>> prerequisites = Optional.empty();
+    @OptionalValue
+    @QuantityValue
+    private OptionalInt pointCap = OptionalInt.empty();
 
     /**
      * Creates a new empty instance.
@@ -104,5 +116,20 @@ public final class JsonpAchievement implements Achievement {
     @Override
     public Optional<Set<AchievementBit>> getBits() {
         return bits;
+    }
+
+    @Override
+    public Optional<String> getLockedText() {
+        return lockedText;
+    }
+
+    @Override
+    public Optional<Set<Integer>> getPrerequisites() {
+        return prerequisites;
+    }        
+
+    @Override
+    public OptionalInt getPointCap() {
+        return pointCap;
     }
 }
