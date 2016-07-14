@@ -28,6 +28,7 @@ import api.web.gw2.mapping.v2.guild.id.teams.Team;
 import api.web.gw2.mapping.v2.guild.id.treasury.Treasury;
 import api.web.gw2.mapping.v2.items.ItemDetails;
 import api.web.gw2.mapping.v2.items.ItemType;
+import api.web.gw2.mapping.v2.legends.Legend;
 import api.web.gw2.mapping.v2.maps.Map;
 import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
@@ -936,6 +937,26 @@ public class JsonpContext_DOM_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     try {
                         final Collection<Title> value = instance.loadObjectArray(Title.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_LegendsLocal() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Legends local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/legends/"; // NOI18N.
+        final String[] filenames = {
+            "legends.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    try {
+                        final Collection<Legend> value = instance.loadObjectArray(Legend.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
