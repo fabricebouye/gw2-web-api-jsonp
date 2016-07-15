@@ -36,6 +36,7 @@ import api.web.gw2.mapping.v2.maps.Map;
 import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
 import api.web.gw2.mapping.v2.professions.Profession;
+import api.web.gw2.mapping.v2.pvp.amulets.Amulet;
 import api.web.gw2.mapping.v2.pvp.games.Game;
 import api.web.gw2.mapping.v2.pvp.seasons.Season;
 import api.web.gw2.mapping.v2.pvp.standings.Standing;
@@ -1019,6 +1020,26 @@ public class JsonpContext_SAX_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     try {
                         final Collection<Legend> value = instance.loadObjectArray(Legend.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_AmuletsLocal() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Amulets local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/pvp/amulets/"; // NOI18N.
+        final String[] filenames = {
+            "amulets.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    try {
+                        final Collection<Amulet> value = instance.loadObjectArray(Amulet.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
