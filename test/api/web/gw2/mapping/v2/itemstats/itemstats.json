@@ -1,0 +1,3869 @@
+[
+    {
+        "id": 50,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 68,
+        "name": "",
+        "attributes": {
+            "Precision": 2.31,
+            "Toughness": 2.31,
+            "ConditionDamage": 3.24
+        }
+    }, {
+        "id": 69,
+        "name": "",
+        "attributes": {
+            "Power": 3.24,
+            "Toughness": 2.31,
+            "Vitality": 2.31
+        }
+    }, {
+        "id": 75,
+        "name": "",
+        "attributes": {
+            "Power": 2.31,
+            "Precision": 2.31,
+            "Vitality": 3.24
+        }
+    }, {
+        "id": 79,
+        "name": "",
+        "attributes": {
+            "Power": 1.5274,
+            "Precision": 1.5274,
+            "Toughness": 1.5274,
+            "Vitality": 1.5274,
+            "CritDamage": 1.5274,
+            "Healing": 1.5274,
+            "ConditionDamage": 1.5274
+        }
+    }, {
+        "id": 80,
+        "name": "",
+        "attributes": {
+            "Power": 3.24,
+            "Precision": 2.31,
+            "Vitality": 1.155,
+            "CritDamage": 0.0615
+        }
+    }, {
+        "id": 81,
+        "name": "",
+        "attributes": {
+            "Power": 2.31,
+            "Vitality": 2.31,
+            "ConditionDamage": 3.24
+        }
+    }, {
+        "id": 82,
+        "name": "",
+        "attributes": {
+            "Power": 1.155,
+            "Precision": 3.24,
+            "Vitality": 1.155,
+            "ConditionDamage": 2.31
+        }
+    }, {
+        "id": 83,
+        "name": "",
+        "attributes": {
+            "Power": 2.31,
+            "Toughness": 2.31,
+            "Healing": 3.24
+        }
+    }, {
+        "id": 84,
+        "name": "",
+        "attributes": {
+            "Toughness": 3.24,
+            "Healing": 2.31,
+            "ConditionDamage": 2.31
+        }
+    }, {
+        "id": 85,
+        "name": "",
+        "attributes": {
+            "Power": 3.24,
+            "Toughness": 2.31,
+            "CritDamage": 0.0615,
+            "Healing": 1.155
+        }
+    }, {
+        "id": 112,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 132,
+        "name": "",
+        "attributes": {
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 134,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 136,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "Toughness": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 137,
+        "name": "Mighty",
+        "attributes": {
+            "Power": 0.35
+        }
+    }, {
+        "id": 138,
+        "name": "Precise",
+        "attributes": {
+            "Precision": 0.35
+        }
+    }, {
+        "id": 139,
+        "name": "Vital",
+        "attributes": {
+            "Vitality": 0.35
+        }
+    }, {
+        "id": 140,
+        "name": "Resilient",
+        "attributes": {
+            "Toughness": 0.35
+        }
+    }, {
+        "id": 141,
+        "name": "Lingering",
+        "attributes": {
+            "Vitality": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 142,
+        "name": "Strong",
+        "attributes": {
+            "Power": 0.35,
+            "Precision": 0.25
+        }
+    }, {
+        "id": 144,
+        "name": "Ravaging",
+        "attributes": {
+            "Precision": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 145,
+        "name": "Rejuvenating",
+        "attributes": {
+            "Power": 0.25,
+            "Healing": 0.35
+        }
+    }, {
+        "id": 146,
+        "name": "Vigorous",
+        "attributes": {
+            "Power": 0.35,
+            "Vitality": 0.25
+        }
+    }, {
+        "id": 147,
+        "name": "Mending",
+        "attributes": {
+            "Vitality": 0.25,
+            "Healing": 0.35
+        }
+    }, {
+        "id": 148,
+        "name": "Stout",
+        "attributes": {
+            "Toughness": 0.35,
+            "ConditionDamage": 0.25
+        }
+    }, {
+        "id": 149,
+        "name": "Hearty",
+        "attributes": {
+            "Toughness": 0.25,
+            "Vitality": 0.35
+        }
+    }, {
+        "id": 150,
+        "name": "Potent",
+        "attributes": {
+            "Power": 0.35,
+            "ConditionDamage": 0.25
+        }
+    }, {
+        "id": 151,
+        "name": "Penetrating",
+        "attributes": {
+            "Precision": 0.35,
+            "CritDamage": 0.25
+        }
+    }, {
+        "id": 152,
+        "name": "Honed",
+        "attributes": {
+            "Power": 0.35,
+            "CritDamage": 0.25
+        }
+    }, {
+        "id": 153,
+        "name": "Shaman's",
+        "attributes": {
+            "Vitality": 0.35,
+            "Healing": 0.25,
+            "ConditionDamage": 0.25
+        }
+    }, {
+        "id": 154,
+        "name": "Rabid",
+        "attributes": {
+            "Precision": 0.25,
+            "Toughness": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 155,
+        "name": "Cleric's",
+        "attributes": {
+            "Power": 0.25,
+            "Toughness": 0.25,
+            "Healing": 0.35
+        }
+    }, {
+        "id": 156,
+        "name": "Magi's",
+        "attributes": {
+            "Precision": 0.25,
+            "Vitality": 0.25,
+            "Healing": 0.35
+        }
+    }, {
+        "id": 157,
+        "name": "Valkyrie",
+        "attributes": {
+            "Power": 0.35,
+            "Vitality": 0.25,
+            "CritDamage": 0.25
+        }
+    }, {
+        "id": 158,
+        "name": "Knight's",
+        "attributes": {
+            "Power": 0.25,
+            "Precision": 0.25,
+            "Toughness": 0.35
+        }
+    }, {
+        "id": 159,
+        "name": "Rampager's",
+        "attributes": {
+            "Power": 0.25,
+            "Precision": 0.35,
+            "ConditionDamage": 0.25
+        }
+    }, {
+        "id": 160,
+        "name": "Carrion",
+        "attributes": {
+            "Power": 0.25,
+            "Vitality": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 161,
+        "name": "Berserker's",
+        "attributes": {
+            "Power": 0.35,
+            "Precision": 0.25,
+            "CritDamage": 0.25
+        }
+    }, {
+        "id": 162,
+        "name": "Soldier's",
+        "attributes": {
+            "Power": 0.35,
+            "Toughness": 0.25,
+            "Vitality": 0.25
+        }
+    }, {
+        "id": 165,
+        "name": "",
+        "attributes": {
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 167,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 175,
+        "name": "Healing",
+        "attributes": {
+            "Healing": 0.35
+        }
+    }, {
+        "id": 176,
+        "name": "Malign",
+        "attributes": {
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 189,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 190,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 191,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 192,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 193,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 194,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 195,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 196,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 197,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 198,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 199,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 200,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 201,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 202,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 203,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 204,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 205,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 206,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 207,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 208,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 209,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 210,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 211,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 212,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 213,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 214,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 215,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 216,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 217,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 218,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 219,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 220,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 221,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 223,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 224,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 226,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 227,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 228,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 229,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 230,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 231,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 232,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 233,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 234,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 235,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 236,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 237,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 238,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 239,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 240,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 241,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 242,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 243,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 244,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 245,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 246,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 247,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 248,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 249,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 250,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 251,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 252,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 253,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 254,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 255,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 256,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 257,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 258,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 259,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 260,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 261,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 262,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 263,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 264,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 265,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 266,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 267,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 268,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 269,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 270,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 271,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 272,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 273,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 274,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 275,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 276,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 277,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 278,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 279,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 280,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 281,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 282,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 283,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 284,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 285,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 286,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 287,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 288,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 289,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 290,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 291,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 292,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 293,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 294,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 295,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 296,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 297,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 298,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 299,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 300,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 301,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 302,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 303,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 304,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 305,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 306,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 307,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 308,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 309,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 310,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 311,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 312,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 313,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 314,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 315,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 316,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 317,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 318,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 319,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 320,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 321,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 322,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 323,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 324,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 325,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 326,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 327,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 328,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 329,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 330,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 331,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "Toughness": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 333,
+        "name": "",
+        "attributes": {
+            "Power": 0
+        }
+    }, {
+        "id": 334,
+        "name": "",
+        "attributes": {
+            "Power": 0
+        }
+    }, {
+        "id": 337,
+        "name": "",
+        "attributes": {
+            "Precision": 0
+        }
+    }, {
+        "id": 338,
+        "name": "",
+        "attributes": {
+            "Precision": 0
+        }
+    }, {
+        "id": 343,
+        "name": "",
+        "attributes": {
+            "Vitality": 0
+        }
+    }, {
+        "id": 344,
+        "name": "",
+        "attributes": {
+            "Vitality": 0
+        }
+    }, {
+        "id": 345,
+        "name": "",
+        "attributes": {
+            "Toughness": 0
+        }
+    }, {
+        "id": 346,
+        "name": "",
+        "attributes": {
+            "Toughness": 0
+        }
+    }, {
+        "id": 349,
+        "name": "",
+        "attributes": {
+            "Healing": 0
+        }
+    }, {
+        "id": 350,
+        "name": "",
+        "attributes": {
+            "Healing": 0
+        }
+    }, {
+        "id": 357,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 358,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 359,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0
+        }
+    }, {
+        "id": 360,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0
+        }
+    }, {
+        "id": 363,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 367,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 368,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 371,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 372,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 375,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 379,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0
+        }
+    }, {
+        "id": 380,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0
+        }
+    }, {
+        "id": 383,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "Toughness": 0
+        }
+    }, {
+        "id": 387,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 388,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 391,
+        "name": "",
+        "attributes": {
+            "Vitality": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 395,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 399,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 400,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 403,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 404,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 405,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 406,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 407,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 408,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 409,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 410,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 411,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 413,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 415,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 416,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 417,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 418,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 419,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0
+        }
+    }, {
+        "id": 420,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0
+        }
+    }, {
+        "id": 421,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0
+        }
+    }, {
+        "id": 422,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0
+        }
+    }, {
+        "id": 423,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 424,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 425,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 426,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 427,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "Vitality": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 429,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "Vitality": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 431,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 433,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 435,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 436,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 437,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 438,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 439,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 440,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 441,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 442,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 443,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 445,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 447,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 449,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 451,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 454,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 455,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 456,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 458,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 461,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 462,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 463,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0
+        }
+    }, {
+        "id": 464,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0
+        }
+    }, {
+        "id": 465,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 466,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 467,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 468,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 469,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0
+        }
+    }, {
+        "id": 470,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0
+        }
+    }, {
+        "id": 471,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 472,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 473,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 475,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 477,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "Toughness": 0
+        }
+    }, {
+        "id": 479,
+        "name": "",
+        "attributes": {
+            "Vitality": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 481,
+        "name": "",
+        "attributes": {
+            "Vitality": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 483,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 484,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 485,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 486,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 487,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "Toughness": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 489,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "Vitality": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 491,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 492,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 493,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 495,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 496,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 497,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 498,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 499,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 501,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 502,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 503,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0
+        }
+    }, {
+        "id": 504,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0
+        }
+    }, {
+        "id": 505,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 506,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 507,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 509,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 510,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 511,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "Toughness": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 512,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Vitality": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 513,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 514,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Vitality": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 515,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Healing": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 516,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "CritDamage": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 517,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0,
+            "Vitality": 0,
+            "CritDamage": 0,
+            "Healing": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 518,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 519,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 520,
+        "name": "",
+        "attributes": {
+            "Power": 0.15,
+            "Precision": 0.15,
+            "Toughness": 0.15,
+            "Vitality": 0.15,
+            "CritDamage": 0.15,
+            "Healing": 0.15,
+            "ConditionDamage": 0.15
+        }
+    }, {
+        "id": 521,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 522,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 523,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 524,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 525,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0
+        }
+    }, {
+        "id": 526,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 527,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0
+        }
+    }, {
+        "id": 528,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 529,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 530,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 531,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 532,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0
+        }
+    }, {
+        "id": 533,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 534,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0
+        }
+    }, {
+        "id": 535,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 536,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 537,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 538,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 539,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 540,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 541,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0
+        }
+    }, {
+        "id": 542,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 543,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 544,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 545,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 546,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Vitality": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 547,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 548,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0
+        }
+    }, {
+        "id": 556,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 557,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 558,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 559,
+        "name": "Celestial",
+        "attributes": {
+            "Power": 0.165,
+            "Precision": 0.165,
+            "Toughness": 0.165,
+            "Vitality": 0.165,
+            "CritDamage": 0.165,
+            "Healing": 0.165,
+            "ConditionDamage": 0.165
+        }
+    }, {
+        "id": 561,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 562,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 563,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 575,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 576,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 577,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 578,
+        "name": "",
+        "attributes": {
+            "ConditionDamage": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 579,
+        "name": "",
+        "attributes": {
+            "Healing": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 581,
+        "name": "Dire and Rabid",
+        "attributes": {
+            "Precision": 0,
+            "Toughness": 0.25,
+            "Vitality": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 583,
+        "name": "Cavalier's",
+        "attributes": {
+            "Power": 0.25,
+            "Toughness": 0.35,
+            "CritDamage": 0.25
+        }
+    }, {
+        "id": 584,
+        "name": "Berserker's",
+        "attributes": {
+            "Power": 0.35,
+            "Precision": 0.25,
+            "CritDamage": 0.25
+        }
+    }, {
+        "id": 585,
+        "name": "Rabid",
+        "attributes": {
+            "Precision": 0.25,
+            "Toughness": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 586,
+        "name": "Soldier's",
+        "attributes": {
+            "Power": 0.35,
+            "Toughness": 0.25,
+            "Vitality": 0.25
+        }
+    }, {
+        "id": 588,
+        "name": "Celestial",
+        "attributes": {
+            "Power": 0.165,
+            "Precision": 0.165,
+            "Toughness": 0.165,
+            "Vitality": 0.165,
+            "CritDamage": 0.165,
+            "Healing": 0.165,
+            "ConditionDamage": 0.165
+        }
+    }, {
+        "id": 589,
+        "name": "",
+        "attributes": {
+            "Vitality": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 590,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 591,
+        "name": "Berserker's and Valkyrie",
+        "attributes": {
+            "Power": 0.35,
+            "Precision": 0.25,
+            "Vitality": 0,
+            "CritDamage": 0.25
+        }
+    }, {
+        "id": 592,
+        "name": "Rabid and Apothecary's",
+        "attributes": {
+            "Precision": 0.25,
+            "Toughness": 0.25,
+            "Healing": 0,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 593,
+        "name": "Celestial",
+        "attributes": {
+            "Power": 0.165,
+            "Precision": 0.165,
+            "Toughness": 0.165,
+            "Vitality": 0.165,
+            "CritDamage": 0.165,
+            "Healing": 0.165,
+            "ConditionDamage": 0.165
+        }
+    }, {
+        "id": 594,
+        "name": "Rabid",
+        "attributes": {
+            "Precision": 0.25,
+            "Toughness": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 595,
+        "name": "Rabid and Apothecary's",
+        "attributes": {
+            "Precision": 0.25,
+            "Toughness": 0.25,
+            "Healing": 0,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 596,
+        "name": "Dire and Rabid",
+        "attributes": {
+            "Precision": 0,
+            "Toughness": 0.25,
+            "Vitality": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 599,
+        "name": "Berserker's",
+        "attributes": {
+            "Power": 0.35,
+            "Precision": 0.25,
+            "CritDamage": 0.25
+        }
+    }, {
+        "id": 600,
+        "name": "Berserker's and Valkyrie",
+        "attributes": {
+            "Power": 0.35,
+            "Precision": 0.25,
+            "Vitality": 0,
+            "CritDamage": 0.25
+        }
+    }, {
+        "id": 601,
+        "name": "Soldier's",
+        "attributes": {
+            "Power": 0.35,
+            "Toughness": 0.25,
+            "Vitality": 0.25
+        }
+    }, {
+        "id": 602,
+        "name": "Cavalier's",
+        "attributes": {
+            "Power": 0.25,
+            "Toughness": 0.35,
+            "CritDamage": 0.25
+        }
+    }, {
+        "id": 603,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 604,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 605,
+        "name": "Apothecary's",
+        "attributes": {
+            "Toughness": 0.25,
+            "Healing": 0.35,
+            "ConditionDamage": 0.25
+        }
+    }, {
+        "id": 607,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Healing": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 609,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Healing": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 610,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Healing": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 611,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Healing": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 612,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 613,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 614,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 616,
+        "name": "Cavalier's",
+        "attributes": {
+            "Power": 0.25,
+            "Toughness": 0.35,
+            "CritDamage": 0.25
+        }
+    }, {
+        "id": 619,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 620,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 621,
+        "name": "",
+        "attributes": {
+            "Healing": 0
+        }
+    }, {
+        "id": 622,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 623,
+        "name": "",
+        "attributes": {
+            "Healing": 0
+        }
+    }, {
+        "id": 624,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "Toughness": 0
+        }
+    }, {
+        "id": 625,
+        "name": "",
+        "attributes": {
+            "Toughness": 0.35,
+            "Healing": 0.25
+        }
+    }, {
+        "id": 626,
+        "name": "",
+        "attributes": {
+            "Toughness": 0.35,
+            "Healing": 0.25
+        }
+    }, {
+        "id": 627,
+        "name": "Giver's",
+        "attributes": {
+            "Toughness": 0.35
+        }
+    }, {
+        "id": 628,
+        "name": "Giver's",
+        "attributes": {
+            "Toughness": 0.35,
+            "Healing": 0.25
+        }
+    }, {
+        "id": 629,
+        "name": "Giver's",
+        "attributes": {
+            "Toughness": 0.35,
+            "Healing": 0.25
+        }
+    }, {
+        "id": 630,
+        "name": "Giver's",
+        "attributes": {
+            "Vitality": 0.25
+        }
+    }, {
+        "id": 631,
+        "name": "Giver's",
+        "attributes": {}
+    }, {
+        "id": 632,
+        "name": "Giver's",
+        "attributes": {
+            "Precision": 0.25,
+            "Vitality": 0.25
+        }
+    }, {
+        "id": 633,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 634,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 635,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 636,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 642,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 643,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 644,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 645,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 647,
+        "name": "",
+        "attributes": {
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 648,
+        "name": "",
+        "attributes": {
+            "Healing": 0
+        }
+    }, {
+        "id": 649,
+        "name": "",
+        "attributes": {
+            "Power": 0
+        }
+    }, {
+        "id": 650,
+        "name": "",
+        "attributes": {
+            "Precision": 0
+        }
+    }, {
+        "id": 651,
+        "name": "",
+        "attributes": {
+            "Toughness": 0
+        }
+    }, {
+        "id": 652,
+        "name": "",
+        "attributes": {
+            "Vitality": 0
+        }
+    }, {
+        "id": 656,
+        "name": "Cleric's",
+        "attributes": {
+            "Power": 0.25,
+            "Toughness": 0.25,
+            "Healing": 0.35
+        }
+    }, {
+        "id": 657,
+        "name": "Knight's",
+        "attributes": {
+            "Power": 0.25,
+            "Precision": 0.25,
+            "Toughness": 0.35
+        }
+    }, {
+        "id": 658,
+        "name": "Rampager's",
+        "attributes": {
+            "Power": 0.25,
+            "Precision": 0.35,
+            "ConditionDamage": 0.25
+        }
+    }, {
+        "id": 659,
+        "name": "Apothecary's",
+        "attributes": {
+            "Toughness": 0.25,
+            "Healing": 0.35,
+            "ConditionDamage": 0.25
+        }
+    }, {
+        "id": 660,
+        "name": "Captain's",
+        "attributes": {
+            "Power": 0.25,
+            "Precision": 0.35,
+            "Toughness": 0.25
+        }
+    }, {
+        "id": 661,
+        "name": "Cleric's",
+        "attributes": {
+            "Power": 0.25,
+            "Toughness": 0.25,
+            "Healing": 0.35
+        }
+    }, {
+        "id": 662,
+        "name": "Knight's",
+        "attributes": {
+            "Power": 0.25,
+            "Precision": 0.25,
+            "Toughness": 0.35
+        }
+    }, {
+        "id": 663,
+        "name": "Rampager's",
+        "attributes": {
+            "Power": 0.25,
+            "Precision": 0.35,
+            "ConditionDamage": 0.25
+        }
+    }, {
+        "id": 664,
+        "name": "Apothecary's",
+        "attributes": {
+            "Toughness": 0.25,
+            "Healing": 0.35,
+            "ConditionDamage": 0.25
+        }
+    }, {
+        "id": 665,
+        "name": "Captain's",
+        "attributes": {
+            "Power": 0.25,
+            "Precision": 0.35,
+            "Toughness": 0.25
+        }
+    }, {
+        "id": 666,
+        "name": "",
+        "attributes": {
+            "ConditionDamage": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 668,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 670,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 680,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 681,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 682,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 683,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 684,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 686,
+        "name": "Sentinel's",
+        "attributes": {
+            "Power": 0.25,
+            "Toughness": 0.25,
+            "Vitality": 0.35
+        }
+    }, {
+        "id": 689,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 690,
+        "name": "Settler's",
+        "attributes": {
+            "Toughness": 0.35,
+            "Healing": 0.25,
+            "ConditionDamage": 0.25
+        }
+    }, {
+        "id": 693,
+        "name": "Settler's",
+        "attributes": {
+            "Toughness": 0.35,
+            "Healing": 0.25,
+            "ConditionDamage": 0.25
+        }
+    }, {
+        "id": 700,
+        "name": "Settler's",
+        "attributes": {
+            "Toughness": 0.35,
+            "Healing": 0.25,
+            "ConditionDamage": 0.25
+        }
+    }, {
+        "id": 702,
+        "name": "",
+        "attributes": {
+            "Healing": 0
+        }
+    }, {
+        "id": 703,
+        "name": "",
+        "attributes": {
+            "Toughness": 0
+        }
+    }, {
+        "id": 704,
+        "name": "",
+        "attributes": {
+            "Vitality": 0
+        }
+    }, {
+        "id": 705,
+        "name": "",
+        "attributes": {
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 706,
+        "name": "",
+        "attributes": {
+            "Power": 0
+        }
+    }, {
+        "id": 707,
+        "name": "",
+        "attributes": {
+            "Precision": 0
+        }
+    }, {
+        "id": 717,
+        "name": "",
+        "attributes": {
+            "Power": 0.35,
+            "Precision": 0.25,
+            "CritDamage": 0.25
+        }
+    }, {
+        "id": 740,
+        "name": "",
+        "attributes": {
+            "Power": 0.15,
+            "Precision": 0.15,
+            "Toughness": 0.15,
+            "Vitality": 0.15
+        }
+    }, {
+        "id": 742,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0,
+            "Vitality": 0,
+            "CritDamage": 0,
+            "Healing": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 743,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 744,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 745,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 746,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 747,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 748,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 749,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 750,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 751,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 753,
+        "name": "Assassin's",
+        "attributes": {
+            "Power": 0.25,
+            "Precision": 0.35,
+            "CritDamage": 0.25
+        }
+    }, {
+        "id": 754,
+        "name": "Dire",
+        "attributes": {
+            "Toughness": 0.25,
+            "Vitality": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 755,
+        "name": "Hunter's",
+        "attributes": {
+            "Power": 0.25,
+            "Precision": 0.35
+        }
+    }, {
+        "id": 756,
+        "name": "Dire",
+        "attributes": {
+            "Toughness": 0.25,
+            "Vitality": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 763,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 764,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 765,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 766,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 767,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 768,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 769,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 770,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 771,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 772,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 773,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 774,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 775,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 776,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 777,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 778,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 779,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 780,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 781,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 782,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 783,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 784,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 785,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 791,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 796,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 798,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 799,
+        "name": "Zealot's",
+        "attributes": {
+            "Power": 0.35,
+            "Precision": 0.25,
+            "Healing": 0.25
+        }
+    }, {
+        "id": 800,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1011,
+        "name": "Forsaken",
+        "attributes": {
+            "Power": 0.35,
+            "Toughness": 0.25,
+            "Healing": 0.25
+        }
+    }, {
+        "id": 1012,
+        "name": "Apostate's",
+        "attributes": {
+            "Toughness": 0.25,
+            "Healing": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 1013,
+        "name": "Survivor's",
+        "attributes": {
+            "Toughness": 0.25,
+            "Healing": 0.35
+        }
+    }, {
+        "id": 1014,
+        "name": "Deserter's",
+        "attributes": {
+            "Toughness": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 1015,
+        "name": "Vagabond's",
+        "attributes": {
+            "Power": 0.35,
+            "Toughness": 0.25
+        }
+    }, {
+        "id": 1018,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1019,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1020,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1021,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1026,
+        "name": "Nomad's",
+        "attributes": {
+            "Toughness": 0.35,
+            "Vitality": 0.25,
+            "Healing": 0.25
+        }
+    }, {
+        "id": 1027,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Vitality": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 1030,
+        "name": "Giver's",
+        "attributes": {
+            "Vitality": 0.25
+        }
+    }, {
+        "id": 1031,
+        "name": "Giver's",
+        "attributes": {}
+    }, {
+        "id": 1032,
+        "name": "Giver's",
+        "attributes": {
+            "Precision": 0.25,
+            "Vitality": 0.25
+        }
+    }, {
+        "id": 1035,
+        "name": "Sentinel's",
+        "attributes": {
+            "Power": 0.25,
+            "Toughness": 0.25,
+            "Vitality": 0.35
+        }
+    }, {
+        "id": 1036,
+        "name": "Magi's",
+        "attributes": {
+            "Precision": 0.25,
+            "Vitality": 0.25,
+            "Healing": 0.35
+        }
+    }, {
+        "id": 1037,
+        "name": "Magi's",
+        "attributes": {
+            "Precision": 0.25,
+            "Vitality": 0.25,
+            "Healing": 0.35
+        }
+    }, {
+        "id": 1038,
+        "name": "Carrion",
+        "attributes": {
+            "Power": 0.25,
+            "Vitality": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 1040,
+        "name": "Assassin's",
+        "attributes": {
+            "Power": 0.25,
+            "Precision": 0.35,
+            "CritDamage": 0.25
+        }
+    }, {
+        "id": 1041,
+        "name": "Captain's",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0
+        }
+    }, {
+        "id": 1042,
+        "name": "Rabid",
+        "attributes": {
+            "Precision": 0,
+            "Toughness": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 1043,
+        "name": "Apothecary's",
+        "attributes": {
+            "Toughness": 0,
+            "Healing": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 1044,
+        "name": "Cleric's",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 1046,
+        "name": "Berserker's",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 1047,
+        "name": "Rampager's",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 1048,
+        "name": "Soldier's",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Vitality": 0
+        }
+    }, {
+        "id": 1050,
+        "name": "Cavalier's",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 1051,
+        "name": "Knight's",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0
+        }
+    }, {
+        "id": 1052,
+        "name": "Celestial",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0,
+            "Vitality": 0,
+            "CritDamage": 0,
+            "Healing": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 1055,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1056,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1057,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1058,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0,
+            "Vitality": 0,
+            "CritDamage": 0,
+            "Healing": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 1059,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0,
+            "Vitality": 0,
+            "CritDamage": 0,
+            "Healing": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 1060,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0,
+            "Vitality": 0,
+            "CritDamage": 0,
+            "Healing": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 1063,
+        "name": "Nomad's",
+        "attributes": {
+            "Toughness": 0.35,
+            "Vitality": 0.25,
+            "Healing": 0.25
+        }
+    }, {
+        "id": 1064,
+        "name": "Sinister",
+        "attributes": {
+            "Power": 0.25,
+            "Precision": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 1065,
+        "name": "Sinister",
+        "attributes": {
+            "Power": 0.25,
+            "Precision": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 1066,
+        "name": "Nomad's",
+        "attributes": {
+            "Toughness": 0.35,
+            "Vitality": 0.25,
+            "Healing": 0.25
+        }
+    }, {
+        "id": 1067,
+        "name": "Sinister",
+        "attributes": {
+            "Power": 0.25,
+            "Precision": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 1068,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1069,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 1070,
+        "name": "Giver's",
+        "attributes": {
+            "Toughness": 0.35,
+            "Healing": 0.25
+        }
+    }, {
+        "id": 1071,
+        "name": "Shaman's",
+        "attributes": {
+            "Vitality": 0.35,
+            "Healing": 0.25,
+            "ConditionDamage": 0.25
+        }
+    }, {
+        "id": 1072,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1073,
+        "name": "Dire",
+        "attributes": {
+            "Toughness": 0.25,
+            "Vitality": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 1074,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1075,
+        "name": "Carrion",
+        "attributes": {
+            "Power": 0.25,
+            "Vitality": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 1076,
+        "name": "Cleric's",
+        "attributes": {
+            "Power": 0.25,
+            "Toughness": 0.25,
+            "Healing": 0.35
+        }
+    }, {
+        "id": 1077,
+        "name": "Berserker's",
+        "attributes": {
+            "Power": 0.35,
+            "Precision": 0.25,
+            "CritDamage": 0.25
+        }
+    }, {
+        "id": 1078,
+        "name": "Rampager's",
+        "attributes": {
+            "Power": 0.25,
+            "Precision": 0.35,
+            "ConditionDamage": 0.25
+        }
+    }, {
+        "id": 1079,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1081,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0,
+            "Vitality": 0,
+            "CritDamage": 0,
+            "Healing": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 1085,
+        "name": "Trailblazer's",
+        "attributes": {
+            "Toughness": 0.3,
+            "Vitality": 0.165,
+            "ConditionDamage": 0.3,
+            "ConditionDuration": 0.165
+        }
+    }, {
+        "id": 1087,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Vitality": 0,
+            "ConditionDamage": 0,
+            "ConditionDuration": 0
+        }
+    }, {
+        "id": 1096,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1097,
+        "name": "Shaman's",
+        "attributes": {
+            "Vitality": 0.35,
+            "Healing": 0.25,
+            "ConditionDamage": 0.25
+        }
+    }, {
+        "id": 1098,
+        "name": "Crusader",
+        "attributes": {
+            "Power": 0.3,
+            "Toughness": 0.3,
+            "CritDamage": 0.165,
+            "Healing": 0.165
+        }
+    }, {
+        "id": 1099,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "BoonDuration": 0,
+            "ConditionDuration": 0
+        }
+    }, {
+        "id": 1100,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1101,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "ConditionDamage": 0,
+            "ConditionDuration": 0
+        }
+    }, {
+        "id": 1102,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0,
+            "BoonDuration": 0
+        }
+    }, {
+        "id": 1103,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1107,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1108,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0,
+            "Vitality": 0,
+            "CritDamage": 0,
+            "Healing": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 1109,
+        "name": "Crusader",
+        "attributes": {
+            "Power": 0.3,
+            "Toughness": 0.3,
+            "CritDamage": 0.165,
+            "Healing": 0.165
+        }
+    }, {
+        "id": 1110,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1111,
+        "name": "Marauder",
+        "attributes": {
+            "Power": 0.3,
+            "Precision": 0.3,
+            "Vitality": 0.165,
+            "CritDamage": 0.165
+        }
+    }, {
+        "id": 1112,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1113,
+        "name": "Viper's",
+        "attributes": {
+            "Power": 0.3,
+            "Precision": 0.165,
+            "ConditionDamage": 0.3,
+            "ConditionDuration": 0.165
+        }
+    }, {
+        "id": 1114,
+        "name": "Dire",
+        "attributes": {
+            "Toughness": 0.25,
+            "Vitality": 0.25,
+            "ConditionDamage": 0.35
+        }
+    }, {
+        "id": 1115,
+        "name": "Trailblazer's",
+        "attributes": {
+            "Toughness": 0.3,
+            "Vitality": 0.165,
+            "ConditionDamage": 0.3,
+            "ConditionDuration": 0.165
+        }
+    }, {
+        "id": 1117,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1118,
+        "name": "Vigilant",
+        "attributes": {
+            "Power": 0.3,
+            "Toughness": 0.3,
+            "BoonDuration": 0.165,
+            "ConditionDuration": 0.165
+        }
+    }, {
+        "id": 1119,
+        "name": "Valkyrie",
+        "attributes": {
+            "Power": 0.35,
+            "Vitality": 0.25,
+            "CritDamage": 0.25
+        }
+    }, {
+        "id": 1120,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1122,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "CritDamage": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 1123,
+        "name": "Minstrel's",
+        "attributes": {
+            "Toughness": 0.3,
+            "Vitality": 0.165,
+            "Healing": 0.3,
+            "BoonDuration": 0.165
+        }
+    }, {
+        "id": 1125,
+        "name": "Commander's",
+        "attributes": {
+            "Power": 0.3,
+            "Precision": 0.3,
+            "Toughness": 0.165,
+            "BoonDuration": 0.165
+        }
+    }, {
+        "id": 1126,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Vitality": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 1127,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1128,
+        "name": "Assassin's",
+        "attributes": {
+            "Power": 0.25,
+            "Precision": 0.35,
+            "CritDamage": 0.25
+        }
+    }, {
+        "id": 1129,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Vitality": 0,
+            "BoonDuration": 0
+        }
+    }, {
+        "id": 1130,
+        "name": "Viper's",
+        "attributes": {
+            "Power": 0.3,
+            "Precision": 0.165,
+            "ConditionDamage": 0.3,
+            "ConditionDuration": 0.165
+        }
+    }, {
+        "id": 1131,
+        "name": "Commander's",
+        "attributes": {
+            "Power": 0.3,
+            "Precision": 0.3,
+            "Toughness": 0.165,
+            "BoonDuration": 0.165
+        }
+    }, {
+        "id": 1134,
+        "name": "Minstrel's",
+        "attributes": {
+            "Toughness": 0.3,
+            "Vitality": 0.165,
+            "Healing": 0.3,
+            "BoonDuration": 0.165
+        }
+    }, {
+        "id": 1135,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0,
+            "Vitality": 0,
+            "CritDamage": 0,
+            "Healing": 0,
+            "ConditionDamage": 0
+        }
+    }, {
+        "id": 1136,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1137,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "ConditionDamage": 0,
+            "ConditionDuration": 0
+        }
+    }, {
+        "id": 1139,
+        "name": "Vigilant",
+        "attributes": {
+            "Power": 0.3,
+            "Toughness": 0.3,
+            "BoonDuration": 0.165,
+            "ConditionDuration": 0.165
+        }
+    }, {
+        "id": 1140,
+        "name": "Wanderer's",
+        "attributes": {
+            "Power": 0.3,
+            "Toughness": 0.165,
+            "Vitality": 0.3,
+            "BoonDuration": 0.165
+        }
+    }, {
+        "id": 1142,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Toughness": 0,
+            "BoonDuration": 0
+        }
+    }, {
+        "id": 1143,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1145,
+        "name": "Marauder",
+        "attributes": {
+            "Power": 0.3,
+            "Precision": 0.3,
+            "Vitality": 0.165,
+            "CritDamage": 0.165
+        }
+    }, {
+        "id": 1146,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1151,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "Vitality": 0,
+            "BoonDuration": 0
+        }
+    }, {
+        "id": 1152,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "BoonDuration": 0,
+            "ConditionDuration": 0
+        }
+    }, {
+        "id": 1153,
+        "name": "Viper's",
+        "attributes": {
+            "Power": 0.3,
+            "Precision": 0.165,
+            "ConditionDamage": 0.3,
+            "ConditionDuration": 0.165
+        }
+    }, {
+        "id": 1154,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1156,
+        "name": "",
+        "attributes": {
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1157,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Vitality": 0,
+            "Healing": 0,
+            "BoonDuration": 0
+        }
+    }, {
+        "id": 1158,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Precision": 0,
+            "Vitality": 0,
+            "CritDamage": 0
+        }
+    }, {
+        "id": 1160,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1162,
+        "name": "Wanderer's",
+        "attributes": {
+            "Power": 0.3,
+            "Toughness": 0.165,
+            "Vitality": 0.3,
+            "BoonDuration": 0.165
+        }
+    }, {
+        "id": 1163,
+        "name": "Zealot's",
+        "attributes": {
+            "Power": 0.35,
+            "Precision": 0.25,
+            "Healing": 0.25
+        }
+    }, {
+        "id": 1164,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "Toughness": 0,
+            "CritDamage": 0,
+            "Healing": 0
+        }
+    }, {
+        "id": 1166,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Vitality": 0,
+            "Healing": 0,
+            "BoonDuration": 0
+        }
+    }, {
+        "id": 1167,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "Vitality": 0,
+            "ConditionDamage": 0,
+            "ConditionDuration": 0
+        }
+    }, {
+        "id": 1170,
+        "name": "",
+        "attributes": {
+            "Healing": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1171,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1172,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1173,
+        "name": "",
+        "attributes": {
+            "Vitality": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1174,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1175,
+        "name": "",
+        "attributes": {
+            "ConditionDamage": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1177,
+        "name": "",
+        "attributes": {}
+    }, {
+        "id": 1179,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1180,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1181,
+        "name": "",
+        "attributes": {
+            "Vitality": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1182,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1183,
+        "name": "",
+        "attributes": {
+            "ConditionDamage": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1184,
+        "name": "",
+        "attributes": {
+            "Vitality": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1185,
+        "name": "",
+        "attributes": {
+            "Toughness": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1186,
+        "name": "",
+        "attributes": {
+            "Precision": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1187,
+        "name": "",
+        "attributes": {
+            "Power": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1188,
+        "name": "",
+        "attributes": {
+            "ConditionDamage": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1189,
+        "name": "",
+        "attributes": {
+            "Healing": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1190,
+        "name": "",
+        "attributes": {
+            "Healing": 0,
+            "AgonyResistance": 0
+        }
+    }, {
+        "id": 1191,
+        "name": "",
+        "attributes": {}
+    }
+]
