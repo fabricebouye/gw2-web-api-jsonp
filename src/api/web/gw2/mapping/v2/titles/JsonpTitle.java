@@ -19,7 +19,7 @@ public final class JsonpTitle implements Title {
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
     @LocalizedResource
-    private String name = "";
+    private String name = LocalizedResource.DEFAULT;
     @IdValue
     private int achievement = IdValue.DEFAULT_INTEGER_ID;
 
