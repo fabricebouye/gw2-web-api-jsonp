@@ -31,6 +31,7 @@ import api.web.gw2.mapping.v2.guild.upgrades.Upgrade;
 import api.web.gw2.mapping.v2.items.Item;
 import api.web.gw2.mapping.v2.items.ItemDetails;
 import api.web.gw2.mapping.v2.items.ItemType;
+import api.web.gw2.mapping.v2.itemstats.Itemstats;
 import api.web.gw2.mapping.v2.legends.Legend;
 import api.web.gw2.mapping.v2.maps.Map;
 import api.web.gw2.mapping.v2.materials.MaterialStorage;
@@ -106,6 +107,7 @@ public class JsonpContext_SAX_LocalTest {
         final String basecode = "/api/web/gw2/mapping/v2/worlds/"; // NOI18N.
         final String filename = "world1.json"; // NOI18N.
         final URL url = getClass().getResource(basecode + filename);
+        assertNotNull(url);
         final World value = instance.loadObject(World.class, url);
         assertNotNull(value);
         assertEquals(1001, value.getId());
@@ -119,6 +121,7 @@ public class JsonpContext_SAX_LocalTest {
         final String basecode = "/api/web/gw2/mapping/v2/account/"; // NOI18N.
         final String filename = "account1.json"; // NOI18N.
         final URL url = getClass().getResource(basecode + filename);
+        assertNotNull(url);
         final Account value = instance.loadObject(Account.class, url);
         assertNotNull(value);
         assertEquals("b8169418-1c11-405f-91bb-e2b29d602b8a", value.getId()); // NOI18N.
@@ -135,6 +138,7 @@ public class JsonpContext_SAX_LocalTest {
         final String basecode = "/api/web/gw2/mapping/v2/account/wallet/"; // NOI18N.
         final String filename = "currency_amount1.json"; // NOI18N.
         final URL url = getClass().getResource(basecode + filename);
+        assertNotNull(url);
         final CurrencyAmount value = instance.loadObject(CurrencyAmount.class, url);
         assertNotNull(value);
         assertEquals(1, value.getId());
@@ -147,6 +151,7 @@ public class JsonpContext_SAX_LocalTest {
         final String basecode = "/api/web/gw2/mapping/v2/minis/"; // NOI18N.
         final String filename = "mini1.json"; // NOI18N.
         final URL url = getClass().getResource(basecode + filename);
+        assertNotNull(url);
         final Mini value = instance.loadObject(Mini.class, url);
         assertNotNull(value);
         assertEquals(1, value.getId());
@@ -163,6 +168,7 @@ public class JsonpContext_SAX_LocalTest {
         final String basecode = "/api/web/gw2/mapping/v2/specializations/"; // NOI18N.
         final String filename = "specialization1.json"; // NOI18N.
         final URL url = getClass().getResource(basecode + filename);
+        assertNotNull(url);
         final Specialization value = instance.loadObject(Specialization.class, url);
         assertNotNull(value);
         assertEquals(1, value.getId());
@@ -183,6 +189,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Trait value = instance.loadObject(Trait.class, url);
                         assertNotNull(value);
@@ -205,6 +212,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Character value = instance.loadObject(Character.class, url);
                         assertNotNull(value);
@@ -220,6 +228,7 @@ public class JsonpContext_SAX_LocalTest {
         final String basecode = "/api/web/gw2/mapping/v2/characters/"; // NOI18N.
         final String filename = "charactercrafting1.json"; // NOI18N.
         final URL url = getClass().getResource(basecode + filename);
+        assertNotNull(url);
         final CharacterCrafting value = instance.loadObject(CharacterCrafting.class, url);
         assertNotNull(value);
         assertEquals(RecipeCraftingDiscipline.ARTIFICER, value.getDiscipline());
@@ -241,6 +250,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Equipment value = instance.loadObject(Equipment.class, url);
                         assertNotNull(value);
@@ -262,6 +272,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final InventoryBag value = instance.loadObject(InventoryBag.class, url);
                         assertNotNull(value);
@@ -277,6 +288,7 @@ public class JsonpContext_SAX_LocalTest {
         final String basecode = "/api/web/gw2/mapping/v2/materials/"; // NOI18N.
         final String filename = "materialstorage1.json"; // NOI18N.
         final URL url = getClass().getResource(basecode + filename);
+        assertNotNull(url);
         final MaterialStorage value = instance.loadObject(MaterialStorage.class, url);
         assertNotNull(value);
         assertEquals(38, value.getId());
@@ -302,6 +314,7 @@ public class JsonpContext_SAX_LocalTest {
         IntStream.range(0, files.length).forEach(index -> {
             final String file = files[index];
             final URL url = getClass().getResource(basecode + file);
+            assertNotNull(url);
             try {
                 final Achievement value = instance.loadObject(Achievement.class, url);
                 assertNotNull(value);
@@ -348,6 +361,7 @@ public class JsonpContext_SAX_LocalTest {
         IntStream.range(0, files.length).forEach(index -> {
             final String file = files[index];
             final URL url = getClass().getResource(baseCode + file);
+            assertNotNull(url);
             try {
                 final DailyAchievement value = instance.loadObject(DailyAchievement.class, url);
                 assertNotNull(value);
@@ -402,6 +416,7 @@ public class JsonpContext_SAX_LocalTest {
         IntStream.range(0, files.length).forEach(index -> {
             final String file = files[index];
             final URL url = getClass().getResource(baseCode + file);
+            assertNotNull(url);
             try {
                 final api.web.gw2.mapping.v2.account.achievements.Achievement value = instance.loadObject(api.web.gw2.mapping.v2.account.achievements.Achievement.class, url);
                 assertNotNull(value);
@@ -429,6 +444,7 @@ public class JsonpContext_SAX_LocalTest {
         final int expResultCount = expPageSize;
         final int expResultTotal = expPageSize;
         final URL url = getClass().getResource("test_page1.json"); // NOI18N.
+        assertNotNull(url);
         final PageResult<Integer> value = instance.loadPage(Integer.class, url);
         assertNotNull(value);
         assertEquals(expPageTotal, value.getPageTotal());
@@ -457,6 +473,7 @@ public class JsonpContext_SAX_LocalTest {
         final String baseCode = "/api/web/gw2/mapping/v2/account/bank/"; // NOI18N.
         String filename = "bankresponse.json"; // NOI18N.
         final URL url = getClass().getResource(baseCode + filename);
+        assertNotNull(url);
         final PageResult<BankSlot> value = instance.loadPage(BankSlot.class, url);
 //        value.stream().forEach(System.out::println);
         assertNotNull(value);
@@ -497,6 +514,7 @@ public class JsonpContext_SAX_LocalTest {
             System.out.println(files[index]);
             final String file = files[index];
             final URL url = getClass().getResource(baseCode + file);
+            assertNotNull(url);
             try {
                 final TraitFact value = instance.loadRuntimeObject("type", "api.web.gw2.mapping.v2.traits.Trait%sFact", url);
                 assertNotNull(value);
@@ -517,6 +535,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Skin value = instance.loadObject(Skin.class, url);
                         assertNotNull(value);
@@ -544,6 +563,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Objective value = instance.loadObject(Objective.class, url);
                         assertNotNull(value);
@@ -568,6 +588,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Match value = instance.loadObject(Match.class, url);
                         assertNotNull(value);
@@ -590,6 +611,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Recipe value = instance.loadObject(Recipe.class, url);
                         assertNotNull(value);
@@ -639,6 +661,7 @@ public class JsonpContext_SAX_LocalTest {
             System.out.println(files[index]);
             final String file = files[index];
             final URL url = getClass().getResource(baseCode + file);
+            assertNotNull(url);
             final ItemType expItemType = expItemTypes[index];
             final String token = JsonpUtils.INSTANCE.javaEnumToJavaClassName(expItemType);
             final String className = String.format(classPattern, token);
@@ -664,6 +687,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Currency value = instance.loadObject(Currency.class, url);
                         assertNotNull(value);
@@ -685,6 +709,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Continent value = instance.loadObject(Continent.class, url);
                         assertNotNull(value);
@@ -705,6 +730,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Map value = instance.loadObject(Map.class, url);
                         assertNotNull(value);
@@ -741,6 +767,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Item value = instance.loadObject(Item.class, url);
                         assertNotNull(value);
@@ -761,6 +788,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Game value = instance.loadObject(Game.class, url);
                         assertNotNull(value);
@@ -781,6 +809,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Stat value = instance.loadObject(Stat.class, url);
                         assertNotNull(value);
@@ -802,6 +831,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Season value = instance.loadObject(Season.class, url);
                         assertNotNull(value);
@@ -823,6 +853,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Standing value = instance.loadObject(Standing.class, url);
                         assertNotNull(value);
@@ -844,6 +875,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final LogEvent value = instance.loadObject(LogEvent.class, url);
                         assertNotNull(value);
@@ -864,6 +896,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Stash value = instance.loadObject(Stash.class, url);
                         assertNotNull(value);
@@ -885,6 +918,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Treasury value = instance.loadObject(Treasury.class, url);
                         assertNotNull(value);
@@ -905,6 +939,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Team value = instance.loadObject(Team.class, url);
                         assertNotNull(value);
@@ -928,6 +963,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Collection<SharedInventory> value = instance.loadObjectArray(SharedInventory.class, url);
                         assertEquals(expectedIds.length, value.size());
@@ -958,6 +994,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Upgrade value = instance.loadObject(Upgrade.class, url);
                         assertNotNull(value);
@@ -978,6 +1015,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Profession value = instance.loadObject(Profession.class, url);
                         assertNotNull(value);
@@ -998,6 +1036,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Collection<Title> value = instance.loadObjectArray(Title.class, url);
                         assertNotNull(value);
@@ -1018,6 +1057,7 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Collection<Legend> value = instance.loadObjectArray(Legend.class, url);
                         assertNotNull(value);
@@ -1038,8 +1078,30 @@ public class JsonpContext_SAX_LocalTest {
                 .forEach(index -> {
                     final String filename = filenames[index];
                     final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
                     try {
                         final Collection<Amulet> value = instance.loadObjectArray(Amulet.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_ItemstatsLocal() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Itemstats local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/itemstats/"; // NOI18N.
+        final String[] filenames = {
+            "itemstats.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final Collection<Itemstats> value = instance.loadObjectArray(Itemstats.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
