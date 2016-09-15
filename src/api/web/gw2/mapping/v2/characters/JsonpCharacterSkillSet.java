@@ -25,6 +25,9 @@ public final class JsonpCharacterSkillSet implements CharacterSkillSet {
     @SetValue
     @IdValue
     private Set<Integer> utilities= Collections.EMPTY_SET;
+    @SetValue
+    @IdValue
+    private Set<Integer> legends= Collections.EMPTY_SET;
 
     /**
      * Creates a new empty instance.
@@ -46,5 +49,9 @@ public final class JsonpCharacterSkillSet implements CharacterSkillSet {
     public Set<Integer> getUtilities() {
         return utilities;
     }
-    
+
+    @Override
+    public Set<Integer> getLegends() {
+        return legends;
+    }
 }
