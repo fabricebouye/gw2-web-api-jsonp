@@ -8,8 +8,10 @@
 package api.web.gw2.mapping.v2.characters;
 
 import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.SetValue;
 import java.util.Collections;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -28,6 +30,8 @@ public final class JsonpCharacterSkillSet implements CharacterSkillSet {
     @SetValue
     @IdValue
     private Set<Integer> legends= Collections.EMPTY_SET;
+    @OptionalValue
+    private Optional<CharacterPets> pets = Optional.empty();
 
     /**
      * Creates a new empty instance.
@@ -54,4 +58,9 @@ public final class JsonpCharacterSkillSet implements CharacterSkillSet {
     public Set<Integer> getLegends() {
         return legends;
     }
+
+    @Override
+    public Optional<CharacterPets> getPets() {
+        return pets;
+    }    
 }
