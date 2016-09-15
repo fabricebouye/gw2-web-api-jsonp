@@ -40,6 +40,7 @@ import api.web.gw2.mapping.v2.legends.Legend;
 import api.web.gw2.mapping.v2.maps.Map;
 import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
+import api.web.gw2.mapping.v2.pets.Pet;
 import api.web.gw2.mapping.v2.professions.Profession;
 import api.web.gw2.mapping.v2.pvp.amulets.Amulet;
 import api.web.gw2.mapping.v2.pvp.games.Game;
@@ -1193,6 +1194,28 @@ public class JsonpContext_SAX_LocalTest {
                     assertNotNull(url);
                     try {
                         final BackstoryQuestion value = instance.loadObject(BackstoryQuestion.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_Pet() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Pet local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/pets/"; // NOI18N.
+        final String[] filenames = {
+            "pet1.json", // NOI18N.
+            "pet2.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final Pet value = instance.loadObject(Pet.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
