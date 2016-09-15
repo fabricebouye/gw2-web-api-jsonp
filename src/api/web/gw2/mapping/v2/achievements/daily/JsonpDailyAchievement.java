@@ -8,6 +8,9 @@
 package api.web.gw2.mapping.v2.achievements.daily;
 
 import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.SetValue;
+import java.util.Collections;
+import java.util.Set;
 
 /**
  * Default JSON-P implementation of a daily achievements.
@@ -19,6 +22,9 @@ public final class JsonpDailyAchievement implements DailyAchievement {
     private int id = IdValue.DEFAULT_INTEGER_ID;
 
     private DailyAchievementLevelRange level = DailyAchievementLevelRange.ALL_LEVELS;
+    
+    @SetValue
+    private Set<DailyAchievementCampaign> requiredAccess = Collections.EMPTY_SET;
 
     /**
      * Creates a new empty instance.
@@ -34,5 +40,10 @@ public final class JsonpDailyAchievement implements DailyAchievement {
     @Override
     public DailyAchievementLevelRange getLevel() {
         return level;
+    }
+
+    @Override
+    public Set<DailyAchievementCampaign> getRequiredAccess() {
+        return requiredAccess;
     }
 }

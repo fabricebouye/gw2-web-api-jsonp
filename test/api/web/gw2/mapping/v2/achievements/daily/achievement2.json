@@ -3,5 +3,8 @@
     "level": {
         "min": 11,
         "max": 80
-    }
+    },
+    "required_access": [
+        "GuildWars2"
+    ]
 }

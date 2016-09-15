@@ -3,5 +3,9 @@
     "level": {
         "min": 1,
         "max": 80
-    }
+    },
+    "required_access": [
+        "GuildWars2",
+        "HeartOfThorns"
+    ]
 }
