@@ -16,6 +16,7 @@ import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
 import api.web.gw2.mapping.v2.achievements.Achievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievementLevelRange;
+import api.web.gw2.mapping.v2.backstory.answers.BackstoryAnswer;
 import api.web.gw2.mapping.v2.characters.Character;
 import api.web.gw2.mapping.v2.characters.CharacterCrafting;
 import api.web.gw2.mapping.v2.characters.CharacterProfession;
@@ -1147,6 +1148,28 @@ public class JsonpContext_SAX_LocalTest {
                     assertNotNull(url);
                     try {
                         final Collection<FinisherUnlock> value = instance.loadObjectArray(FinisherUnlock.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_BackstoryAnswer() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(BackstoryAnswer local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/backstory/answers/"; // NOI18N.
+        final String[] filenames = {
+            "answer1.json", // NOI18N.
+            "answer2.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final BackstoryAnswer value = instance.loadObject(BackstoryAnswer.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());

@@ -1,0 +1,9 @@
+{
+    "id": 1,
+    "title": "Fern Hound",
+    "description": "My dog has always stood by me, even against the most dangerous attackers. I couldn't ask for a better friend and ally.",
+    "journal": "<br><br>I'm a ranger, and I have a dog that fights at my side and guards my back.<br><br>This is my story.<br>",
+    "question": 183,
+    "professions": ["Ranger"],
+    "races": ["Sylvari"]
+}
