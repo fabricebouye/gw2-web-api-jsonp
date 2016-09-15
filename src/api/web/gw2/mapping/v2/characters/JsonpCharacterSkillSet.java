@@ -19,17 +19,17 @@ import java.util.Set;
  * @author Fabrice Bouyé
  */
 public final class JsonpCharacterSkillSet implements CharacterSkillSet {
-    
+
     @IdValue
     private int heal = IdValue.DEFAULT_INTEGER_ID;
     @IdValue
     private int elite = IdValue.DEFAULT_INTEGER_ID;
     @SetValue
     @IdValue
-    private Set<Integer> utilities= Collections.EMPTY_SET;
+    private Set<Integer> utilities = Collections.EMPTY_SET;
     @SetValue
     @IdValue
-    private Set<Integer> legends= Collections.EMPTY_SET;
+    private Set<Integer> legends = Collections.EMPTY_SET;
     @OptionalValue
     private Optional<CharacterPets> pets = Optional.empty();
 
@@ -37,7 +37,7 @@ public final class JsonpCharacterSkillSet implements CharacterSkillSet {
      * Creates a new empty instance.
      */
     public JsonpCharacterSkillSet() {
-    }        
+    }
 
     @Override
     public int getHeal() {
@@ -62,5 +62,5 @@ public final class JsonpCharacterSkillSet implements CharacterSkillSet {
     @Override
     public Optional<CharacterPets> getPets() {
         return pets;
-    }    
+    }
 }
