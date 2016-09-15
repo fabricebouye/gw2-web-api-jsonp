@@ -1,0 +1,8 @@
+{
+    "id": 187,
+    "title": "The Guise I Wear.",
+    "description": "In my line of work, it's important to understand the power of ______.",
+    "answers": [184, 185, 186],
+    "order": 0,
+    "professions": ["Thief"]
+}

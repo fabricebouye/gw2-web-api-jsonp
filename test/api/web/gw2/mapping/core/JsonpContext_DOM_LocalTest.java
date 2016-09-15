@@ -16,6 +16,7 @@ import api.web.gw2.mapping.v2.achievements.Achievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievementLevelRange;
 import api.web.gw2.mapping.v2.backstory.answers.BackstoryAnswer;
+import api.web.gw2.mapping.v2.backstory.questions.BackstoryQuestion;
 import api.web.gw2.mapping.v2.characters.Character;
 import api.web.gw2.mapping.v2.characters.CharacterCrafting;
 import api.web.gw2.mapping.v2.characters.CharacterProfession;
@@ -1106,6 +1107,28 @@ public class JsonpContext_DOM_LocalTest {
                     assertNotNull(url);
                     try {
                         final BackstoryAnswer value = instance.loadObject(BackstoryAnswer.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_BackstoryQuestion() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(BackstoryQuestion local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/backstory/questions/"; // NOI18N.
+        final String[] filenames = {
+            "question1.json", // NOI18N.
+            "question2.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final BackstoryQuestion value = instance.loadObject(BackstoryQuestion.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
