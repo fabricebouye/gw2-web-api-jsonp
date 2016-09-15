@@ -23,6 +23,7 @@ import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
 import api.web.gw2.mapping.v2.characters.inventory.InventoryBinding;
 import api.web.gw2.mapping.v2.continents.Continent;
 import api.web.gw2.mapping.v2.currencies.Currency;
+import api.web.gw2.mapping.v2.finishers.Finisher;
 import api.web.gw2.mapping.v2.guild.id.log.LogEvent;
 import api.web.gw2.mapping.v2.guild.id.stash.Stash;
 import api.web.gw2.mapping.v2.guild.id.teams.Team;
@@ -1102,6 +1103,28 @@ public class JsonpContext_SAX_LocalTest {
                     assertNotNull(url);
                     try {
                         final Collection<Itemstats> value = instance.loadObjectArray(Itemstats.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_Finisher() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Finisher local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/finishers/"; // NOI18N.
+        final String[] filenames = {
+            "finisher01.json", // NOI18N.
+            "finisher02.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final Finisher value = instance.loadObject(Finisher.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
