@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.v2.achievements.daily;
 
+import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.SetValue;
 import java.util.Collections;
@@ -24,6 +25,7 @@ public final class JsonpDailyAchievement implements DailyAchievement {
     private DailyAchievementLevelRange level = DailyAchievementLevelRange.ALL_LEVELS;
     
     @SetValue
+    @EnumValue
     private Set<DailyAchievementCampaign> requiredAccess = Collections.EMPTY_SET;
 
     /**
