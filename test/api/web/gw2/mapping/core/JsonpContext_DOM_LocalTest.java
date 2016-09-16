@@ -52,6 +52,7 @@ import api.web.gw2.mapping.v2.skins.SkinFlag;
 import api.web.gw2.mapping.v2.skins.SkinType;
 import api.web.gw2.mapping.v2.specializations.Specialization;
 import api.web.gw2.mapping.v2.stories.Story;
+import api.web.gw2.mapping.v2.stories.seasons.StorySeason;
 import api.web.gw2.mapping.v2.titles.Title;
 import api.web.gw2.mapping.v2.traits.Trait;
 import api.web.gw2.mapping.v2.traits.TraitFact;
@@ -1175,6 +1176,28 @@ public class JsonpContext_DOM_LocalTest {
                     assertNotNull(url);
                     try {
                         final Story value = instance.loadObject(Story.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_StorySeason() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(StorySeason local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/stories/seasons/"; // NOI18N.
+        final String[] filenames = {
+            "season1.json", // NOI18N.
+            "season2.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final StorySeason value = instance.loadObject(StorySeason.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
