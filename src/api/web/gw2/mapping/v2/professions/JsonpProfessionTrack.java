@@ -36,7 +36,7 @@ public final class JsonpProfessionTrack implements ProfessionTrack {
     }
 
     @Override
-    public int id() {
+    public int getId() {
         return id;
     }
 
