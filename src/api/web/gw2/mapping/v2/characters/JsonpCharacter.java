@@ -21,6 +21,7 @@ import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
 import api.web.gw2.mapping.v2.characters.equipment.Equipment;
 import java.time.Duration;
 import java.time.ZonedDateTime;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -71,6 +72,9 @@ public final class JsonpCharacter implements Character {
     @OptionalValue
     @MapValue
     private Optional<Map<CharacterGameType, CharacterSkillSet>> skills = Optional.empty();
+    @SetValue
+    @IdValue
+    private Set<Integer> backstory = Collections.EMPTY_SET;
 
     /**
      * Creates a new empty instance.
@@ -151,5 +155,10 @@ public final class JsonpCharacter implements Character {
     @Override
     public Optional<Map<CharacterGameType, CharacterSkillSet>> getSkills() {
         return skills;
+    }
+
+    @Override
+    public Set<Integer> getBackstory() {
+        return backstory;
     }
 }
