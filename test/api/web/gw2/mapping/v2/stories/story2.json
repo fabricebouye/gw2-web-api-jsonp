@@ -1,0 +1,11 @@
+{
+    "id": 15,
+    "season": "A515A1D3-4BD7-4594-AE30-2C5D05FF5960",
+    "name": "5. Echoes of the Past",
+    "description": "As Tyria prepares for war with another Elder Dragon, the search for information becomes paramount...",
+    "timeline": "1327 AE",
+    "level": 80,
+    "order": 2040,
+    "chapters": [],
+    "flags": ["RequiresUnlock"]
+}
