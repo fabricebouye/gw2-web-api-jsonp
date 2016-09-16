@@ -25,6 +25,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
 
 /**
@@ -75,6 +76,9 @@ public final class JsonpCharacter implements Character {
     @SetValue
     @IdValue
     private Set<Integer> backstory = Collections.EMPTY_SET;
+    @OptionalValue
+    @IdValue
+    private OptionalInt title = OptionalInt.empty();
 
     /**
      * Creates a new empty instance.
@@ -160,5 +164,10 @@ public final class JsonpCharacter implements Character {
     @Override
     public Set<Integer> getBackstory() {
         return backstory;
+    }
+
+    @Override
+    public OptionalInt getTitle() {
+        return title;
     }
 }
