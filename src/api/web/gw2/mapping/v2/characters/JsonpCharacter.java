@@ -79,6 +79,9 @@ public final class JsonpCharacter implements Character {
     @OptionalValue
     @IdValue
     private OptionalInt title = OptionalInt.empty();
+    @OptionalValue
+    @SetValue
+    private Optional<Set<CharacterTraining>> training = Optional.empty();
 
     /**
      * Creates a new empty instance.
@@ -169,5 +172,10 @@ public final class JsonpCharacter implements Character {
     @Override
     public OptionalInt getTitle() {
         return title;
+    }
+
+    @Override
+    public Optional<Set<CharacterTraining>> getTraining() {
+        return training;
     }
 }
