@@ -34,6 +34,14 @@ public final class JsonpEquipment implements Equipment {
     private Optional<List<Integer>> infusions = Optional.empty();
     @IdValue
     private int skin = IdValue.DEFAULT_INTEGER_ID;
+    @OptionalValue
+    private Optional<EquipmentStats> stats = Optional.empty();
+    @OptionalValue
+    @EnumValue
+    private Optional<EquipmentBinding> binding = Optional.empty();
+    @OptionalValue
+    @IdValue(flavor = IdValue.Flavor.STRING)
+    private Optional<String> boundTo = Optional.empty();
 
     /**
      * Creates a new empty instance.
@@ -64,5 +72,20 @@ public final class JsonpEquipment implements Equipment {
     @Override
     public int getSkin() {
         return skin;
+    }
+
+    @Override
+    public Optional<EquipmentStats> getStats() {
+        return stats;
+    }
+
+    @Override
+    public Optional<EquipmentBinding> getBinding() {
+        return binding;
+    }
+
+    @Override
+    public Optional<String> getBoundTo() {
+        return boundTo;
     }
 }
