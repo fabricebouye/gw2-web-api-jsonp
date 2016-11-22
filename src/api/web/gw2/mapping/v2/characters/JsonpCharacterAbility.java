@@ -15,6 +15,7 @@ import api.web.gw2.mapping.core.QuantityValue;
  * @author Fabrice Bouyé
  */
 public final class JsonpCharacterAbility implements CharacterAbility {
+
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
     @QuantityValue

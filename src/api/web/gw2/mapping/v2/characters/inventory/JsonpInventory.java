@@ -45,6 +45,9 @@ public final class JsonpInventory implements Inventory {
     @OptionalValue
     @IdValue
     private OptionalInt infixUpgradeId = OptionalInt.empty();
+    @OptionalValue
+    @QuantityValue
+    private OptionalInt charges = OptionalInt.empty();
 
     /**
      * Creates a new empty instance.
@@ -90,5 +93,10 @@ public final class JsonpInventory implements Inventory {
     @Override
     public OptionalInt getInfixUpgradeId() {
         return infixUpgradeId;
+    }
+
+    @Override
+    public OptionalInt getCharges() {
+        return charges;
     }
 }
