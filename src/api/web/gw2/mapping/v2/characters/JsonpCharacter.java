@@ -84,6 +84,8 @@ public final class JsonpCharacter implements Character {
     private Optional<Set<CharacterTraining>> training = Optional.empty();
     @OptionalValue
     private Optional<CharacterEquipmentPvP> equipmentPvp = Optional.empty();
+    @SetValue
+    private Set<CharacterAbility> wvwAbilities = Collections.EMPTY_SET;
 
     /**
      * Creates a new empty instance.
@@ -184,5 +186,10 @@ public final class JsonpCharacter implements Character {
     @Override
     public Optional<CharacterEquipmentPvP> getEquipmentPvp() {
         return equipmentPvp;
+    }
+
+    @Override
+    public Set<CharacterAbility> getWvwAbilities() {
+        return wvwAbilities;
     }
 }
