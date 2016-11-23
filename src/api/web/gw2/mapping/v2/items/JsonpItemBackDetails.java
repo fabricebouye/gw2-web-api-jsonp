@@ -34,7 +34,7 @@ public final class JsonpItemBackDetails extends JsonpItemDetails implements Item
     private String secondarySuffixItemId = IdValue.DEFAULT_STRING_ID;
     @SetValue
     @IdValue
-    private Set<Integer> statsChoices = Collections.EMPTY_SET;
+    private Set<Integer> statChoices = Collections.EMPTY_SET;
 
     /**
      * Creates a new default empty instance.
@@ -64,7 +64,7 @@ public final class JsonpItemBackDetails extends JsonpItemDetails implements Item
     }
 
     @Override
-    public Set<Integer> getStatsChoices() {
-        return statsChoices;
+    public Set<Integer> getStatChoices() {
+        return statChoices;
     }
 }

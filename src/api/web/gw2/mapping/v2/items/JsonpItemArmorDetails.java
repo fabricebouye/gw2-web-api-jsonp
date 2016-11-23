@@ -42,7 +42,7 @@ public final class JsonpItemArmorDetails extends JsonpItemDetails implements Ite
     private String secondarySuffixItemId = IdValue.DEFAULT_STRING_ID;
     @SetValue
     @IdValue
-    private Set<Integer> statsChoices = Collections.EMPTY_SET;
+    private Set<Integer> statChoices = Collections.EMPTY_SET;
 
     /**
      * Create a new empty instance.
@@ -87,7 +87,7 @@ public final class JsonpItemArmorDetails extends JsonpItemDetails implements Ite
     }
 
     @Override
-    public Set<Integer> getStatsChoices() {
-        return statsChoices;
+    public Set<Integer> getStatChoices() {
+        return statChoices;
     }
 }

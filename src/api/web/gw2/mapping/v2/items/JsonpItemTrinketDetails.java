@@ -37,7 +37,7 @@ public final class JsonpItemTrinketDetails extends JsonpItemDetails implements I
     private String secondarySuffixItemId = IdValue.DEFAULT_STRING_ID;
     @SetValue
     @IdValue
-    private Set<Integer> statsChoices = Collections.EMPTY_SET;
+    private Set<Integer> statChoices = Collections.EMPTY_SET;
 
     public JsonpItemTrinketDetails() {
         super(ItemType.TRINKET);
@@ -69,7 +69,7 @@ public final class JsonpItemTrinketDetails extends JsonpItemDetails implements I
     }
 
     @Override
-    public Set<Integer> getStatsChoices() {
-        return statsChoices;
+    public Set<Integer> getStatChoices() {
+        return statChoices;
     }
 }
