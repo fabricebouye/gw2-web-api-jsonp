@@ -12,10 +12,12 @@ import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.ListValue;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
+import api.web.gw2.mapping.core.SetValue;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.Set;
 
 /**
  * Default JSON-P implementation of an item armor details.
@@ -38,6 +40,9 @@ public final class JsonpItemArmorDetails extends JsonpItemDetails implements Ite
     private OptionalInt suffixItemId = OptionalInt.empty();
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String secondarySuffixItemId = IdValue.DEFAULT_STRING_ID;
+    @SetValue
+    @IdValue
+    private Set<Integer> statsChoices = Collections.EMPTY_SET;
 
     /**
      * Create a new empty instance.
@@ -79,5 +84,10 @@ public final class JsonpItemArmorDetails extends JsonpItemDetails implements Ite
     @Override
     public String getSecondarySuffixItemId() {
         return secondarySuffixItemId;
+    }
+
+    @Override
+    public Set<Integer> getStatsChoices() {
+        return statsChoices;
     }
 }

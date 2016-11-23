@@ -10,10 +10,12 @@ package api.web.gw2.mapping.v2.items;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.ListValue;
 import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.SetValue;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.Set;
 
 /**
  * Default JSON-P implementation of an back item details.
@@ -30,6 +32,9 @@ public final class JsonpItemBackDetails extends JsonpItemDetails implements Item
     private OptionalInt suffixItemId = OptionalInt.empty();
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String secondarySuffixItemId = IdValue.DEFAULT_STRING_ID;
+    @SetValue
+    @IdValue
+    private Set<Integer> statsChoices = Collections.EMPTY_SET;
 
     /**
      * Creates a new default empty instance.
@@ -56,5 +61,10 @@ public final class JsonpItemBackDetails extends JsonpItemDetails implements Item
     @Override
     public String getSecondarySuffixItemId() {
         return secondarySuffixItemId;
+    }
+
+    @Override
+    public Set<Integer> getStatsChoices() {
+        return statsChoices;
     }
 }

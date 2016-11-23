@@ -11,10 +11,12 @@ import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.ListValue;
 import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.SetValue;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.Set;
 
 /**
  * Default JSON-P implementation of a trinket details.
@@ -33,6 +35,9 @@ public final class JsonpItemTrinketDetails extends JsonpItemDetails implements I
     private OptionalInt suffixItemId = OptionalInt.empty();
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String secondarySuffixItemId = IdValue.DEFAULT_STRING_ID;
+    @SetValue
+    @IdValue
+    private Set<Integer> statsChoices = Collections.EMPTY_SET;
 
     public JsonpItemTrinketDetails() {
         super(ItemType.TRINKET);
@@ -61,5 +66,10 @@ public final class JsonpItemTrinketDetails extends JsonpItemDetails implements I
     @Override
     public String getSecondarySuffixItemId() {
         return secondarySuffixItemId;
+    }
+
+    @Override
+    public Set<Integer> getStatsChoices() {
+        return statsChoices;
     }
 }
