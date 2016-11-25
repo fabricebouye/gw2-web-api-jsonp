@@ -89,6 +89,8 @@ public final class JsonpSkill implements Skill {
     @OptionalValue
     @IdValue
     private OptionalInt toolbeltSkill = OptionalInt.empty();
+    @SetValue
+    private Set<?> flags = Collections.emptySet();
 
     /**
      * Creates a new empty instance.
@@ -204,5 +206,10 @@ public final class JsonpSkill implements Skill {
     @Override
     public OptionalInt getToolbeltSkill() {
         return toolbeltSkill;
+    }
+
+    @Override
+    public Set<?> getFlags() {
+        return flags;
     }
 }
