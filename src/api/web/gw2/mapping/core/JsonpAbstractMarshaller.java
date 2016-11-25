@@ -439,10 +439,11 @@ abstract class JsonpAbstractMarshaller {
         }
         // Remove trailing >.
         typename = typename.replaceAll(">+", ""); // NOI18N.
-        final String[] subTargetClassNames = typename.split(",\\s*");
+        final String[] subTargetClassNames = typename.split(",\\s*"); // NOI18N.
         final Class[] subTargetClasses = new Class[subTargetClassNames.length];
         for (int index = 0; index < subTargetClassNames.length; index++) {
-            subTargetClasses[index] = Class.forName(subTargetClassNames[index]);
+            final String subTargetClassName = subTargetClassNames[index];
+            subTargetClasses[index] = ("?".equals(subTargetClassName)) ? Object.class : Class.forName(subTargetClassName); // NOI18N.
         }
         return subTargetClasses;
     }
