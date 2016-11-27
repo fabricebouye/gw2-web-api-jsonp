@@ -45,6 +45,8 @@ public final class JsonpSkin implements Skin {
     @OptionalValue
     @RuntimeType(selector = "type", pattern = "Skin%sDetails", source = RuntimeType.Source.PARENT) // NOI18N.
     private Optional<SkinDetails> details = Optional.empty();
+    @EnumValue
+    private SkinRarity rarity = SkinRarity.UNKNOWN;
 
     /**
      * Creates a new instance.
@@ -90,5 +92,10 @@ public final class JsonpSkin implements Skin {
     @Override
     public <T extends SkinDetails> Optional<T> getDetails() {
         return (Optional<T>) details;
+    }
+
+    @Override
+    public SkinRarity getRarity() {
+        return rarity;
     }
 }
