@@ -39,7 +39,7 @@ public final class JsonpBankSlot implements BankSlot {
     @OptionalValue
     @EnumValue
     private Optional<InventoryBinding> binding = Optional.empty();
-    @IdValue
+    @IdValue(flavor = IdValue.Flavor.STRING)
     @OptionalValue
     private Optional<String> boundTo = Optional.empty();
     @QuantityValue
