@@ -14,6 +14,7 @@ import api.web.gw2.mapping.core.RuntimeType;
 import api.web.gw2.mapping.core.SetValue;
 import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
+import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
 
@@ -31,14 +32,12 @@ public final class JsonpTraitSkill implements TraitSkill {
     private URLReference icon = URLReference.empty();
     @LocalizedResource
     private String description = LocalizedResource.DEFAULT;
-    @OptionalValue
     @SetValue
     @RuntimeType(selector = "type", pattern = "Trait%sFact") // NOI18N.
-    private Optional<Set<TraitFact>> facts = Optional.empty();
-    @OptionalValue
+    private Set<TraitFact> facts = Collections.emptySet();
     @SetValue
     @RuntimeType(selector = "type", pattern = "Trait%sFact") // NOI18N.
-    private Optional<Set<TraitFact>> traitedFacts = Optional.empty();
+    private Set<TraitFact> traitedFacts = Collections.emptySet();
 
     /**
      * Creates a new empty instance.
@@ -67,12 +66,12 @@ public final class JsonpTraitSkill implements TraitSkill {
     }
 
     @Override
-    public Optional<Set<TraitFact>> getFacts() {
+    public Set<TraitFact> getFacts() {
         return facts;
     }
 
     @Override
-    public Optional<Set<TraitFact>> getTraitedFacts() {
+    public Set<TraitFact> getTraitedFacts() {
         return traitedFacts;
     }
 }

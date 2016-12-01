@@ -44,20 +44,17 @@ public final class JsonpAchievement implements Achievement {
     private Set<AchievementFlag> flags = Collections.EMPTY_SET;
     @SetValue
     private Set<AchievementTier> tiers = Collections.EMPTY_SET;
-    @OptionalValue
     @SetValue
     @RuntimeType(selector = "type", pattern = "Achievement%sReward") // NOI18N.
-    private Optional<Set<AchievementReward>> rewards = Optional.empty();
-    @OptionalValue
+    private Set<AchievementReward> rewards = Collections.emptySet();
     @SetValue
-    private Optional<Set<AchievementBit>> bits = Optional.empty();
+    private Set<AchievementBit> bits = Collections.emptySet();
     @OptionalValue
     @LocalizedResource
     private Optional<String> lockedText = Optional.empty();
-    @OptionalValue
     @IdValue
     @SetValue
-    private Optional<Set<Integer>> prerequisites = Optional.empty();
+    private Set<Integer> prerequisites = Collections.emptySet();
     @OptionalValue
     @QuantityValue
     private OptionalInt pointCap = OptionalInt.empty();
@@ -109,12 +106,12 @@ public final class JsonpAchievement implements Achievement {
     }
 
     @Override
-    public Optional<Set<AchievementReward>> getRewards() {
+    public Set<AchievementReward> getRewards() {
         return rewards;
     }
 
     @Override
-    public Optional<Set<AchievementBit>> getBits() {
+    public Set<AchievementBit> getBits() {
         return bits;
     }
 
@@ -124,9 +121,9 @@ public final class JsonpAchievement implements Achievement {
     }
 
     @Override
-    public Optional<Set<Integer>> getPrerequisites() {
+    public Set<Integer> getPrerequisites() {
         return prerequisites;
-    }        
+    }
 
     @Override
     public OptionalInt getPointCap() {

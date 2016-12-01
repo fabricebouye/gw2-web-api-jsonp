@@ -12,6 +12,7 @@ import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.ListValue;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
@@ -29,14 +30,12 @@ public final class JsonpInventory implements Inventory {
     @OptionalValue
     @IdValue
     private OptionalInt skin = OptionalInt.empty();
-    @OptionalValue
     @ListValue
     @IdValue
-    private Optional<List<Integer>> upgrades = Optional.empty();
-    @OptionalValue
+    private List<Integer> upgrades = Collections.emptyList();
     @ListValue
     @IdValue
-    private Optional<List<Integer>> infusions = Optional.empty();
+    private List<Integer> infusions = Collections.emptyList();
     @OptionalValue
     @EnumValue
     private Optional<InventoryBinding> binding = Optional.empty();
@@ -71,12 +70,12 @@ public final class JsonpInventory implements Inventory {
     }
 
     @Override
-    public Optional<List<Integer>> getUpgrades() {
+    public List<Integer> getUpgrades() {
         return upgrades;
     }
 
     @Override
-    public Optional<List<Integer>> getInfusions() {
+    public List<Integer> getInfusions() {
         return infusions;
     }
 

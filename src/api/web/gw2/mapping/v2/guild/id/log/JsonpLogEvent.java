@@ -16,6 +16,7 @@ import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
 import api.web.gw2.mapping.core.SetValue;
 import java.time.ZonedDateTime;
+import java.util.Collections;
 import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.Set;
@@ -60,10 +61,9 @@ public final class JsonpLogEvent implements LogEvent {
     @OptionalValue
     @QuantityValue
     private OptionalInt totalParticipants = OptionalInt.empty();
-    @OptionalValue
     @SetValue
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private Optional<Set<String>> participants = Optional.empty();
+    private Set<String> participants = Collections.emptySet();
     @OptionalValue
     @IdValue(flavor = IdValue.Flavor.STRING)
     private Optional<String> invitedBy = Optional.empty();
@@ -155,7 +155,7 @@ public final class JsonpLogEvent implements LogEvent {
     }
 
     @Override
-    public Optional<Set<String>> getParticipants() {
+    public Set<String> getParticipants() {
         return participants;
     }
 

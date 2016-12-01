@@ -33,10 +33,9 @@ public final class JsonpItemUpgradeComponentDetails extends JsonpItemDetails imp
     @LocalizedResource
     private String suffix = LocalizedResource.DEFAULT;
     private ItemInfixUpgrade infixUpgrade;
-    @OptionalValue
     @ListValue
     @LocalizedResource
-    private Optional<List<String>> bonuses = Optional.empty();
+    private List<String> bonuses = Collections.emptyList();
 
     /**
      * Creates a new empty instance.
@@ -71,7 +70,7 @@ public final class JsonpItemUpgradeComponentDetails extends JsonpItemDetails imp
     }
 
     @Override
-    public Optional<List<String>> getBonuses() {
+    public List<String> getBonuses() {
         return bonuses;
     }
 }

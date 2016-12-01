@@ -11,7 +11,7 @@ import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
 import api.web.gw2.mapping.core.SetValue;
-import java.util.Optional;
+import java.util.Collections;
 import java.util.OptionalInt;
 import java.util.Set;
 
@@ -30,9 +30,8 @@ public final class JsonpAchievement implements Achievement {
     @OptionalValue
     private OptionalInt max = OptionalInt.empty();
     private boolean done = false;
-    @OptionalValue
     @SetValue
-    private Optional<Set<Integer>> bits = Optional.empty();
+    private Set<Integer> bits = Collections.emptySet();
 
     /**
      * Creates a new empty instance.
@@ -61,7 +60,7 @@ public final class JsonpAchievement implements Achievement {
     }
 
     @Override
-    public Optional<Set<Integer>> getBits() {
+    public Set<Integer> getBits() {
         return bits;
     }
 }

@@ -110,8 +110,8 @@ public final class JsonpBankSlotTest {
         System.out.println("getUpgrades");
         final Field upgradesField = instance.getClass().getDeclaredField("upgrades"); // NOI18N.
         upgradesField.setAccessible(true);
-        final Optional<List<Integer>> expResult = (Optional<List<Integer>>) upgradesField.get(instance);
-        final Optional<List<Integer>> result = instance.getUpgrades();
+        final List<Integer> expResult = (List<Integer>) upgradesField.get(instance);
+        final List<Integer> result = instance.getUpgrades();
         assertEquals(expResult, result);
     }
 
@@ -123,8 +123,8 @@ public final class JsonpBankSlotTest {
         System.out.println("getInfusions");
         final Field infusionsField = instance.getClass().getDeclaredField("infusions"); // NOI18N.
         infusionsField.setAccessible(true);
-        final Optional<List<Integer>> expResult = (Optional<List<Integer>>) infusionsField.get(instance);
-        final Optional<List<Integer>> result = instance.getInfusions();
+        final List<Integer> expResult = (List<Integer>) infusionsField.get(instance);
+        final List<Integer> result = instance.getInfusions();
         assertEquals(expResult, result);
     }
 }

@@ -411,10 +411,11 @@ public class JsonpContext_SAX_LocalTest {
             true,
             false
         };
-        final Optional[] expBits = {
-            Optional.empty(),
-            Optional.empty(),
-            Optional.of(Collections.unmodifiableSet(new LinkedHashSet(Arrays.asList(2, 3, 4, 5)))),};
+        final Set[] expBits = {
+            Collections.emptySet(),
+            Collections.emptySet(),
+            Collections.unmodifiableSet(new LinkedHashSet(Arrays.asList(2, 3, 4, 5)))
+        };
         assertEquals(files.length, expIds.length);
         assertEquals(files.length, expCurrents.length);
         assertEquals(files.length, expMaxs.length);
@@ -435,7 +436,7 @@ public class JsonpContext_SAX_LocalTest {
                 assertEquals(expMax, value.getMax());
                 final boolean expDone = expDones[index];
                 assertEquals(expDone, value.isDone());
-                final Optional<Set<Integer>> expBit = expBits[index];
+                final Set<Integer> expBit = expBits[index];
                 assertEquals(expBit, value.getBits());
             } catch (IOException ex) {
                 fail(ex.getMessage());

@@ -48,15 +48,12 @@ public final class JsonpSkill implements Skill {
     private Set<CharacterProfession> professions = Collections.EMPTY_SET;
     @EnumValue
     private SkillSlot slot = SkillSlot.UNKNOWN;
-    @OptionalValue
     @SetValue
-    private Optional<Set<SkillFact>> facts = Optional.empty();
-    @OptionalValue
+    private Set<SkillFact> facts = Collections.emptySet();
     @SetValue
-    private Optional<Set<SkillTraitedFact>> traitedFacts = Optional.empty();
-    @OptionalValue
+    private Set<SkillTraitedFact> traitedFacts = Collections.emptySet();
     @SetValue
-    private Optional<Set<SkillCategory>> categories = Optional.empty();
+    private Set<SkillCategory> categories = Collections.emptySet();
     @OptionalValue
     @EnumValue
     private Optional<ProfessionElementalistAttunement> attunement = Optional.empty();
@@ -78,14 +75,12 @@ public final class JsonpSkill implements Skill {
     @OptionalValue
     @IdValue
     private OptionalInt prevChain = OptionalInt.empty();
-    @OptionalValue
     @SetValue
     @IdValue
-    private Optional<Set<Integer>> transformSkills = Optional.empty();
-    @OptionalValue
+    private Set<Integer> transformSkills = Collections.emptySet();
     @SetValue
     @IdValue
-    private Optional<Set<Integer>> bundleSkills = Optional.empty();
+    private Set<Integer> bundleSkills = Collections.emptySet();
     @OptionalValue
     @IdValue
     private OptionalInt toolbeltSkill = OptionalInt.empty();
@@ -144,17 +139,19 @@ public final class JsonpSkill implements Skill {
     }
 
     @Override
-    public Optional<Set<SkillFact>> getFacts() {
+    public Set<SkillFact>
+            getFacts() {
         return facts;
     }
 
     @Override
-    public Optional<Set<SkillTraitedFact>> getTraitedFacts() {
+    public Set<SkillTraitedFact> getTraitedFacts() {
         return traitedFacts;
     }
 
     @Override
-    public Optional<Set<SkillCategory>> getCategories() {
+    public Set<SkillCategory>
+            getCategories() {
         return categories;
     }
 
@@ -194,12 +191,13 @@ public final class JsonpSkill implements Skill {
     }
 
     @Override
-    public Optional<Set<Integer>> getTransformSkills() {
+    public Set<Integer>
+            getTransformSkills() {
         return transformSkills;
     }
 
     @Override
-    public Optional<Set<Integer>> getBundleSkills() {
+    public Set<Integer> getBundleSkills() {
         return bundleSkills;
     }
 

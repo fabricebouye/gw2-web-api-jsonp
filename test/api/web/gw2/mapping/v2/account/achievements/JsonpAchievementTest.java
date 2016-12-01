@@ -124,8 +124,8 @@ public final class JsonpAchievementTest {
         System.out.println("getBits");
         final Field bitsField = instance.getClass().getDeclaredField("bits"); // NOI18N.
         bitsField.setAccessible(true);
-        final Optional<Set<Integer>> expResult = (Optional<Set<Integer>>) bitsField.get(instance);
-        final Optional<Set<Integer>> result = instance.getBits();
+        final Set<Integer> expResult = (Set<Integer>) bitsField.get(instance);
+        final Set<Integer> result = instance.getBits();
         assertEquals(expResult, result);
     }
 }

@@ -11,6 +11,7 @@ import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.ListValue;
 import api.web.gw2.mapping.core.OptionalValue;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,14 +25,12 @@ public final class JsonpEquipment implements Equipment {
     private int id = IdValue.DEFAULT_INTEGER_ID;
     @EnumValue
     private EquipmentSlot slot = EquipmentSlot.UNKNOWN;
-    @OptionalValue
     @ListValue
     @IdValue
-    private Optional<List<Integer>> upgrades = Optional.empty();
-    @OptionalValue
+    private List<Integer> upgrades = Collections.emptyList();
     @ListValue
     @IdValue
-    private Optional<List<Integer>> infusions = Optional.empty();
+    private List<Integer> infusions = Collections.emptyList();
     @IdValue
     private int skin = IdValue.DEFAULT_INTEGER_ID;
     @OptionalValue
@@ -60,12 +59,12 @@ public final class JsonpEquipment implements Equipment {
     }
 
     @Override
-    public Optional<List<Integer>> getUpgrades() {
+    public List<Integer> getUpgrades() {
         return upgrades;
     }
 
     @Override
-    public Optional<List<Integer>> getInfusions() {
+    public List<Integer> getInfusions() {
         return infusions;
     }
 

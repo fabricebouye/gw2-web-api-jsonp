@@ -53,35 +53,28 @@ public final class JsonpCharacter implements Character {
     private Duration age = DurationValue.DEFAULT;
     @QuantityValue
     private int deaths = QuantityValue.DEFAULT;
-    @OptionalValue
     @ListValue
-    private Optional<List<Equipment>> equipment = Optional.empty();
-    @OptionalValue
+    private List<Equipment> equipment = Collections.emptyList();
     @ListValue
-    private Optional<List<InventoryBag>> bags = Optional.empty();
-    @OptionalValue
+    private List<InventoryBag> bags = Collections.emptyList();
     @SetValue
-    private Optional<Set<CharacterCrafting>> crafting = Optional.empty();
-    @OptionalValue
+    private Set<CharacterCrafting> crafting = Collections.emptySet();
     @MapValue
     @SetValue
-    private Optional<Map<CharacterGameType, Set<CharacterSpecialization>>> specializations = Optional.empty();
-    @OptionalValue
+    private Map<CharacterGameType, Set<CharacterSpecialization>> specializations = Collections.emptyMap();
     @SetValue
     @IdValue
-    private Optional<Set<Integer>> recipes = Optional.empty();
-    @OptionalValue
+    private Set<Integer> recipes = Collections.emptySet();
     @MapValue
-    private Optional<Map<CharacterGameType, CharacterSkillSet>> skills = Optional.empty();
+    private Map<CharacterGameType, CharacterSkillSet> skills = Collections.emptyMap();
     @SetValue
     @IdValue
     private Set<Integer> backstory = Collections.EMPTY_SET;
     @OptionalValue
     @IdValue
     private OptionalInt title = OptionalInt.empty();
-    @OptionalValue
     @SetValue
-    private Optional<Set<CharacterTraining>> training = Optional.empty();
+    private Set<CharacterTraining> training = Collections.emptySet();
     @OptionalValue
     private Optional<CharacterEquipmentPvP> equipmentPvp = Optional.empty();
     @SetValue
@@ -139,32 +132,32 @@ public final class JsonpCharacter implements Character {
     }
 
     @Override
-    public Optional<List<Equipment>> getEquipment() {
+    public List<Equipment> getEquipment() {
         return equipment;
     }
 
     @Override
-    public Optional<List<InventoryBag>> getBags() {
+    public List<InventoryBag> getBags() {
         return bags;
     }
 
     @Override
-    public Optional<Set<CharacterCrafting>> getCrafting() {
+    public Set<CharacterCrafting> getCrafting() {
         return crafting;
     }
 
     @Override
-    public Optional<Map<CharacterGameType, Set<CharacterSpecialization>>> getSpecializations() {
+    public Map<CharacterGameType, Set<CharacterSpecialization>> getSpecializations() {
         return specializations;
     }
 
     @Override
-    public Optional<Set<Integer>> getRecipes() {
+    public Set<Integer> getRecipes() {
         return recipes;
     }
 
     @Override
-    public Optional<Map<CharacterGameType, CharacterSkillSet>> getSkills() {
+    public Map<CharacterGameType, CharacterSkillSet> getSkills() {
         return skills;
     }
 
@@ -179,7 +172,7 @@ public final class JsonpCharacter implements Character {
     }
 
     @Override
-    public Optional<Set<CharacterTraining>> getTraining() {
+    public Set<CharacterTraining> getTraining() {
         return training;
     }
 
