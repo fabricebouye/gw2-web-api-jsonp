@@ -22,8 +22,8 @@ import java.util.Set;
  */
 public final class JsonpBackstoryAnswer implements BackstoryAnswer {
 
-    @IdValue
-    private int id = IdValue.DEFAULT_INTEGER_ID;
+    @IdValue(flavor = IdValue.Flavor.STRING)
+    private String id = IdValue.DEFAULT_STRING_ID;
     @LocalizedResource
     private String title = LocalizedResource.DEFAULT;
     @LocalizedResource
@@ -46,7 +46,7 @@ public final class JsonpBackstoryAnswer implements BackstoryAnswer {
     }
 
     @Override
-    public int getId() {
+    public String getId() {
         return id;
     }
 
