@@ -32,11 +32,11 @@ public class JsonpCurrentyAmountTest {
     public static void tearDownClass() {
     }
 
-    private JsonpCurrentyAmount instance;
+    private JsonpCurrencyAmount instance;
 
     @Before
     public void setUp() throws Exception {
-        instance = new JsonpCurrentyAmount();
+        instance = new JsonpCurrencyAmount();
         final Field idField = instance.getClass().getDeclaredField("id"); // NOI18N.
         idField.setAccessible(true);
         idField.setInt(instance, 58);

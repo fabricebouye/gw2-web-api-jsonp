@@ -14,7 +14,7 @@ import api.web.gw2.mapping.core.QuantityValue;
  * Default JSON-P implementation of an currency amount.
  * @author Fabrice Bouyé
  */
-public final class JsonpCurrentyAmount implements CurrencyAmount {
+public final class JsonpCurrencyAmount implements CurrencyAmount {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
@@ -24,7 +24,7 @@ public final class JsonpCurrentyAmount implements CurrencyAmount {
     /**
      * Creates a new empty instance.
      */
-    public JsonpCurrentyAmount() {
+    public JsonpCurrencyAmount() {
     }
 
     @Override

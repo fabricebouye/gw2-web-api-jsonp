@@ -16,7 +16,7 @@ import api.web.gw2.mapping.v1.guilddetails.JsonpGuildDetailsEmblem;
 import api.web.gw2.mapping.v2.account.Account;
 import api.web.gw2.mapping.v2.account.JsonpAccount;
 import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
-import api.web.gw2.mapping.v2.account.wallet.JsonpCurrentyAmount;
+import api.web.gw2.mapping.v2.account.wallet.JsonpCurrencyAmount;
 import api.web.gw2.mapping.v2.colors.ColorDye;
 import api.web.gw2.mapping.v2.colors.ColorMaterial;
 import api.web.gw2.mapping.v2.colors.ColorRGB;
@@ -75,7 +75,7 @@ public class JsonpImplementationsTest {
         JsonpGuildDetails.class,
         JsonpGuildDetailsEmblem.class,
         JsonpAccount.class,
-        JsonpCurrentyAmount.class,
+        JsonpCurrencyAmount.class,
         JsonpColorDye.class,
         JsonpColorMaterial.class,
         JsonpColorRGB.class,
