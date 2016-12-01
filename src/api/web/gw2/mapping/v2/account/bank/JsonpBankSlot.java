@@ -42,6 +42,9 @@ public final class JsonpBankSlot implements BankSlot {
     @IdValue
     @OptionalValue
     private Optional<String> boundTo = Optional.empty();
+    @QuantityValue
+    @OptionalValue
+    private OptionalInt charges = OptionalInt.empty();
 
     /**
      * Creates a new empty instance.
@@ -82,5 +85,10 @@ public final class JsonpBankSlot implements BankSlot {
     @Override
     public Optional<String> getBoundTo() {
         return boundTo;
+    }
+
+    @Override
+    public OptionalInt getCharges() {
+        return charges;
     }
 }
