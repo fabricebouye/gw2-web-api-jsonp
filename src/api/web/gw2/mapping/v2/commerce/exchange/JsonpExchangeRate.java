@@ -15,7 +15,7 @@ import api.web.gw2.mapping.core.QuantityValue;
  * Default JSON-P implementation of an exchange rate.
  * @author Fabrice Bouyé
  */
-public final class JsonptExchangeRate implements ExchangeRate {
+public final class JsonpExchangeRate implements ExchangeRate {
 
     @CoinValue
     private CoinAmount coinsPerGem = CoinAmount.ZERO;
@@ -25,7 +25,7 @@ public final class JsonptExchangeRate implements ExchangeRate {
     /**
      * Creates a new empty instance.
      */
-    public JsonptExchangeRate() {
+    public JsonpExchangeRate() {
     }
 
     @Override
