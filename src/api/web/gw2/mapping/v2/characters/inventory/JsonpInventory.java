@@ -12,6 +12,7 @@ import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.ListValue;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
+import api.web.gw2.mapping.v2.characters.equipment.EquipmentStats;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -47,6 +48,8 @@ public final class JsonpInventory implements Inventory {
     @OptionalValue
     @QuantityValue
     private OptionalInt charges = OptionalInt.empty();
+    @OptionalValue
+    private Optional<EquipmentStats> stats = Optional.empty();
 
     /**
      * Creates a new empty instance.
@@ -97,5 +100,10 @@ public final class JsonpInventory implements Inventory {
     @Override
     public OptionalInt getCharges() {
         return charges;
+    }
+
+    @Override
+    public Optional<EquipmentStats> getStats() {
+        return stats;
     }
 }
