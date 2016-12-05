@@ -9,6 +9,7 @@ package api.web.gw2.mapping.v2.account.inventory;
 
 import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
 import api.web.gw2.mapping.v2.characters.inventory.InventoryBinding;
 import java.util.OptionalInt;
@@ -26,6 +27,7 @@ public final class JsonpSharedInventory implements SharedInventory {
     private int count = QuantityValue.DEFAULT;
     @EnumValue
     private InventoryBinding binding = InventoryBinding.UNKNOWN;
+    @OptionalValue
     @QuantityValue
     private OptionalInt charges = OptionalInt.empty();
 
