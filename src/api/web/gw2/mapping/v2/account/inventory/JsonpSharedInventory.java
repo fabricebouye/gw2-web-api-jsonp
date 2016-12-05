@@ -9,9 +9,13 @@ package api.web.gw2.mapping.v2.account.inventory;
 
 import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
+import api.web.gw2.mapping.core.ListValue;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
+import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
 import api.web.gw2.mapping.v2.characters.inventory.InventoryBinding;
+import java.util.Collections;
+import java.util.List;
 import java.util.OptionalInt;
 
 /**
@@ -30,6 +34,9 @@ public final class JsonpSharedInventory implements SharedInventory {
     @OptionalValue
     @QuantityValue
     private OptionalInt charges = OptionalInt.empty();
+    @IdValue
+    @ListValue
+    private List<Integer> infusions = Collections.emptyList();
 
     /**
      * Creates a new empty instance.
@@ -50,5 +57,10 @@ public final class JsonpSharedInventory implements SharedInventory {
     @Override
     public OptionalInt getCharges() {
         return charges;
+    }
+
+    @Override
+    public List<Integer> getInfusions() {
+        return infusions;
     }
 }
