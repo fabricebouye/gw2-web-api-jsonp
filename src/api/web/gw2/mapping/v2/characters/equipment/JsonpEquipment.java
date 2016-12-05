@@ -11,9 +11,11 @@ import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.ListValue;
 import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.QuantityValue;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 
 /**
  * Default JSON-P implementation of the equipment.
@@ -41,6 +43,9 @@ public final class JsonpEquipment implements Equipment {
     @OptionalValue
     @IdValue(flavor = IdValue.Flavor.STRING)
     private Optional<String> boundTo = Optional.empty();
+    @OptionalValue
+    @QuantityValue
+    private OptionalInt charges = OptionalInt.empty();
 
     /**
      * Creates a new empty instance.
@@ -86,5 +91,10 @@ public final class JsonpEquipment implements Equipment {
     @Override
     public Optional<String> getBoundTo() {
         return boundTo;
+    }
+
+    @Override
+    public OptionalInt getCharges() {
+        return charges;
     }
 }
