@@ -11,6 +11,7 @@ import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.QuantityValue;
 import api.web.gw2.mapping.v2.characters.inventory.InventoryBinding;
+import java.util.OptionalInt;
 
 /**
  * Default JSON-P implementation of a shared inventory slot.
@@ -25,6 +26,8 @@ public final class JsonpSharedInventory implements SharedInventory {
     private int count = QuantityValue.DEFAULT;
     @EnumValue
     private InventoryBinding binding = InventoryBinding.UNKNOWN;
+    @QuantityValue
+    private OptionalInt charges = OptionalInt.empty();
 
     /**
      * Creates a new empty instance.
@@ -40,5 +43,10 @@ public final class JsonpSharedInventory implements SharedInventory {
     @Override
     public int getCount() {
         return count;
+    }
+
+    @Override
+    public OptionalInt getCharges() {
+        return charges;
     }
 }
