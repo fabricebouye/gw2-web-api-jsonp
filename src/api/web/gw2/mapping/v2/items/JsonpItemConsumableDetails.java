@@ -12,11 +12,14 @@ import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.SetValue;
 import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
 import java.time.Duration;
+import java.util.Collections;
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.Set;
 
 /**
  * Default JSON-P implementation of a consumable details.
@@ -49,6 +52,9 @@ public final class JsonpItemConsumableDetails extends JsonpItemDetails implement
     private Optional<String> name = Optional.empty();
     @URLValue
     private URLReference icon = URLReference.empty();
+    @SetValue
+    @IdValue
+    private Set<Integer> skins = Collections.emptySet();
 
     public JsonpItemConsumableDetails() {
         super(ItemType.CONSUMABLE);
@@ -88,7 +94,7 @@ public final class JsonpItemConsumableDetails extends JsonpItemDetails implement
     public OptionalInt getApplyCount() {
         return applyCount;
     }
-    
+
     @Override
     public Optional<String> getName() {
         return name;
@@ -97,5 +103,10 @@ public final class JsonpItemConsumableDetails extends JsonpItemDetails implement
     @Override
     public URLReference getIcon() {
         return icon;
+    }
+
+    @Override
+    public Set<Integer> getSkins() {
+        return skins;
     }
 }
