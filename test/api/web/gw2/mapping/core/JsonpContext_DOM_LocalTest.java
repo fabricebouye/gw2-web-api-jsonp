@@ -42,6 +42,7 @@ import api.web.gw2.mapping.v2.professions.Profession;
 import api.web.gw2.mapping.v2.pvp.amulets.Amulet;
 import api.web.gw2.mapping.v2.pvp.games.Game;
 import api.web.gw2.mapping.v2.pvp.seasons.Season;
+import api.web.gw2.mapping.v2.pvp.seasons.leaderboards.LeaderboardEntry;
 import api.web.gw2.mapping.v2.pvp.standings.Standing;
 import api.web.gw2.mapping.v2.pvp.stats.Stat;
 import api.web.gw2.mapping.v2.recipes.Recipe;
@@ -801,6 +802,28 @@ public class JsonpContext_DOM_LocalTest {
                     assertNotNull(url);
                     try {
                         final Season value = instance.loadObject(Season.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_LeaderboardEntry_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(LeaderboardEntry local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/pvp/seasons/leaderboards/"; // NOI18N.
+        final String[] filenames = {
+            "leaderboard01.json", // NOI18N.
+            "leaderboard02.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final LeaderboardEntry value = instance.loadObject(LeaderboardEntry.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
