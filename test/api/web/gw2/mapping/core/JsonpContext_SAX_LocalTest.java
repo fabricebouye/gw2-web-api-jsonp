@@ -27,6 +27,7 @@ import api.web.gw2.mapping.v2.characters.inventory.InventoryBinding;
 import api.web.gw2.mapping.v2.continents.Continent;
 import api.web.gw2.mapping.v2.currencies.Currency;
 import api.web.gw2.mapping.v2.finishers.Finisher;
+import api.web.gw2.mapping.v2.guild.id.Guild;
 import api.web.gw2.mapping.v2.guild.id.log.LogEvent;
 import api.web.gw2.mapping.v2.guild.id.stash.Stash;
 import api.web.gw2.mapping.v2.guild.id.teams.Team;
@@ -1310,6 +1311,28 @@ public class JsonpContext_SAX_LocalTest {
                     assertNotNull(url);
                     try {
                         final Rank value = instance.loadObject(Rank.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+    
+    @Test
+    public void testLoadObject_Guild() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Guild local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/guild/id/"; // NOI18N.
+        final String[] filenames = {
+            "guild01.json", // NOI18N.
+            "guild02.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final Guild value = instance.loadObject(Guild.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
