@@ -284,6 +284,17 @@ abstract class JsonpAbstractMarshaller {
         } else if (isCurrency) {
             final Number number = (Number) value;
             result = CoinAmount.ofCopper(number.intValue());
+        } else if (isQuantity || isLevel || isPercent) {
+            if (value == null) {
+                result = QuantityValue.DEFAULT;
+            } else if (value instanceof Integer) {
+                result = value;
+            } else if (value instanceof String) { // Currently SeasonLadderSettings returns null or empty string on duration field.
+                final String string = (String) value;
+                result = (string.trim().isEmpty()) ? QuantityValue.DEFAULT : Integer.parseInt(string);
+            } else {
+                throw new IllegalArgumentException(value.toString());
+            }
         } else if (isCoord2D) {
             final List<? extends Number> list = (List) value;
             final double x = list.get(0).doubleValue();

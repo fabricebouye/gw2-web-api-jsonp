@@ -834,6 +834,7 @@ public class JsonpContext_SAX_LocalTest {
         final String[] filenames = {
             "season01.json", // NOI18N.
             "season02.json", // NOI18N.
+            "season05.json", // NOI18N.
         };
         IntStream.range(0, filenames.length)
                 .forEach(index -> {
