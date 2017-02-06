@@ -61,6 +61,7 @@ import api.web.gw2.mapping.v2.worlds.World;
 import api.web.gw2.mapping.v2.worlds.WorldPopulation;
 import api.web.gw2.mapping.v2.wvw.matches.Match;
 import api.web.gw2.mapping.v2.wvw.objectives.Objective;
+import api.web.gw2.mapping.v2.wvw.ranks.Rank;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -1223,6 +1224,28 @@ public class JsonpContext_DOM_LocalTest {
                     assertNotNull(url);
                     try {
                         final StorySeason value = instance.loadObject(StorySeason.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_Rank() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Rank local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/wvw/ranks/"; // NOI18N.
+        final String[] filenames = {
+            "rank01.json", // NOI18N.
+            "rank02.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final Rank value = instance.loadObject(Rank.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
