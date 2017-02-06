@@ -31,7 +31,7 @@ public final class JsonpAchievement implements Achievement {
     private OptionalInt max = OptionalInt.empty();
     private boolean done = false;
     @SetValue
-    private Set<Integer> bits = Collections.emptySet();
+    private Set<Integer> bits = Collections.EMPTY_SET;
 
     /**
      * Creates a new empty instance.

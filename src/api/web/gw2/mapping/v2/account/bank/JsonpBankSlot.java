@@ -32,9 +32,9 @@ public final class JsonpBankSlot implements BankSlot {
     @OptionalValue
     private OptionalInt skin = OptionalInt.empty();
     @ListValue
-    private List<Integer> upgrades = Collections.emptyList();
+    private List<Integer> upgrades = Collections.EMPTY_LIST;
     @ListValue
-    private List<Integer> infusions = Collections.emptyList();
+    private List<Integer> infusions = Collections.EMPTY_LIST;
     @OptionalValue
     @EnumValue
     private Optional<InventoryBinding> binding = Optional.empty();

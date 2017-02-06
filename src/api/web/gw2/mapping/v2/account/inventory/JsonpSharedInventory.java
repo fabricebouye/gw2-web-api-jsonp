@@ -36,7 +36,7 @@ public final class JsonpSharedInventory implements SharedInventory {
     private OptionalInt charges = OptionalInt.empty();
     @IdValue
     @ListValue
-    private List<Integer> infusions = Collections.emptyList();
+    private List<Integer> infusions = Collections.EMPTY_LIST;
 
     /**
      * Creates a new empty instance.

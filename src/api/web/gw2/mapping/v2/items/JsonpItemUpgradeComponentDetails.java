@@ -35,7 +35,7 @@ public final class JsonpItemUpgradeComponentDetails extends JsonpItemDetails imp
     private ItemInfixUpgrade infixUpgrade;
     @ListValue
     @LocalizedResource
-    private List<String> bonuses = Collections.emptyList();
+    private List<String> bonuses = Collections.EMPTY_LIST;
 
     /**
      * Creates a new empty instance.

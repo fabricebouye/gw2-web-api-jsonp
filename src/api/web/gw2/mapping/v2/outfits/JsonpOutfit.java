@@ -29,7 +29,7 @@ public final class JsonpOutfit implements Outfit {
     private URLReference icon = URLReference.empty();
     @SetValue
     @IdValue
-    private Set<Integer> unlockItems = Collections.emptySet();
+    private Set<Integer> unlockItems = Collections.EMPTY_SET;
 
     /**
      * Creates a new empty instance.

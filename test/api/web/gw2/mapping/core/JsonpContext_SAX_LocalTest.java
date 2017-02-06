@@ -412,8 +412,8 @@ public class JsonpContext_SAX_LocalTest {
             false
         };
         final Set[] expBits = {
-            Collections.emptySet(),
-            Collections.emptySet(),
+            Collections.EMPTY_SET,
+            Collections.EMPTY_SET,
             Collections.unmodifiableSet(new LinkedHashSet(Arrays.asList(2, 3, 4, 5)))
         };
         assertEquals(files.length, expIds.length);

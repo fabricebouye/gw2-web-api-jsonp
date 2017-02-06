@@ -29,10 +29,10 @@ public final class JsonpEquipment implements Equipment {
     private EquipmentSlot slot = EquipmentSlot.UNKNOWN;
     @ListValue
     @IdValue
-    private List<Integer> upgrades = Collections.emptyList();
+    private List<Integer> upgrades = Collections.EMPTY_LIST;
     @ListValue
     @IdValue
-    private List<Integer> infusions = Collections.emptyList();
+    private List<Integer> infusions = Collections.EMPTY_LIST;
     @IdValue
     private int skin = IdValue.DEFAULT_INTEGER_ID;
     @OptionalValue

@@ -46,15 +46,15 @@ public final class JsonpAchievement implements Achievement {
     private Set<AchievementTier> tiers = Collections.EMPTY_SET;
     @SetValue
     @RuntimeType(selector = "type", pattern = "Achievement%sReward") // NOI18N.
-    private Set<AchievementReward> rewards = Collections.emptySet();
+    private Set<AchievementReward> rewards = Collections.EMPTY_SET;
     @SetValue
-    private Set<AchievementBit> bits = Collections.emptySet();
+    private Set<AchievementBit> bits = Collections.EMPTY_SET;
     @OptionalValue
     @LocalizedResource
     private Optional<String> lockedText = Optional.empty();
     @IdValue
     @SetValue
-    private Set<Integer> prerequisites = Collections.emptySet();
+    private Set<Integer> prerequisites = Collections.EMPTY_SET;
     @OptionalValue
     @QuantityValue
     private OptionalInt pointCap = OptionalInt.empty();

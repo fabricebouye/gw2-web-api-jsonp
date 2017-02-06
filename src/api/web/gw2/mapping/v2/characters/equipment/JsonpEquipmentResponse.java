@@ -18,7 +18,7 @@ import java.util.List;
 public final class JsonpEquipmentResponse implements EquipmentResponse {
 
     @ListValue
-    private List<Equipment> equipment = Collections.emptyList();
+    private List<Equipment> equipment = Collections.EMPTY_LIST;
 
     /**
      * Creates a new empty instance.

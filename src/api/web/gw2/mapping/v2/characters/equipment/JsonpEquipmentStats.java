@@ -21,7 +21,7 @@ public final class JsonpEquipmentStats implements EquipmentStats {
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
     @MapValue
-    private Map<EquipmentAttribute, Integer> attributes = Collections.emptyMap();
+    private Map<EquipmentAttribute, Integer> attributes = Collections.EMPTY_MAP;
 
     /**
      * Creates a new empty instance.

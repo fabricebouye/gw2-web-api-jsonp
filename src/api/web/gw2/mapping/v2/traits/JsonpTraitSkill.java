@@ -34,10 +34,10 @@ public final class JsonpTraitSkill implements TraitSkill {
     private String description = LocalizedResource.DEFAULT;
     @SetValue
     @RuntimeType(selector = "type", pattern = "Trait%sFact") // NOI18N.
-    private Set<TraitFact> facts = Collections.emptySet();
+    private Set<TraitFact> facts = Collections.EMPTY_SET;
     @SetValue
     @RuntimeType(selector = "type", pattern = "Trait%sFact") // NOI18N.
-    private Set<TraitFact> traitedFacts = Collections.emptySet();
+    private Set<TraitFact> traitedFacts = Collections.EMPTY_SET;
 
     /**
      * Creates a new empty instance.

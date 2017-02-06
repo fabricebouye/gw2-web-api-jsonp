@@ -54,19 +54,19 @@ public final class JsonpCharacter implements Character {
     @QuantityValue
     private int deaths = QuantityValue.DEFAULT;
     @ListValue
-    private List<Equipment> equipment = Collections.emptyList();
+    private List<Equipment> equipment = Collections.EMPTY_LIST;
     @ListValue
-    private List<InventoryBag> bags = Collections.emptyList();
+    private List<InventoryBag> bags = Collections.EMPTY_LIST;
     @SetValue
-    private Set<CharacterCrafting> crafting = Collections.emptySet();
+    private Set<CharacterCrafting> crafting = Collections.EMPTY_SET;
     @MapValue
     @SetValue
-    private Map<CharacterGameType, Set<CharacterSpecialization>> specializations = Collections.emptyMap();
+    private Map<CharacterGameType, Set<CharacterSpecialization>> specializations = Collections.EMPTY_MAP;
     @SetValue
     @IdValue
-    private Set<Integer> recipes = Collections.emptySet();
+    private Set<Integer> recipes = Collections.EMPTY_SET;
     @MapValue
-    private Map<CharacterGameType, CharacterSkillSet> skills = Collections.emptyMap();
+    private Map<CharacterGameType, CharacterSkillSet> skills = Collections.EMPTY_MAP;
     @SetValue
     @IdValue
     private Set<Integer> backstory = Collections.EMPTY_SET;
@@ -74,7 +74,7 @@ public final class JsonpCharacter implements Character {
     @IdValue
     private OptionalInt title = OptionalInt.empty();
     @SetValue
-    private Set<CharacterTraining> training = Collections.emptySet();
+    private Set<CharacterTraining> training = Collections.EMPTY_SET;
     @OptionalValue
     private Optional<CharacterEquipmentPvP> equipmentPvp = Optional.empty();
     @SetValue

@@ -54,7 +54,7 @@ public final class JsonpItemConsumableDetails extends JsonpItemDetails implement
     private URLReference icon = URLReference.empty();
     @SetValue
     @IdValue
-    private Set<Integer> skins = Collections.emptySet();
+    private Set<Integer> skins = Collections.EMPTY_SET;
 
     public JsonpItemConsumableDetails() {
         super(ItemType.CONSUMABLE);
