@@ -8,12 +8,14 @@
 package api.web.gw2.mapping.v2.account;
 
 import api.web.gw2.mapping.core.DateValue;
+import api.web.gw2.mapping.core.DurationValue;
 import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LevelValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.QuantityValue;
 import api.web.gw2.mapping.core.SetValue;
+import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.Collections;
 import java.util.Set;
@@ -48,6 +50,8 @@ public final class JsonpAccount implements Account {
     private int monthlyAp = QuantityValue.DEFAULT;
     @LevelValue
     private int wvwRank = LevelValue.MIN_LEVEL;
+    @DurationValue
+    private Duration age = DurationValue.DEFAULT;
 
     /**
      * Creates an empty instance.
@@ -113,5 +117,10 @@ public final class JsonpAccount implements Account {
     @Override
     public Set<String> getGuildLeader() {
         return guildLeader;
+    }
+
+    @Override
+    public Duration getAge() {
+        return age;
     }
 }
