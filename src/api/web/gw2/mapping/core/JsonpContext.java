@@ -67,14 +67,14 @@ public enum JsonpContext {
                             // @todo Throw exception with error message.
                             switch (code) {
                                 // 403 contains JSON.
-                                case HttpURLConnection.HTTP_NOT_FOUND: {
+                                case HttpURLConnection.HTTP_FORBIDDEN: {
                                     try (final InputStream jsonInput = new ByteArrayInputStream(errorText.getBytes("UTF-8"))) { // NOI18N.
                                         final WebAPIError error = DOM.marshaller.loadObject(WebAPIError.class, jsonInput);
                                         throw WebAPIException.of403(error);
                                     }
                                 }
                                 // 404 contains HTML.
-                                case HttpURLConnection.HTTP_FORBIDDEN: {
+                                case HttpURLConnection.HTTP_NOT_FOUND: {
                                     throw WebAPIException.of404(errorText);
                                 }
                                 default: {
