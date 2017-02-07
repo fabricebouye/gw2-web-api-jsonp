@@ -7,8 +7,11 @@
  */
 package api.web.gw2.mapping.core;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Collection;
@@ -45,6 +48,55 @@ public enum JsonpContext {
         this.marshaller = marshaller;
     }
 
+    public void checkConnectionError(final URLConnection connection) throws NullPointerException, WebAPIException, IOException {
+        Objects.requireNonNull(connection);
+        final String encoding = connection.getContentEncoding();
+        // Deal with error from the server
+        if (connection instanceof HttpURLConnection) {
+            final HttpURLConnection httpConnection = (HttpURLConnection) connection;
+            final int code = httpConnection.getResponseCode();
+            switch (code) {
+                case HttpURLConnection.HTTP_OK:
+                    break;
+                default: {
+                    //conn.getHeaderFields().entrySet().stream().forEach(System.out::println);                    
+                    try (final InputStream input = httpConnection.getErrorStream()) {
+                        try (final ByteArrayOutputStream output = new ByteArrayOutputStream()) {
+                            IOUtils.INSTANCE.copy(input, output);
+                            final String errorText = new String(output.toByteArray(), (encoding == null) ? "utf-8" : encoding); // NOI18N.
+                            // @todo Throw exception with error message.
+                            switch (code) {
+                                // 403 contains JSON.
+                                case HttpURLConnection.HTTP_NOT_FOUND: {
+                                    try (final InputStream jsonInput = new ByteArrayInputStream(errorText.getBytes("UTF-8"))) { // NOI18N.
+                                        final WebAPIError error = DOM.marshaller.loadObject(WebAPIError.class, jsonInput);
+                                        throw WebAPIException.of403(error);
+                                    }
+                                }
+                                // 404 contains HTML.
+                                case HttpURLConnection.HTTP_FORBIDDEN: {
+                                    throw WebAPIException.of404(errorText);
+                                }
+                                default: {
+                                    throw new WebAPIException(code, errorText);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    public URLConnection openConnection(final URL url) throws NullPointerException, WebAPIException, IOException {
+        Objects.requireNonNull(url);
+        final URLConnection connection = url.openConnection();
+        connection.connect();
+        checkConnectionError(connection);
+        return connection;
+    }
+
     /**
      * Loads an object from given URL
      * @param <T> The type to use.
@@ -54,12 +106,18 @@ public enum JsonpContext {
      * @throws NullPointerException If either {@code targetClass} or {@code url} is {@code null}.
      * @throws IOException In case of IO errors.
      */
-    public final <T> T loadObject(final Class<T> targetClass, final URL url) throws NullPointerException, IOException {
+    public final <T> T loadObject(final Class<T> targetClass, final URL url) throws NullPointerException, WebAPIException, IOException {
         Objects.requireNonNull(targetClass);
         Objects.requireNonNull(url);
-        try (final InputStream input = url.openStream()) {
-            return marshaller.loadObject(targetClass, input);
+        try (final InputStream input = openConnection(url).getInputStream()) {
+            return loadObject(targetClass, input);
         }
+    }
+
+    public final <T> T loadObject(final Class<T> targetClass, final InputStream input) throws NullPointerException, IOException {
+        Objects.requireNonNull(targetClass);
+        Objects.requireNonNull(input);
+        return marshaller.loadObject(targetClass, input);
     }
 
     /**
@@ -71,12 +129,18 @@ public enum JsonpContext {
      * @throws NullPointerException If either {@code targetClass} or {@code url} is {@code null}.
      * @throws IOException In case of IO errors.
      */
-    public <T> Collection<T> loadObjectArray(final Class<T> targetClass, final URL url) throws IOException {
+    public <T> Collection<T> loadObjectArray(final Class<T> targetClass, final URL url) throws NullPointerException, WebAPIException, IOException {
         Objects.requireNonNull(targetClass);
         Objects.requireNonNull(url);
-        try (final InputStream input = url.openStream()) {
-            return marshaller.loadObjectArray(targetClass, input);
+        try (final InputStream input = openConnection(url).getInputStream()) {
+            return loadObjectArray(targetClass, input);
         }
+    }
+
+    public <T> Collection<T> loadObjectArray(final Class<T> targetClass, final InputStream input) throws IOException {
+        Objects.requireNonNull(targetClass);
+        Objects.requireNonNull(input);
+        return marshaller.loadObjectArray(targetClass, input);
     }
 
     /**
@@ -88,16 +152,22 @@ public enum JsonpContext {
      * @throws NullPointerException If either {@code enumClass} or {@code url} is {@code null}.
      * @throws IOException In case of IO errors.
      */
-    public <T extends Enum> Collection<T> loadEnumArray(final Class<T> enumClass, final URL url) throws IOException {
+    public <T extends Enum> Collection<T> loadEnumArray(final Class<T> enumClass, final URL url) throws NullPointerException, WebAPIException, IOException {
         Objects.requireNonNull(enumClass);
         Objects.requireNonNull(url);
-        try (final InputStream input = url.openStream()) {
-            final Collection<String> values = marshaller.loadObjectArray(String.class, input);
-            final List<T> result = values.stream()
-                    .map(value -> EnumValueFactory.INSTANCE.mapEnumValue(enumClass, value))
-                    .collect(Collectors.toList());
-            return Collections.unmodifiableList(result);
+        try (final InputStream input = openConnection(url).getInputStream()) {
+            return loadEnumArray(enumClass, input);
         }
+    }
+
+    public <T extends Enum> Collection<T> loadEnumArray(final Class<T> enumClass, final InputStream input) throws IOException {
+        Objects.requireNonNull(enumClass);
+        Objects.requireNonNull(input);
+        final Collection<String> values = marshaller.loadObjectArray(String.class, input);
+        final List<T> result = values.stream()
+                .map(value -> EnumValueFactory.INSTANCE.mapEnumValue(enumClass, value))
+                .collect(Collectors.toList());
+        return Collections.unmodifiableList(result);
     }
 
     /**
@@ -112,8 +182,7 @@ public enum JsonpContext {
     public final <T> PageResult<T> loadPage(final Class<T> targetClass, final URL url) throws NullPointerException, IOException {
         Objects.requireNonNull(targetClass);
         Objects.requireNonNull(url);
-        final URLConnection connection = url.openConnection();
-        connection.connect();
+        final URLConnection connection = openConnection(url);
         // Exception handling here allows to load local JSON files as remote URLs.
         int pageSize = -1;
         try {
@@ -154,7 +223,7 @@ public enum JsonpContext {
         Objects.requireNonNull(selector);
         Objects.requireNonNull(pattern);
         Objects.requireNonNull(url);
-        try (final InputStream input = url.openStream()) {
+        try (final InputStream input = openConnection(url).getInputStream()) {
             return marshaller.loadRuntimeObject(selector, pattern, input);
         }
     }
