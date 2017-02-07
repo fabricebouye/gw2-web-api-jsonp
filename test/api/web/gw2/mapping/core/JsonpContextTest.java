@@ -21,7 +21,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.Optional;
 import java.util.Properties;
 import java.util.stream.IntStream;
 import org.junit.After;
@@ -60,7 +59,7 @@ public class JsonpContextTest {
     public void testLoadObject_Quaggan_Remote() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Quaggan remote)"); // NOI18N.
         final String expId = "box"; // NOI18N.
-        final Optional<URL> expURL = Optional.of(new URL("https://static.staticwars.com/quaggans/box.jpg")); // NOI18N.
+        final URLReference expURL = URLReference.of(new URL("https://static.staticwars.com/quaggans/box.jpg")); // NOI18N.
         final URL url = getClass().getResource("/api/web/gw2/mapping/v2/quaggans/quaggan1.json"); // NOI18N.
         final JsonpContext instance = JsonpContext.SAX;
         final Quaggan value = instance.loadObject(Quaggan.class, url);
