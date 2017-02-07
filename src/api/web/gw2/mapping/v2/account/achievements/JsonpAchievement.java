@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2015-2016 Fabrice Bouyé
+ * Copyright (C) 2015-2017 Fabrice Bouyé
  * All rights reserved.
  *
  * This software may be modified and distributed under the terms
@@ -31,7 +31,7 @@ public final class JsonpAchievement implements Achievement {
     private OptionalInt max = OptionalInt.empty();
     private boolean done = false;
     @SetValue
-    private Set<Integer> bits = Collections.emptySet();
+    private Set<Integer> bits = Collections.EMPTY_SET;
 
     /**
      * Creates a new empty instance.

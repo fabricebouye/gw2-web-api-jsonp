@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2015-2016 Fabrice Bouyé
+ * Copyright (C) 2015-2017 Fabrice Bouyé
  * All rights reserved.
  *
  * This software may be modified and distributed under the terms
@@ -49,11 +49,11 @@ public final class JsonpSkill implements Skill {
     @EnumValue
     private SkillSlot slot = SkillSlot.UNKNOWN;
     @SetValue
-    private Set<SkillFact> facts = Collections.emptySet();
+    private Set<SkillFact> facts = Collections.EMPTY_SET;
     @SetValue
-    private Set<SkillTraitedFact> traitedFacts = Collections.emptySet();
+    private Set<SkillTraitedFact> traitedFacts = Collections.EMPTY_SET;
     @SetValue
-    private Set<SkillCategory> categories = Collections.emptySet();
+    private Set<SkillCategory> categories = Collections.EMPTY_SET;
     @OptionalValue
     @EnumValue
     private Optional<ProfessionElementalistAttunement> attunement = Optional.empty();
@@ -77,15 +77,15 @@ public final class JsonpSkill implements Skill {
     private OptionalInt prevChain = OptionalInt.empty();
     @SetValue
     @IdValue
-    private Set<Integer> transformSkills = Collections.emptySet();
+    private Set<Integer> transformSkills = Collections.EMPTY_SET;
     @SetValue
     @IdValue
-    private Set<Integer> bundleSkills = Collections.emptySet();
+    private Set<Integer> bundleSkills = Collections.EMPTY_SET;
     @OptionalValue
     @IdValue
     private OptionalInt toolbeltSkill = OptionalInt.empty();
     @SetValue
-    private Set<?> flags = Collections.emptySet();
+    private Set<?> flags = Collections.EMPTY_SET;
 
     /**
      * Creates a new empty instance.

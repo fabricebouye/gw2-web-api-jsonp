@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2015-2016 Fabrice Bouyé
+ * Copyright (C) 2015-2017 Fabrice Bouyé
  * All rights reserved.
  *
  * This software may be modified and distributed under the terms
@@ -34,10 +34,10 @@ public final class JsonpTraitSkill implements TraitSkill {
     private String description = LocalizedResource.DEFAULT;
     @SetValue
     @RuntimeType(selector = "type", pattern = "Trait%sFact") // NOI18N.
-    private Set<TraitFact> facts = Collections.emptySet();
+    private Set<TraitFact> facts = Collections.EMPTY_SET;
     @SetValue
     @RuntimeType(selector = "type", pattern = "Trait%sFact") // NOI18N.
-    private Set<TraitFact> traitedFacts = Collections.emptySet();
+    private Set<TraitFact> traitedFacts = Collections.EMPTY_SET;
 
     /**
      * Creates a new empty instance.

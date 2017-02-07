@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2015-2016 Fabrice Bouyé
+ * Copyright (C) 2015-2017 Fabrice Bouyé
  * All rights reserved.
  *
  * This software may be modified and distributed under the terms
@@ -63,7 +63,7 @@ public final class JsonpLogEvent implements LogEvent {
     private OptionalInt totalParticipants = OptionalInt.empty();
     @SetValue
     @IdValue(flavor = IdValue.Flavor.STRING)
-    private Set<String> participants = Collections.emptySet();
+    private Set<String> participants = Collections.EMPTY_SET;
     @OptionalValue
     @IdValue(flavor = IdValue.Flavor.STRING)
     private Optional<String> invitedBy = Optional.empty();

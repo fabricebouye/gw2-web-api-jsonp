@@ -1,0 +1,29 @@
+{
+  "level": 66,
+  "motd": "Test message",
+  "influence": 111,
+  "aetherium": 222222,
+  "resonance": 3333,
+  "favor": 44444,
+  "id": "717CCCA2-26F5-43BB-A960-1FE3B0257E9B",
+  "name": "Compagnie Noire",
+  "tag": "CN",
+  "emblem": {
+    "background": {
+      "id": 2,
+      "colors": [
+        473
+      ]
+    },
+    "foreground": {
+      "id": 126,
+      "colors": [
+        443,
+        443
+      ]
+    },
+    "flags": [
+      "FlipBackgroundVertical"
+    ]
+  }
+}

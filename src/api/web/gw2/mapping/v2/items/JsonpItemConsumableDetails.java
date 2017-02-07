@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2015-2016 Fabrice Bouyé
+ * Copyright (C) 2015-2017 Fabrice Bouyé
  * All rights reserved.
  *
  * This software may be modified and distributed under the terms
@@ -54,7 +54,7 @@ public final class JsonpItemConsumableDetails extends JsonpItemDetails implement
     private URLReference icon = URLReference.empty();
     @SetValue
     @IdValue
-    private Set<Integer> skins = Collections.emptySet();
+    private Set<Integer> skins = Collections.EMPTY_SET;
 
     public JsonpItemConsumableDetails() {
         super(ItemType.CONSUMABLE);

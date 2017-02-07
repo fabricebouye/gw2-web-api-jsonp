@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2015-2016 Fabrice Bouyé
+ * Copyright (C) 2015-2017 Fabrice Bouyé
  * All rights reserved.
  *
  * This software may be modified and distributed under the terms
@@ -32,9 +32,9 @@ public final class JsonpBankSlot implements BankSlot {
     @OptionalValue
     private OptionalInt skin = OptionalInt.empty();
     @ListValue
-    private List<Integer> upgrades = Collections.emptyList();
+    private List<Integer> upgrades = Collections.EMPTY_LIST;
     @ListValue
-    private List<Integer> infusions = Collections.emptyList();
+    private List<Integer> infusions = Collections.EMPTY_LIST;
     @OptionalValue
     @EnumValue
     private Optional<InventoryBinding> binding = Optional.empty();

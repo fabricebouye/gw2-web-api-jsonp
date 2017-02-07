@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2015-2016 Fabrice Bouyé
+ * Copyright (C) 2015-2017 Fabrice Bouyé
  * All rights reserved.
  *
  * This software may be modified and distributed under the terms
@@ -27,6 +27,7 @@ import api.web.gw2.mapping.v2.characters.inventory.InventoryBinding;
 import api.web.gw2.mapping.v2.continents.Continent;
 import api.web.gw2.mapping.v2.currencies.Currency;
 import api.web.gw2.mapping.v2.finishers.Finisher;
+import api.web.gw2.mapping.v2.guild.id.Guild;
 import api.web.gw2.mapping.v2.guild.id.log.LogEvent;
 import api.web.gw2.mapping.v2.guild.id.stash.Stash;
 import api.web.gw2.mapping.v2.guild.id.teams.Team;
@@ -45,6 +46,7 @@ import api.web.gw2.mapping.v2.professions.Profession;
 import api.web.gw2.mapping.v2.pvp.amulets.Amulet;
 import api.web.gw2.mapping.v2.pvp.games.Game;
 import api.web.gw2.mapping.v2.pvp.seasons.Season;
+import api.web.gw2.mapping.v2.pvp.seasons.leaderboards.LeaderboardEntry;
 import api.web.gw2.mapping.v2.pvp.standings.Standing;
 import api.web.gw2.mapping.v2.pvp.stats.Stat;
 import api.web.gw2.mapping.v2.recipes.Recipe;
@@ -63,6 +65,7 @@ import api.web.gw2.mapping.v2.worlds.World;
 import api.web.gw2.mapping.v2.worlds.WorldPopulation;
 import api.web.gw2.mapping.v2.wvw.matches.Match;
 import api.web.gw2.mapping.v2.wvw.objectives.Objective;
+import api.web.gw2.mapping.v2.wvw.ranks.Rank;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -412,8 +415,8 @@ public class JsonpContext_SAX_LocalTest {
             false
         };
         final Set[] expBits = {
-            Collections.emptySet(),
-            Collections.emptySet(),
+            Collections.EMPTY_SET,
+            Collections.EMPTY_SET,
             Collections.unmodifiableSet(new LinkedHashSet(Arrays.asList(2, 3, 4, 5)))
         };
         assertEquals(files.length, expIds.length);
@@ -834,6 +837,7 @@ public class JsonpContext_SAX_LocalTest {
         final String[] filenames = {
             "season01.json", // NOI18N.
             "season02.json", // NOI18N.
+            "season05.json", // NOI18N.
         };
         IntStream.range(0, filenames.length)
                 .forEach(index -> {
@@ -842,6 +846,28 @@ public class JsonpContext_SAX_LocalTest {
                     assertNotNull(url);
                     try {
                         final Season value = instance.loadObject(Season.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_LeaderboardEntry_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(LeaderboardEntry local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/pvp/seasons/leaderboards/"; // NOI18N.
+        final String[] filenames = {
+            "leaderboard01.json", // NOI18N.
+            "leaderboard02.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final LeaderboardEntry value = instance.loadObject(LeaderboardEntry.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
@@ -1263,6 +1289,50 @@ public class JsonpContext_SAX_LocalTest {
                     assertNotNull(url);
                     try {
                         final StorySeason value = instance.loadObject(StorySeason.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_Rank() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Rank local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/wvw/ranks/"; // NOI18N.
+        final String[] filenames = {
+            "rank01.json", // NOI18N.
+            "rank02.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final Rank value = instance.loadObject(Rank.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+    
+    @Test
+    public void testLoadObject_Guild() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Guild local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/guild/id/"; // NOI18N.
+        final String[] filenames = {
+            "guild01.json", // NOI18N.
+            "guild02.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final Guild value = instance.loadObject(Guild.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());

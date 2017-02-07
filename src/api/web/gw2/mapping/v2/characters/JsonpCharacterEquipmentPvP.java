@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2015-2016 Fabrice Bouyé
+ * Copyright (C) 2015-2017 Fabrice Bouyé
  * All rights reserved.
  *
  * This software may be modified and distributed under the terms
@@ -24,7 +24,7 @@ public final class JsonpCharacterEquipmentPvP implements CharacterEquipmentPvP {
     private int rune = IdValue.DEFAULT_INTEGER_ID;
     @ListValue
     @IdValue
-    private List<Integer> sigils = Collections.emptyList();
+    private List<Integer> sigils = Collections.EMPTY_LIST;
 
     /**
      * Creates a new empty instance.

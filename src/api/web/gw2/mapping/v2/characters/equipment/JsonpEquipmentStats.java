@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2015-2016 Fabrice Bouyé
+ * Copyright (C) 2015-2017 Fabrice Bouyé
  * All rights reserved.
  *
  * This software may be modified and distributed under the terms
@@ -21,7 +21,7 @@ public final class JsonpEquipmentStats implements EquipmentStats {
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
     @MapValue
-    private Map<EquipmentAttribute, Integer> attributes = Collections.emptyMap();
+    private Map<EquipmentAttribute, Integer> attributes = Collections.EMPTY_MAP;
 
     /**
      * Creates a new empty instance.

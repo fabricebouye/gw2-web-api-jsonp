@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2015-2016 Fabrice Bouyé
+ * Copyright (C) 2015-2017 Fabrice Bouyé
  * All rights reserved.
  *
  * This software may be modified and distributed under the terms
@@ -32,6 +32,9 @@ public final class JsonpAccount implements Account {
     @SetValue
     @IdValue(flavor = IdValue.Flavor.STRING)
     private Set<String> guilds = Collections.EMPTY_SET;
+    @SetValue
+    @IdValue(flavor = IdValue.Flavor.STRING)
+    private Set<String> guildLeader = Collections.EMPTY_SET;
     @DateValue
     private ZonedDateTime created = DateValue.DEFAULT;
     @EnumValue
@@ -105,5 +108,10 @@ public final class JsonpAccount implements Account {
     @Override
     public int getWvwRank() {
         return wvwRank;
+    }
+
+    @Override
+    public Set<String> getGuildLeader() {
+        return guildLeader;
     }
 }

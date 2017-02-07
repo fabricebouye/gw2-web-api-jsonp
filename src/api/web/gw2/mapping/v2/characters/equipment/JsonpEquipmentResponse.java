@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2015-2016 Fabrice Bouyé
+ * Copyright (C) 2015-2017 Fabrice Bouyé
  * All rights reserved.
  *
  * This software may be modified and distributed under the terms
@@ -18,7 +18,7 @@ import java.util.List;
 public final class JsonpEquipmentResponse implements EquipmentResponse {
 
     @ListValue
-    private List<Equipment> equipment = Collections.emptyList();
+    private List<Equipment> equipment = Collections.EMPTY_LIST;
 
     /**
      * Creates a new empty instance.

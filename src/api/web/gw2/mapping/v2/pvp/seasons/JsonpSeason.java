@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2015-2016 Fabrice Bouyé
+ * Copyright (C) 2015-2017 Fabrice Bouyé
  * All rights reserved.
  *
  * This software may be modified and distributed under the terms
@@ -10,9 +10,11 @@ package api.web.gw2.mapping.v2.pvp.seasons;
 import api.web.gw2.mapping.core.DateValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
+import api.web.gw2.mapping.core.MapValue;
 import api.web.gw2.mapping.core.SetValue;
 import java.time.ZonedDateTime;
 import java.util.Collections;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -32,6 +34,8 @@ public final class JsonpSeason implements Season {
     @DateValue
     private ZonedDateTime end = DateValue.DEFAULT;
     private boolean active = false;
+    @MapValue
+    private Map<SeasonLadderType, SeasonLadder> leaderboards = Collections.EMPTY_MAP;
 
     /**
      * Creates a new empty instance.
@@ -67,5 +71,10 @@ public final class JsonpSeason implements Season {
     @Override
     public boolean isActive() {
         return active;
+    }
+
+    @Override
+    public Map<SeasonLadderType, SeasonLadder> getLeaderboards() {
+        return leaderboards;
     }
 }
