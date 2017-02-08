@@ -10,7 +10,10 @@ package api.web.gw2.mapping.v2.guild.id;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LevelValue;
 import api.web.gw2.mapping.core.LocalizedResource;
+import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 /**
  * Default JSON-P implementation of a guild.
@@ -22,17 +25,23 @@ public final class JsonpGuild implements Guild {
     private String id = IdValue.DEFAULT_STRING_ID;
     private String name = LocalizedResource.DEFAULT;
     private String tag = LocalizedResource.DEFAULT;
+    @OptionalValue
     @LevelValue
-    private int level = QuantityValue.DEFAULT;
-    private String motd = LocalizedResource.DEFAULT;
+    private OptionalInt level = OptionalInt.empty();
+    @OptionalValue
+    private Optional<String> motd = Optional.empty();
+    @OptionalValue
     @QuantityValue
-    private int influence = QuantityValue.DEFAULT;
+    private OptionalInt influence = OptionalInt.empty();
+    @OptionalValue
     @QuantityValue
-    private int aetherium = QuantityValue.DEFAULT;
+    private OptionalInt aetherium = OptionalInt.empty();
+    @OptionalValue
     @QuantityValue
-    private int favor = QuantityValue.DEFAULT;
+    private OptionalInt favor = OptionalInt.empty();
+    @OptionalValue
     @QuantityValue
-    private int resonance = QuantityValue.DEFAULT;
+    private OptionalInt resonance = OptionalInt.empty();
     private GuildEmblem emblem;
 
     /**
@@ -57,32 +66,32 @@ public final class JsonpGuild implements Guild {
     }
 
     @Override
-    public int getLevel() {
+    public OptionalInt getLevel() {
         return level;
     }
 
     @Override
-    public String getMotd() {
+    public Optional<String> getMotd() {
         return motd;
     }
 
     @Override
-    public int getInfluence() {
+    public OptionalInt getInfluence() {
         return influence;
     }
 
     @Override
-    public int getAetherium() {
+    public OptionalInt getAetherium() {
         return aetherium;
     }
 
     @Override
-    public int getFavor() {
+    public OptionalInt getFavor() {
         return favor;
     }
 
     @Override
-    public int getResonance() {
+    public OptionalInt getResonance() {
         return resonance;
     }
 
