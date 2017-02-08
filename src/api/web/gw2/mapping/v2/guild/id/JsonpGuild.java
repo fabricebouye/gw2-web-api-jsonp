@@ -58,7 +58,7 @@ public final class JsonpGuild implements Guild {
 
     @Override
     public int getLevel() {
-        return 0;
+        return level;
     }
 
     @Override
