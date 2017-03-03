@@ -11,6 +11,7 @@ import api.web.gw2.mapping.v2.account.Account;
 import api.web.gw2.mapping.v2.account.AccountAccessType;
 import api.web.gw2.mapping.v2.account.bank.BankSlot;
 import api.web.gw2.mapping.v2.account.finishers.FinisherUnlock;
+import api.web.gw2.mapping.v2.account.home.cats.Cat;
 import api.web.gw2.mapping.v2.account.inventory.SharedInventory;
 import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
 import api.web.gw2.mapping.v2.achievements.Achievement;
@@ -88,7 +89,7 @@ import org.junit.Test;
  * Unit test.
  * @author Fabrice Bouyé
  */
-public class JsonpContext_SAX_LocalTest {
+public final class JsonpContext_SAX_LocalTest {
 
     public JsonpContext_SAX_LocalTest() {
     }
@@ -1317,7 +1318,7 @@ public class JsonpContext_SAX_LocalTest {
                     }
                 });
     }
-    
+
     @Test
     public void testLoadObject_Guild() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Guild local)"); // NOI18N.
@@ -1333,6 +1334,28 @@ public class JsonpContext_SAX_LocalTest {
                     assertNotNull(url);
                     try {
                         final Guild value = instance.loadObject(Guild.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_Cat() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Cat)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/account/home/cats/"; // NOI18N.
+        final String[] filenames = {
+            "cat01.json", // NOI18N.
+            "cat27.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final Cat value = instance.loadObject(Cat.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
