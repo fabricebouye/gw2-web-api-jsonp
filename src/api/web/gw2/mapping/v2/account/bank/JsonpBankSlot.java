@@ -12,7 +12,7 @@ import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.ListValue;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
-import api.web.gw2.mapping.v2.characters.inventory.InventoryBinding;
+import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBinding;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -37,7 +37,7 @@ public final class JsonpBankSlot implements BankSlot {
     private List<Integer> infusions = Collections.EMPTY_LIST;
     @OptionalValue
     @EnumValue
-    private Optional<InventoryBinding> binding = Optional.empty();
+    private Optional<CharacterInventoryBinding> binding = Optional.empty();
     @IdValue(flavor = IdValue.Flavor.STRING)
     @OptionalValue
     private Optional<String> boundTo = Optional.empty();
@@ -77,7 +77,7 @@ public final class JsonpBankSlot implements BankSlot {
     }
 
     @Override
-    public Optional<InventoryBinding> getBinding() {
+    public Optional<CharacterInventoryBinding> getBinding() {
         return binding;
     }
 
