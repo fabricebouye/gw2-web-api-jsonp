@@ -9,6 +9,7 @@ package api.web.gw2.mapping.v2.characters;
 
 import api.web.gw2.mapping.v2.characters.id.training.CharacterTraining;
 import api.web.gw2.mapping.v2.characters.id.skills.CharacterSkillSet;
+import api.web.gw2.mapping.v2.characters.id.equipment_pvp.CharacterEquipmentPvP;
 import api.web.gw2.mapping.v2.characters.id.wvw_abilities.CharacterAbility;
 import api.web.gw2.mapping.v2.characters.id.specializations.CharacterSpecializationGameType;
 import api.web.gw2.mapping.v2.characters.id.specializations.CharacterSpecialization;
