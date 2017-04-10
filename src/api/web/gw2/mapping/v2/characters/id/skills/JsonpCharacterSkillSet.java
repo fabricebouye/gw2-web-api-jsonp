@@ -5,7 +5,7 @@
  * This software may be modified and distributed under the terms
  * of the BSD license.  See the LICENSE file for details.
  */
-package api.web.gw2.mapping.v2.characters;
+package api.web.gw2.mapping.v2.characters.id.skills;
 
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.OptionalValue;
@@ -31,7 +31,7 @@ public final class JsonpCharacterSkillSet implements CharacterSkillSet {
     @IdValue
     private Set<Integer> legends = Collections.EMPTY_SET;
     @OptionalValue
-    private Optional<CharacterPets> pets = Optional.empty();
+    private Optional<CharacterSkillPets> pets = Optional.empty();
 
     /**
      * Creates a new empty instance.
@@ -60,7 +60,7 @@ public final class JsonpCharacterSkillSet implements CharacterSkillSet {
     }
 
     @Override
-    public Optional<CharacterPets> getPets() {
+    public Optional<CharacterSkillPets> getPets() {
         return pets;
     }
 }

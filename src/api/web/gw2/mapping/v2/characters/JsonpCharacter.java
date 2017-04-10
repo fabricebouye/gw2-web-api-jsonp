@@ -8,6 +8,7 @@
 package api.web.gw2.mapping.v2.characters;
 
 import api.web.gw2.mapping.v2.characters.id.training.CharacterTraining;
+import api.web.gw2.mapping.v2.characters.id.skills.CharacterSkillSet;
 import api.web.gw2.mapping.v2.characters.id.specializations.CharacterSpecializationGameType;
 import api.web.gw2.mapping.v2.characters.id.specializations.CharacterSpecialization;
 import api.web.gw2.mapping.v2.characters.id.crafting.CharacterCrafting;
@@ -70,7 +71,7 @@ public final class JsonpCharacter implements Character {
     @IdValue
     private Set<Integer> recipes = Collections.EMPTY_SET;
     @MapValue
-    private Map<CharacterGameType, CharacterSkillSet> skills = Collections.EMPTY_MAP;
+    private Map<CharacterSpecializationGameType, CharacterSkillSet> skills = Collections.EMPTY_MAP;
     @SetValue
     @IdValue
     private Set<Integer> backstory = Collections.EMPTY_SET;
@@ -161,7 +162,7 @@ public final class JsonpCharacter implements Character {
     }
 
     @Override
-    public Map<CharacterGameType, CharacterSkillSet> getSkills() {
+    public Map<CharacterSpecializationGameType, CharacterSkillSet> getSkills() {
         return skills;
     }
 

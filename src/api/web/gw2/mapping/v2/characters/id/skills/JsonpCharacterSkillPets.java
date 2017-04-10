@@ -5,7 +5,7 @@
  * This software may be modified and distributed under the terms
  * of the BSD license.  See the LICENSE file for details.
  */
-package api.web.gw2.mapping.v2.characters;
+package api.web.gw2.mapping.v2.characters.id.skills;
 
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.SetValue;
@@ -16,7 +16,7 @@ import java.util.Set;
  * Default JSON-P implementation of a Ranger's equipped pets.
  * @author Fabrice Bouyé
  */
-public final class JsonpCharacterPets implements CharacterPets {
+public final class JsonpCharacterSkillPets implements CharacterSkillPets {
 
     @SetValue
     @IdValue
@@ -28,7 +28,7 @@ public final class JsonpCharacterPets implements CharacterPets {
     /**
      * Creates a new empty instance.
      */
-    public JsonpCharacterPets() {
+    public JsonpCharacterSkillPets() {
     }
 
     @Override
