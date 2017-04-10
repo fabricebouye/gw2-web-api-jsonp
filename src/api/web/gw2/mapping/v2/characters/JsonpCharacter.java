@@ -8,6 +8,8 @@
 package api.web.gw2.mapping.v2.characters;
 
 import api.web.gw2.mapping.v2.characters.id.training.CharacterTraining;
+import api.web.gw2.mapping.v2.characters.id.specializations.CharacterSpecializationGameType;
+import api.web.gw2.mapping.v2.characters.id.specializations.CharacterSpecialization;
 import api.web.gw2.mapping.v2.characters.id.crafting.CharacterCrafting;
 import api.web.gw2.mapping.core.DateValue;
 import api.web.gw2.mapping.core.DurationValue;
@@ -63,7 +65,7 @@ public final class JsonpCharacter implements Character {
     private Set<CharacterCrafting> crafting = Collections.EMPTY_SET;
     @MapValue
     @SetValue
-    private Map<CharacterGameType, Set<CharacterSpecialization>> specializations = Collections.EMPTY_MAP;
+    private Map<CharacterSpecializationGameType, Set<CharacterSpecialization>> specializations = Collections.EMPTY_MAP;
     @SetValue
     @IdValue
     private Set<Integer> recipes = Collections.EMPTY_SET;
@@ -149,7 +151,7 @@ public final class JsonpCharacter implements Character {
     }
 
     @Override
-    public Map<CharacterGameType, Set<CharacterSpecialization>> getSpecializations() {
+    public Map<CharacterSpecializationGameType, Set<CharacterSpecialization>> getSpecializations() {
         return specializations;
     }
 
