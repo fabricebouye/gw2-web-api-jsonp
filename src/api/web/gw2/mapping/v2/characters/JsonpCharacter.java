@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.v2.characters;
 
+import api.web.gw2.mapping.v2.characters.id.training.CharacterTraining;
 import api.web.gw2.mapping.v2.characters.id.crafting.CharacterCrafting;
 import api.web.gw2.mapping.core.DateValue;
 import api.web.gw2.mapping.core.DurationValue;
