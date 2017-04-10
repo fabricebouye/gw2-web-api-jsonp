@@ -20,7 +20,7 @@ import api.web.gw2.mapping.v2.achievements.daily.DailyAchievementLevelRange;
 import api.web.gw2.mapping.v2.backstory.answers.BackstoryAnswer;
 import api.web.gw2.mapping.v2.backstory.questions.BackstoryQuestion;
 import api.web.gw2.mapping.v2.characters.Character;
-import api.web.gw2.mapping.v2.characters.CharacterCrafting;
+import api.web.gw2.mapping.v2.characters.id.crafting.CharacterCrafting;
 import api.web.gw2.mapping.v2.characters.CharacterProfession;
 import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBinding;
 import api.web.gw2.mapping.v2.continents.Continent;
