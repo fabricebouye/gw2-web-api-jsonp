@@ -5,7 +5,7 @@
  * This software may be modified and distributed under the terms
  * of the BSD license.  See the LICENSE file for details.
  */
-package api.web.gw2.mapping.v2.characters.inventory;
+package api.web.gw2.mapping.v2.characters.id.inventory;
 
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.ListValue;
@@ -17,18 +17,18 @@ import java.util.List;
  * Default JSON-P  implementation of a bag.
  * @author Fabrice Bouyé
  */
-public final class JsonpInventoryBag implements InventoryBag {
+public final class JsonpCharacterInventoryBag implements CharacterInventoryBag {
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
     @QuantityValue
     private int size = QuantityValue.DEFAULT;
     @ListValue
-    private List<Inventory> inventory = Collections.EMPTY_LIST;
+    private List<CharacterInventory> inventory = Collections.EMPTY_LIST;
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpInventoryBag() {
+    public JsonpCharacterInventoryBag() {
     }
 
     @Override
@@ -42,7 +42,7 @@ public final class JsonpInventoryBag implements InventoryBag {
     }
 
     @Override
-    public List<Inventory> getInventory() {
+    public List<CharacterInventory> getInventory() {
         return inventory;
     }
 }

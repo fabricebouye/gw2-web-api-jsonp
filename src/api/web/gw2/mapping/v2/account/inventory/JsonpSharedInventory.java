@@ -12,11 +12,11 @@ import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.ListValue;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
-import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
-import api.web.gw2.mapping.v2.characters.inventory.InventoryBinding;
+import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBinding;
 import java.util.Collections;
 import java.util.List;
 import java.util.OptionalInt;
+import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBag;
 
 /**
  * Default JSON-P implementation of a shared inventory slot.
@@ -30,7 +30,7 @@ public final class JsonpSharedInventory implements SharedInventory {
     @QuantityValue
     private int count = QuantityValue.DEFAULT;
     @EnumValue
-    private InventoryBinding binding = InventoryBinding.UNKNOWN;
+    private CharacterInventoryBinding binding = CharacterInventoryBinding.UNKNOWN;
     @OptionalValue
     @QuantityValue
     private OptionalInt charges = OptionalInt.empty();

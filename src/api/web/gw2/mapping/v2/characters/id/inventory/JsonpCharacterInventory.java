@@ -5,24 +5,24 @@
  * This software may be modified and distributed under the terms
  * of the BSD license.  See the LICENSE file for details.
  */
-package api.web.gw2.mapping.v2.characters.inventory;
+package api.web.gw2.mapping.v2.characters.id.inventory;
 
 import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.ListValue;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
-import api.web.gw2.mapping.v2.characters.equipment.EquipmentStats;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
+import api.web.gw2.mapping.v2.characters.id.equipment.CharacterEquipmentStats;
 
 /**
  * Default JSON-P implementation of an inventory item.
  * @author Fabrice Bouyé
  */
-public final class JsonpInventory implements Inventory {
+public final class JsonpCharacterInventory implements CharacterInventory {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
@@ -39,7 +39,7 @@ public final class JsonpInventory implements Inventory {
     private List<Integer> infusions = Collections.EMPTY_LIST;
     @OptionalValue
     @EnumValue
-    private Optional<InventoryBinding> binding = Optional.empty();
+    private Optional<CharacterInventoryBinding> binding = Optional.empty();
     @OptionalValue
     private Optional<String> boundTo = Optional.empty();
     @OptionalValue
@@ -49,12 +49,12 @@ public final class JsonpInventory implements Inventory {
     @QuantityValue
     private OptionalInt charges = OptionalInt.empty();
     @OptionalValue
-    private Optional<EquipmentStats> stats = Optional.empty();
+    private Optional<CharacterEquipmentStats> stats = Optional.empty();
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpInventory() {
+    public JsonpCharacterInventory() {
     }
 
     @Override
@@ -83,7 +83,7 @@ public final class JsonpInventory implements Inventory {
     }
 
     @Override
-    public Optional<InventoryBinding> getBinding() {
+    public Optional<CharacterInventoryBinding> getBinding() {
         return binding;
     }
 
@@ -103,7 +103,7 @@ public final class JsonpInventory implements Inventory {
     }
 
     @Override
-    public Optional<EquipmentStats> getStats() {
+    public Optional<CharacterEquipmentStats> getStats() {
         return stats;
     }
 }
