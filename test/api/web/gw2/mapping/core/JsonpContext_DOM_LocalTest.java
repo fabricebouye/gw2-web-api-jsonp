@@ -81,6 +81,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import api.web.gw2.mapping.v2.characters.id.equipment.CharacterEquipment;
 import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBag;
+import api.web.gw2.mapping.v2.characters.id.sab.CharacterSabResponse;
 
 /**
  * Unit test.
@@ -242,6 +243,37 @@ public final class JsonpContext_DOM_LocalTest {
         assertEquals(true, value.isActive());
     }
 
+    @Test
+    public void testLoadObject_CharacterSab_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(CharacterSab local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/characters/id/sab/"; // NOI18N.
+        final String[] filenames = {"sab1.json"}; // NOI18N.
+        final int[] expZoneNumbers = {18};
+        final int[] expUnlockNumbers = {17};
+        final int[] expSongNumbers = {3};
+        assertEquals(filenames.length, expZoneNumbers.length);
+        assertEquals(filenames.length, expUnlockNumbers.length);
+        assertEquals(filenames.length, expSongNumbers.length);
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final CharacterSabResponse value = instance.loadObject(CharacterSabResponse.class, url);
+                        assertNotNull(value);
+                        final int expZoneNumber = expZoneNumbers[index];
+                        assertEquals(expZoneNumber, value.getZones().size());
+                        final int expUnlockNumber = expUnlockNumbers[index];
+                        assertEquals(expUnlockNumber, value.getUnlocks().size());
+                        final int expSongNumber = expSongNumbers[index];
+                        assertEquals(expSongNumber, value.getSongs().size());
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+    
     @Test
     public void testLoadObject_Equipment_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Equipment local)"); // NOI18N.
