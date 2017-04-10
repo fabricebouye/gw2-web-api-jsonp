@@ -21,6 +21,7 @@ import api.web.gw2.mapping.v2.backstory.questions.BackstoryQuestion;
 import api.web.gw2.mapping.v2.characters.Character;
 import api.web.gw2.mapping.v2.characters.id.crafting.CharacterCrafting;
 import api.web.gw2.mapping.v2.characters.CharacterProfession;
+import api.web.gw2.mapping.v2.characters.id.core.CharacterCore;
 import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBinding;
 import api.web.gw2.mapping.v2.continents.Continent;
 import api.web.gw2.mapping.v2.currencies.Currency;
@@ -230,6 +231,27 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
+    public void testLoadObject_CharacterCore_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(CharacterCore local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/characters/id/core/"; // NOI18N.
+        final String[] filenames = {
+            "charactercore1.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final CharacterCore value = instance.loadObject(CharacterCore.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
     public void testLoadObject_CharacterCrafting_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(CharacterCrafting local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/characters/id/crafting/"; // NOI18N.
@@ -273,7 +295,7 @@ public final class JsonpContext_DOM_LocalTest {
                     }
                 });
     }
-    
+
     @Test
     public void testLoadObject_Equipment_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Equipment local)"); // NOI18N.
