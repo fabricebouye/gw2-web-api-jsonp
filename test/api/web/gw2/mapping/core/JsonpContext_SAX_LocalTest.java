@@ -22,7 +22,6 @@ import api.web.gw2.mapping.v2.backstory.questions.BackstoryQuestion;
 import api.web.gw2.mapping.v2.characters.Character;
 import api.web.gw2.mapping.v2.characters.CharacterCrafting;
 import api.web.gw2.mapping.v2.characters.CharacterProfession;
-import api.web.gw2.mapping.v2.characters.equipment.Equipment;
 import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBinding;
 import api.web.gw2.mapping.v2.continents.Continent;
 import api.web.gw2.mapping.v2.currencies.Currency;
@@ -83,6 +82,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import api.web.gw2.mapping.v2.characters.id.equipment.CharacterEquipment;
 import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBag;
 
 /**
@@ -263,7 +263,7 @@ public final class JsonpContext_SAX_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final Equipment value = instance.loadObject(Equipment.class, url);
+                        final CharacterEquipment value = instance.loadObject(CharacterEquipment.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());

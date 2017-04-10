@@ -17,7 +17,6 @@ import api.web.gw2.mapping.core.MapValue;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
 import api.web.gw2.mapping.core.SetValue;
-import api.web.gw2.mapping.v2.characters.equipment.Equipment;
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.Collections;
@@ -55,7 +54,7 @@ public final class JsonpCharacter implements Character {
     @QuantityValue
     private int deaths = QuantityValue.DEFAULT;
     @ListValue
-    private List<Equipment> equipment = Collections.EMPTY_LIST;
+    private List<CharacterEquipment> equipment = Collections.EMPTY_LIST;
     @ListValue
     private List<CharacterInventoryBag> bags = Collections.EMPTY_LIST;
     @SetValue
@@ -133,7 +132,7 @@ public final class JsonpCharacter implements Character {
     }
 
     @Override
-    public List<Equipment> getEquipment() {
+    public List<CharacterEquipment> getEquipment() {
         return equipment;
     }
 

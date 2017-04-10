@@ -80,6 +80,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import api.web.gw2.mapping.v2.characters.id.equipment.CharacterEquipment;
 import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBag;
 
 /**
@@ -258,7 +259,7 @@ public final class JsonpContext_DOM_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final Equipment value = instance.loadObject(Equipment.class, url);
+                        final CharacterEquipment value = instance.loadObject(CharacterEquipment.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());

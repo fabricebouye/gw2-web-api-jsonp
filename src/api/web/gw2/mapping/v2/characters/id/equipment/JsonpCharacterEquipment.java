@@ -5,7 +5,7 @@
  * This software may be modified and distributed under the terms
  * of the BSD license.  See the LICENSE file for details.
  */
-package api.web.gw2.mapping.v2.characters.equipment;
+package api.web.gw2.mapping.v2.characters.id.equipment;
 
 import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
@@ -21,12 +21,12 @@ import java.util.OptionalInt;
  * Default JSON-P implementation of the equipment.
  * @author Fabrice Bouyé
  */
-public final class JsonpEquipment implements Equipment {
+public final class JsonpCharacterEquipment implements CharacterEquipment {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
     @EnumValue
-    private EquipmentSlot slot = EquipmentSlot.UNKNOWN;
+    private CharacterEquipmentSlot slot = CharacterEquipmentSlot.UNKNOWN;
     @ListValue
     @IdValue
     private List<Integer> upgrades = Collections.EMPTY_LIST;
@@ -36,10 +36,10 @@ public final class JsonpEquipment implements Equipment {
     @IdValue
     private int skin = IdValue.DEFAULT_INTEGER_ID;
     @OptionalValue
-    private Optional<EquipmentStats> stats = Optional.empty();
+    private Optional<CharacterEquipmentStats> stats = Optional.empty();
     @OptionalValue
     @EnumValue
-    private Optional<EquipmentBinding> binding = Optional.empty();
+    private Optional<CharacterEquipmentBinding> binding = Optional.empty();
     @OptionalValue
     @IdValue(flavor = IdValue.Flavor.STRING)
     private Optional<String> boundTo = Optional.empty();
@@ -50,7 +50,7 @@ public final class JsonpEquipment implements Equipment {
     /**
      * Creates a new empty instance.
      */
-    public JsonpEquipment() {
+    public JsonpCharacterEquipment() {
     }
 
     @Override
@@ -59,7 +59,7 @@ public final class JsonpEquipment implements Equipment {
     }
 
     @Override
-    public EquipmentSlot getSlot() {
+    public CharacterEquipmentSlot getSlot() {
         return slot;
     }
 
@@ -79,12 +79,12 @@ public final class JsonpEquipment implements Equipment {
     }
 
     @Override
-    public Optional<EquipmentStats> getStats() {
+    public Optional<CharacterEquipmentStats> getStats() {
         return stats;
     }
 
     @Override
-    public Optional<EquipmentBinding> getBinding() {
+    public Optional<CharacterEquipmentBinding> getBinding() {
         return binding;
     }
 
