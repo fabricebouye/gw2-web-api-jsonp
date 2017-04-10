@@ -22,8 +22,7 @@ import api.web.gw2.mapping.v2.characters.Character;
 import api.web.gw2.mapping.v2.characters.CharacterCrafting;
 import api.web.gw2.mapping.v2.characters.CharacterProfession;
 import api.web.gw2.mapping.v2.characters.equipment.Equipment;
-import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
-import api.web.gw2.mapping.v2.characters.inventory.InventoryBinding;
+import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBinding;
 import api.web.gw2.mapping.v2.continents.Continent;
 import api.web.gw2.mapping.v2.currencies.Currency;
 import api.web.gw2.mapping.v2.finishers.Finisher;
@@ -81,6 +80,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBag;
 
 /**
  * Unit test.
@@ -280,7 +280,7 @@ public final class JsonpContext_DOM_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final InventoryBag value = instance.loadObject(InventoryBag.class, url);
+                        final CharacterInventoryBag value = instance.loadObject(CharacterInventoryBag.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
@@ -966,7 +966,7 @@ public final class JsonpContext_DOM_LocalTest {
                                     final SharedInventory sharedInventory = it.next();
                                     assertEquals(expectedIds[i], sharedInventory.getId());
                                     assertEquals(expectedCounts[i], sharedInventory.getCount());
-                                    assertEquals(InventoryBinding.ACCOUNT, sharedInventory.getBinding());
+                                    assertEquals(CharacterInventoryBinding.ACCOUNT, sharedInventory.getBinding());
                                 });
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {

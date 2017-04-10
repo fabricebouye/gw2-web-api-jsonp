@@ -17,7 +17,6 @@ import api.web.gw2.mapping.core.MapValue;
 import api.web.gw2.mapping.core.OptionalValue;
 import api.web.gw2.mapping.core.QuantityValue;
 import api.web.gw2.mapping.core.SetValue;
-import api.web.gw2.mapping.v2.characters.inventory.InventoryBag;
 import api.web.gw2.mapping.v2.characters.equipment.Equipment;
 import java.time.Duration;
 import java.time.ZonedDateTime;
@@ -27,6 +26,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.Set;
+import api.web.gw2.mapping.v2.characters.id.equipment.CharacterEquipment;
+import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBag;
 
 /**
  * Default JSON-P implementation of a character.
@@ -56,7 +57,7 @@ public final class JsonpCharacter implements Character {
     @ListValue
     private List<Equipment> equipment = Collections.EMPTY_LIST;
     @ListValue
-    private List<InventoryBag> bags = Collections.EMPTY_LIST;
+    private List<CharacterInventoryBag> bags = Collections.EMPTY_LIST;
     @SetValue
     private Set<CharacterCrafting> crafting = Collections.EMPTY_SET;
     @MapValue
@@ -137,7 +138,7 @@ public final class JsonpCharacter implements Character {
     }
 
     @Override
-    public List<InventoryBag> getBags() {
+    public List<CharacterInventoryBag> getBags() {
         return bags;
     }
 
