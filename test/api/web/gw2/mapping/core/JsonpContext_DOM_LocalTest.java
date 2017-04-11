@@ -84,6 +84,7 @@ import api.web.gw2.mapping.v2.characters.id.equipment.CharacterEquipment;
 import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBag;
 import api.web.gw2.mapping.v2.characters.id.sab.CharacterSabResponse;
 import api.web.gw2.mapping.v2.dungeons.Dungeon;
+import api.web.gw2.mapping.v2.gliders.Glider;
 
 /**
  * Unit test.
@@ -1372,6 +1373,31 @@ public final class JsonpContext_DOM_LocalTest {
                         final Dungeon value = instance.loadObject(Dungeon.class, url);
                         assertNotNull(value);
                         final String expId = expIds[index];
+                        assertEquals(expId, value.getId());
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_Glider() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Glider)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/gliders/"; // NOI18N.
+        final String[] filenames = {
+            "glider01.json", // NOI18N.
+        };
+        final int[] expIds = {1};
+        assertEquals(filenames.length, expIds.length);
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final Glider value = instance.loadObject(Glider.class, url);
+                        assertNotNull(value);
+                        final int expId = expIds[index];
                         assertEquals(expId, value.getId());
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
