@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.Set;
 
 /**
- * Default JSON-P implementation of a PvP league season.
+ * Default JSON-P implementation of a playable race.
  * @author Fabrice Bouyé
  */
 public final class JsonpRace implements Race {
