@@ -308,7 +308,7 @@ public final class JsonpContext_SAX_LocalTest {
     @Test
     public void testLoadObject_Equipment_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Equipment local)"); // NOI18N.
-        final String basecode = "/api/web/gw2/mapping/v2/characters/equipment/"; // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/characters/id/equipment/"; // NOI18N.
         final String[] filenames = {
             "equipment1.json", // NOI18N.
             "equipment2.json", // NOI18N.
