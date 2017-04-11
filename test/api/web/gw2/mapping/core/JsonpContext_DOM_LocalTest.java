@@ -302,7 +302,7 @@ public final class JsonpContext_DOM_LocalTest {
     @Test
     public void testLoadObject_Equipment_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Equipment local)"); // NOI18N.
-        final String basecode = "/api/web/gw2/mapping/v2/characters/equipment/"; // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/characters/id/equipment/"; // NOI18N.
         final String[] filenames = {
             "equipment1.json", // NOI18N.
             "equipment2.json", // NOI18N.
@@ -326,7 +326,7 @@ public final class JsonpContext_DOM_LocalTest {
     @Test
     public void testLoadObject_InventoryBag_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(InventoryBag local)"); // NOI18N.
-        final String basecode = "/api/web/gw2/mapping/v2/characters/inventory/"; // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/characters/id/inventory/"; // NOI18N.
         final String[] filenames = {
             "inventorybag1.json", // NOI18N.
             "inventorybag2.json" // NOI18N.
