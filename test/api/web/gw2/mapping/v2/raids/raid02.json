@@ -1,0 +1,26 @@
+{
+    "id": "bastion_of_the_penitent",
+    "wings": [
+        {
+            "id": "bastion_of_the_penitent",
+            "events": [
+                {
+                    "id": "cairn",
+                    "type": "Boss"
+                },
+                {
+                    "id": "mursaat_overseer",
+                    "type": "Boss"
+                },
+                {
+                    "id": "samarog",
+                    "type": "Boss"
+                },
+                {
+                    "id": "deimos",
+                    "type": "Boss"
+                }
+            ]
+        }
+    ]
+}
