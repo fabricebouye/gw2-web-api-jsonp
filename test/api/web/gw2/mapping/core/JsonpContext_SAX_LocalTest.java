@@ -89,6 +89,7 @@ import api.web.gw2.mapping.v2.characters.id.sab.CharacterSabResponse;
 import api.web.gw2.mapping.v2.dungeons.Dungeon;
 import api.web.gw2.mapping.v2.gliders.Glider;
 import api.web.gw2.mapping.v2.pvp.ranks.PvpRank;
+import api.web.gw2.mapping.v2.races.Race;
 
 /**
  * Unit test.
@@ -1491,6 +1492,32 @@ public final class JsonpContext_SAX_LocalTest {
                         final PvpRank value = instance.loadObject(PvpRank.class, url);
                         assertNotNull(value);
                         final int expId = expIds[index];
+                        assertEquals(expId, value.getId());
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_Race() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Race)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/races/"; // NOI18N.
+        final String[] filenames = {
+            "race01.json", // NOI18N.
+        };
+        final String[] expIds = {
+            "Asura",};
+        assertEquals(filenames.length, expIds.length);
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final Race value = instance.loadObject(Race.class, url);
+                        assertNotNull(value);
+                        final String expId = expIds[index];
                         assertEquals(expId, value.getId());
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
