@@ -12,7 +12,7 @@ import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.MapValue;
 import api.web.gw2.mapping.core.SetValue;
-import api.web.gw2.mapping.v2.pvp.PvPLadder;
+import api.web.gw2.mapping.v2.pvp.PvpLadder;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
@@ -32,7 +32,7 @@ public final class JsonpTeam implements Team {
     private TeamState state = TeamState.UNKNOWN;
     private TeamLadderResult aggregate = TeamLadderResult.EMPTY;
     @MapValue
-    private Map<PvPLadder, TeamLadderResult> ladders = Collections.EMPTY_MAP;
+    private Map<PvpLadder, TeamLadderResult> ladders = Collections.EMPTY_MAP;
 
     /**
      * Creates a new empty instance.
@@ -66,7 +66,7 @@ public final class JsonpTeam implements Team {
     }
 
     @Override
-    public Map<PvPLadder, TeamLadderResult> getLadders() {
+    public Map<PvpLadder, TeamLadderResult> getLadders() {
         return ladders;
     }
 }

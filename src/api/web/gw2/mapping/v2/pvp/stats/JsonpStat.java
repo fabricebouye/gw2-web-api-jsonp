@@ -11,7 +11,7 @@ import api.web.gw2.mapping.core.LevelValue;
 import api.web.gw2.mapping.core.MapValue;
 import api.web.gw2.mapping.core.QuantityValue;
 import api.web.gw2.mapping.v2.characters.CharacterProfession;
-import api.web.gw2.mapping.v2.pvp.PvPLadder;
+import api.web.gw2.mapping.v2.pvp.PvpLadder;
 import java.util.Collections;
 import java.util.Map;
 
@@ -31,7 +31,7 @@ public final class JsonpStat implements Stat {
     @MapValue
     private Map<CharacterProfession, StatResult> professions = Collections.EMPTY_MAP;
     @MapValue
-    private Map<PvPLadder, StatResult> ladders = Collections.EMPTY_MAP;
+    private Map<PvpLadder, StatResult> ladders = Collections.EMPTY_MAP;
 
     /**
      * Creates a new empty instance.
@@ -65,7 +65,7 @@ public final class JsonpStat implements Stat {
     }
 
     @Override
-    public Map<PvPLadder, StatResult> getLadders() {
+    public Map<PvpLadder, StatResult> getLadders() {
         return ladders;
     }
 }
