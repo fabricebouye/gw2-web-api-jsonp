@@ -17,14 +17,14 @@ import api.web.gw2.mapping.core.Point2D;
 import api.web.gw2.mapping.core.Point3D;
 import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
-import api.web.gw2.mapping.v2.wvw.MapType;
+import api.web.gw2.mapping.v2.wvw.WvwMapType;
 import java.util.OptionalInt;
 
 /**
  * Default JSON-P implementation of an objective.
  * @author Fabrice Bouyé
  */
-public final class JsonpObjective implements Objective {
+public final class JsonpWvwObjective implements WvwObjective {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String id = IdValue.DEFAULT_STRING_ID;
@@ -33,9 +33,9 @@ public final class JsonpObjective implements Objective {
     @IdValue
     private int sectorId = IdValue.DEFAULT_INTEGER_ID;
     @EnumValue
-    private ObjectiveType type = ObjectiveType.UNKNOWN;
+    private WvwObjectiveType type = WvwObjectiveType.UNKNOWN;
     @EnumValue
-    private MapType mapType = MapType.UNKNOWN;
+    private WvwMapType mapType = WvwMapType.UNKNOWN;
     @IdValue
     private int mapId = IdValue.DEFAULT_INTEGER_ID;
     @Coord3DValue
@@ -52,7 +52,7 @@ public final class JsonpObjective implements Objective {
     /**
      * Creates a new empty instance.
      */
-    public JsonpObjective() {
+    public JsonpWvwObjective() {
     }
 
     @Override
@@ -71,12 +71,12 @@ public final class JsonpObjective implements Objective {
     }
 
     @Override
-    public ObjectiveType getType() {
+    public WvwObjectiveType getType() {
         return type;
     }
 
     @Override
-    public MapType getMapType() {
+    public WvwMapType getMapType() {
         return mapType;
     }
 

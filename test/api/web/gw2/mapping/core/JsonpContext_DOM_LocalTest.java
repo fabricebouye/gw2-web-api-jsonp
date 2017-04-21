@@ -88,6 +88,7 @@ import api.web.gw2.mapping.v2.gliders.Glider;
 import api.web.gw2.mapping.v2.pvp.ranks.PvpRank;
 import api.web.gw2.mapping.v2.races.Race;
 import api.web.gw2.mapping.v2.raids.Raid;
+import api.web.gw2.mapping.v2.wvw.objectives.WvwObjective;
 
 /**
  * Unit test.
@@ -619,8 +620,8 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Objective_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Objective local)"); // NOI18N.
+    public void testLoadObject_WvwObjective_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(WvwObjective local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/wvw/objectives/"; // NOI18N.
         final String[] filenames = {
             "objective1.json", // NOI18N.
@@ -631,7 +632,7 @@ public final class JsonpContext_DOM_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final Objective value = instance.loadObject(Objective.class, url);
+                        final WvwObjective value = instance.loadObject(WvwObjective.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
