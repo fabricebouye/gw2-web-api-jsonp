@@ -14,7 +14,7 @@ import api.web.gw2.mapping.core.QuantityValue;
  * Default JSON-P implementation of an ability rank.
  * @author Fabrice Bouyé
  */
-public final class JsonpAbilityRank implements AbilityRank {
+public final class JsonpWvwAbilityRank implements WvwAbilityRank {
 
     @QuantityValue
     private int cost = QuantityValue.DEFAULT;
@@ -24,7 +24,7 @@ public final class JsonpAbilityRank implements AbilityRank {
     /**
      * Creates a new empty instance.
      */
-    public JsonpAbilityRank() {
+    public JsonpWvwAbilityRank() {
     }
 
     @Override

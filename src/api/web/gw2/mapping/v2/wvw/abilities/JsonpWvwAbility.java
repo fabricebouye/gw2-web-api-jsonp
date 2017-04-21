@@ -19,7 +19,7 @@ import java.util.Set;
  * Default JSON-P implementation of an ability.
  * @author Fabrice Bouyé
  */
-public final class JsonpAbility implements Ability {
+public final class JsonpWvwAbility implements WvwAbility {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
@@ -30,12 +30,12 @@ public final class JsonpAbility implements Ability {
     @URLValue
     private URLReference icon = URLReference.empty();
     @SetValue
-    private Set<AbilityRank> ranks = Collections.EMPTY_SET;
+    private Set<WvwAbilityRank> ranks = Collections.EMPTY_SET;
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpAbility() {
+    public JsonpWvwAbility() {
     }
 
     @Override
@@ -59,7 +59,7 @@ public final class JsonpAbility implements Ability {
     }
 
     @Override
-    public Set<AbilityRank> getRanks() {
+    public Set<WvwAbilityRank> getRanks() {
         return ranks;
     }
 
