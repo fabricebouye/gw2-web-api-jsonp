@@ -13,26 +13,26 @@ import api.web.gw2.mapping.core.EnumValue;
  * Default JSON-P implementation of a match map bonus.
  * @author Fabrice Bouyé
  */
-public final class JsonpMatchMapBonus implements MatchMapBonus {
+public final class JsonpWvwMatchMapBonus implements WvwMatchMapBonus {
 
     @EnumValue
-    private MatchMapBonusType type = MatchMapBonusType.UNKNOWN;
+    private WvwMatchMapBonusType type = WvwMatchMapBonusType.UNKNOWN;
     @EnumValue
-    private MatchTeam owner = MatchTeam.UNKNOWN;
+    private WvwMatchTeam owner = WvwMatchTeam.UNKNOWN;
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpMatchMapBonus() {
+    public JsonpWvwMatchMapBonus() {
     }
 
     @Override
-    public MatchMapBonusType getType() {
+    public WvwMatchMapBonusType getType() {
         return type;
     }
 
     @Override
-    public MatchTeam getOwner() {
+    public WvwMatchTeam getOwner() {
         return owner;
     }
 }

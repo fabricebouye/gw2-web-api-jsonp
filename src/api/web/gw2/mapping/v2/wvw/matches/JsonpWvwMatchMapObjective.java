@@ -11,7 +11,7 @@ import api.web.gw2.mapping.core.DateValue;
 import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.OptionalValue;
-import api.web.gw2.mapping.v2.wvw.objectives.ObjectiveType;
+import api.web.gw2.mapping.v2.wvw.objectives.WvwObjectiveType;
 import java.time.ZonedDateTime;
 import java.util.Optional;
 
@@ -19,14 +19,14 @@ import java.util.Optional;
  * Default JSON-P implementation of a match map objective.
  * @author Fabrice Bouyé
  */
-public final class JsonpMatchMapObjective implements MatchMapObjective {
+public final class JsonpWvwMatchMapObjective implements WvwMatchMapObjective {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String id = IdValue.DEFAULT_STRING_ID;
     @EnumValue
-    private ObjectiveType type = ObjectiveType.UNKNOWN;
+    private WvwObjectiveType type = WvwObjectiveType.UNKNOWN;
     @EnumValue
-    private MatchTeam owner = MatchTeam.UNKNOWN;
+    private WvwMatchTeam owner = WvwMatchTeam.UNKNOWN;
     @DateValue
     private ZonedDateTime lastFlipped = DateValue.DEFAULT;
     @IdValue(flavor = IdValue.Flavor.STRING)
@@ -39,7 +39,7 @@ public final class JsonpMatchMapObjective implements MatchMapObjective {
     /**
      * Creates a new empty instance.
      */
-    public JsonpMatchMapObjective() {
+    public JsonpWvwMatchMapObjective() {
     }
 
     @Override
@@ -48,12 +48,12 @@ public final class JsonpMatchMapObjective implements MatchMapObjective {
     }
 
     @Override
-    public ObjectiveType getType() {
+    public WvwObjectiveType getType() {
         return type;
     }
 
     @Override
-    public MatchTeam getOwner() {
+    public WvwMatchTeam getOwner() {
         return owner;
     }
 

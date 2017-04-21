@@ -21,7 +21,7 @@ import java.util.Set;
  * Default JSON-P implementation of a match.
  * @author Fabrice Bouyé
  */
-public final class JsonpMatch implements Match {
+public final class JsonpWvwMatch implements WvwMatch {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String id = IdValue.DEFAULT_STRING_ID;
@@ -30,27 +30,27 @@ public final class JsonpMatch implements Match {
     @DateValue
     private ZonedDateTime endTime = DateValue.DEFAULT;
     @MapValue
-    private Map<MatchTeam, Integer> scores = Collections.EMPTY_MAP;
+    private Map<WvwMatchTeam, Integer> scores = Collections.EMPTY_MAP;
     @IdValue
     @MapValue
-    private Map<MatchTeam, Integer> worlds = Collections.EMPTY_MAP;
+    private Map<WvwMatchTeam, Integer> worlds = Collections.EMPTY_MAP;
     @IdValue
     @MapValue
     @SetValue
-    private Map<MatchTeam, Set<Integer>> allWorlds = Collections.EMPTY_MAP;
+    private Map<WvwMatchTeam, Set<Integer>> allWorlds = Collections.EMPTY_MAP;
     @QuantityValue
     @MapValue
-    private Map<MatchTeam, Integer> deaths = Collections.EMPTY_MAP;
+    private Map<WvwMatchTeam, Integer> deaths = Collections.EMPTY_MAP;
     @QuantityValue
     @MapValue
-    private Map<MatchTeam, Integer> kills = Collections.EMPTY_MAP;
+    private Map<WvwMatchTeam, Integer> kills = Collections.EMPTY_MAP;
     @SetValue
-    private Set<MatchMap> maps = Collections.EMPTY_SET;
+    private Set<WvwMatchMap> maps = Collections.EMPTY_SET;
 
     /**
      * Creates a new instance.
      */
-    public JsonpMatch() {
+    public JsonpWvwMatch() {
     }
 
     @Override
@@ -69,32 +69,32 @@ public final class JsonpMatch implements Match {
     }
 
     @Override
-    public Map<MatchTeam, Integer> getScores() {
+    public Map<WvwMatchTeam, Integer> getScores() {
         return scores;
     }
 
     @Override
-    public Map<MatchTeam, Integer> getWorlds() {
+    public Map<WvwMatchTeam, Integer> getWorlds() {
         return worlds;
     }
 
     @Override
-    public Map<MatchTeam, Set<Integer>> getAllWorlds() {
+    public Map<WvwMatchTeam, Set<Integer>> getAllWorlds() {
         return allWorlds;
     }
 
     @Override
-    public Map<MatchTeam, Integer> getDeaths() {
+    public Map<WvwMatchTeam, Integer> getDeaths() {
         return deaths;
     }
 
     @Override
-    public Map<MatchTeam, Integer> getKills() {
+    public Map<WvwMatchTeam, Integer> getKills() {
         return kills;
     }
 
     @Override
-    public Set<MatchMap> getMaps() {
+    public Set<WvwMatchMap> getMaps() {
         return maps;
     }
 }

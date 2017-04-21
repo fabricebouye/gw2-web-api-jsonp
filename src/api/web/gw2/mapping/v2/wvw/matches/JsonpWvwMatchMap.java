@@ -22,29 +22,29 @@ import java.util.Set;
  * Default JSON-P implementation of a match map.
  * @author Fabrice Bouyé
  */
-public final class JsonpMatchMap implements MatchMap {
+public final class JsonpWvwMatchMap implements WvwMatchMap {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
     @MapValue
-    private Map<MatchTeam, Integer> scores = Collections.EMPTY_MAP;
+    private Map<WvwMatchTeam, Integer> scores = Collections.EMPTY_MAP;
     @QuantityValue
     @MapValue
-    private Map<MatchTeam, Integer> deaths = Collections.EMPTY_MAP;
+    private Map<WvwMatchTeam, Integer> deaths = Collections.EMPTY_MAP;
     @QuantityValue
     @MapValue
-    private Map<MatchTeam, Integer> kills = Collections.EMPTY_MAP;
+    private Map<WvwMatchTeam, Integer> kills = Collections.EMPTY_MAP;
     @EnumValue
-    private MatchMapType type = MatchMapType.UNKNOWN;
+    private WvwMatchMapType type = WvwMatchMapType.UNKNOWN;
     @ListValue
-    private List<MatchMapBonus> bonuses = Collections.EMPTY_LIST;
+    private List<WvwMatchMapBonus> bonuses = Collections.EMPTY_LIST;
     @SetValue
-    private Set<MatchMapObjective> objectives = Collections.EMPTY_SET;
+    private Set<WvwMatchMapObjective> objectives = Collections.EMPTY_SET;
 
     /**
      * Creates a new instance.
      */
-    public JsonpMatchMap() {
+    public JsonpWvwMatchMap() {
     }
 
     @Override
@@ -53,32 +53,32 @@ public final class JsonpMatchMap implements MatchMap {
     }
 
     @Override
-    public Map<MatchTeam, Integer> getScores() {
+    public Map<WvwMatchTeam, Integer> getScores() {
         return scores;
     }
 
     @Override
-    public Map<MatchTeam, Integer> getDeaths() {
+    public Map<WvwMatchTeam, Integer> getDeaths() {
         return deaths;
     }
 
     @Override
-    public Map<MatchTeam, Integer> getKills() {
+    public Map<WvwMatchTeam, Integer> getKills() {
         return kills;
     }
 
     @Override
-    public MatchMapType getType() {
+    public WvwMatchMapType getType() {
         return type;
     }
 
     @Override
-    public List<MatchMapBonus> getBonuses() {
+    public List<WvwMatchMapBonus> getBonuses() {
         return bonuses;
     }
 
     @Override
-    public Set<MatchMapObjective> getObjectives() {
+    public Set<WvwMatchMapObjective> getObjectives() {
         return objectives;
     }
 }

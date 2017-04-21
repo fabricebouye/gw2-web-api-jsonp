@@ -63,7 +63,6 @@ import api.web.gw2.mapping.v2.traits.Trait;
 import api.web.gw2.mapping.v2.traits.TraitFact;
 import api.web.gw2.mapping.v2.worlds.World;
 import api.web.gw2.mapping.v2.worlds.WorldPopulation;
-import api.web.gw2.mapping.v2.wvw.matches.Match;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -646,8 +645,8 @@ public final class JsonpContext_SAX_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Match_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Objective local)"); // NOI18N.
+    public void testLoadObject_WvwMatch_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(WvwMatch local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/wvw/matches/"; // NOI18N.
         final String[] filenames = {
             "match1.json", // NOI18N.
@@ -662,7 +661,7 @@ public final class JsonpContext_SAX_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final Match value = instance.loadObject(Match.class, url);
+                        final WvwMatch value = instance.loadObject(WvwMatch.class, url);
                         assertNotNull(value);
                         final String expId = expIds[index];
                         assertEquals(expId, value.getId());
