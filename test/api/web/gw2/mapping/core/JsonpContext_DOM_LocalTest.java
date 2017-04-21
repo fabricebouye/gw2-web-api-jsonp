@@ -61,7 +61,6 @@ import api.web.gw2.mapping.v2.traits.TraitFact;
 import api.web.gw2.mapping.v2.worlds.World;
 import api.web.gw2.mapping.v2.worlds.WorldPopulation;
 import api.web.gw2.mapping.v2.wvw.matches.Match;
-import api.web.gw2.mapping.v2.wvw.objectives.Objective;
 import api.web.gw2.mapping.v2.wvw.ranks.Rank;
 import java.io.IOException;
 import java.net.URL;
