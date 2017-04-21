@@ -61,7 +61,6 @@ import api.web.gw2.mapping.v2.traits.TraitFact;
 import api.web.gw2.mapping.v2.worlds.World;
 import api.web.gw2.mapping.v2.worlds.WorldPopulation;
 import api.web.gw2.mapping.v2.wvw.matches.Match;
-import api.web.gw2.mapping.v2.wvw.ranks.Rank;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -87,6 +86,7 @@ import api.web.gw2.mapping.v2.gliders.Glider;
 import api.web.gw2.mapping.v2.pvp.ranks.PvpRank;
 import api.web.gw2.mapping.v2.races.Race;
 import api.web.gw2.mapping.v2.raids.Raid;
+import api.web.gw2.mapping.v2.wvw.ranks.WvwRank;
 import api.web.gw2.mapping.v2.wvw.objectives.WvwObjective;
 
 /**
@@ -1293,8 +1293,8 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Rank() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Rank local)"); // NOI18N.
+    public void testLoadObject_WvwRank() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(WvwRank local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/wvw/ranks/"; // NOI18N.
         final String[] filenames = {
             "rank01.json", // NOI18N.
@@ -1306,7 +1306,7 @@ public final class JsonpContext_DOM_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final Rank value = instance.loadObject(Rank.class, url);
+                        final WvwRank value = instance.loadObject(WvwRank.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());

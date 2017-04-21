@@ -15,7 +15,7 @@ import api.web.gw2.mapping.core.QuantityValue;
  * Default JSON-P implementation of a WvW rank.
  * @author Fabrice Bouyé
  */
-public final class JsonpRank implements Rank {
+public final class JsonpWvwRank implements WvwRank {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
@@ -27,7 +27,7 @@ public final class JsonpRank implements Rank {
     /**
      * Creates a new empty instance.
      */
-    public JsonpRank() {
+    public JsonpWvwRank() {
     }
 
     @Override
