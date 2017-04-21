@@ -43,6 +43,10 @@ public final class JsonpGuild implements Guild {
     @QuantityValue
     private OptionalInt resonance = OptionalInt.empty();
     private GuildEmblem emblem;
+    @QuantityValue
+    private int memberCount = QuantityValue.DEFAULT;
+    @QuantityValue
+    private int memberCapacity = QuantityValue.DEFAULT;
 
     /**
      * Creates a new empty instance.
@@ -98,5 +102,15 @@ public final class JsonpGuild implements Guild {
     @Override
     public GuildEmblem getEmblem() {
         return emblem;
+    }
+
+    @Override
+    public int getMemberCount() {
+        return memberCount;
+    }
+
+    @Override
+    public int getMemberCapacity() {
+        return memberCapacity;
     }
 }
