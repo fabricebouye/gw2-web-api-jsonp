@@ -42,6 +42,7 @@ public final class JsonpObjective implements Objective {
     private Point2D labelCoord = Point2D.origin();
     @URLValue
     private URLReference marker = URLReference.empty();
+    private String chatLink = LocalizedResource.DEFAULT;
 
     /**
      * Creates a new empty instance.
@@ -92,5 +93,10 @@ public final class JsonpObjective implements Objective {
     @Override
     public Point2D getLabelCoord() {
         return labelCoord;
+    }
+
+    @Override
+    public String getChatLink() {
+        return chatLink;
     }
 }
