@@ -13,7 +13,7 @@ import api.web.gw2.mapping.core.QuantityValue;
  * Default JSON-P implementation of a PvP league season's division tier.
  * @author Fabrice Bouyé
  */
-public final class JsonpSeasonTier implements SeasonTier {
+public final class JsonpPvpSeasonTier implements PvpSeasonTier {
 
     @QuantityValue
     private int points = QuantityValue.DEFAULT;
@@ -21,7 +21,7 @@ public final class JsonpSeasonTier implements SeasonTier {
     /**
      * Create a new empty instance.
      */
-    public JsonpSeasonTier() {
+    public JsonpPvpSeasonTier() {
 
     }
 

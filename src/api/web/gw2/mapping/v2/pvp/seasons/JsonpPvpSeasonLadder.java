@@ -14,25 +14,25 @@ import java.util.Set;
  * Default JSON-P implementation of a PvP league season ladder.
  * @author Fabrice Bouyé
  */
-public final class JsonpSeasonLadder implements SeasonLadder {
+public final class JsonpPvpSeasonLadder implements PvpSeasonLadder {
 
-    private SeasonLadderSettings settings;
+    private PvpSeasonLadderSettings settings;
     @SetValue
-    private Set<SeasonLadderScoring> scorings;
+    private Set<PvpSeasonLadderScoring> scorings;
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpSeasonLadder() {
+    public JsonpPvpSeasonLadder() {
     }
 
     @Override
-    public SeasonLadderSettings getSettings() {
+    public PvpSeasonLadderSettings getSettings() {
         return settings;
     }
 
     @Override
-    public Set<SeasonLadderScoring> getScorings() {
+    public Set<PvpSeasonLadderScoring> getScorings() {
         return scorings;
     }
 }

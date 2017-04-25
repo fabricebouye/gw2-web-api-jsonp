@@ -19,7 +19,7 @@ import java.util.Set;
  * Default JSON-P implementation of a PvP league season ladder's settings scoring tiers.
  * @author Fabrice Bouyé
  */
-public final class JsonpSeasonLadderSettingsTier implements SeasonLadderSettingsTier {
+public final class JsonpPvpSeasonLadderSettingsTier implements PvpSeasonLadderSettingsTier {
 
     @SetValue
     private Set<Integer> range = Collections.EMPTY_SET;
@@ -27,7 +27,7 @@ public final class JsonpSeasonLadderSettingsTier implements SeasonLadderSettings
     private Optional<String> color = Optional.empty();
     @OptionalValue
     @EnumValue
-    private Optional<SeasonLadderSettingsTierType> type = Optional.empty();
+    private Optional<PvpSeasonLadderSettingsTierType> type = Optional.empty();
     @OptionalValue
     @LocalizedResource
     private Optional<String> name = Optional.empty();
@@ -36,7 +36,7 @@ public final class JsonpSeasonLadderSettingsTier implements SeasonLadderSettings
     /**
      * Creates a new empty instance.
      */
-    public JsonpSeasonLadderSettingsTier() {
+    public JsonpPvpSeasonLadderSettingsTier() {
     }
 
     @Override
@@ -50,7 +50,7 @@ public final class JsonpSeasonLadderSettingsTier implements SeasonLadderSettings
     }
 
     @Override
-    public Optional<SeasonLadderSettingsTierType> getType() {
+    public Optional<PvpSeasonLadderSettingsTierType> getType() {
         return type;
     }
 

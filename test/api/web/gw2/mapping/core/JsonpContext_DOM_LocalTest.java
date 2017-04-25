@@ -40,7 +40,6 @@ import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
 import api.web.gw2.mapping.v2.pets.Pet;
 import api.web.gw2.mapping.v2.professions.Profession;
-import api.web.gw2.mapping.v2.pvp.seasons.Season;
 import api.web.gw2.mapping.v2.recipes.Recipe;
 import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
 import api.web.gw2.mapping.v2.skins.JsonpSkinArmorDetails;
@@ -88,6 +87,7 @@ import api.web.gw2.mapping.v2.pvp.amulets.PvpAmulet;
 import api.web.gw2.mapping.v2.pvp.games.PvpGame;
 import api.web.gw2.mapping.v2.pvp.stats.PvpStat;
 import api.web.gw2.mapping.v2.pvp.standings.PvpStanding;
+import api.web.gw2.mapping.v2.pvp.seasons.PvpSeason;
 import api.web.gw2.mapping.v2.pvp.seasons.leaderboards.PvpSeasonLeaderboardEntry;
 
 /**
@@ -841,7 +841,7 @@ public final class JsonpContext_DOM_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final Stat value = instance.loadObject(Stat.class, url);
+                        final PvpStat value = instance.loadObject(PvpStat.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
@@ -850,8 +850,8 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Season_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Seasont local)"); // NOI18N.
+    public void testLoadObject_PvpSeason_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(PvpSeason local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/pvp/seasons/"; // NOI18N.
         final String[] filenames = {
             "season01.json", // NOI18N.
@@ -864,7 +864,7 @@ public final class JsonpContext_DOM_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final Season value = instance.loadObject(Season.class, url);
+                        final PvpSeason value = instance.loadObject(PvpSeason.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
@@ -908,7 +908,7 @@ public final class JsonpContext_DOM_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final Standing value = instance.loadObject(Standing.class, url);
+                        final PvpStanding value = instance.loadObject(PvpStanding.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());

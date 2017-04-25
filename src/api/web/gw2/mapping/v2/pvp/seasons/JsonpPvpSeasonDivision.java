@@ -19,13 +19,13 @@ import java.util.Set;
  * Default JSON-P implementation of a PvP league season's division.
  * @author Fabrice Bouyé
  */
-public final class JsonpSeasonDivision implements SeasonDivision {
+public final class JsonpPvpSeasonDivision implements PvpSeasonDivision {
 
     @LocalizedResource
     private String name = LocalizedResource.DEFAULT;
     @SetValue
     @EnumValue
-    private Set<SeasonDivisionFlag> flags = Collections.EMPTY_SET;
+    private Set<PvpSeasonDivisionFlag> flags = Collections.EMPTY_SET;
     @URLValue
     private URLReference largeIcon = URLReference.empty();
     @URLValue
@@ -33,12 +33,12 @@ public final class JsonpSeasonDivision implements SeasonDivision {
     @URLValue
     private URLReference pipIcon = URLReference.empty();
     @SetValue
-    private Set<SeasonTier> tiers = Collections.EMPTY_SET;
+    private Set<PvpSeasonTier> tiers = Collections.EMPTY_SET;
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpSeasonDivision() {
+    public JsonpPvpSeasonDivision() {
     }
 
     @Override
@@ -47,7 +47,7 @@ public final class JsonpSeasonDivision implements SeasonDivision {
     }
 
     @Override
-    public Set<SeasonDivisionFlag> getFlags() {
+    public Set<PvpSeasonDivisionFlag> getFlags() {
         return flags;
     }
 
@@ -67,7 +67,7 @@ public final class JsonpSeasonDivision implements SeasonDivision {
     }
 
     @Override
-    public Set<SeasonTier> getTiers() {
+    public Set<PvpSeasonTier> getTiers() {
         return tiers;
     }
 }

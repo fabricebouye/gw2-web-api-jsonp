@@ -21,26 +21,26 @@ import java.util.Set;
  * Default JSON-P implementation of a PvP league season.
  * @author Fabrice Bouyé
  */
-public final class JsonpSeason implements Season {
+public final class JsonpPvpSeason implements PvpSeason {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String id = IdValue.DEFAULT_STRING_ID;
     @LocalizedResource
     private String name = LocalizedResource.DEFAULT;
     @SetValue
-    private Set<SeasonDivision> divisions = Collections.EMPTY_SET;
+    private Set<PvpSeasonDivision> divisions = Collections.EMPTY_SET;
     @DateValue
     private ZonedDateTime start = DateValue.DEFAULT;
     @DateValue
     private ZonedDateTime end = DateValue.DEFAULT;
     private boolean active = false;
     @MapValue
-    private Map<SeasonLadderType, SeasonLadder> leaderboards = Collections.EMPTY_MAP;
+    private Map<PvpSeasonLadderType, PvpSeasonLadder> leaderboards = Collections.EMPTY_MAP;
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpSeason() {
+    public JsonpPvpSeason() {
     }
 
     @Override
@@ -54,7 +54,7 @@ public final class JsonpSeason implements Season {
     }
 
     @Override
-    public Set<SeasonDivision> getDivisions() {
+    public Set<PvpSeasonDivision> getDivisions() {
         return divisions;
     }
 
@@ -74,7 +74,7 @@ public final class JsonpSeason implements Season {
     }
 
     @Override
-    public Map<SeasonLadderType, SeasonLadder> getLeaderboards() {
+    public Map<PvpSeasonLadderType, PvpSeasonLadder> getLeaderboards() {
         return leaderboards;
     }
 }

@@ -15,23 +15,23 @@ import api.web.gw2.mapping.core.LocalizedResource;
  * Default JSON-P implementation of a PvP league season ladder's settings scoring.
  * @author Fabrice Bouyé
  */
-public final class JsonpSeasonLadderScoring implements SeasonLadderScoring {
+public final class JsonpPvpSeasonLadderScoring implements PvpSeasonLadderScoring {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String id = IdValue.DEFAULT_STRING_ID;
     @EnumValue
-    private SeasonLadderScoringType type = SeasonLadderScoringType.UNKNOWN;
+    private PvpSeasonLadderScoringType type = PvpSeasonLadderScoringType.UNKNOWN;
     @LocalizedResource
     private String name = LocalizedResource.DEFAULT;
     @LocalizedResource
     private String description = LocalizedResource.DEFAULT;
     @EnumValue
-    private SeasonLadderScoringOrdering ordering = SeasonLadderScoringOrdering.UNKNOWN;
+    private PvpSeasonLadderScoringOrdering ordering = PvpSeasonLadderScoringOrdering.UNKNOWN;
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpSeasonLadderScoring() {
+    public JsonpPvpSeasonLadderScoring() {
     }
 
     @Override
@@ -40,7 +40,7 @@ public final class JsonpSeasonLadderScoring implements SeasonLadderScoring {
     }
 
     @Override
-    public SeasonLadderScoringType getType() {
+    public PvpSeasonLadderScoringType getType() {
         return type;
     }
 
@@ -55,7 +55,7 @@ public final class JsonpSeasonLadderScoring implements SeasonLadderScoring {
     }
 
     @Override
-    public SeasonLadderScoringOrdering getOrdering() {
+    public PvpSeasonLadderScoringOrdering getOrdering() {
         return ordering;
     }
 }
