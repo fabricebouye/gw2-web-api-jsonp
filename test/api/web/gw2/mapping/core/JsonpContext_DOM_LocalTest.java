@@ -1057,7 +1057,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_TitlesLocal() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_Titles_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Titles local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/titles/"; // NOI18N.
         final String[] filenames = {
