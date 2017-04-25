@@ -14,7 +14,7 @@ import api.web.gw2.mapping.core.QuantityValue;
  * Default JSON-P implementation of a PvP league leaderboard score.
  * @author Fabrice Bouyé
  */
-public final class JsonpLeaderboardScore implements LeaderboardScore {
+public final class JsonpPvpSeasonLeaderboardScore implements PvpSeasonLeaderboardScore {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String id = IdValue.DEFAULT_STRING_ID;
@@ -24,7 +24,7 @@ public final class JsonpLeaderboardScore implements LeaderboardScore {
     /**
      * Creates a new empty instance.
      */
-    public JsonpLeaderboardScore() {
+    public JsonpPvpSeasonLeaderboardScore() {
     }
 
     @Override

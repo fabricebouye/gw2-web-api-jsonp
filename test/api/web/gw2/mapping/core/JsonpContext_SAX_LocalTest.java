@@ -44,7 +44,6 @@ import api.web.gw2.mapping.v2.minis.Mini;
 import api.web.gw2.mapping.v2.pets.Pet;
 import api.web.gw2.mapping.v2.professions.Profession;
 import api.web.gw2.mapping.v2.pvp.seasons.Season;
-import api.web.gw2.mapping.v2.pvp.seasons.leaderboards.LeaderboardEntry;
 import api.web.gw2.mapping.v2.recipes.Recipe;
 import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
 import api.web.gw2.mapping.v2.skins.JsonpSkinArmorDetails;
@@ -92,6 +91,7 @@ import api.web.gw2.mapping.v2.pvp.amulets.PvpAmulet;
 import api.web.gw2.mapping.v2.pvp.games.PvpGame;
 import api.web.gw2.mapping.v2.pvp.stats.PvpStat;
 import api.web.gw2.mapping.v2.pvp.standings.PvpStanding;
+import api.web.gw2.mapping.v2.pvp.seasons.leaderboards.PvpSeasonLeaderboardEntry;
 
 /**
  * Unit test.
@@ -914,8 +914,8 @@ public final class JsonpContext_SAX_LocalTest {
     }
 
     @Test
-    public void testLoadObject_LeaderboardEntry_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(LeaderboardEntry local)"); // NOI18N.
+    public void testLoadObject_PvpSeasonLeaderboardEntry_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(PvpSeasonLeaderboardEntry local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/pvp/seasons/leaderboards/"; // NOI18N.
         final String[] filenames = {
             "leaderboard01.json", // NOI18N.
@@ -927,7 +927,7 @@ public final class JsonpContext_SAX_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final LeaderboardEntry value = instance.loadObject(LeaderboardEntry.class, url);
+                        final PvpSeasonLeaderboardEntry value = instance.loadObject(PvpSeasonLeaderboardEntry.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());

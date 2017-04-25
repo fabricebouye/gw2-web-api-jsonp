@@ -22,7 +22,7 @@ import java.util.Set;
  * Default JSON-P implementation of a PvP league leaderboard entry.
  * @author Fabrice Bouyé
  */
-public final class JsonpLeaderboardEntry implements LeaderboardEntry {
+public final class JsonpPvpSeasonLeaderboardEntry implements PvpSeasonLeaderboardEntry {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String name = IdValue.DEFAULT_STRING_ID;
@@ -39,12 +39,12 @@ public final class JsonpLeaderboardEntry implements LeaderboardEntry {
     @DateValue
     private ZonedDateTime date = DateValue.DEFAULT;
     @SetValue
-    private Set<LeaderboardScore> scores = Collections.EMPTY_SET;
+    private Set<PvpSeasonLeaderboardScore> scores = Collections.EMPTY_SET;
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpLeaderboardEntry() {
+    public JsonpPvpSeasonLeaderboardEntry() {
     }
 
     @Override
@@ -78,7 +78,7 @@ public final class JsonpLeaderboardEntry implements LeaderboardEntry {
     }
 
     @Override
-    public Set<LeaderboardScore> getScores() {
+    public Set<PvpSeasonLeaderboardScore> getScores() {
         return scores;
     }
 }
