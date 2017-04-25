@@ -40,7 +40,6 @@ import api.web.gw2.mapping.v2.materials.MaterialStorage;
 import api.web.gw2.mapping.v2.minis.Mini;
 import api.web.gw2.mapping.v2.pets.Pet;
 import api.web.gw2.mapping.v2.professions.Profession;
-import api.web.gw2.mapping.v2.pvp.amulets.Amulet;
 import api.web.gw2.mapping.v2.pvp.games.Game;
 import api.web.gw2.mapping.v2.pvp.seasons.Season;
 import api.web.gw2.mapping.v2.pvp.seasons.leaderboards.LeaderboardEntry;
@@ -89,6 +88,7 @@ import api.web.gw2.mapping.v2.raids.Raid;
 import api.web.gw2.mapping.v2.wvw.ranks.WvwRank;
 import api.web.gw2.mapping.v2.wvw.objectives.WvwObjective;
 import api.web.gw2.mapping.v2.wvw.matches.WvwMatch;
+import api.web.gw2.mapping.v2.pvp.amulets.PvpAmulet;
 
 /**
  * Unit test.
@@ -1099,8 +1099,8 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_AmuletsLocal() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Amulets local)"); // NOI18N.
+    public void testLoadObject_PvpAmulets_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(PvpAmulets local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/pvp/amulets/"; // NOI18N.
         final String[] filenames = {
             "amulets.json", // NOI18N.
@@ -1111,7 +1111,7 @@ public final class JsonpContext_DOM_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final Collection<Amulet> value = instance.loadObjectArray(Amulet.class, url);
+                        final Collection<PvpAmulet> value = instance.loadObjectArray(PvpAmulet.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());

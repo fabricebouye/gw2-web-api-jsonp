@@ -19,7 +19,7 @@ import java.util.Map;
  * Default JSON-P implementation of a PvP amulet.
  * @author Fabrice Bouyé
  */
-public final class JsonpAmulet implements Amulet {
+public final class JsonpPvpAmulet implements PvpAmulet {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
@@ -31,12 +31,12 @@ public final class JsonpAmulet implements Amulet {
     private URLReference icon = URLReference.empty();
 
     @MapValue
-    private Map<AmuletAttribute, Integer> attributes = Collections.EMPTY_MAP;
+    private Map<PvpAmuletAttribute, Integer> attributes = Collections.EMPTY_MAP;
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpAmulet() {
+    public JsonpPvpAmulet() {
     }
 
     @Override
@@ -55,7 +55,7 @@ public final class JsonpAmulet implements Amulet {
     }
 
     @Override
-    public Map<AmuletAttribute, Integer> getAttributes() {
+    public Map<PvpAmuletAttribute, Integer> getAttributes() {
         return attributes;
     }
 
