@@ -76,6 +76,7 @@ import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBag;
 import api.web.gw2.mapping.v2.characters.id.sab.CharacterSabResponse;
 import api.web.gw2.mapping.v2.dungeons.Dungeon;
 import api.web.gw2.mapping.v2.gliders.Glider;
+import api.web.gw2.mapping.v2.guild.upgrades.Upgrade;
 import api.web.gw2.mapping.v2.mailcarriers.MailCarrier;
 import api.web.gw2.mapping.v2.pvp.ranks.PvpRank;
 import api.web.gw2.mapping.v2.races.Race;
@@ -1036,6 +1037,28 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
+    public void testLoadObject_Upgrade_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Upgrade local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/guild/upgrades/"; // NOI18N.
+        final String[] filenames = {
+            "upgrade01.json", // NOI18N.
+            "upgrade02.json", // NOI18N.
+        };
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final Upgrade value = instance.loadObject(Upgrade.class, url);
+                        assertNotNull(value);
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
     public void testLoadObject_Profession_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Profession local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/professions/"; // NOI18N.
@@ -1078,7 +1101,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_LegendsLocal() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_Legends_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Legends local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/legends/"; // NOI18N.
         final String[] filenames = {
@@ -1120,7 +1143,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_ItemstatsLocal() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_Itemstats_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Itemstats local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/itemstats/"; // NOI18N.
         final String[] filenames = {
@@ -1141,7 +1164,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Finisher() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_Finisher_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Finisher local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/finishers/"; // NOI18N.
         final String[] filenames = {
@@ -1163,7 +1186,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_FinisherUnlock() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_FinisherUnlock_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(FinisherUnlock local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/account/finishers/"; // NOI18N.
         final String[] filenames = {
@@ -1184,7 +1207,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_BackstoryAnswer() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_BackstoryAnswer_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(BackstoryAnswer local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/backstory/answers/"; // NOI18N.
         final String[] filenames = {
@@ -1206,7 +1229,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_BackstoryQuestion() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_BackstoryQuestion_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(BackstoryQuestion local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/backstory/questions/"; // NOI18N.
         final String[] filenames = {
@@ -1228,7 +1251,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Pet() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_Pet_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Pet local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/pets/"; // NOI18N.
         final String[] filenames = {
@@ -1250,7 +1273,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Story() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_Story_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Story local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/stories/"; // NOI18N.
         final String[] filenames = {
@@ -1272,7 +1295,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_StorySeason() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_StorySeason_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(StorySeason local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/stories/seasons/"; // NOI18N.
         final String[] filenames = {
@@ -1294,7 +1317,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_WvwRank() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_WvwRank_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(WvwRank local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/wvw/ranks/"; // NOI18N.
         final String[] filenames = {
@@ -1316,7 +1339,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Guild() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_Guild_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Guild local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/guild/id/"; // NOI18N.
         final String[] filenames = {
@@ -1338,7 +1361,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Cat() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_Cat_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Cat)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/account/home/cats/"; // NOI18N.
         final String[] filenames = {
@@ -1360,7 +1383,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Dungeon() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_Dungeon_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Dungeon)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/dungeons/"; // NOI18N.
         final String[] filenames = {
@@ -1385,7 +1408,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Glider() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_Glider_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Glider)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/gliders/"; // NOI18N.
         final String[] filenames = {
@@ -1410,7 +1433,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_PvpRank() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_PvpRank_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(PvpRank)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/pvp/ranks/"; // NOI18N.
         final String[] filenames = {
@@ -1438,7 +1461,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Race() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_Race_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Race)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/races/"; // NOI18N.
         final String[] filenames = {
@@ -1464,7 +1487,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Raid() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_Raid_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(Raid)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/raids/"; // NOI18N.
         final String[] filenames = {
@@ -1492,7 +1515,7 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_MailCarrier() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public void testLoadObject_MailCarrier_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
         System.out.println("loadObject(MailCarrier)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/mailcarriers/"; // NOI18N.
         final String[] filenames = {
