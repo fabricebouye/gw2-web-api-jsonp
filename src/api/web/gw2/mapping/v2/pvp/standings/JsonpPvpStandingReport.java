@@ -14,7 +14,7 @@ import api.web.gw2.mapping.core.QuantityValue;
  * Default JSON-P implementation of a PvP standing report.
  * @author Fabrice Bouyé
  */
-public final class JsonpStandingReport implements StandingReport {
+public final class JsonpPvpStandingReport implements PvpStandingReport {
 
     @QuantityValue
     private int totalPoints = QuantityValue.DEFAULT;
@@ -30,7 +30,7 @@ public final class JsonpStandingReport implements StandingReport {
     /**
      * Creates a new empty instance.
      */
-    public JsonpStandingReport() {
+    public JsonpPvpStandingReport() {
     }
 
     @Override

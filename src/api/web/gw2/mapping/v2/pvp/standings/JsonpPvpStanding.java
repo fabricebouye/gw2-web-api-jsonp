@@ -13,17 +13,17 @@ import api.web.gw2.mapping.core.IdValue;
  * Default JSON-P implementation of a PvP standing.
  * @author Fabrice Bouyé
  */
-public final class JsonpStanding implements Standing {
+public final class JsonpPvpStanding implements PvpStanding {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String seasonId = IdValue.DEFAULT_STRING_ID;
-    private StandingReport current = StandingReport.EMPTY;
-    private StandingReport best = StandingReport.EMPTY;
+    private PvpStandingReport current = PvpStandingReport.EMPTY;
+    private PvpStandingReport best = PvpStandingReport.EMPTY;
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpStanding() {
+    public JsonpPvpStanding() {
     }
 
     @Override
@@ -32,12 +32,12 @@ public final class JsonpStanding implements Standing {
     }
 
     @Override
-    public StandingReport getCurrent() {
+    public PvpStandingReport getCurrent() {
         return current;
     }
 
     @Override
-    public StandingReport getBest() {
+    public PvpStandingReport getBest() {
         return best;
     }
 }

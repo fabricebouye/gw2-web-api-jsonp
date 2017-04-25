@@ -46,7 +46,6 @@ import api.web.gw2.mapping.v2.professions.Profession;
 import api.web.gw2.mapping.v2.pvp.games.Game;
 import api.web.gw2.mapping.v2.pvp.seasons.Season;
 import api.web.gw2.mapping.v2.pvp.seasons.leaderboards.LeaderboardEntry;
-import api.web.gw2.mapping.v2.pvp.standings.Standing;
 import api.web.gw2.mapping.v2.pvp.stats.Stat;
 import api.web.gw2.mapping.v2.recipes.Recipe;
 import api.web.gw2.mapping.v2.recipes.RecipeCraftingDiscipline;
@@ -92,6 +91,7 @@ import api.web.gw2.mapping.v2.wvw.ranks.WvwRank;
 import api.web.gw2.mapping.v2.wvw.objectives.WvwObjective;
 import api.web.gw2.mapping.v2.wvw.matches.WvwMatch;
 import api.web.gw2.mapping.v2.pvp.amulets.PvpAmulet;
+import api.web.gw2.mapping.v2.pvp.standings.PvpStanding;
 
 /**
  * Unit test.
@@ -937,8 +937,8 @@ public final class JsonpContext_SAX_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Standing_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Standing local)"); // NOI18N.
+    public void testLoadObject_PvpStanding_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(PvpStanding local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/pvp/standings/"; // NOI18N.
         final String[] filenames = {
             "standing01.json", // NOI18N.
@@ -950,7 +950,7 @@ public final class JsonpContext_SAX_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final Standing value = instance.loadObject(Standing.class, url);
+                        final PvpStanding value = instance.loadObject(PvpStanding.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
