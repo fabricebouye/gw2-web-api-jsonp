@@ -20,7 +20,7 @@ import java.util.Map;
  * Default JSON-P implementation of a PvP game.
  * @author Fabrice Bouyé
  */
-public final class JsonpGame implements Game {
+public final class JsonpPvpGame implements PvpGame {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String id = IdValue.DEFAULT_STRING_ID;
@@ -31,18 +31,18 @@ public final class JsonpGame implements Game {
     @DateValue
     private ZonedDateTime ended = DateValue.DEFAULT;
     @EnumValue
-    private GameResult result = GameResult.UNKNOWN;
+    private PvpGameResult result = PvpGameResult.UNKNOWN;
     @EnumValue
-    private GameTeam team = GameTeam.UNKNOWN;
+    private PvpGameTeam team = PvpGameTeam.UNKNOWN;
     @EnumValue
     private CharacterProfession profession = CharacterProfession.UNKNOWN;
     @MapValue
-    private Map<GameTeam, Integer> scores = Collections.EMPTY_MAP;
+    private Map<PvpGameTeam, Integer> scores = Collections.EMPTY_MAP;
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpGame() {
+    public JsonpPvpGame() {
     }
 
     @Override
@@ -66,12 +66,12 @@ public final class JsonpGame implements Game {
     }
 
     @Override
-    public GameResult getResult() {
+    public PvpGameResult getResult() {
         return result;
     }
 
     @Override
-    public GameTeam getTeam() {
+    public PvpGameTeam getTeam() {
         return team;
     }
 
@@ -81,7 +81,7 @@ public final class JsonpGame implements Game {
     }
 
     @Override
-    public Map<GameTeam, Integer> getScores() {
+    public Map<PvpGameTeam, Integer> getScores() {
         return scores;
     }
 
