@@ -13,7 +13,7 @@ import api.web.gw2.mapping.core.QuantityValue;
  * Default JSON-P implementation of a PvP stat result.
  * @author Fabrice Bouyé
  */
-public final class JsonpStatResult implements StatResult {
+public final class JsonpPvpStatResult implements PvpStatResult {
 
     @QuantityValue
     private int wins = QuantityValue.DEFAULT;
@@ -29,7 +29,7 @@ public final class JsonpStatResult implements StatResult {
     /**
      * Creates a new empty instance.
      */
-    public JsonpStatResult() {
+    public JsonpPvpStatResult() {
     }
 
     @Override

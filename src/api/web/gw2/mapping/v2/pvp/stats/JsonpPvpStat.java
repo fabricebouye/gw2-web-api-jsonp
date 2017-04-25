@@ -19,7 +19,7 @@ import java.util.Map;
  * Default JSON-P implementation of a PvP stat.
  * @author Fabrice Bouyé
  */
-public final class JsonpStat implements Stat {
+public final class JsonpPvpStat implements PvpStat {
 
     @LevelValue
     private int pvpRank = LevelValue.MIN_LEVEL;
@@ -27,16 +27,16 @@ public final class JsonpStat implements Stat {
     private int pvpRankPoints = QuantityValue.DEFAULT;
     @QuantityValue
     private int pvpRankRollovers = QuantityValue.DEFAULT;
-    private StatResult aggregate = StatResult.EMPTY;
+    private PvpStatResult aggregate = PvpStatResult.EMPTY;
     @MapValue
-    private Map<CharacterProfession, StatResult> professions = Collections.EMPTY_MAP;
+    private Map<CharacterProfession, PvpStatResult> professions = Collections.EMPTY_MAP;
     @MapValue
-    private Map<PvpLadder, StatResult> ladders = Collections.EMPTY_MAP;
+    private Map<PvpLadder, PvpStatResult> ladders = Collections.EMPTY_MAP;
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpStat() {
+    public JsonpPvpStat() {
     }
 
     @Override
@@ -55,17 +55,17 @@ public final class JsonpStat implements Stat {
     }
 
     @Override
-    public StatResult getAggregate() {
+    public PvpStatResult getAggregate() {
         return aggregate;
     }
 
     @Override
-    public Map<CharacterProfession, StatResult> getProfessions() {
+    public Map<CharacterProfession, PvpStatResult> getProfessions() {
         return professions;
     }
 
     @Override
-    public Map<PvpLadder, StatResult> getLadders() {
+    public Map<PvpLadder, PvpStatResult> getLadders() {
         return ladders;
     }
 }
