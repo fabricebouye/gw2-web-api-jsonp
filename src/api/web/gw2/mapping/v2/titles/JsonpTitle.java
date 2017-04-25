@@ -9,6 +9,12 @@ package api.web.gw2.mapping.v2.titles;
 
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
+import api.web.gw2.mapping.core.OptionalValue;
+import api.web.gw2.mapping.core.QuantityValue;
+import api.web.gw2.mapping.core.SetValue;
+import java.util.Collections;
+import java.util.OptionalInt;
+import java.util.Set;
 
 /**
  * Default JSON-P implementation of a title.
@@ -22,6 +28,12 @@ public final class JsonpTitle implements Title {
     private String name = LocalizedResource.DEFAULT;
     @IdValue
     private int achievement = IdValue.DEFAULT_INTEGER_ID;
+    @IdValue
+    @SetValue
+    private Set<Integer> achievements = Collections.EMPTY_SET;
+    @QuantityValue
+    @OptionalValue
+    private OptionalInt apRequired = OptionalInt.empty();
 
     /**
      * Creates a new empty instance.
@@ -44,4 +56,13 @@ public final class JsonpTitle implements Title {
         return achievement;
     }
 
+    @Override
+    public Set<Integer> getAchievements() {
+        return achievements;
+    }
+
+    @Override
+    public OptionalInt getApRequired() {
+        return apRequired;
+    }
 }
