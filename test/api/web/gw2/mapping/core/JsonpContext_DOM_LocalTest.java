@@ -82,6 +82,7 @@ import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBag;
 import api.web.gw2.mapping.v2.characters.id.sab.CharacterSabResponse;
 import api.web.gw2.mapping.v2.dungeons.Dungeon;
 import api.web.gw2.mapping.v2.gliders.Glider;
+import api.web.gw2.mapping.v2.mailcarriers.MailCarrier;
 import api.web.gw2.mapping.v2.pvp.ranks.PvpRank;
 import api.web.gw2.mapping.v2.races.Race;
 import api.web.gw2.mapping.v2.raids.Raid;
@@ -1471,8 +1472,8 @@ public final class JsonpContext_DOM_LocalTest {
             "raid02.json", // NOI18N.
         };
         final String[] expIds = {
-            "forsaken_thicket",
-            "bastion_of_the_penitent",};
+            "forsaken_thicket", // NOI18N.
+            "bastion_of_the_penitent",}; // NOI18N.
         assertEquals(filenames.length, expIds.length);
         IntStream.range(0, filenames.length)
                 .forEach(index -> {
@@ -1483,6 +1484,36 @@ public final class JsonpContext_DOM_LocalTest {
                         final Raid value = instance.loadObject(Raid.class, url);
                         assertNotNull(value);
                         final String expId = expIds[index];
+                        assertEquals(expId, value.getId());
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_MailCarrier() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(MailCarrier)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/mailcarriers/"; // NOI18N.
+        final String[] filenames = {
+            "mailcarrier01.json", // NOI18N.
+            "mailcarrier02.json", // NOI18N.
+            "mailcarrier03.json", // NOI18N.
+        };
+        final int[] expIds = {
+            4,
+            1,
+            14,};
+        assertEquals(filenames.length, expIds.length);
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final MailCarrier value = instance.loadObject(MailCarrier.class, url);
+                        assertNotNull(value);
+                        final int expId = expIds[index];
                         assertEquals(expId, value.getId());
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
