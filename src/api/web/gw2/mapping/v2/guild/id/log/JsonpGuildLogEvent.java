@@ -25,7 +25,7 @@ import java.util.Set;
  * Default JSON-P implementation of a guild log event.
  * @author Fabrice Bouyé
  */
-public final class JsonpLogEvent implements LogEvent {
+public final class JsonpGuildLogEvent implements GuildLogEvent {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
@@ -34,7 +34,7 @@ public final class JsonpLogEvent implements LogEvent {
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String user = IdValue.DEFAULT_STRING_ID;
     @EnumValue
-    private LogEventType type = LogEventType.UNKNOWN;
+    private GuildLogEventType type = GuildLogEventType.UNKNOWN;
     @IdValue
     @OptionalValue
     private OptionalInt itemId = OptionalInt.empty();
@@ -48,16 +48,16 @@ public final class JsonpLogEvent implements LogEvent {
     private OptionalInt upgradeId = OptionalInt.empty();
     @EnumValue
     @OptionalValue
-    private Optional<LogEventStashOperation> operation = Optional.empty();
+    private Optional<GuildLogEventStashOperation> operation = Optional.empty();
     @OptionalValue
     @CoinValue
     private Optional<CoinAmount> coins = Optional.empty();
     @EnumValue
     @OptionalValue
-    private Optional<LogEventUpgradeAction> action = Optional.empty();
+    private Optional<GuildLogEventUpgradeAction> action = Optional.empty();
     @EnumValue
     @OptionalValue
-    private Optional<LogEventInfluenceActivity> activity;
+    private Optional<GuildLogEventInfluenceActivity> activity;
     @OptionalValue
     @QuantityValue
     private OptionalInt totalParticipants = OptionalInt.empty();
@@ -86,7 +86,7 @@ public final class JsonpLogEvent implements LogEvent {
     /**
      * Creates a new empty instance.
      */
-    public JsonpLogEvent() {
+    public JsonpGuildLogEvent() {
     }
 
     @Override
@@ -105,7 +105,7 @@ public final class JsonpLogEvent implements LogEvent {
     }
 
     @Override
-    public LogEventType getType() {
+    public GuildLogEventType getType() {
         return type;
     }
 
@@ -130,12 +130,12 @@ public final class JsonpLogEvent implements LogEvent {
     }
 
     @Override
-    public Optional<LogEventUpgradeAction> getAction() {
+    public Optional<GuildLogEventUpgradeAction> getAction() {
         return action;
     }
 
     @Override
-    public Optional<LogEventStashOperation> getOperation() {
+    public Optional<GuildLogEventStashOperation> getOperation() {
         return operation;
     }
 
@@ -145,7 +145,7 @@ public final class JsonpLogEvent implements LogEvent {
     }
 
     @Override
-    public Optional<LogEventInfluenceActivity> getActivity() {
+    public Optional<GuildLogEventInfluenceActivity> getActivity() {
         return activity;
     }
 
