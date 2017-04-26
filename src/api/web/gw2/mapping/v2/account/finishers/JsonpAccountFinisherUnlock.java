@@ -16,7 +16,7 @@ import java.util.OptionalInt;
  * Default JSON-P implementation of a finisher unlock.
  * @author Fabrice Bouyé
  */
-public final class JsonpFinisherUnlock implements FinisherUnlock {
+public final class JsonpAccountFinisherUnlock implements AccountFinisherUnlock {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
@@ -28,7 +28,7 @@ public final class JsonpFinisherUnlock implements FinisherUnlock {
     /**
      * Creates a new empty instance.
      */
-    public JsonpFinisherUnlock() {
+    public JsonpAccountFinisherUnlock() {
     }
 
     @Override

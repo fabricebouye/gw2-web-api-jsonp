@@ -9,7 +9,6 @@ package api.web.gw2.mapping.core;
 
 import api.web.gw2.mapping.v2.account.Account;
 import api.web.gw2.mapping.v2.account.achievements.AccountAchievement;
-import api.web.gw2.mapping.v2.account.finishers.FinisherUnlock;
 import api.web.gw2.mapping.v2.account.home.cats.Cat;
 import api.web.gw2.mapping.v2.account.inventory.SharedInventory;
 import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
@@ -91,6 +90,7 @@ import api.web.gw2.mapping.v2.guild.id.teams.GuildTeam;
 import api.web.gw2.mapping.v2.guild.id.treasury.GuildTreasury;
 import api.web.gw2.mapping.v2.guild.upgrades.GuildUpgrade;
 import api.web.gw2.mapping.v2.account.bank.AccountBankSlot;
+import api.web.gw2.mapping.v2.account.finishers.AccountFinisherUnlock;
 
 /**
  * Unit test.
@@ -1187,8 +1187,8 @@ public final class JsonpContext_SAX_LocalTest {
     }
 
     @Test
-    public void testLoadObject_FinisherUnlock_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(FinisherUnlock local)"); // NOI18N.
+    public void testLoadObject_AccountFinisherUnlock_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(AccountFinisherUnlock local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/account/finishers/"; // NOI18N.
         final String[] filenames = {
             "finisherunlocks.json", // NOI18N.
@@ -1199,7 +1199,7 @@ public final class JsonpContext_SAX_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final Collection<FinisherUnlock> value = instance.loadObjectArray(FinisherUnlock.class, url);
+                        final Collection<AccountFinisherUnlock> value = instance.loadObjectArray(AccountFinisherUnlock.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
