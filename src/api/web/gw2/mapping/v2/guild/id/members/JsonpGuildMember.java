@@ -17,7 +17,7 @@ import java.util.Optional;
  * Default JSON-P implementation of a guild member.
  * @author Fabrice Bouyé
  */
-public final class JsonpMember implements Member {
+public final class JsonpGuildMember implements GuildMember {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String name = IdValue.DEFAULT_STRING_ID;
@@ -30,7 +30,7 @@ public final class JsonpMember implements Member {
     /**
      * Creates a new empty instance.
      */
-    public JsonpMember() {
+    public JsonpGuildMember() {
     }
 
     @Override
