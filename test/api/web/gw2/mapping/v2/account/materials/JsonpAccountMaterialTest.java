@@ -19,9 +19,9 @@ import static org.junit.Assert.*;
  * Unit test.
  * @author Fabrice Bouyé
  */
-public final class JsonpMaterialTest {
+public final class JsonpAccountMaterialTest {
 
-    public JsonpMaterialTest() {
+    public JsonpAccountMaterialTest() {
     }
 
     @BeforeClass
@@ -32,11 +32,11 @@ public final class JsonpMaterialTest {
     public static void tearDownClass() {
     }
 
-    private JsonpMaterial instance;
+    private JsonpAccountMaterial instance;
 
     @Before
     public void setUp() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
-        instance = new JsonpMaterial();
+        instance = new JsonpAccountMaterial();
         final Field idField = instance.getClass().getDeclaredField("id"); // NOI18N.
         idField.setAccessible(true);
         idField.setInt(instance, 1);
@@ -53,7 +53,7 @@ public final class JsonpMaterialTest {
     }
 
     /**
-     * Test of getId method, of class JsonpMaterial.
+     * Test of getId method, of class JsonpAccountMaterial.
      */
     @Test
     public void testGetId() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
@@ -66,7 +66,7 @@ public final class JsonpMaterialTest {
     }
 
     /**
-     * Test of getCategory method, of class JsonpMaterial.
+     * Test of getCategory method, of class JsonpAccountMaterial.
      */
     @Test
     public void testGetCategory() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
@@ -79,7 +79,7 @@ public final class JsonpMaterialTest {
     }
 
     /**
-     * Test of getCount method, of class JsonpMaterial.
+     * Test of getCount method, of class JsonpAccountMaterial.
      */
     @Test
     public void testGetCount() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {

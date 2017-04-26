@@ -14,7 +14,7 @@ import api.web.gw2.mapping.core.QuantityValue;
  * Default JSON-P implementation of a account material storage.
  * @author Fabrice Bouyé
  */
-public final class JsonpMaterial implements Material {
+public final class JsonpAccountMaterial implements AccountMaterial {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
@@ -26,7 +26,7 @@ public final class JsonpMaterial implements Material {
     /**
      * Creates a new empty instance.
      */
-    public JsonpMaterial() {
+    public JsonpAccountMaterial() {
     }
 
     @Override
