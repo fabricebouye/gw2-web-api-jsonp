@@ -14,7 +14,7 @@ import api.web.gw2.mapping.core.QuantityValue;
  * Default JSON-P implementation of an guild stash's inventory.
  * @author Fabrice Bouyé
  */
-public final class JsonpStashInventory implements StashInventory {
+public final class JsonpGuildStashInventory implements GuildStashInventory {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
@@ -24,7 +24,7 @@ public final class JsonpStashInventory implements StashInventory {
     /**
      * Create a new empty instance.
      */
-    public JsonpStashInventory() {
+    public JsonpGuildStashInventory() {
     }
 
     @Override

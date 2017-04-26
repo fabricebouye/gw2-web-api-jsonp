@@ -20,7 +20,7 @@ import java.util.List;
  * Default JSON-P implementation of an guild stash.
  * @author Fabrice Bouyé
  */
-public final class JsonpStash implements Stash {
+public final class JsonpGuildStash implements GuildStash {
 
     @IdValue
     private int upgradeId = IdValue.DEFAULT_INTEGER_ID;
@@ -30,12 +30,12 @@ public final class JsonpStash implements Stash {
     private CoinAmount coins = CoinAmount.ZERO;
     private String note = LocalizedResource.DEFAULT;
     @ListValue
-    private List<StashInventory> inventory = Collections.EMPTY_LIST;
+    private List<GuildStashInventory> inventory = Collections.EMPTY_LIST;
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpStash() {
+    public JsonpGuildStash() {
     }
 
     @Override
@@ -59,7 +59,7 @@ public final class JsonpStash implements Stash {
     }
 
     @Override
-    public List<StashInventory> getInventory() {
+    public List<GuildStashInventory> getInventory() {
         return inventory;
     }
 }
