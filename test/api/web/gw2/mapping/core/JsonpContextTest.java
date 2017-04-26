@@ -9,7 +9,6 @@ package api.web.gw2.mapping.core;
 
 import api.web.gw2.mapping.v2.account.Account;
 import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
-import api.web.gw2.mapping.v2.guild.id.ranks.Rank;
 import api.web.gw2.mapping.v2.guild.permissions.Permission;
 import api.web.gw2.mapping.v2.guild.permissions.PermissionId;
 import api.web.gw2.mapping.v2.quaggans.*;
@@ -29,6 +28,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import api.web.gw2.mapping.v2.guild.id.ranks.GuildRank;
 
 /**
  * Unit test.
@@ -116,7 +116,7 @@ public class JsonpContextTest {
         assertNotNull(permissions);
         path = String.format("https://api.guildwars2.com/v2/guild/%s/ranks?access_token=%s", guildId, appKey);
         url = new URL(path);
-        final Collection<Rank> ranks = JsonpContext.SAX.loadObjectArray(Rank.class, url);
+        final Collection<GuildRank> ranks = JsonpContext.SAX.loadObjectArray(GuildRank.class, url);
         assertNotNull(ranks);
     }
 

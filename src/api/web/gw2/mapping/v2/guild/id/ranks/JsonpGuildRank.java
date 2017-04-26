@@ -13,7 +13,7 @@ import api.web.gw2.mapping.core.QuantityValue;
 import api.web.gw2.mapping.core.SetValue;
 import api.web.gw2.mapping.core.URLReference;
 import api.web.gw2.mapping.core.URLValue;
-import api.web.gw2.mapping.v2.guild.permissions.PermissionId;
+import api.web.gw2.mapping.v2.guild.permissions.GuildPermissionId;
 import java.util.Collections;
 import java.util.Set;
 
@@ -21,7 +21,7 @@ import java.util.Set;
  * Default JSON-P implementation of a guild rank.
  * @author Fabrice Bouyé
  */
-public final class JsonpRank implements Rank {
+public final class JsonpGuildRank implements GuildRank {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String id = IdValue.DEFAULT_STRING_ID;
@@ -29,14 +29,14 @@ public final class JsonpRank implements Rank {
     private int order = QuantityValue.DEFAULT;
     @SetValue
     @EnumValue
-    private Set<PermissionId> permissions = Collections.EMPTY_SET;
+    private Set<GuildPermissionId> permissions = Collections.EMPTY_SET;
     @URLValue
     private URLReference icon = URLReference.empty();
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpRank() {
+    public JsonpGuildRank() {
     }
 
     @Override
@@ -50,7 +50,7 @@ public final class JsonpRank implements Rank {
     }
 
     @Override
-    public Set<PermissionId> getPermissions() {
+    public Set<GuildPermissionId> getPermissions() {
         return permissions;
     }
 
