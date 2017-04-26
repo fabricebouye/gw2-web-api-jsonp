@@ -8,7 +8,6 @@
 package api.web.gw2.mapping.core;
 
 import api.web.gw2.mapping.v2.account.Account;
-import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
 import api.web.gw2.mapping.v2.guild.permissions.GuildPermissionId;
 import api.web.gw2.mapping.v2.quaggans.*;
 import java.io.IOException;
@@ -29,6 +28,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import api.web.gw2.mapping.v2.guild.id.ranks.GuildRank;
 import api.web.gw2.mapping.v2.guild.permissions.GuildPermission;
+import api.web.gw2.mapping.v2.account.wallet.AccountCurrencyAmount;
 
 /**
  * Unit test.
@@ -125,7 +125,7 @@ public class JsonpContextTest {
         System.out.println("loadObject(CurrencyAmount)"); // NOI18N.
         final URL url = getClass().getResource("/api/web/gw2/mapping/v2/account/wallet/currency_amount1.json"); // NOI18N.
         final JsonpContext instance = JsonpContext.SAX;
-        final CurrencyAmount value = instance.loadObject(CurrencyAmount.class, url);
+        final AccountCurrencyAmount value = instance.loadObject(AccountCurrencyAmount.class, url);
         assertNotNull(value);
         assertEquals(1, value.getId());
         assertEquals(100001, value.getValue());

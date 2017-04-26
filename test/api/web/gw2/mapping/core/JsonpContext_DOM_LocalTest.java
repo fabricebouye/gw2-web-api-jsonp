@@ -9,7 +9,6 @@ package api.web.gw2.mapping.core;
 
 import api.web.gw2.mapping.v2.account.Account;
 import api.web.gw2.mapping.v2.account.achievements.AccountAchievement;
-import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
 import api.web.gw2.mapping.v2.achievements.Achievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievementLevelRange;
@@ -91,6 +90,7 @@ import api.web.gw2.mapping.v2.account.bank.AccountBankSlot;
 import api.web.gw2.mapping.v2.account.finishers.AccountFinisher;
 import api.web.gw2.mapping.v2.account.home.cats.AccountCat;
 import api.web.gw2.mapping.v2.account.inventory.AccountInventory;
+import api.web.gw2.mapping.v2.account.wallet.AccountCurrencyAmount;
 
 /**
  * Unit test.
@@ -155,7 +155,7 @@ public final class JsonpContext_DOM_LocalTest {
         final String filename = "currency_amount1.json"; // NOI18N.
         final URL url = getClass().getResource(basecode + filename);
         assertNotNull(url);
-        final CurrencyAmount value = instance.loadObject(CurrencyAmount.class, url);
+        final AccountCurrencyAmount value = instance.loadObject(AccountCurrencyAmount.class, url);
         assertNotNull(value);
         assertEquals(1, value.getId());
         assertEquals(100001, value.getValue());

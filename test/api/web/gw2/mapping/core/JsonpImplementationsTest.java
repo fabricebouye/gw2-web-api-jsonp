@@ -15,8 +15,7 @@ import api.web.gw2.mapping.v1.guilddetails.JsonpGuildDetails;
 import api.web.gw2.mapping.v1.guilddetails.JsonpGuildDetailsEmblem;
 import api.web.gw2.mapping.v2.account.Account;
 import api.web.gw2.mapping.v2.account.JsonpAccount;
-import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
-import api.web.gw2.mapping.v2.account.wallet.JsonpCurrencyAmount;
+import api.web.gw2.mapping.v2.account.wallet.JsonpAccountCurrencyAmount;
 import api.web.gw2.mapping.v2.colors.ColorDye;
 import api.web.gw2.mapping.v2.colors.ColorMaterial;
 import api.web.gw2.mapping.v2.colors.ColorRGB;
@@ -38,6 +37,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import api.web.gw2.mapping.v2.account.wallet.AccountCurrencyAmount;
 
 /**
  * Unit test.
@@ -61,7 +61,7 @@ public class JsonpImplementationsTest {
         GuildDetails.class,
         GuildDetailsEmblem.class,
         Account.class,
-        CurrencyAmount.class,
+        AccountCurrencyAmount.class,
         ColorDye.class,
         ColorMaterial.class,
         ColorRGB.class,
@@ -75,7 +75,7 @@ public class JsonpImplementationsTest {
         JsonpGuildDetails.class,
         JsonpGuildDetailsEmblem.class,
         JsonpAccount.class,
-        JsonpCurrencyAmount.class,
+        JsonpAccountCurrencyAmount.class,
         JsonpColorDye.class,
         JsonpColorMaterial.class,
         JsonpColorRGB.class,
