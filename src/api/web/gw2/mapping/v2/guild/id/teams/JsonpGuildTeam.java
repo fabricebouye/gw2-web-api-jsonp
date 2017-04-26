@@ -21,23 +21,23 @@ import java.util.Set;
  * Default JSON-P implementation of an guild team.
  * @author Fabrice Bouyé
  */
-public final class JsonpTeam implements Team {
+public final class JsonpGuildTeam implements GuildTeam {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
     @SetValue
-    private Set<TeamMember> members = Collections.EMPTY_SET;
+    private Set<GuildTeamMember> members = Collections.EMPTY_SET;
     private String name = LocalizedResource.DEFAULT;
     @EnumValue
-    private TeamState state = TeamState.UNKNOWN;
-    private TeamLadderResult aggregate = TeamLadderResult.EMPTY;
+    private GuildTeamState state = GuildTeamState.UNKNOWN;
+    private GuildTeamLadderResult aggregate = GuildTeamLadderResult.EMPTY;
     @MapValue
-    private Map<PvpLadder, TeamLadderResult> ladders = Collections.EMPTY_MAP;
+    private Map<PvpLadder, GuildTeamLadderResult> ladders = Collections.EMPTY_MAP;
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpTeam() {
+    public JsonpGuildTeam() {
     }
 
     @Override
@@ -46,7 +46,7 @@ public final class JsonpTeam implements Team {
     }
 
     @Override
-    public Set<TeamMember> getMembers() {
+    public Set<GuildTeamMember> getMembers() {
         return members;
     }
 
@@ -56,17 +56,17 @@ public final class JsonpTeam implements Team {
     }
 
     @Override
-    public TeamState getState() {
+    public GuildTeamState getState() {
         return state;
     }
 
     @Override
-    public TeamLadderResult getAggregate() {
+    public GuildTeamLadderResult getAggregate() {
         return aggregate;
     }
 
     @Override
-    public Map<PvpLadder, TeamLadderResult> getLadders() {
+    public Map<PvpLadder, GuildTeamLadderResult> getLadders() {
         return ladders;
     }
 }

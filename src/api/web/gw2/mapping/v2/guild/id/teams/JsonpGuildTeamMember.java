@@ -14,17 +14,17 @@ import api.web.gw2.mapping.core.IdValue;
  * Default JSON-P implementation of an guild team member.
  * @author Fabrice Bouyé
  */
-public final class JsonpTeamMember implements TeamMember {
+public final class JsonpGuildTeamMember implements GuildTeamMember {
 
     @IdValue(flavor = IdValue.Flavor.STRING)
     private String name = IdValue.DEFAULT_STRING_ID;
     @EnumValue
-    private TeamMemberRole role = TeamMemberRole.UNKNOWN;
+    private GuildTeamMemberRole role = GuildTeamMemberRole.UNKNOWN;
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpTeamMember() {
+    public JsonpGuildTeamMember() {
     }
 
     @Override
@@ -33,7 +33,7 @@ public final class JsonpTeamMember implements TeamMember {
     }
 
     @Override
-    public TeamMemberRole getRole() {
+    public GuildTeamMemberRole getRole() {
         return role;
     }
 }

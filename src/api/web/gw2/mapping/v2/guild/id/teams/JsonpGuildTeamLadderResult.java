@@ -13,7 +13,7 @@ import api.web.gw2.mapping.core.QuantityValue;
  * Default JSON-P implementation of an guild team ladder result.
  * @author Fabrice Bouyé
  */
-public final class JsonpTeamLadderResult implements TeamLadderResult {
+public final class JsonpGuildTeamLadderResult implements GuildTeamLadderResult {
 
     @QuantityValue
     private int wins = QuantityValue.DEFAULT;
@@ -29,7 +29,7 @@ public final class JsonpTeamLadderResult implements TeamLadderResult {
     /**
      * Create a new empty instance.
      */
-    public JsonpTeamLadderResult() {
+    public JsonpGuildTeamLadderResult() {
     }
 
     @Override
