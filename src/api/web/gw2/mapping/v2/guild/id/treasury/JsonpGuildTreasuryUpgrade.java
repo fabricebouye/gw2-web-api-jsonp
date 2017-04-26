@@ -9,41 +9,31 @@ package api.web.gw2.mapping.v2.guild.id.treasury;
 
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.QuantityValue;
-import api.web.gw2.mapping.core.SetValue;
-import java.util.Collections;
-import java.util.Set;
 
 /**
- * Default JSON-P implementation of an guild treasury.
+ * Default JSON-P implementation of an guild treasury upgrade.
  * @author Fabrice Bouyé
  */
-public final class JsonpTreasury implements Treasury {
+public final class JsonpGuildTreasuryUpgrade implements GuildTreasuryUpgrade {
 
     @IdValue
-    private int itemId = IdValue.DEFAULT_INTEGER_ID;
+    private int upgradeId = IdValue.DEFAULT_INTEGER_ID;
     @QuantityValue
     private int count = QuantityValue.DEFAULT;
-    @SetValue
-    private Set<TreasuryUpgrade> neededBy = Collections.EMPTY_SET;
 
     /**
      * Create a new empty instance.
      */
-    public JsonpTreasury() {
+    public JsonpGuildTreasuryUpgrade() {
     }
 
     @Override
-    public int getItemId() {
-        return itemId;
+    public int getUpgradeId() {
+        return upgradeId;
     }
 
     @Override
     public int getCount() {
         return count;
-    }
-
-    @Override
-    public Set<TreasuryUpgrade> getNeededBy() {
-        return neededBy;
     }
 }

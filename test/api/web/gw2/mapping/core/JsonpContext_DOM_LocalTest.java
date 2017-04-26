@@ -27,7 +27,6 @@ import api.web.gw2.mapping.v2.continents.Continent;
 import api.web.gw2.mapping.v2.currencies.Currency;
 import api.web.gw2.mapping.v2.finishers.Finisher;
 import api.web.gw2.mapping.v2.guild.id.Guild;
-import api.web.gw2.mapping.v2.guild.id.treasury.Treasury;
 import api.web.gw2.mapping.v2.items.ItemDetails;
 import api.web.gw2.mapping.v2.items.ItemType;
 import api.web.gw2.mapping.v2.itemstats.Itemstats;
@@ -90,6 +89,7 @@ import api.web.gw2.mapping.v2.pvp.seasons.leaderboards.PvpSeasonLeaderboardEntry
 import api.web.gw2.mapping.v2.guild.id.log.GuildLogEvent;
 import api.web.gw2.mapping.v2.guild.id.stash.GuildStash;
 import api.web.gw2.mapping.v2.guild.id.teams.GuildTeam;
+import api.web.gw2.mapping.v2.guild.id.treasury.GuildTreasury;
 
 /**
  * Unit test.
@@ -961,8 +961,8 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Treasury_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Treasury local)"); // NOI18N.
+    public void testLoadObject_GuildTreasury_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(GuildTreasury local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/guild/id/treasury/"; // NOI18N.
         final String[] filenames = {
             "treasury01.json", // NOI18N.
@@ -974,7 +974,7 @@ public final class JsonpContext_DOM_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final Treasury value = instance.loadObject(Treasury.class, url);
+                        final GuildTreasury value = instance.loadObject(GuildTreasury.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
