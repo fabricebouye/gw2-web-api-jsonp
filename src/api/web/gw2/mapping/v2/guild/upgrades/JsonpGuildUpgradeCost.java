@@ -18,10 +18,10 @@ import java.util.OptionalInt;
  * Default JSON-P implementation of a guild upgrade cost.
  * @author Fabrice Bouyé
  */
-public final class JsonpUpgradeCost implements UpgradeCost {
+public final class JsonpGuildUpgradeCost implements GuildUpgradeCost {
 
     @EnumValue
-    private UpgradeCostType type = UpgradeCostType.UNKNOWN;
+    private GuildUpgradeCostType type = GuildUpgradeCostType.UNKNOWN;
     @LocalizedResource
     private String name = LocalizedResource.DEFAULT;
     @QuantityValue
@@ -33,11 +33,11 @@ public final class JsonpUpgradeCost implements UpgradeCost {
     /**
      * Creates a new empty instance.
      */
-    public JsonpUpgradeCost() {
+    public JsonpGuildUpgradeCost() {
     }
 
     @Override
-    public UpgradeCostType getType() {
+    public GuildUpgradeCostType getType() {
         return type;
     }
 

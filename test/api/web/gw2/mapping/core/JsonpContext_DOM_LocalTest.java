@@ -72,7 +72,6 @@ import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBag;
 import api.web.gw2.mapping.v2.characters.id.sab.CharacterSabResponse;
 import api.web.gw2.mapping.v2.dungeons.Dungeon;
 import api.web.gw2.mapping.v2.gliders.Glider;
-import api.web.gw2.mapping.v2.guild.upgrades.Upgrade;
 import api.web.gw2.mapping.v2.mailcarriers.MailCarrier;
 import api.web.gw2.mapping.v2.pvp.ranks.PvpRank;
 import api.web.gw2.mapping.v2.races.Race;
@@ -90,6 +89,7 @@ import api.web.gw2.mapping.v2.guild.id.log.GuildLogEvent;
 import api.web.gw2.mapping.v2.guild.id.stash.GuildStash;
 import api.web.gw2.mapping.v2.guild.id.teams.GuildTeam;
 import api.web.gw2.mapping.v2.guild.id.treasury.GuildTreasury;
+import api.web.gw2.mapping.v2.guild.upgrades.GuildUpgrade;
 
 /**
  * Unit test.
@@ -1037,8 +1037,8 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Upgrade_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Upgrade local)"); // NOI18N.
+    public void testLoadObject_GuildUpgrade_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(GuildUpgrade local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/guild/upgrades/"; // NOI18N.
         final String[] filenames = {
             "upgrade01.json", // NOI18N.
@@ -1050,7 +1050,7 @@ public final class JsonpContext_DOM_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final Upgrade value = instance.loadObject(Upgrade.class, url);
+                        final GuildUpgrade value = instance.loadObject(GuildUpgrade.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());

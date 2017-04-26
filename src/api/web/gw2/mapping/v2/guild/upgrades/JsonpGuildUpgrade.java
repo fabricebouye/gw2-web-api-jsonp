@@ -29,12 +29,12 @@ import java.util.Set;
  * Default JSON-P implementation of a guild upgrade.
  * @author Fabrice Bouyé
  */
-public final class JsonpUpgrade implements Upgrade {
+public final class JsonpGuildUpgrade implements GuildUpgrade {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
     @EnumValue
-    private UpgradeType type = UpgradeType.UNKNOWN;
+    private GuildUpgradeType type = GuildUpgradeType.UNKNOWN;
     @LocalizedResource
     private String name = LocalizedResource.DEFAULT;
     @LocalizedResource
@@ -50,7 +50,7 @@ public final class JsonpUpgrade implements Upgrade {
     @SetValue
     private Set<Integer> prerequisites = Collections.EMPTY_SET;
     @SetValue
-    private Set<UpgradeCost> costs = Collections.EMPTY_SET;
+    private Set<GuildUpgradeCost> costs = Collections.EMPTY_SET;
     @QuantityValue
     @OptionalValue
     private OptionalInt bagMaxItems = OptionalInt.empty();
@@ -61,7 +61,7 @@ public final class JsonpUpgrade implements Upgrade {
     /**
      * Creates a new empty instance.
      */
-    public JsonpUpgrade() {
+    public JsonpGuildUpgrade() {
     }
 
     @Override
@@ -70,7 +70,7 @@ public final class JsonpUpgrade implements Upgrade {
     }
 
     @Override
-    public UpgradeType getType() {
+    public GuildUpgradeType getType() {
         return type;
     }
 
@@ -110,7 +110,7 @@ public final class JsonpUpgrade implements Upgrade {
     }
 
     @Override
-    public Set<UpgradeCost> getCosts() {
+    public Set<GuildUpgradeCost> getCosts() {
         return costs;
     }
 
