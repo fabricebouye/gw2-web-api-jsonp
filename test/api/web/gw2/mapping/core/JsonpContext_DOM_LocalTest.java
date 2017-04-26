@@ -8,6 +8,7 @@
 package api.web.gw2.mapping.core;
 
 import api.web.gw2.mapping.v2.account.Account;
+import api.web.gw2.mapping.v2.account.achievements.AccountAchievement;
 import api.web.gw2.mapping.v2.account.bank.BankSlot;
 import api.web.gw2.mapping.v2.account.finishers.FinisherUnlock;
 import api.web.gw2.mapping.v2.account.home.cats.Cat;
@@ -486,7 +487,7 @@ public final class JsonpContext_DOM_LocalTest {
             final URL url = getClass().getResource(baseCode + file);
             assertNotNull(url);
             try {
-                final api.web.gw2.mapping.v2.account.achievements.Achievement value = instance.loadObject(api.web.gw2.mapping.v2.account.achievements.Achievement.class, url);
+                final AccountAchievement value = instance.loadObject(AccountAchievement.class, url);
                 assertNotNull(value);
                 final int expId = expIds[index];
                 assertEquals(expId, value.getId());

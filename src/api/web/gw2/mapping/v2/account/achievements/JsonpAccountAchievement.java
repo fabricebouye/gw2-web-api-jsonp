@@ -19,7 +19,7 @@ import java.util.Set;
  * Default JSON-P implementation of an account achievements.
  * @author Fabrice Bouyé
  */
-public final class JsonpAchievement implements Achievement {
+public final class JsonpAccountAchievement implements AccountAchievement {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
@@ -36,7 +36,7 @@ public final class JsonpAchievement implements Achievement {
     /**
      * Creates a new empty instance.
      */
-    public JsonpAchievement() {
+    public JsonpAccountAchievement() {
     }
 
     @Override

@@ -38,11 +38,11 @@ public final class JsonpAchievementTest {
     public static void tearDownClass() {
     }
 
-    private JsonpAchievement instance;
+    private JsonpAccountAchievement instance;
 
     @Before
     public void setUp() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
-        instance = new JsonpAchievement();
+        instance = new JsonpAccountAchievement();
         final Field idField = instance.getClass().getDeclaredField("id"); // NOI18N.
         idField.setAccessible(true);
         idField.setInt(instance, 1);
@@ -65,7 +65,7 @@ public final class JsonpAchievementTest {
     }
 
     /**
-     * Test of getId method, of class JsonpAchievement.
+     * Test of getId method, of class JsonpAccountAchievement.
      */
     @Test
     public void testGetId() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
@@ -78,7 +78,7 @@ public final class JsonpAchievementTest {
     }
 
     /**
-     * Test of getCurrent method, of class JsonpAchievement.
+     * Test of getCurrent method, of class JsonpAccountAchievement.
      */
     @Test
     public void testGetCurrent() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
@@ -91,7 +91,7 @@ public final class JsonpAchievementTest {
     }
 
     /**
-     * Test of getMax method, of class JsonpAchievement.
+     * Test of getMax method, of class JsonpAccountAchievement.
      */
     @Test
     public void testGetMax() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
@@ -104,7 +104,7 @@ public final class JsonpAchievementTest {
     }
 
     /**
-     * Test of isDone method, of class JsonpAchievement.
+     * Test of isDone method, of class JsonpAccountAchievement.
      */
     @Test
     public void testIsDone() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
@@ -117,7 +117,7 @@ public final class JsonpAchievementTest {
     }
 
     /**
-     * Test of getBits method, of class JsonpAchievement.
+     * Test of getBits method, of class JsonpAccountAchievement.
      */
     @Test
     public void testGetBits() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
