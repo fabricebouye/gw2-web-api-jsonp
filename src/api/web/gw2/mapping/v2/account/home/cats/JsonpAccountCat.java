@@ -14,17 +14,17 @@ import api.web.gw2.mapping.core.IdValue;
  * Default JSON-P implementation of a cat.
  * @author Fabrice Bouyé
  */
-public final class JsonpCat implements Cat {
+public final class JsonpAccountCat implements AccountCat {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
     @EnumValue
-    private CatHint hint = CatHint.UNKNOWN;
+    private AccountCatHint hint = AccountCatHint.UNKNOWN;
 
     /**
      * Creates a new empty instance.
      */
-    public JsonpCat() {
+    public JsonpAccountCat() {
     }
 
     @Override
@@ -33,7 +33,7 @@ public final class JsonpCat implements Cat {
     }
 
     @Override
-    public CatHint getHint() {
+    public AccountCatHint getHint() {
         return hint;
     }
 }

@@ -9,7 +9,6 @@ package api.web.gw2.mapping.core;
 
 import api.web.gw2.mapping.v2.account.Account;
 import api.web.gw2.mapping.v2.account.achievements.AccountAchievement;
-import api.web.gw2.mapping.v2.account.home.cats.Cat;
 import api.web.gw2.mapping.v2.account.inventory.SharedInventory;
 import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
 import api.web.gw2.mapping.v2.achievements.Achievement;
@@ -91,6 +90,7 @@ import api.web.gw2.mapping.v2.guild.id.treasury.GuildTreasury;
 import api.web.gw2.mapping.v2.guild.upgrades.GuildUpgrade;
 import api.web.gw2.mapping.v2.account.bank.AccountBankSlot;
 import api.web.gw2.mapping.v2.account.finishers.AccountFinisher;
+import api.web.gw2.mapping.v2.account.home.cats.AccountCat;
 
 /**
  * Unit test.
@@ -1362,8 +1362,8 @@ public final class JsonpContext_SAX_LocalTest {
     }
 
     @Test
-    public void testLoadObject_Cat_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Cat)"); // NOI18N.
+    public void testLoadObject_AccountCat_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(AccountCat local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/account/home/cats/"; // NOI18N.
         final String[] filenames = {
             "cat01.json", // NOI18N.
@@ -1375,7 +1375,7 @@ public final class JsonpContext_SAX_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final Cat value = instance.loadObject(Cat.class, url);
+                        final AccountCat value = instance.loadObject(AccountCat.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
