@@ -23,7 +23,7 @@ import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBag;
  * @author Fabrice Bouyé
  * @see InventoryBag
  */
-public final class JsonpSharedInventory implements SharedInventory {
+public final class JsonpAccountInventory implements AccountInventory {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
@@ -41,7 +41,7 @@ public final class JsonpSharedInventory implements SharedInventory {
     /**
      * Creates a new empty instance.
      */
-    public JsonpSharedInventory() {
+    public JsonpAccountInventory() {
     }
 
     @Override

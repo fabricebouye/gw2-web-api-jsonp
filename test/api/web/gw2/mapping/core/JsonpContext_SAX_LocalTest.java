@@ -9,7 +9,6 @@ package api.web.gw2.mapping.core;
 
 import api.web.gw2.mapping.v2.account.Account;
 import api.web.gw2.mapping.v2.account.achievements.AccountAchievement;
-import api.web.gw2.mapping.v2.account.inventory.SharedInventory;
 import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
 import api.web.gw2.mapping.v2.achievements.Achievement;
 import api.web.gw2.mapping.v2.achievements.daily.DailyAchievement;
@@ -91,6 +90,7 @@ import api.web.gw2.mapping.v2.guild.upgrades.GuildUpgrade;
 import api.web.gw2.mapping.v2.account.bank.AccountBankSlot;
 import api.web.gw2.mapping.v2.account.finishers.AccountFinisher;
 import api.web.gw2.mapping.v2.account.home.cats.AccountCat;
+import api.web.gw2.mapping.v2.account.inventory.AccountInventory;
 
 /**
  * Unit test.
@@ -1005,8 +1005,8 @@ public final class JsonpContext_SAX_LocalTest {
     }
 
     @Test
-    public void testLoadObject_SharedInventory_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(SharedInventory local)"); // NOI18N.
+    public void testLoadObject_AccountInventory_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(AccountInventory local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/account/inventory/"; // NOI18N.
         final String[] filenames = {
             "inventories.json", // NOI18N.
@@ -1020,12 +1020,12 @@ public final class JsonpContext_SAX_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final Collection<SharedInventory> value = instance.loadObjectArray(SharedInventory.class, url);
+                        final Collection<AccountInventory> value = instance.loadObjectArray(AccountInventory.class, url);
                         assertEquals(expectedIds.length, value.size());
-                        final Iterator<SharedInventory> it = value.iterator();
+                        final Iterator<AccountInventory> it = value.iterator();
                         IntStream.range(0, expectedIds.length)
                                 .forEach(i -> {
-                                    final SharedInventory sharedInventory = it.next();
+                                    final AccountInventory sharedInventory = it.next();
                                     assertEquals(expectedIds[i], sharedInventory.getId());
                                     assertEquals(expectedCounts[i], sharedInventory.getCount());
                                     assertEquals(CharacterInventoryBinding.ACCOUNT, sharedInventory.getBinding());
