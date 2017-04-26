@@ -90,7 +90,7 @@ import api.web.gw2.mapping.v2.guild.id.teams.GuildTeam;
 import api.web.gw2.mapping.v2.guild.id.treasury.GuildTreasury;
 import api.web.gw2.mapping.v2.guild.upgrades.GuildUpgrade;
 import api.web.gw2.mapping.v2.account.bank.AccountBankSlot;
-import api.web.gw2.mapping.v2.account.finishers.AccountFinisherUnlock;
+import api.web.gw2.mapping.v2.account.finishers.AccountFinisher;
 
 /**
  * Unit test.
@@ -1187,8 +1187,8 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_AccountFinisherUnlock_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(AccountFinisherUnlock local)"); // NOI18N.
+    public void testLoadObject_AccountFinisher_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(AccountFinisher local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/account/finishers/"; // NOI18N.
         final String[] filenames = {
             "finisherunlocks.json", // NOI18N.
@@ -1199,7 +1199,7 @@ public final class JsonpContext_DOM_LocalTest {
                     final URL url = getClass().getResource(basecode + filename);
                     assertNotNull(url);
                     try {
-                        final Collection<AccountFinisherUnlock> value = instance.loadObjectArray(AccountFinisherUnlock.class, url);
+                        final Collection<AccountFinisher> value = instance.loadObjectArray(AccountFinisher.class, url);
                         assertNotNull(value);
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
