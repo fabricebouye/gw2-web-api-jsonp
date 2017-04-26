@@ -15,11 +15,11 @@ import api.web.gw2.mapping.core.LocalizedResource;
  * Default JSON-P implementation of a guild permission.
  * @author Fabrice Bouyé
  */
-public final class JsonpPermission implements Permission {
+public final class JsonpGuildPermission implements GuildPermission {
 
     @IdValue
     @EnumValue
-    private PermissionId id = PermissionId.UNKNOWN;
+    private GuildPermissionId id = GuildPermissionId.UNKNOWN;
     @LocalizedResource
     private String name = LocalizedResource.DEFAULT;
     @LocalizedResource
@@ -28,11 +28,11 @@ public final class JsonpPermission implements Permission {
     /**
      * Creates a new empty instance.
      */
-    public JsonpPermission() {
+    public JsonpGuildPermission() {
     }
 
     @Override
-    public PermissionId getId() {
+    public GuildPermissionId getId() {
         return id;
     }
 

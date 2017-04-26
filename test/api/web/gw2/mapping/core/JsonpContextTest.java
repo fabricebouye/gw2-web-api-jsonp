@@ -9,8 +9,7 @@ package api.web.gw2.mapping.core;
 
 import api.web.gw2.mapping.v2.account.Account;
 import api.web.gw2.mapping.v2.account.wallet.CurrencyAmount;
-import api.web.gw2.mapping.v2.guild.permissions.Permission;
-import api.web.gw2.mapping.v2.guild.permissions.PermissionId;
+import api.web.gw2.mapping.v2.guild.permissions.GuildPermissionId;
 import api.web.gw2.mapping.v2.quaggans.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,6 +28,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import api.web.gw2.mapping.v2.guild.id.ranks.GuildRank;
+import api.web.gw2.mapping.v2.guild.permissions.GuildPermission;
 
 /**
  * Unit test.
@@ -108,11 +108,11 @@ public class JsonpContextTest {
         final String guildId = account.getGuilds().iterator().next();
         path = "https://api.guildwars2.com/v2/guild/permissions";
         url = new URL(path);
-        final Collection<PermissionId> permissionIds = JsonpContext.SAX.loadEnumArray(PermissionId.class, url);
+        final Collection<GuildPermissionId> permissionIds = JsonpContext.SAX.loadEnumArray(GuildPermissionId.class, url);
         assertNotNull(permissionIds);
         path = "https://api.guildwars2.com/v2/guild/permissions?ids=all";
         url = new URL(path);
-        final Collection<Permission> permissions = JsonpContext.SAX.loadObjectArray(Permission.class, url);
+        final Collection<GuildPermission> permissions = JsonpContext.SAX.loadObjectArray(GuildPermission.class, url);
         assertNotNull(permissions);
         path = String.format("https://api.guildwars2.com/v2/guild/%s/ranks?access_token=%s", guildId, appKey);
         url = new URL(path);
