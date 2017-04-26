@@ -22,7 +22,7 @@ import java.util.OptionalInt;
  * Default JSON-P implementation of an bank slot.
  * @author Fabrice Bouyé
  */
-public final class JsonpBankSlot implements BankSlot {
+public final class JsonpAccountBankSlot implements AccountBankSlot {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
@@ -48,7 +48,7 @@ public final class JsonpBankSlot implements BankSlot {
     /**
      * Creates a new empty instance.
      */
-    public JsonpBankSlot() {
+    public JsonpAccountBankSlot() {
     }
 
     @Override

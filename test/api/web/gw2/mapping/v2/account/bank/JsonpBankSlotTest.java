@@ -37,11 +37,11 @@ public final class JsonpBankSlotTest {
     public static void tearDownClass() {
     }
 
-    private JsonpBankSlot instance;
+    private JsonpAccountBankSlot instance;
 
     @Before
     public void setUp() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
-        instance = new JsonpBankSlot();
+        instance = new JsonpAccountBankSlot();
         final Field idField = instance.getClass().getDeclaredField("id"); // NOI18N.
         idField.setAccessible(true);
         idField.setInt(instance, 1);
@@ -64,7 +64,7 @@ public final class JsonpBankSlotTest {
     }
 
     /**
-     * Test of getId method, of class JsonpBankSlot.
+     * Test of getId method, of class JsonpAccountBankSlot.
      */
     @Test
     public void testGetId() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
@@ -77,7 +77,7 @@ public final class JsonpBankSlotTest {
     }
 
     /**
-     * Test of getCount method, of class JsonpBankSlot.
+     * Test of getCount method, of class JsonpAccountBankSlot.
      */
     @Test
     public void testGetCount() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
@@ -90,7 +90,7 @@ public final class JsonpBankSlotTest {
     }
 
     /**
-     * Test of getSkin method, of class JsonpBankSlot.
+     * Test of getSkin method, of class JsonpAccountBankSlot.
      */
     @Test
     public void testGetSkin() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
@@ -103,7 +103,7 @@ public final class JsonpBankSlotTest {
     }
 
     /**
-     * Test of getUpgrades method, of class JsonpBankSlot.
+     * Test of getUpgrades method, of class JsonpAccountBankSlot.
      */
     @Test
     public void testGetUpgrades() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
@@ -116,7 +116,7 @@ public final class JsonpBankSlotTest {
     }
 
     /**
-     * Test of getInfusions method, of class JsonpBankSlot.
+     * Test of getInfusions method, of class JsonpAccountBankSlot.
      */
     @Test
     public void testGetInfusions() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {

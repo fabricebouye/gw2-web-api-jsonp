@@ -9,7 +9,6 @@ package api.web.gw2.mapping.core;
 
 import api.web.gw2.mapping.v2.account.Account;
 import api.web.gw2.mapping.v2.account.achievements.AccountAchievement;
-import api.web.gw2.mapping.v2.account.bank.BankSlot;
 import api.web.gw2.mapping.v2.account.finishers.FinisherUnlock;
 import api.web.gw2.mapping.v2.account.home.cats.Cat;
 import api.web.gw2.mapping.v2.account.inventory.SharedInventory;
@@ -91,6 +90,7 @@ import api.web.gw2.mapping.v2.guild.id.stash.GuildStash;
 import api.web.gw2.mapping.v2.guild.id.teams.GuildTeam;
 import api.web.gw2.mapping.v2.guild.id.treasury.GuildTreasury;
 import api.web.gw2.mapping.v2.guild.upgrades.GuildUpgrade;
+import api.web.gw2.mapping.v2.account.bank.AccountBankSlot;
 
 /**
  * Unit test.
@@ -529,8 +529,8 @@ public final class JsonpContext_SAX_LocalTest {
     }
 
     @Test
-    public void testLoadPage_BankSlot_Local() throws IOException {
-        System.out.println("loadPage(BankSlot local)"); // NOI18N.
+    public void testLoadPage_AccountBankSlot_Local() throws IOException {
+        System.out.println("loadPage(AccountBankSlot local)"); // NOI18N.
         final boolean[] expIsNulls = {
             false,
             true,
@@ -543,14 +543,14 @@ public final class JsonpContext_SAX_LocalTest {
         String filename = "bankresponse.json"; // NOI18N.
         final URL url = getClass().getResource(baseCode + filename);
         assertNotNull(url);
-        final PageResult<BankSlot> value = instance.loadPage(BankSlot.class, url);
+        final PageResult<AccountBankSlot> value = instance.loadPage(AccountBankSlot.class, url);
 //        value.stream().forEach(System.out::println);
         assertNotNull(value);
         final int expPageSize = expIsNulls.length;
         assertEquals(expPageSize, value.getResultCount());
-        final Iterator<BankSlot> iterator = value.iterator();
+        final Iterator<AccountBankSlot> iterator = value.iterator();
         IntStream.range(0, expPageSize).forEach(index -> {
-            final BankSlot result = iterator.next();
+            final AccountBankSlot result = iterator.next();
             final boolean expIsNull = expIsNulls[index];
             final boolean isNull = result == null;
             assertEquals(expIsNull, isNull);
