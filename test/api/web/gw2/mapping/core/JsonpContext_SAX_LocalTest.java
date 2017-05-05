@@ -91,6 +91,7 @@ import api.web.gw2.mapping.v2.account.finishers.AccountFinisher;
 import api.web.gw2.mapping.v2.account.home.cats.AccountCat;
 import api.web.gw2.mapping.v2.account.inventory.AccountInventory;
 import api.web.gw2.mapping.v2.account.wallet.AccountCurrencyAmount;
+import api.web.gw2.mapping.v2.pvp.heroes.PvpHero;
 
 /**
  * Unit test.
@@ -1385,7 +1386,7 @@ public final class JsonpContext_SAX_LocalTest {
 
     @Test
     public void testLoadObject_Dungeon_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Dungeon)"); // NOI18N.
+        System.out.println("loadObject(Dungeon local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/dungeons/"; // NOI18N.
         final String[] filenames = {
             "dungeon01.json", // NOI18N.
@@ -1410,7 +1411,7 @@ public final class JsonpContext_SAX_LocalTest {
 
     @Test
     public void testLoadObject_Glider_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Glider)"); // NOI18N.
+        System.out.println("loadObject(Glider local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/gliders/"; // NOI18N.
         final String[] filenames = {
             "glider01.json", // NOI18N.
@@ -1435,7 +1436,7 @@ public final class JsonpContext_SAX_LocalTest {
 
     @Test
     public void testLoadObject_PvpRank_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(PvpRank)"); // NOI18N.
+        System.out.println("loadObject(PvpRank local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/pvp/ranks/"; // NOI18N.
         final String[] filenames = {
             "rank01.json", // NOI18N.
@@ -1463,7 +1464,7 @@ public final class JsonpContext_SAX_LocalTest {
 
     @Test
     public void testLoadObject_Race_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Race)"); // NOI18N.
+        System.out.println("loadObject(Race local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/races/"; // NOI18N.
         final String[] filenames = {
             "race01.json", // NOI18N.
@@ -1489,7 +1490,7 @@ public final class JsonpContext_SAX_LocalTest {
 
     @Test
     public void testLoadObject_Raid_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(Raid)"); // NOI18N.
+        System.out.println("loadObject(Raid local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/raids/"; // NOI18N.
         final String[] filenames = {
             "raid01.json", // NOI18N.
@@ -1517,7 +1518,7 @@ public final class JsonpContext_SAX_LocalTest {
 
     @Test
     public void testLoadObject_MailCarrier_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(MailCarrier)"); // NOI18N.
+        System.out.println("loadObject(MailCarrier local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/mailcarriers/"; // NOI18N.
         final String[] filenames = {
             "mailcarrier01.json", // NOI18N.
@@ -1538,6 +1539,33 @@ public final class JsonpContext_SAX_LocalTest {
                         final MailCarrier value = instance.loadObject(MailCarrier.class, url);
                         assertNotNull(value);
                         final int expId = expIds[index];
+                        assertEquals(expId, value.getId());
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_PvpHero_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(PvpHero local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/pvp/heroes/"; // NOI18N.
+        final String[] filenames = {
+            "hero01.json", // NOI18N.
+        };
+        final String[] expIds = {
+            "115C140F-C2F5-40EB-8EA2-C3773F2AE468", // NOI18N.
+        };
+        assertEquals(filenames.length, expIds.length);
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final PvpHero value = instance.loadObject(PvpHero.class, url);
+                        assertNotNull(value);
+                        final String expId = expIds[index];
                         assertEquals(expId, value.getId());
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
