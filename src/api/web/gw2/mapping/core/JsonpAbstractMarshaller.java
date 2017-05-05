@@ -113,7 +113,14 @@ abstract class JsonpAbstractMarshaller {
             try {
                 field = aClass.getDeclaredField(fieldName);
             } catch (NoSuchFieldException ex) {
-                logger.log(Level.FINEST, "Could not find field \"{0}\" in class {1}, attenpting to use class hierachy.", new Object[]{fieldName, targetClass});
+                // 2017-05-05 - PvpHeroSkin has a field named "default".
+                // This is a reserved keyword in Java.
+                // Attempt to escape the field name.
+                if (!fieldName.startsWith("_")) { // NOI18N.
+                    field = lookupField("_" + fieldName, targetClass); // NOI18N.
+                } else {
+                    logger.log(Level.FINEST, "Could not find field \"{0}\" in class {1}, attenpting to use class hierachy.", new Object[]{fieldName, targetClass});
+                }
             }
         }
         return field;
