@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2015-2017 Fabrice Bouyé
  * All rights reserved.
  *
@@ -7,6 +7,7 @@
  */
 package api.web.gw2.mapping.v2.masteries;
 
+import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
 import api.web.gw2.mapping.core.QuantityValue;
@@ -32,8 +33,8 @@ public final class JsonpMastery implements Mastery {
     private int order = QuantityValue.DEFAULT;
     @URLValue
     private URLReference background = URLReference.empty();
-    @IdValue(flavor = IdValue.Flavor.STRING)
-    private String region = IdValue.DEFAULT_STRING_ID;
+    @EnumValue
+    private MasteryRegion region = MasteryRegion.UNKNOWN;
     @SetValue
     private Set<MasteryLevel> levels = Collections.EMPTY_SET;
 
@@ -69,7 +70,7 @@ public final class JsonpMastery implements Mastery {
     }
 
     @Override
-    public String getRegion() {
+    public MasteryRegion getRegion() {
         return region;
     }
 
