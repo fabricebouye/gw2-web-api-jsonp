@@ -28,7 +28,7 @@ public final class JsonpMastery implements Mastery {
     @LocalizedResource
     private String name = LocalizedResource.DEFAULT;
     @LocalizedResource
-    private String requirements = LocalizedResource.DEFAULT;
+    private String requirement = LocalizedResource.DEFAULT;
     @QuantityValue
     private int order = QuantityValue.DEFAULT;
     @URLValue
@@ -56,7 +56,7 @@ public final class JsonpMastery implements Mastery {
 
     @Override
     public String getRequirement() {
-        return requirements;
+        return requirement;
     }
 
     @Override
