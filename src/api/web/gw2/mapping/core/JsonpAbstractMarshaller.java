@@ -128,10 +128,10 @@ abstract class JsonpAbstractMarshaller {
 
     /**
      * Gets the default value for given field.
-     * <br/>This method is usually called when encountering a {@code null} value.
+     * <br>This method is usually called when encountering a {@code null} value.
      * @param field The field on which the value will be set.
      * @return An {@code Object} instance, may be {@code null}.
-     * <br/>The value to return will be determined from the annotations and the class of the target field.
+     * <br>The value to return will be determined from the annotations and the class of the target field.
      * @throws NullPointerException If {@code field} is {@code null}.
      */
     protected final Object defaultValueForField(final Field field) throws NullPointerException {
@@ -222,13 +222,17 @@ abstract class JsonpAbstractMarshaller {
 
     /**
      * Convert a value obtained from JSON to value that can suit the target field.
-     * <br/>This method is called before setting a value into a field.
+     * <br>This method is called before setting a value into a field.
      * @param field The target field.
      * @param value The value obtained from JSON.
      * @return An {@code Object}, may be [@code null}.
-     * <br/>The value to return will be determined from the annotations and the class of the target field.
+     * <br>The value to return will be determined from the annotations and the class of the target field.
      * @throws NullPointerException If {@code field} is {@code null}.
      * @throws MalformedURLException If URL cannot be parsed from input object.
+     * @throws IllegalAccessException In case of reflection error.
+     * @throws NoSuchMethodException In case of reflection error.
+     * @throws InvocationTargetException In case of reflection error.
+     * @throws ClassNotFoundException In case of reflection error.
      */
     protected final Object valueForField(final Field field, final Object value) throws NullPointerException, MalformedURLException, IllegalAccessException, IllegalArgumentException, NoSuchMethodException, InvocationTargetException, ClassNotFoundException {
         Objects.requireNonNull(field);

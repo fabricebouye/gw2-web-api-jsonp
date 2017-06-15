@@ -104,6 +104,7 @@ public enum JsonpContext {
      * @param url The url to query.
      * @return A {@code T} instance, may be {@code null}.
      * @throws NullPointerException If either {@code targetClass} or {@code url} is {@code null}.
+     * @throws WebAPIException In case of GW2 API error.
      * @throws IOException In case of IO errors.
      */
     public final <T> T loadObject(final Class<T> targetClass, final URL url) throws NullPointerException, WebAPIException, IOException {
@@ -127,6 +128,7 @@ public enum JsonpContext {
      * @param url The url to query.
      * @return A {@code Collection<T>} instance, may be {@code null}.
      * @throws NullPointerException If either {@code targetClass} or {@code url} is {@code null}.
+     * @throws WebAPIException In case of GW2 API error.
      * @throws IOException In case of IO errors.
      */
     public <T> Collection<T> loadObjectArray(final Class<T> targetClass, final URL url) throws NullPointerException, WebAPIException, IOException {
@@ -150,6 +152,7 @@ public enum JsonpContext {
      * @param url The url to query.
      * @return A {@code Collection<T>} instance, may be {@code null}.
      * @throws NullPointerException If either {@code enumClass} or {@code url} is {@code null}.
+     * @throws WebAPIException In case of GW2 API error.
      * @throws IOException In case of IO errors.
      */
     public <T extends Enum> Collection<T> loadEnumArray(final Class<T> enumClass, final URL url) throws NullPointerException, WebAPIException, IOException {

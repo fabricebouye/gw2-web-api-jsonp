@@ -16,12 +16,11 @@ import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBinding;
 import java.util.Collections;
 import java.util.List;
 import java.util.OptionalInt;
-import api.web.gw2.mapping.v2.characters.id.inventory.CharacterInventoryBag;
 
 /**
  * Default JSON-P implementation of a shared inventory slot.
  * @author Fabrice Bouyé
- * @see InventoryBag
+ * @see AccountInventory
  */
 public final class JsonpAccountInventory implements AccountInventory {
 
