@@ -92,6 +92,7 @@ import api.web.gw2.mapping.v2.account.home.cats.AccountCat;
 import api.web.gw2.mapping.v2.account.inventory.AccountInventory;
 import api.web.gw2.mapping.v2.account.wallet.AccountCurrencyAmount;
 import api.web.gw2.mapping.v2.pvp.heroes.PvpHero;
+import api.web.gw2.mapping.v2.account.mastery.points.AccountMasteryPoints;
 
 /**
  * Unit test.
@@ -1567,6 +1568,34 @@ public final class JsonpContext_DOM_LocalTest {
                         assertNotNull(value);
                         final String expId = expIds[index];
                         assertEquals(expId, value.getId());
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_MasteryPoints_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(MasteryPoints local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/account/mastery/points/"; // NOI18N.
+        final String[] filenames = {
+            "masterypoints01.json", // NOI18N.
+        };
+        final int[] expRegionNumbers = {2};
+        final int[] expUnlocksNumbers = {236};
+        assertEquals(filenames.length, expRegionNumbers.length);
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final AccountMasteryPoints value = instance.loadObject(AccountMasteryPoints.class, url);
+                        assertNotNull(value);
+                        final int expRegionNumber = expRegionNumbers[index];
+                        assertEquals(expRegionNumber, value.getTotals().size());
+                        final int expUnlockNumber = expUnlocksNumbers[index];
+                        assertEquals(expUnlockNumber, value.getUnlocked().size());
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
                     }
