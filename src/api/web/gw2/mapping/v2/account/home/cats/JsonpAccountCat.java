@@ -7,7 +7,6 @@
  */
 package api.web.gw2.mapping.v2.account.home.cats;
 
-import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 
 /**
@@ -18,8 +17,8 @@ public final class JsonpAccountCat implements AccountCat {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
-    @EnumValue
-    private AccountCatHint hint = AccountCatHint.UNKNOWN;
+    @IdValue(flavor = IdValue.Flavor.STRING)
+    private String hint = IdValue.DEFAULT_STRING_ID;
 
     /**
      * Creates a new empty instance.
@@ -33,7 +32,7 @@ public final class JsonpAccountCat implements AccountCat {
     }
 
     @Override
-    public AccountCatHint getHint() {
+    public String getHint() {
         return hint;
     }
 }
