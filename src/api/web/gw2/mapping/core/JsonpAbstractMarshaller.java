@@ -213,7 +213,9 @@ abstract class JsonpAbstractMarshaller {
             result = 0D;
         } else if (fieldType == Boolean.TYPE) {
             result = Boolean.FALSE;
-        } else if (isSet || fieldType == Set.class) {
+        }
+        // Overwrite base default with collection value.
+        if (isSet || fieldType == Set.class) {
             result = Collections.EMPTY_SET;
         } else if (isList || fieldType == List.class) {
             result = Collections.EMPTY_LIST;
