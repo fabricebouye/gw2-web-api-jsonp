@@ -140,6 +140,7 @@ abstract class JsonpAbstractMarshaller {
         boolean isOptional = field.getAnnotation(OptionalValue.class) != null;
         boolean isId = field.getAnnotation(IdValue.class) != null;
         boolean isLevel = field.getAnnotation(LevelValue.class) != null;
+        boolean isCraftingLevel = field.getAnnotation(CraftingLevelValue.class) != null;
         boolean isCurrency = field.getAnnotation(CoinValue.class) != null;
 //        boolean isDistance = field.getAnnotation(DistanceValue.class) != null;
         boolean isLocalizedResource = field.getAnnotation(LocalizedResource.class) != null;
@@ -162,7 +163,7 @@ abstract class JsonpAbstractMarshaller {
         if (isOptional) {
             if (isList || isSet || isMap) {
                 result = Optional.empty();
-            } else if (isQuantity || isLevel || isPercent) {
+            } else if (isQuantity || isLevel || isCraftingLevel || isPercent) {
                 result = OptionalInt.empty();
             } else if (isId) {
                 final boolean isIntegerId = field.getAnnotation(IdValue.class).flavor() == IdValue.Flavor.INTEGER;
@@ -175,6 +176,8 @@ abstract class JsonpAbstractMarshaller {
             result = isIntegerId ? IdValue.DEFAULT_INTEGER_ID : IdValue.DEFAULT_STRING_ID;
         } else if (isLevel) {
             result = LevelValue.MIN_LEVEL;
+        } else if (isCraftingLevel) {
+            result = CraftingLevelValue.MIN_LEVEL;
         } else if (isCurrency) {
             result = CoinAmount.ZERO;
 //        } else if (isDistance) {
@@ -240,6 +243,7 @@ abstract class JsonpAbstractMarshaller {
         boolean isOptional = field.getAnnotation(OptionalValue.class) != null;
         boolean isId = field.getAnnotation(IdValue.class) != null;
         boolean isLevel = field.getAnnotation(LevelValue.class) != null;
+        boolean isCraftingLevel = field.getAnnotation(CraftingLevelValue.class) != null;
         boolean isCurrency = field.getAnnotation(CoinValue.class) != null;
 //        boolean isDistance = field.getAnnotation(DistanceValue.class) != null;
         boolean isLocalizedResource = field.getAnnotation(LocalizedResource.class) != null;
@@ -294,8 +298,8 @@ abstract class JsonpAbstractMarshaller {
             result = Collections.unmodifiableSet(set);
         } else if (isCurrency) {
             final Number number = (Number) value;
-            result = CoinAmount.ofCopper(number.intValue());
-        } else if (isQuantity || isLevel || isPercent) {
+            result = CoinAmount.ofCopper(number.longValue());
+        } else if (isQuantity || isLevel || isCraftingLevel || isPercent) {
             if (value == null) {
                 result = QuantityValue.DEFAULT;
             } else if (value instanceof Integer) {
@@ -360,7 +364,7 @@ abstract class JsonpAbstractMarshaller {
         if (isOptional && !(result instanceof Optional || result instanceof OptionalInt)) {
             if (isList || isSet || isMap) {
                 result = Optional.ofNullable(result);
-            } else if (isQuantity || isLevel || isPercent) {
+            } else if (isQuantity || isLevel || isCraftingLevel || isPercent) {
                 result = OptionalInt.of((Integer) result);
             } else if (isId) {
                 final boolean isIntegerId = field.getAnnotation(IdValue.class).flavor() == IdValue.Flavor.INTEGER;
