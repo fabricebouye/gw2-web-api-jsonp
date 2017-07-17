@@ -265,6 +265,14 @@ abstract class JsonpAbstractMarshaller {
         // Base types.
         if (isOptional && value == null) {
             result = null;
+        } else if (isId) {
+            if (value instanceof Number) {
+                result = ((Number) value).intValue();
+            } else if (value instanceof String) {
+                result = (String) value;
+            } else {
+                throw new IllegalArgumentException(value.toString());
+            }
         } else if (isURL) {
             final String path = (String) value;
             result = URLReference.of(path);
