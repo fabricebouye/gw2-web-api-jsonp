@@ -93,6 +93,7 @@ import api.web.gw2.mapping.v2.account.inventory.AccountInventory;
 import api.web.gw2.mapping.v2.account.wallet.AccountCurrencyAmount;
 import api.web.gw2.mapping.v2.pvp.heroes.PvpHero;
 import api.web.gw2.mapping.v2.account.mastery.points.AccountMasteryPoints;
+import api.web.gw2.mapping.v2.commerce.delivery.Delivery;
 
 /**
  * Unit test.
@@ -1575,8 +1576,8 @@ public final class JsonpContext_DOM_LocalTest {
     }
 
     @Test
-    public void testLoadObject_MasteryPoints_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        System.out.println("loadObject(MasteryPoints local)"); // NOI18N.
+    public void testLoadObject_AccountMasteryPoints_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(AccountMasteryPoints local)"); // NOI18N.
         final String basecode = "/api/web/gw2/mapping/v2/account/mastery/points/"; // NOI18N.
         final String[] filenames = {
             "masterypoints01.json", // NOI18N.
@@ -1596,6 +1597,35 @@ public final class JsonpContext_DOM_LocalTest {
                         assertEquals(expRegionNumber, value.getTotals().size());
                         final int expUnlockNumber = expUnlocksNumbers[index];
                         assertEquals(expUnlockNumber, value.getUnlocked().size());
+                    } catch (NullPointerException | IOException ex) {
+                        fail(ex.getMessage());
+                    }
+                });
+    }
+
+    @Test
+    public void testLoadObject_Delivery_Local() throws IOException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        System.out.println("loadObject(Delivery local)"); // NOI18N.
+        final String basecode = "/api/web/gw2/mapping/v2/commerce/delivery/"; // NOI18N.
+        final String[] filenames = {
+            "delivery01.json", // NOI18N.
+        };
+        final long[] expCoinsNumber = {4294967295L};
+        final int[] expItemsNumber = {3};
+        assertEquals(filenames.length, expCoinsNumber.length);
+        assertEquals(filenames.length, expItemsNumber.length);
+        IntStream.range(0, filenames.length)
+                .forEach(index -> {
+                    final String filename = filenames[index];
+                    final URL url = getClass().getResource(basecode + filename);
+                    assertNotNull(url);
+                    try {
+                        final Delivery value = instance.loadObject(Delivery.class, url);
+                        assertNotNull(value);
+                        final long expCoins = expCoinsNumber[index];
+                        assertEquals(expCoins, value.getCoins().toCopper());
+                        final int expItemNumber = expItemsNumber[index];
+                        assertEquals(expItemNumber, value.getItems().size());
                     } catch (NullPointerException | IOException ex) {
                         fail(ex.getMessage());
                     }
