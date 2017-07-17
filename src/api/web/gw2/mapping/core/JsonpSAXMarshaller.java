@@ -242,6 +242,10 @@ public final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                 break;
                 case VALUE_NUMBER: {
                     valueFromJSON = jsonNumberToJavaNumber(parser);
+                    // 2017-07-17 FB: may be long convert back to int.
+                    if (valueFromJSON instanceof Long) {
+                        valueFromJSON = ((Long) valueFromJSON).intValue();
+                    }
                 }
                 break;
                 case VALUE_TRUE: {
@@ -300,6 +304,10 @@ public final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                 break;
                 case VALUE_NUMBER: {
                     valueFromJSON = jsonNumberToJavaNumber(parser);
+                    // 2017-07-17 FB: may be long convert back to int.
+                    if (valueFromJSON instanceof Long) {
+                        valueFromJSON = ((Long) valueFromJSON).intValue();
+                    }
                 }
                 break;
                 case VALUE_TRUE: {
@@ -483,7 +491,8 @@ public final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
 // As of JDK 8_66, binary promotion returns a Double instead of an Integer if the test is true.
         Number result = null;
         if (parser.isIntegralNumber()) {
-            result = parser.getInt();
+            // 2017-07-17 FB: coin amount may be given in long.
+            result = parser.getLong();
         } else {
             result = parser.getBigDecimal().doubleValue();
         }

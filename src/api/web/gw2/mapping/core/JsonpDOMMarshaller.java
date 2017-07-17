@@ -203,6 +203,10 @@ public final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
                 case NUMBER: {
                     final JsonNumber jsonNumber = (JsonNumber) jsonValue;
                     valueFromJSON = jsonNumberToJavaNumber(jsonNumber);
+                    // 2017-07-17 FB: may be long convert back to int.
+                    if (valueFromJSON instanceof Long) {
+                        valueFromJSON = ((Long) valueFromJSON).intValue();
+                    }
                 }
                 break;
                 case STRING: {
@@ -314,6 +318,10 @@ public final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
                 case NUMBER: {
                     final JsonNumber jsonNumber = jsonObject.getJsonNumber(key);
                     valueFromJSON = jsonNumberToJavaNumber(jsonNumber);
+                    // 2017-07-17 FB: may be long convert back to int.
+                    if (valueFromJSON instanceof Long) {
+                        valueFromJSON = ((Long) valueFromJSON).intValue();
+                    }
                 }
                 break;
                 case STRING: {
@@ -340,7 +348,8 @@ public final class JsonpDOMMarshaller extends JsonpAbstractMarshaller {
     private Number jsonNumberToJavaNumber(final JsonNumber jsonNumber) {
         Number result = null;
         if (jsonNumber.isIntegral()) {
-            result = jsonNumber.intValue();
+            // 2017-07-17 FB: coin amount may be given in long.
+            result = jsonNumber.longValue();
         } else {
             result = jsonNumber.doubleValue();
         }

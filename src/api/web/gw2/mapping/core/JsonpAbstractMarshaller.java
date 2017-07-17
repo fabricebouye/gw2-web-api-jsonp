@@ -312,8 +312,8 @@ abstract class JsonpAbstractMarshaller {
         } else if (isQuantity || isLevel || isCraftingLevel || isPercent) {
             if (value == null) {
                 result = QuantityValue.DEFAULT;
-            } else if (value instanceof Integer) {
-                result = value;
+            } else if (value instanceof Number) {
+                result = ((Number) value).intValue();
             } else if (value instanceof String) { // Currently SeasonLadderSettings returns null or empty string on duration field.
                 final String string = (String) value;
                 result = (string.trim().isEmpty()) ? QuantityValue.DEFAULT : Integer.parseInt(string);
