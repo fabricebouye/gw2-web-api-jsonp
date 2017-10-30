@@ -40,7 +40,8 @@ public final class JsonpAccount implements Account {
     @DateValue
     private ZonedDateTime created = DateValue.DEFAULT;
     @EnumValue
-    private AccountAccessType access = AccountAccessType.UNKNOWN;
+    @SetValue
+    private Set<AccountAccessType> access = Collections.EMPTY_SET;
     @LevelValue
     private int fractalLevel = 1;
     private boolean commander = false;
@@ -85,7 +86,7 @@ public final class JsonpAccount implements Account {
     }
 
     @Override
-    public AccountAccessType getAccess() {
+    public Set<AccountAccessType> getAccess() {
         return access;
     }
 
