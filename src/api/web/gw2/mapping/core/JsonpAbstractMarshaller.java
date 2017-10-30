@@ -267,6 +267,15 @@ abstract class JsonpAbstractMarshaller {
         // Base types.
         if (isOptional && value == null) {
             result = null;
+        } else if (isMap) {
+            final Map map = (Map) value;
+            result = Collections.unmodifiableMap(map);
+        } else if (isList) {
+            final List list = (List) value;
+            result = Collections.unmodifiableList(list);
+        } else if (isSet) {
+            final Set set = new LinkedHashSet((List) value);
+            result = Collections.unmodifiableSet(set);
         } else if (isId) {
             if (value instanceof Number) {
                 result = ((Number) value).intValue();
@@ -297,15 +306,6 @@ abstract class JsonpAbstractMarshaller {
         } else if (isDate) {
             final String string = (String) value;
             result = ZonedDateTime.parse(string);
-        } else if (isMap) {
-            final Map map = (Map) value;
-            result = Collections.unmodifiableMap(map);
-        } else if (isList) {
-            final List list = (List) value;
-            result = Collections.unmodifiableList(list);
-        } else if (isSet) {
-            final Set set = new LinkedHashSet((List) value);
-            result = Collections.unmodifiableSet(set);
         } else if (isCurrency) {
             final Number number = (Number) value;
             result = CoinAmount.ofCopper(number.longValue());
