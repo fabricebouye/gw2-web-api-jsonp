@@ -7,14 +7,20 @@
  */
 package api.web.gw2.mapping.v2.colors;
 
+import api.web.gw2.mapping.core.EnumValue;
 import api.web.gw2.mapping.core.IdValue;
 import api.web.gw2.mapping.core.LocalizedResource;
+import api.web.gw2.mapping.core.SetValue;
+import java.util.Collections;
+import java.util.Set;
 
 /**
  * Default JSON-P implementation of a dye.
+ *
  * @author Fabrice Bouyé
  */
 public final class JsonpColorDye implements ColorDye {
+
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
     @LocalizedResource
@@ -23,6 +29,12 @@ public final class JsonpColorDye implements ColorDye {
     private ColorMaterial cloth = ColorMaterial.EMPTY;
     private ColorMaterial leather = ColorMaterial.EMPTY;
     private ColorMaterial metal = ColorMaterial.EMPTY;
+    private ColorMaterial fur = ColorMaterial.EMPTY;
+    @IdValue
+    private int item = IdValue.DEFAULT_INTEGER_ID;
+    @EnumValue
+    @SetValue
+    private Set<ColorCategories> categories = Collections.EMPTY_SET;
 
     /**
      * Creates a new empty instance.
@@ -58,5 +70,20 @@ public final class JsonpColorDye implements ColorDye {
     @Override
     public ColorMaterial getMetal() {
         return metal;
+    }
+
+    @Override
+    public ColorMaterial getFur() {
+        return fur;
+    }
+
+    @Override
+    public int getItem() {
+        return item;
+    }
+
+    @Override
+    public Set<ColorCategories> getCategories() {
+        return categories;
     }
 }

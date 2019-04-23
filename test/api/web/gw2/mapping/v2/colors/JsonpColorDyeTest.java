@@ -8,6 +8,7 @@
 package api.web.gw2.mapping.v2.colors;
 
 import java.lang.reflect.Field;
+import java.util.Set;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,6 +18,7 @@ import static org.junit.Assert.*;
 
 /**
  * Unit test.
+ *
  * @author Fabrice Bouyé
  */
 public class JsonpColorDyeTest {
@@ -68,6 +70,12 @@ public class JsonpColorDyeTest {
         leatherField.setAccessible(true);
         final Field metalField = instance.getClass().getDeclaredField("metal"); // NOI18N.
         metalField.setAccessible(true);
+        final Field furField = instance.getClass().getDeclaredField("fur"); // NOI18N.
+        furField.setAccessible(true);
+        final Field itemField = instance.getClass().getDeclaredField("item"); // NOI18N.
+        itemField.setAccessible(true);
+        final Field categoriesField = instance.getClass().getDeclaredField("categories"); // NOI18N.
+        categoriesField.setAccessible(true);
     }
 
     @After
@@ -158,4 +166,44 @@ public class JsonpColorDyeTest {
         assertEquals(expResult, result);
     }
 
+    /**
+     * Test of getFur method, of class JsonpColorDye.
+     */
+    @Test
+    public void testGetFur() throws Exception {
+        System.out.println("getFur");
+        final Field furField = instance.getClass().getDeclaredField("fur"); // NOI18N.
+        furField.setAccessible(true);
+        final ColorMaterial expResult = (ColorMaterial) furField.get(instance);
+        final ColorMaterial result = instance.getFur();
+        assertNotNull(result);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getItem method, of class JsonpColorDye.
+     */
+    @Test
+    public void testGetItem() throws Exception {
+        System.out.println("getItem");
+        final Field itemField = instance.getClass().getDeclaredField("item"); // NOI18N.
+        itemField.setAccessible(true);
+        final int expResult = (Integer) itemField.get(instance);
+        final int result = instance.getItem();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getCategories method, of class JsonpColorDye.
+     */
+    @Test
+    public void testGetCategories() throws Exception {
+        System.out.println("getCategories");
+        final Field categoriesField = instance.getClass().getDeclaredField("categories"); // NOI18N.
+        categoriesField.setAccessible(true);
+        final Set<ColorCategories> expResult = (Set<ColorCategories>) categoriesField.get(instance);
+        final Set<ColorCategories> result = instance.getCategories();
+        assertNotNull(result);
+        assertEquals(expResult, result);
+    }
 }
