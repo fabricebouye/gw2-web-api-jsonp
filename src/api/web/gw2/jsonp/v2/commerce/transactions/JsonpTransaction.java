@@ -23,7 +23,7 @@ import java.util.Optional;
  *
  * @author Fabrice Bouyé
  */
-final class JsonpTransaction implements Transaction {
+public final class JsonpTransaction implements Transaction {
 
     @IdValue
     private int id = IdValue.DEFAULT_INTEGER_ID;
@@ -38,6 +38,12 @@ final class JsonpTransaction implements Transaction {
     @DateValue
     @OptionalValue
     private Optional<ZonedDateTime> purchased = Optional.empty();
+
+    /**
+     * Creates a new empty instance.
+     */
+    public JsonpTransaction() {
+    }
 
     @Override
     public int getId() {
