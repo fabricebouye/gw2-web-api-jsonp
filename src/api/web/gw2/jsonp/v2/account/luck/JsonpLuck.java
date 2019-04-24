@@ -13,7 +13,7 @@ import api.web.gw2.mapping.v2.account.luck.Luck;
 import api.web.gw2.mapping.v2.account.luck.LuckId;
 
 /**
- * Default JSON-P implementation of a account luck.
+ * Default JSON-P implementation of account luck.
  *
  * @author Fabrice Bouyé
  */
