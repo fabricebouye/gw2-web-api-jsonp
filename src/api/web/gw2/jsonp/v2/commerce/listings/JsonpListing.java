@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015-2017 Fabrice Bouyé
+ * Copyright (C) 2015-2019 Fabrice Bouyé
  * All rights reserved.
  *
  * This software may be modified and distributed under the terms
@@ -17,7 +17,7 @@ import api.web.gw2.mapping.v2.commerce.listings.Listing;
  *
  * @author Fabrice Bouyé
  */
-public final class JsonptListing implements Listing {
+public final class JsonpListing implements Listing {
 
     @QuantityValue
     private int listing = QuantityValue.DEFAULT;
@@ -29,7 +29,7 @@ public final class JsonptListing implements Listing {
     /**
      * Creates a new empty instance.
      */
-    public JsonptListing() {
+    public JsonpListing() {
     }
 
     @Override
