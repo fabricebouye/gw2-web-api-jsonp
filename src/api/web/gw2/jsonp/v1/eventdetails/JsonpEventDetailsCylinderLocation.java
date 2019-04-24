@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015-2017 Fabrice Bouyé
+ * Copyright (C) 2015-2019 Fabrice Bouyé
  * All rights reserved.
  *
  * This software may be modified and distributed under the terms
@@ -15,7 +15,7 @@ import api.web.gw2.mapping.v1.eventdetails.EventDetailsCylinderLocation;
  *
  * @author Fabrice Bouyé
  */
-public final class JsonptEventDetailsCylinderLocation extends JsonpEventDetailsLocation implements EventDetailsCylinderLocation {
+public final class JsonpEventDetailsCylinderLocation extends JsonpEventDetailsLocation implements EventDetailsCylinderLocation {
 
     private double height = QuantityValue.DEFAULT;
     private double radius = QuantityValue.DEFAULT;
@@ -24,7 +24,7 @@ public final class JsonptEventDetailsCylinderLocation extends JsonpEventDetailsL
     /**
      * Creates a new empty instance.
      */
-    public JsonptEventDetailsCylinderLocation() {
+    public JsonpEventDetailsCylinderLocation() {
     }
 
     @Override
