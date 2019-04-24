@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015-2017 Fabrice Bouyé
+ * Copyright (C) 2015-2019 Fabrice Bouyé
  * All rights reserved.
  *
  * This software may be modified and distributed under the terms
@@ -15,14 +15,14 @@ import api.web.gw2.mapping.v1.eventdetails.EventDetailsSphereLocation;
  *
  * @author Fabrice Bouyé
  */
-public final class JsonptEventDetailsSphereLocation extends JsonpEventDetailsLocation implements EventDetailsSphereLocation {
+public final class JsonpEventDetailsSphereLocation extends JsonpEventDetailsLocation implements EventDetailsSphereLocation {
     private double radius = QuantityValue.DEFAULT;
     private double rotation = QuantityValue.DEFAULT;
 
     /**
      * Creates a new empty instance.
      */
-    JsonptEventDetailsSphereLocation() {
+    public JsonpEventDetailsSphereLocation() {
     }
 
     @Override
