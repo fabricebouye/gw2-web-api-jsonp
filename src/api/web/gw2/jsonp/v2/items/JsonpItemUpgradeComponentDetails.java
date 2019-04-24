@@ -1,0 +1,82 @@
+/*
+ * Copyright (C) 2015-2017 Fabrice Bouyé
+ * All rights reserved.
+ *
+ * This software may be modified and distributed under the terms
+ * of the BSD license.  See the LICENSE file for details.
+ */
+package api.web.gw2.jsonp.v2.items;
+
+import api.web.gw2.mapping.core.EnumValue;
+import api.web.gw2.mapping.core.ListValue;
+import api.web.gw2.mapping.core.LocalizedResource;
+import api.web.gw2.mapping.core.SetValue;
+import api.web.gw2.mapping.v2.items.ItemInfixUpgrade;
+import api.web.gw2.mapping.v2.items.ItemInfusionSlotFlag;
+import api.web.gw2.mapping.v2.items.ItemType;
+import api.web.gw2.mapping.v2.items.ItemUpgradeComponentDetails;
+import api.web.gw2.mapping.v2.items.ItemUpgradeComponentFlag;
+import api.web.gw2.mapping.v2.items.ItemUpgradeComponentType;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
+/**
+ * Default JSON-P implementation of an item upgrade component details.
+ *
+ * @author Fabrice Bouyé
+ */
+public final class JsonpItemUpgradeComponentDetails extends JsonpItemDetails implements ItemUpgradeComponentDetails {
+
+    @EnumValue
+    private ItemUpgradeComponentType type = ItemUpgradeComponentType.UNKNOWN;
+    @SetValue
+    @EnumValue
+    private Set<ItemUpgradeComponentFlag> flags = Collections.EMPTY_SET;
+    @SetValue
+    private Set<ItemInfusionSlotFlag> infusionUpgradeFlags = Collections.EMPTY_SET;
+    @LocalizedResource
+    private String suffix = LocalizedResource.DEFAULT;
+    private ItemInfixUpgrade infixUpgrade;
+    @ListValue
+    @LocalizedResource
+    private List<String> bonuses = Collections.EMPTY_LIST;
+
+    /**
+     * Creates a new empty instance.
+     */
+    public JsonpItemUpgradeComponentDetails() {
+        super(ItemType.UPGRADE_COMPONENT);
+    }
+
+    @Override
+    public ItemUpgradeComponentType getType() {
+        return type;
+    }
+
+    @Override
+    public Set<ItemUpgradeComponentFlag> getFlags() {
+        return flags;
+    }
+
+    @Override
+    public Set<ItemInfusionSlotFlag> getInfusionUpgradeFlags() {
+        return infusionUpgradeFlags;
+    }
+
+    @Override
+    public String getSuffix() {
+        return suffix;
+    }
+
+    @Override
+    public ItemInfixUpgrade getInfixUpgrade() {
+        return infixUpgrade;
+    }
+
+    @Override
+    public List<String> getBonuses() {
+        return bonuses;
+    }
+}
