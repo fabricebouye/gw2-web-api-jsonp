@@ -54,6 +54,8 @@ public final class JsonpTitle implements Title {
         return name;
     }
 
+    @SuppressWarnings("deprecation")
+    @Deprecated
     @Override
     public int getAchievement() {
         return achievement;
