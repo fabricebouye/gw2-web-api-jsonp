@@ -186,7 +186,7 @@ public final class JsonpSAXMarshaller extends JsonpAbstractMarshaller {
                             }
                         }
                         final Object value = valueForField(childField, valueFromJSON);
-                        final boolean wasAcessible = childField.isAccessible();
+                        final boolean wasAcessible = childField.canAccess(result);
                         childField.setAccessible(true);
                         childField.set(result, value);
                         childField.setAccessible(wasAcessible);
